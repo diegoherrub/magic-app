@@ -24,6 +24,7 @@ To get started with MagicApp, follow the installation guide below.
 
 ## Documentation Structure
 - **[Home](index.md)** – Docs.
+- **[Dependencias](dependencies.md)** – Dependencies.
 
 ## References
 - [Scryfall API Documentation](https://scryfall.com/docs/api)
