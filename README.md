@@ -36,7 +36,7 @@ The application retrieves card data from Scryfall. An initial query is performed
 - [ ] Deck creation with format validation.
 - [ ] Deck statistics visualisation.
 
-📖 Full Documentation → [View on GitHub Pages]()
+📖 Full Documentation → [View on GitHub Pages](https://diegoherrub.github.io/magic-app/)
 
 📜 Licence
 This project is licensed under the MIT Licence. See the [LICENSE](LICENSE) file for more details.
