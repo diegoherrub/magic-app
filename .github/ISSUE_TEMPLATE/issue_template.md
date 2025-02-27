@@ -7,22 +7,30 @@ assignees: diegoherrub
 
 ---
 
+## 🔍 Type of PR
+- [ ] 📖 **Documentation** (Updates or adds documentation)
+- [ ] 🆕 **Feature** (Adds a functionality to the project)
+- [ ] 🛠 **Enhancement** (Optimizes or refactors existing code)
+
 ## 📝 Description
 Describe the purpose of this Issue.
 - What problem does it solve or what functionality does it add?
 - How does it affect the existing code?
 
+## 📷 Screenshots
+If the changes affect the UI, add screenshots or visual examples.
+
+## 🔗 References
+- Related documentation, or external references, add them here.
+
+## 🔍 Type of PR
+- [ ] 🐞 **Bug Fix** (Fixes a specific issue)
+
+## 📝 Description
 A clear and concise description of the issue.
 - What is happening?
 - What did you expect to happen?
-
-## 🔍 Type of PR
-Select the type of PR by marking the appropriate option with an `X`:
-- [ ] 📖 **Documentation** (Updates or adds documentation)
-- [ ] 🆕 **Feature** (Adds a functionality to the project)
-- [ ] 🛠 **Enhancement** (Optimizes or refactors existing code)
-- [ ] 🐞 **Bug Fix** (Fixes a specific issue)
-
+- 
 ## 🛠 Steps to Reproduce
 List the steps to reproduce the issue:
 1. Go to '...'
@@ -42,17 +50,10 @@ Describe what should happen instead.
 ## ✅ Possible Solutions (Optional)
 If you have an idea on how to fix it, describe it here.
 
-
-
-
 ## 📷 Screenshots (if applicable)
-If the changes affect the UI, add screenshots or visual examples.
-
 If applicable, add screenshots or logs to help explain the issue.
 
 ## 🔗 References
-- Related documentation, or external references, add them here.
-
 - Related issues, error logs, or external documentation.
 
 ---

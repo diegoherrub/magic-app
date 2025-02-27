@@ -1,16 +1,16 @@
 ---
-name: New feature
-about: Suggest an idea for this project.
-title: 'Feature: '
-labels: feature
+name: Pull Request
+about: Proposal for the Issue Raised
+title: 'Pull Request: '
+labels: pullrequest
 assignees: diegoherrub
 
 ---
 
 ## 🤔 Problem Description
-Briefly explain the **functionality** to be added.  
-- What problem does it solve?  
-- What is the benefit for users?  
+Briefly explain the **functionality** to be added.
+- What problem does it solve?
+- What is the benefit for users?
 
 Describe the **improvement** to an existing feature.
 - What problem does this enhancement solve?
@@ -35,7 +35,7 @@ If the feature is large, break it down into smaller parts:
 - [ ] Subtask 2
 - [ ] Subtask 3
 
-## 🎯 Goal  
+## 🎯 Goal
 Describe the expected outcome of implementing this feature.
 
 ## 📌 Changes Made
@@ -54,21 +54,21 @@ How can this be tested?
 3. Perform '...' action and verify the issue is resolved
 
 ## 🔗 References & Resources
-List any relevant links, references, or supporting materials. 
+List any relevant links, references, or supporting materials.
 Closes #ISSUE_NUMBER (if applicable).
 
-## 👩🏽‍🎨 Design (if applicable)  
+## 👩🏽‍🎨 Design (if applicable)
 If this feature requires UI/UX changes, attach wireframes, mockups, or screenshots.
 
 ## 🆘 Help Needed (if applicable)
-If there are technical aspects or decisions that require discussion, mention them here.  
+If there are technical aspects or decisions that require discussion, mention them here.
 
 ## 📸 Screenshots or Video (if applicable)
 Attach any relevant screenshots or recordings.
 If the fix involves UI changes, add before/after screenshots.
 
 ## ✅ Checklist
-The branch follows the correct format: 
+The branch follows the correct format:
 - [ ] `feature/issue_number/short_description`.
 - [ ] `enhancement/issue_number/short_description`.
 - [ ] `documentation/issue_number/short_description`.
