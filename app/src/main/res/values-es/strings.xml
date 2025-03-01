@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="random_card">Aleatoria</string>
+    <string name="search">Búsqueda</string>
+    <string name="collections">Colecciones</string>
+    <string name="decks">Mazos</string>
+    <string name="random_card_title">Carta Aleatoria</string>
+    <string name="search_title">Búsqueda</string>
+    <string name="collections_title">Colecciones</string>
+    <string name="decks_title">Mazos</string>
+</resources>

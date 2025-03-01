@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">MagicApp</string>
+    <string name="app_name" translatable="false">MagicApp</string>
+
+    <!-- App Bar -->
+    <string name="magic_title" translatable="false">Magic</string>
+    <string name="random_card_title">Random Card</string>
+    <string name="search_title">Search</string>
+    <string name="collections_title">Collections</string>
+    <string name="decks_title">Decks</string>
+
+    <!-- navigation bar -->
+    <string name="magic" translatable="false">Magic</string>
+    <string name="random_card">Random</string>
+    <string name="search">Search</string>
+    <string name="collections">Collections</string>
+    <string name="decks">Decks</string>
 </resources>
