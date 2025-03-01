@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/magicFragment">
+
+    <fragment
+        android:id="@+id/collectionsFragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.CollectionsFragment"
+        android:label="@string/collections_title" />
+
+    <fragment
+        android:id="@+id/decksFragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.DecksFragment"
+        android:label="@string/decks_title" />
+
+    <fragment
+        android:id="@+id/magicFragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.MagicFragment"
+        android:label="@string/magic_title" />
+
+    <fragment
+        android:id="@+id/randomCardFragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.RandomCardFragment"
+        android:label="@string/random_card_title" />
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.SearchFragment"
+        android:label="@string/search_title" />
+</navigation>
