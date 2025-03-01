@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppBottomBar" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/AppBottomShape</item>
+        <!--<item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemIconTint">@color/md_theme_onSecondaryContainer</item>
+        <item name="itemTextColor">@color/md_theme_onSecondaryContainer</item>
+        <item name="itemIconSize">@dimen/dimen_2xl</item>-->
+    </style>
+
+    <style name="AppBottomShape">
+        <item name="android:color">@android:color/transparent</item>
+        <item name="android:height">0dp</item>
+    </style>
+</resources>
