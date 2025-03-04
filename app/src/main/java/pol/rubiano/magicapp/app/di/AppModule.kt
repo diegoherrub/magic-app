@@ -6,7 +6,7 @@ import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
 
 @Module
-@ComponentScan("pol.rubiano.magicapp.app")
+@ComponentScan("pol.rubiano.magicapp")
 class AppModule {
     @Single
     fun provideGson() = Gson()

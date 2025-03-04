@@ -2,10 +2,15 @@ package pol.rubiano.magicapp.app.di
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
+import pol.rubiano.magicapp.app.data.remote.services.CardService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+@Module
+@ComponentScan
 class RemoteModule {
 
     private val url = "https://api.scryfall.com/"
@@ -33,5 +38,10 @@ class RemoteModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         return retrofit
+    }
+
+    @Single
+    fun provideCardService(retrofit: Retrofit): CardService {
+        return retrofit.create(CardService::class.java)
     }
 }

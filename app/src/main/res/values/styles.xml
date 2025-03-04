@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="AppBottomBar" parent="Widget.Material3.BottomNavigationView">
         <item name="itemActiveIndicatorStyle">@style/AppBottomShape</item>
         <item name="itemIconTint">@color/bottom_nav_item_color</item>
@@ -10,5 +9,40 @@
     <style name="AppBottomShape">
         <item name="android:color">@android:color/transparent</item>
         <item name="android:height">0dp</item>
+    </style>
+
+    <style name="AppTextCard">
+        <item name="android:padding">@dimen/dimen_l</item>
+        <item name="android:textSize">@dimen/size_m</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
+    <style name="AppTextCardBold" parent="AppTextCard">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTitleForCard">
+        <item name="android:padding">@dimen/dimen_m</item>
+        <item name="android:textSize">@dimen/size_l</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/md_theme_onPrimaryContainer</item>
+        <item name="android:background">@color/md_theme_primaryContainer</item>
+    </style>
+
+    <style name="AppTitleForCardMini" parent="AppTitleForCard">
+        <item name="android:paddingLeft">@dimen/dimen_s</item>
+        <item name="android:paddingRight">@dimen/dimen_s</item>
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+
+    <style name="AppLegalitiesContainer">
+        <item name="android:layout_marginTop">@dimen/dimen_m</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
+    </style>
+
+    <style name="AppLegality">
+        <item name="android:layout_margin">@dimen/dimen_s</item>
+        <item name="android:padding">@dimen/dimen_s</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>

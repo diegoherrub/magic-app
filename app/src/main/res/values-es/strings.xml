@@ -8,4 +8,11 @@
     <string name="search_title">Búsqueda</string>
     <string name="collections_title">Colecciones</string>
     <string name="decks_title">Mazos</string>
+    <string name="image_content_description">Imagen de la carta</string>
+    <string name="legalities_title">Formatos legales</string>
+    <string name="name_title">Nombre</string>
+    <string name="type_line_title">Tipo</string>
+    <string name="rarity_title">Rareza</string>
+    <string name="oracle_text_title">Texto oficial</string>
+    <string name="set_name_title">Colección</string>
 </resources>

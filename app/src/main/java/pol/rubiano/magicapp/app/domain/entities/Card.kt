@@ -82,3 +82,8 @@ data class Card(
         val predh: String
     )
 }
+
+data class LegalityItem(
+    val format: String,
+    val legality: String
+)
