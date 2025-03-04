@@ -1,5 +1,8 @@
 <resources>
+    <!-- Common -->
     <string name="app_name" translatable="false">MagicApp</string>
+    <string name="image_content_description">Card Image</string>
+
 
     <!-- App Bar -->
     <string name="magic_title" translatable="false">Magic</string>
@@ -14,4 +17,36 @@
     <string name="search">Search</string>
     <string name="collections">Collections</string>
     <string name="decks">Decks</string>
+
+    <!-- Titles -->
+    <string name="legalities_title">Legalities</string>
+    <string name="name_title">Name</string>
+    <string name="type_line_title">Type</string>
+    <string name="rarity_title">Rarity</string>
+    <string name="oracle_text_title">Oracle text</string>
+    <string name="set_name_title">Set</string>
+
+    <!-- Legalities -->
+    <string name="standard" translatable="false">Standard</string>
+    <string name="future" translatable="false">Future</string>
+    <string name="historic" translatable="false">Historic</string>
+    <string name="timeless" translatable="false">Timeless</string>
+    <string name="gladiator" translatable="false">Gladiator</string>
+    <string name="pioneer" translatable="false">Pioneer</string>
+    <string name="explorer" translatable="false">Explorer</string>
+    <string name="modern" translatable="false">Modern</string>
+    <string name="legacy" translatable="false">Legacy</string>
+    <string name="pauper" translatable="false">Pauper</string>
+    <string name="vintage" translatable="false">Vintage</string>
+    <string name="penny" translatable="false">Penny</string>
+    <string name="commander" translatable="false">Commander</string>
+    <string name="oathbreaker" translatable="false">Oathbreaker</string>
+    <string name="standardbrawl" translatable="false">Standard Brawl</string>
+    <string name="brawl" translatable="false">Brawl</string>
+    <string name="alchemy" translatable="false">Alchemy</string>
+    <string name="paupercommander" translatable="false">Pauper Commander</string>
+    <string name="duel" translatable="false">Duel</string>
+    <string name="oldschool" translatable="false">Old School</string>
+    <string name="premodern" translatable="false">Premodern</string>
+    <string name="predh" translatable="false">PreDH</string>
 </resources>

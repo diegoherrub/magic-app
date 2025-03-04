@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--    <dimen name="bottom_bar_height">56dp</dimen>-->
-    <dimen name="elevation_m">4dp</dimen>
+    <dimen name="dimen_xxs">1dp</dimen>
+    <dimen name="dimen_xs">4dp</dimen>
+    <dimen name="dimen_s">8dp</dimen>
+    <dimen name="dimen_m">16dp</dimen>
+    <dimen name="dimen_l">32dp</dimen>
+    <dimen name="dimen_xl">64dp</dimen>
+
+    <dimen name="size_xxs">10sp</dimen>
+    <dimen name="size_xs">12sp</dimen>
+    <dimen name="size_s">14sp</dimen>
+    <dimen name="size_m">16sp</dimen>
+    <dimen name="size_l">20sp</dimen>
+    <dimen name="size_xl">24sp</dimen>
 </resources>
