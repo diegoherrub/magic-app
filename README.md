@@ -31,7 +31,7 @@ Run the app on your device or emulator.
 The application retrieves card data from Scryfall. An initial query is performed to fetch the cards and store them in the local database.
 
 ## 🛠 Project Status
-- [ ] API connection and Room storage.
+- [x] API connection and Room storage.
 - [ ] Implementation of collection management.
 - [ ] Deck creation with format validation.
 - [ ] Deck statistics visualisation.
