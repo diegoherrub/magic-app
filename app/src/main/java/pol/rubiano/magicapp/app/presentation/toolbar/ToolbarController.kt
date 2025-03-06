@@ -8,9 +8,8 @@ import pol.rubiano.magicapp.R
 class ToolbarController(
     private val activity: AppCompatActivity,
     private val toolbar: MaterialToolbar,
-    private val navController: NavController,
-
-    ) {
+    private val navController: NavController
+) {
 
     init {
         activity.setSupportActionBar(toolbar)
@@ -27,6 +26,24 @@ class ToolbarController(
             } else {
                 activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 toolbar.setNavigationOnClickListener(null)
+            }
+
+            if (destination.id == R.id.randomCardFragment) {
+                toolbar.menu.clear()
+                toolbar.inflateMenu(R.menu.random_card_menu)
+                toolbar.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.action_save_card -> {
+                            // TODO - implementar la lógica para guardar la carta
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+            } else {
+                toolbar.menu.clear()
+                toolbar.setOnMenuItemClickListener(null)
             }
         }
     }

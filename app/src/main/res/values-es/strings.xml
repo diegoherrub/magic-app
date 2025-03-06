@@ -15,4 +15,5 @@
     <string name="rarity_title">Rareza</string>
     <string name="oracle_text_title">Texto oficial</string>
     <string name="set_name_title">Colección</string>
+    <string name="save_card">Guardar</string>
 </resources>

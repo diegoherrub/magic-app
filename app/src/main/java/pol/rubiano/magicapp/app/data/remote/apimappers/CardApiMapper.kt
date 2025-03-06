@@ -30,42 +30,39 @@ fun CardApiModel.toModel(): Card {
         manaCost = manaCost,
         producedMana = producedMana,
         releasedAt = parsedDate,
-        artCrop = imageUris?.artCrop,
         borderCrop = imageUris?.borderCrop,
         set = set,
         setName = setName,
         setType = setType,
         collectorNumber = collectorNumber,
         frontFace = cardFaces?.getOrNull(0)?.let { face ->
-            Card.FrontFace(
-                frontFaceName = face.name,
-                frontFaceTypeLine = face.typeLine,
-                frontFaceOracleText = face.oracleText,
-                frontFacePower = face.power,
-                frontFaceToughness = face.toughness,
-                frontFaceLoyalty = face.loyalty,
-                frontFaceArtist = face.artist,
-                frontArtCrop = face.imageUris?.artCrop,
-                backBorderCrop = face.imageUris?.borderCrop,
-                frontFaceCmc = face.cmc,
-                frontFaceManaCost = face.manaCost,
-                frontFaceProducedMana = face.producedMana
+            Card.Face(
+                faceName = face.name,
+                faceTypeLine = face.typeLine,
+                faceOracleText = face.oracleText,
+                facePower = face.power,
+                faceToughness = face.toughness,
+                faceLoyalty = face.loyalty,
+                faceArtist = face.artist,
+                faceBorderCrop = face.imageUris?.borderCrop,
+                faceCmc = face.cmc,
+                faceManaCost = face.manaCost,
+                faceProducedMana = face.producedMana
             )
         },
         backFace = cardFaces?.getOrNull(1)?.let { face ->
-            Card.BackFace(
-                backFaceName = face.name,
-                backFaceTypeLine = face.typeLine,
-                backFaceOracleText = face.oracleText,
-                backFacePower = face.power,
-                backFaceToughness = face.toughness,
-                backFaceLoyalty = face.loyalty,
-                backFaceArtist = face.artist,
-                backArtCrop = face.imageUris?.artCrop,
-                backBorderCrop = face.imageUris?.borderCrop,
-                backFaceCmc = face.cmc,
-                backFaceManaCost = face.manaCost,
-                backFaceProducedMana = face.producedMana
+            Card.Face(
+                faceName = face.name,
+                faceTypeLine = face.typeLine,
+                faceOracleText = face.oracleText,
+                facePower = face.power,
+                faceToughness = face.toughness,
+                faceLoyalty = face.loyalty,
+                faceArtist = face.artist,
+                faceBorderCrop = face.imageUris?.borderCrop,
+                faceCmc = face.cmc,
+                faceManaCost = face.manaCost,
+                faceProducedMana = face.producedMana
             )
         },
         legalities = Card.Legalities(
