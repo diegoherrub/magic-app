@@ -4,7 +4,7 @@
     <string name="search">Búsqueda</string>
     <string name="collections">Colecciones</string>
     <string name="decks">Mazos</string>
-    <string name="random_card_title">Carta Aleatoria</string>
+    <string name="random_card_title">Aleatoria</string>
     <string name="search_title">Búsqueda</string>
     <string name="collections_title">Colecciones</string>
     <string name="decks_title">Mazos</string>
@@ -16,4 +16,7 @@
     <string name="oracle_text_title">Texto oficial</string>
     <string name="set_name_title">Colección</string>
     <string name="save_card">Guardar</string>
+    <string name="cd_save_card">Guarda la carta de la imagen dentro del almacenamiento de la aplicación</string>
+    <string name="refresh">Recargar</string>
+    <string name="cd_refresh">Recarga el contenido con una nueva carta aleatoria</string>
 </resources>

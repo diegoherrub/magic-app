@@ -1,13 +1,12 @@
 package pol.rubiano.magicapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import pol.rubiano.magicapp.app.presentation.toolbar.ToolbarController
+import pol.rubiano.magicapp.app.domain.ToolbarController
 
 class MainActivity : AppCompatActivity() {
 

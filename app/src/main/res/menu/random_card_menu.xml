@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
+    <!--<item
         android:id="@+id/action_save_card"
         android:icon="@drawable/save"
         android:title="@string/save_card"
-        app:showAsAction="always" />
+        android:contentDescription="@string/cd_save_card"
+        app:showAsAction="always" />-->
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@drawable/refresh"
+        android:title="@string/refresh"
+        android:contentDescription="@string/cd_refresh"
+        app:showAsAction="ifRoom"/>
 </menu>

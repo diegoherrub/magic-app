@@ -41,7 +41,9 @@ class RandomCardFragment : Fragment() {
         skeleton = binding.root.findViewById(R.id.random_card_skeleton)
         setupLegalitiesRecyclerView()
         setupObserver()
-        viewModel.fetchRandomCard()
+        if (savedInstanceState == null && viewModel.uiState.value?.card == null) {
+            viewModel.fetchRandomCard()
+        }
     }
 
     private fun setupLegalitiesRecyclerView() {
