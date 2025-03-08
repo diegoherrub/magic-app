@@ -19,4 +19,5 @@
     <string name="cd_save_card">Guarda la carta de la imagen dentro del almacenamiento de la aplicación</string>
     <string name="refresh">Recargar</string>
     <string name="cd_refresh">Recarga el contenido con una nueva carta aleatoria</string>
+    <string name="fab_flip">Girar carta</string>
 </resources>

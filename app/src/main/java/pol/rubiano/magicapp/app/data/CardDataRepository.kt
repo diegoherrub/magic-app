@@ -28,9 +28,7 @@ class CardDataRepository(
 
         val remoteCard = remote.getRandomCard()
         val card = remoteCard.getOrNull()
-        if(card != null){
-
-            Log.d("@POL", "CardDataRepository - getRandomCard: $card")
+        if (card != null) {
             // TODO - comprobar si está en local
             local.saveCardToLocal(card)
 
@@ -40,12 +38,12 @@ class CardDataRepository(
             }
 
             card.frontFace?.faceBorderCrop?.let { frontImageUrl ->
-                val fileName = "${card.id}.png"
+                val fileName = "${card.id}_front.png"
                 downloadAndSaveImage(context, frontImageUrl, fileName)
             }
 
             card.backFace?.faceBorderCrop?.let { backImageUrl ->
-                val fileName = "${card.id}.png"
+                val fileName = "${card.id}_back.png"
                 downloadAndSaveImage(context, backImageUrl, fileName)
             }
 
@@ -54,7 +52,11 @@ class CardDataRepository(
         return Result.failure(ErrorApp.ServerErrorApp)
     }
 
-    private suspend fun downloadAndSaveImage(context: Context, imageUrl: String, fileName: String): Boolean {
+    private suspend fun downloadAndSaveImage(
+        context: Context,
+        imageUrl: String,
+        fileName: String
+    ): Boolean {
         return withContext(Dispatchers.IO) {
             try {
                 val url = URL(imageUrl)

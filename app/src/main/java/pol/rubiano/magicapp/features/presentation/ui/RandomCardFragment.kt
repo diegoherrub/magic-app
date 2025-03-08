@@ -44,6 +44,20 @@ class RandomCardFragment : Fragment() {
         if (savedInstanceState == null && viewModel.uiState.value?.card == null) {
             viewModel.fetchRandomCard()
         }
+        binding.randomCardImage.post {
+            val density = resources.displayMetrics.density
+            binding.randomCardImage.pivotX = binding.randomCardImage.width / 2f
+            binding.randomCardImage.pivotY = binding.randomCardImage.height / 2f
+            binding.randomCardImage.cameraDistance = 8000 * density
+        }
+        binding.flipButton.setOnClickListener {
+            binding.randomCardImage.animate().rotationY(90f).setDuration(300)
+                .withEndAction {
+                    cardBinder.flipCard(binding)
+                    binding.randomCardImage.rotationY = -90f
+                    binding.randomCardImage.animate().rotationY(0f).setDuration(300).start()
+                }.start()
+        }
     }
 
     private fun setupLegalitiesRecyclerView() {
@@ -61,9 +75,15 @@ class RandomCardFragment : Fragment() {
             bindError(uiState.errorApp)
             uiState.card?.let { card ->
                 cardBinder.bind(card, binding)
+
                 card.legalities?.let { legalities ->
                     val legalityItems = legalities.toLegalityItemList()
                     (binding.legalitiesList.adapter as LegalitiesAdapter).submitList(legalityItems)
+                }
+                if (card.frontFace != null && card.backFace != null) {
+                    binding.flipButton.visibility = View.VISIBLE
+                } else {
+                    binding.flipButton.visibility = View.GONE
                 }
             }
         }
