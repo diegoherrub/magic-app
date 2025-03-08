@@ -15,6 +15,7 @@
     <string name="cd_save_card">Save the card\'s image into app storage</string>
     <string name="refresh">Refresh</string>
     <string name="cd_refresh">Refresh the content with a new random card</string>
+    <string name="fab_flip">Flip card</string>
 
     <!-- navigation bar -->
     <string name="magic" translatable="false">Magic</string>

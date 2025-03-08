@@ -4,7 +4,8 @@
     <color name="md_theme_primaryContainer">#C4A76D</color>
     <color name="md_theme_onPrimaryContainer">#503C0C</color>
     <color name="md_theme_secondary">#242525</color>
-    <color name="md_theme_secondary_50">#80242525</color>
+    <color name="md_theme_secondary_50">#B2242525</color>
+    <color name="md_theme_secondary_70">#B2242525</color>
     <color name="md_theme_onSecondary">#FFFFFF</color>
     <color name="md_theme_secondaryContainer">#3A3A3A</color>
     <color name="md_theme_onSecondaryContainer">#A5A4A3</color>

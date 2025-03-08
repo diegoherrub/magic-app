@@ -5,17 +5,64 @@ import pol.rubiano.magicapp.app.domain.entities.Card
 import pol.rubiano.magicapp.databinding.RandomCardFragmentBinding
 
 class CardBindingHandler {
+    private var currentCard: Card? = null
+    private var isTwoFaced: Boolean = false
+    private var isFront: Boolean = true
 
     fun bind(card: Card, binding: RandomCardFragmentBinding) {
+        currentCard = card
+        isTwoFaced = (card.frontFace != null && card.backFace != null)
+        isFront = true
+
         binding.apply {
-            card.borderCrop?.let { randomCardImage.loadUrl(it) }
-            randomCardName.text = card.name
-            randomCardTipeLine.text = card.typeLine
             randomCardRarity.text = card.rarity
             randomCardSetName.text = card.setName
 
-            card.oracleText?.let { cost ->
-                randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, cost)
+            if (isTwoFaced) {
+                updateVariableFields(card.frontFace, card, binding)
+            } else {
+                updateVariableFields(null, card, binding)
+            }
+        }
+    }
+
+    private fun updateVariableFields(
+        face: Card.Face?,
+        card: Card,
+        binding: RandomCardFragmentBinding
+    ) {
+        binding.apply {
+            if (face != null) {
+                randomCardName.text = face.faceName ?: card.name
+                randomCardTipeLine.text = face.faceTypeLine ?: card.typeLine
+                face.faceOracleText?.let {
+                    randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
+                } ?: card.oracleText?.let {
+                    randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
+                }
+                val imageUrl = face.faceBorderCrop ?: card.borderCrop
+                imageUrl?.let { randomCardImage.loadUrl(it) }
+            } else {
+                randomCardName.text = card.name
+                randomCardTipeLine.text = card.typeLine
+                card.oracleText?.let {
+                    randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
+                }
+                card.borderCrop?.let { randomCardImage.loadUrl(it) }
+            }
+        }
+    }
+
+    fun flipCard(binding: RandomCardFragmentBinding) {
+        val card = currentCard ?: return
+        if (!isTwoFaced) return
+
+        isFront = !isFront
+        binding.apply {
+            if (isFront) {
+                updateVariableFields(card.frontFace, card, binding)
+            } else {
+                updateVariableFields(card.backFace, card, binding)
             }
         }
     }

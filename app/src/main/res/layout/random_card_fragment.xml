@@ -24,6 +24,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/card_back" />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/flip_button"
+                style="?attr/floatingActionButtonSurfaceStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/fab_flip"
+                android:layout_marginEnd="@dimen/dimen_l"
+                android:src="@drawable/flip"
+                app:layout_constraintTop_toTopOf="@id/random_card_image"
+                app:layout_constraintEnd_toEndOf="@id/random_card_image"
+                app:layout_constraintBottom_toBottomOf="@id/random_card_image"/>
+
             <!-- Name -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/name_title"
