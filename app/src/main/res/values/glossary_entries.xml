@@ -178,7 +178,7 @@
     <string name="ripple_definition">When you cast this spell, reveal the top cards of your library. If they have the same name, you may cast them without paying their costs.</string>
     <string name="ripple_image_description">Image of Ripple</string>
     <string name="split_second_term">Split Second</string>
-    <string name="split_second_definition">As long as this spell is on the stack, players can\'t cast spells or activate abilities that aren't mana abilities.</string>
+    <string name="split_second_definition">As long as this spell is on the stack, players can\'t cast spells or activate abilities that aren\'t mana abilities.</string>
     <string name="split_second_image_description">Image of Split Second</string>
     <string name="suspend_term">Suspend</string>
     <string name="suspend_definition">Exile this card with time counters. Remove one each upkeep. When none remain, cast it without paying its cost.</string>
@@ -457,7 +457,7 @@
     <string name="casualty_definition">As you cast this spell, you may sacrifice a creature with power N or greater. If you do, copy this spell.</string>
     <string name="casualty_image_description">Image of Casualty</string>
     <string name="enlist_term">Enlist</string>
-    <string name="enlist_definition">As this creature attacks, you may tap an untapped creature you control without summoning sickness. This creature gets +X/+0 until end of turn, where X is the tapped creature's power.</string>
+    <string name="enlist_definition">As this creature attacks, you may tap an untapped creature you control without summoning sickness. This creature gets +X/+0 until end of turn, where X is the tapped creature\'s power.</string>
     <string name="enlist_image_description">Image of Enlist</string>
     <string name="read_ahead_term">Read Ahead</string>
     <string name="read_ahead_definition">When this Saga enters the battlefield, you may have it start on any chapter.</string>
