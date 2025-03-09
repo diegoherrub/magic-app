@@ -3,28 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/magicFragment">
 
+    <!-- Magic Section -->
+    <fragment
+        android:id="@+id/magicFragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.MagicFragment"
+        android:label="@string/magic_title" >
+
+        <action
+            android:id="@+id/action_from_magic_to_glossary"
+            app:destination="@+id/glossary_fragment"/>
+    </fragment>
+
+    <!-- Collections Section -->
     <fragment
         android:id="@+id/collectionsFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.CollectionsFragment"
         android:label="@string/collections_title" />
 
+    <!-- Decks Section -->
     <fragment
         android:id="@+id/decksFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.DecksFragment"
         android:label="@string/decks_title" />
 
-    <fragment
-        android:id="@+id/magicFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.MagicFragment"
-        android:label="@string/magic_title" />
-
+    <!-- Random Card Section -->
     <fragment
         android:id="@+id/randomCardFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.RandomCardFragment"
         android:label="@string/random_card_title" />
 
+    <!-- Search Section -->
     <fragment
         android:id="@+id/searchFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.SearchFragment"
         android:label="@string/search_title" />
+
+    <!-- Glossary Subsection -->
+    <fragment
+        android:id="@+id/glossary_fragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.GlossaryFragment"
+        android:label="@string/glossary_section_title" />
+
 </navigation>

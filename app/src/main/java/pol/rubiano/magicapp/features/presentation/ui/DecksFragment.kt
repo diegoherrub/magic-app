@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import pol.rubiano.magicapp.databinding.SearchFragmentBinding
+import pol.rubiano.magicapp.databinding.DecksFragmentBinding
 
 class DecksFragment : Fragment() {
 
-    private var _binding: SearchFragmentBinding? = null
+    private var _binding: DecksFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = SearchFragmentBinding.inflate(inflater, container, false)
+        _binding = DecksFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 

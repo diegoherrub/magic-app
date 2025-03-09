@@ -8,7 +8,7 @@
     <string name="search_title">Búsqueda</string>
     <string name="collections_title">Colecciones</string>
     <string name="decks_title">Mazos</string>
-    <string name="image_content_description">Imagen de la carta</string>
+    <string name="image_card_content_description">Imagen de la carta</string>
     <string name="legalities_title">Formatos legales</string>
     <string name="name_title">Nombre</string>
     <string name="type_line_title">Tipo</string>
@@ -20,4 +20,7 @@
     <string name="refresh">Recargar</string>
     <string name="cd_refresh">Recarga el contenido con una nueva carta aleatoria</string>
     <string name="fab_flip">Girar carta</string>
+    <string name="image_section_content_description">Image de sección</string>
+    <string name="glossary_section_title">Glosario</string>
+    <string name="glossary_section_description">Aprende el significado de los términos más comunes en el universo de Magic: The Gathering.</string>
 </resources>

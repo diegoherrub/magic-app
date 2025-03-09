@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glossary>
+    <!-- Keywords -->
+    <entry
+        key="deadtouch"
+        category="keyword"
+        image="@drawable/dead_touch"
+        term="@string/deadtouch_term"
+        definition="@string/deadtouch_definition" />
+    <entry
+        key="defender"
+        category="keyword"
+        image="@drawable/defender"
+        term="@string/defender_term"
+        definition="@string/defender_definition" />
+    <entry
+        key="double_strike"
+        category="keyword"
+        image="@drawable/double_strike"
+        term="@string/double_strike_term"
+        definition="@string/double_strike_definition" />
+    <entry
+        key="enchant"
+        category="keyword"
+        image="@drawable/magic"
+        term="@string/enchant_term"
+        definition="@string/enchant_definition" />
+    <entry
+        key="equip"
+        category="keyword"
+        image="@drawable/magic"
+        term="@string/equip_term"
+        definition="@string/equip_definition" />
+    <entry
+        key="first_strike"
+        category="keyword"
+        image="@drawable/first_strike"
+        term="@string/first_strike_term"
+        definition="@string/first_strike_definition" />
+    <entry
+        key="flash"
+        category="keyword"
+        image="@drawable/flash"
+        term="@string/flash_term"
+        definition="@string/flash_definition" />
+    <entry
+        key="flying"
+        category="keyword"
+        image="@drawable/flying"
+        term="@string/flying_term"
+        definition="@string/flying_definition" />
+    <entry
+        key="haste"
+        category="keyword"
+        image="@drawable/haste"
+        term="@string/haste_term"
+        definition="@string/haste_definition" />
+    <entry
+        key="hexproof"
+        category="keyword"
+        image="@drawable/hexproof"
+        term="@string/hexproof_term"
+        definition="@string/hexproof_definition" />
+    <entry
+        key="indestructible"
+        category="keyword"
+        image="@drawable/indestructible"
+        term="@string/indestructible_term"
+        definition="@string/indestructible_definition" />
+    <entry
+        key="intimidate"
+        category="keyword"
+        image="@drawable/intimidate"
+        term="@string/intimidate_term"
+        definition="@string/intimidate_definition" />
+    <entry
+        key="landwalk"
+        category="keyword"
+        image="@drawable/landwalk"
+        term="@string/landwalk_term"
+        definition="@string/landwalk_definition" />
+    <entry
+        key="lifelink"
+        category="keyword"
+        image="@drawable/lifelink"
+        term="@string/lifelink_term"
+        definition="@string/lifelink_definition" />
+    <entry
+        key="protection"
+        category="keyword"
+        image="@drawable/protection"
+        term="@string/protection_term"
+        definition="@string/protection_definition" />
+    <entry
+        key="reach"
+        category="keyword"
+        image="@drawable/reach"
+        term="@string/reach_term"
+        definition="@string/reach_definition" />
+    <entry
+        key="shroud"
+        category="keyword"
+        image="@drawable/shroud"
+        term="@string/shroud_term"
+        definition="@string/shroud_definition" />
+
+</glossary>
