@@ -20,8 +20,8 @@ class GlossaryAdapter(
     private var filteredItems: List<GlossaryItem> = originalItems
 
     companion object {
-        private const val VIEW_TYPE_HEADER = 0
-        private const val VIEW_TYPE_ENTRY = 1
+        const val VIEW_TYPE_HEADER = 0
+        const val VIEW_TYPE_ENTRY = 1
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -49,6 +49,8 @@ class GlossaryAdapter(
     }
 
     override fun getItemCount(): Int = filteredItems.size
+
+    fun getItem(position: Int): GlossaryItem = filteredItems[position]
 
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvHeader: TextView = itemView.findViewById(R.id.tvHeader)

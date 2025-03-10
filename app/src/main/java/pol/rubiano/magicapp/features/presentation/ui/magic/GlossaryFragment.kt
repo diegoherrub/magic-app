@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import pol.rubiano.magicapp.app.presentation.styckyheader.StickyHeaderDecoration
 import pol.rubiano.magicapp.databinding.GlossaryFragmentBinding
 import pol.rubiano.magicapp.features.data.local.datasources.groupGlossaryTerms
 import pol.rubiano.magicapp.features.data.local.datasources.loadGlossaryFromXml
@@ -47,6 +48,8 @@ class GlossaryFragment : Fragment() {
                 return false
             }
         })
+
+        binding.recyclerViewGlossary.addItemDecoration(StickyHeaderDecoration(adapter))
     }
 
     override fun onDestroyView() {
