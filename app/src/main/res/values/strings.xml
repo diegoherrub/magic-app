@@ -60,4 +60,5 @@
     <!-- Glossary -->
     <string name="glossary_section_title">Glossary</string>
     <string name="glossary_section_description">Learn the meaning of the most common terms in the Magic: The Gathering universe.</string>
+    <string name="image_glossary_content_description">Glossary Image</string>
 </resources>

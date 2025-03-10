@@ -268,7 +268,7 @@
     <entry
         category="keyword"
         definition="@string/soulshift_definition"
-        image="@drawable/soulshift"
+        image="@drawable/magic"
         key="soulshift"
         term="@string/soulshift_term" />
     <entry
@@ -370,7 +370,7 @@
     <entry
         category="keyword"
         definition="@string/vanishing_definition"
-        image="@drawable/vanishing"
+        image="@drawable/magic"
         key="vanishing"
         term="@string/vanishing_term" />
     <entry
@@ -508,7 +508,7 @@
     <entry
         category="keyword"
         definition="@string/annihilator_definition"
-        image="@drawable/annihilator"
+        image="@drawable/magic"
         key="annihilator"
         term="@string/annihilator_term" />
     <entry
@@ -544,7 +544,7 @@
     <entry
         category="keyword"
         definition="@string/undying_definition"
-        image="@drawable/undying"
+        image="@drawable/magic"
         key="undying"
         term="@string/undying_term" />
     <entry
@@ -586,7 +586,7 @@
     <entry
         category="keyword"
         definition="@string/evolve_definition"
-        image="@drawable/evolve"
+        image="@drawable/magic"
         key="evolve"
         term="@string/evolve_term" />
     <entry
@@ -670,7 +670,7 @@
     <entry
         category="keyword"
         definition="@string/ingest_definition"
-        image="@drawable/ingest"
+        image="@drawable/magic"
         key="ingest"
         term="@string/ingest_term" />
     <entry
@@ -688,7 +688,7 @@
     <entry
         category="keyword"
         definition="@string/skulk_definition"
-        image="@drawable/skulk"
+        image="@drawable/magic"
         key="skulk"
         term="@string/skulk_term" />
     <entry

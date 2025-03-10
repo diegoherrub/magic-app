@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Bottom Navigation -->
     <style name="AppBottomBar" parent="Widget.Material3.BottomNavigationView">
         <item name="itemActiveIndicatorStyle">@style/AppBottomShape</item>
         <item name="itemIconTint">@color/bottom_nav_item_color</item>
@@ -46,27 +47,48 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <!-- App Common -->
+    <style name="AppIcon">
+        <item name="android:paddingTop">@dimen/dimen_s</item>
+        <item name="android:paddingEnd">@dimen/dimen_s</item>
+        <item name="android:paddingBottom">@dimen/dimen_s</item>
+    </style>
+    <style name="AppTitle" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:paddingTop">@dimen/dimen_xs</item>
+        <item name="android:paddingStart">@dimen/dimen_s</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- AppSectionView -->
     <style name="AppSection">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
 
-    <style name="AppSectionIcon">
-        <item name="android:paddingTop">@dimen/dimen_s</item>
-        <item name="android:paddingEnd">@dimen/dimen_s</item>
-        <item name="android:paddingBottom">@dimen/dimen_s</item>
+    <style name="AppSectionIcon" parent="AppIcon">
         <item name="tint">@color/md_theme_primary</item>
     </style>
 
-    <style name="AppSectionTitle" parent="TextAppearance.Material3.BodyMedium">
-        <item name="android:paddingTop">@dimen/dimen_xs</item>
-        <item name="android:paddingStart">@dimen/dimen_s</item>
-        <item name="android:textStyle">bold</item>
+    <style name="AppSectionTitle" parent="AppTitle">
         <item name="android:textColor">@color/md_theme_primary</item>
     </style>
 
     <style name="AppSectionDescription" parent="TextAppearance.Material3.BodySmall">
         <item name="android:paddingStart">@dimen/dimen_s</item>
         <item name="android:paddingEnd">@dimen/dimen_s</item>
+    </style>
+
+    <!-- Glossary -->
+    <style name="AppGlossaryHeader">
+        <item name="android:background">@color/md_theme_primary</item>
+        <item name="android:textColor">@color/md_theme_onPrimary</item>
+        <item name="android:padding">@dimen/dimen_m</item>
+        <item name="android:textSize">@dimen/size_l</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="AppGlossaryIcon" parent="AppIcon">
+        <item name="tint">@color/md_theme_secondary</item>
+    </style>
+    <style name="AppGlossaryTitle" parent="AppTitle">
+        <item name="android:textColor">@color/md_theme_secondary</item>
     </style>
 </resources>

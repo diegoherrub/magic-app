@@ -11,9 +11,9 @@
         android:layout_width="@dimen/section_icon_m"
         android:layout_height="@dimen/section_icon_m"
         android:contentDescription="@string/image_section_content_description"
-        android:src="@drawable/glossary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/magic"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_section_title"
@@ -33,5 +33,5 @@
         app:layout_constraintStart_toStartOf="@id/text_view_section_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_section_title"
-        tools:text="@string/glossary_section_description" />
+        tools:text="@string/glossary_section_description"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
