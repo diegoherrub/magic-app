@@ -1057,4 +1057,137 @@
         image="@drawable/start_your_engines"
         key="start_your_engines"
         term="@string/start_your_engines_term" />
+    <!-- Legalities -->
+    <entry
+        category="legality"
+        definition="@string/standard_definition"
+        image="@drawable/magic"
+        key="standard"
+        term="@string/standard_term" />
+    <entry
+        category="legality"
+        definition="@string/future_definition"
+        image="@drawable/magic"
+        key="future"
+        term="@string/future_term" />
+    <entry
+        category="legality"
+        definition="@string/historic_definition"
+        image="@drawable/magic"
+        key="historic"
+        term="@string/historic_term" />
+    <entry
+        category="legality"
+        definition="@string/timeless_definition"
+        image="@drawable/magic"
+        key="timeless"
+        term="@string/timeless_term" />
+    <entry
+        category="legality"
+        definition="@string/gladiator_definition"
+        image="@drawable/magic"
+        key="gladiator"
+        term="@string/gladiator_term" />
+    <entry
+        category="legality"
+        definition="@string/pioneer_definition"
+        image="@drawable/magic"
+        key="pioneer"
+        term="@string/pioneer_term" />
+    <entry
+        category="legality"
+        definition="@string/explorer_term"
+        image="@drawable/magic"
+        key="explorer"
+        term="@string/explorer_term" />
+    <entry
+        category="legality"
+        definition="@string/modern_definition"
+        image="@drawable/magic"
+        key="modern"
+        term="@string/modern_term" />
+    <entry
+        category="legality"
+        definition="@string/legacy_definition"
+        image="@drawable/magic"
+        key="legacy"
+        term="@string/legacy_term" />
+    <entry
+        category="legality"
+        definition="@string/pauper_definition"
+        image="@drawable/magic"
+        key="pauper"
+        term="@string/pauper_term" />
+    <entry
+        category="legality"
+        definition="@string/vintage_definition"
+        image="@drawable/magic"
+        key="vintage"
+        term="@string/vintage_term" />
+    <entry
+        category="legality"
+        definition="@string/penny_dreadful_definition"
+        image="@drawable/magic"
+        key="penny_dreadful"
+        term="@string/penny_dreadful_term" />
+    <entry
+        category="legality"
+        definition="@string/commander_definition"
+        image="@drawable/magic"
+        key="commander"
+        term="@string/commander_term" />
+    <entry
+        category="legality"
+        definition="@string/oathbreaker_definition"
+        image="@drawable/magic"
+        key="oathbreaker"
+        term="@string/oathbreaker_term" />
+    <entry
+        category="legality"
+        definition="@string/standard_brawl_definition"
+        image="@drawable/magic"
+        key="standard_brawl"
+        term="@string/standard_brawl_term" />
+    <entry
+        category="legality"
+        definition="@string/brawl_definition"
+        image="@drawable/magic"
+        key="brawl"
+        term="@string/brawl_term" />
+    <entry
+        category="legality"
+        definition="@string/alchemy_definition"
+        image="@drawable/magic"
+        key="alchemy"
+        term="@string/alchemy_term" />
+    <entry
+        category="legality"
+        definition="@string/pauper_commander_definition"
+        image="@drawable/magic"
+        key="pauper_commander"
+        term="@string/pauper_commander_term" />
+    <entry
+        category="legality"
+        definition="@string/duel_commander_definition"
+        image="@drawable/magic"
+        key="duel_commander"
+        term="@string/duel_commander_term" />
+    <entry
+        category="legality"
+        definition="@string/old_school_definition"
+        image="@drawable/magic"
+        key="old_school"
+        term="@string/old_school_term" />
+    <entry
+        category="legality"
+        definition="@string/premodern_definition"
+        image="@drawable/magic"
+        key="premodern"
+        term="@string/premodern_term" />
+    <entry
+        category="legality"
+        definition="@string/predh_definition"
+        image="@drawable/magic"
+        key="predh"
+        term="@string/predh_term" />
 </glossary>

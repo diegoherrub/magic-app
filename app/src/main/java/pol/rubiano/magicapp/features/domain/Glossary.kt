@@ -4,7 +4,7 @@ data class GlossaryTerm(
     val key: String,
     val category: String,
     val term: String,
-    val definition: String,
+    val definition: CharSequence,
     val imageResId: Int? = null
 )
 
