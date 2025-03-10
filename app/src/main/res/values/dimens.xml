@@ -13,4 +13,6 @@
     <dimen name="size_m">16sp</dimen>
     <dimen name="size_l">20sp</dimen>
     <dimen name="size_xl">24sp</dimen>
+
+    <dimen name="section_icon_m">64dp</dimen>
 </resources>

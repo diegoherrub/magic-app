@@ -1,7 +1,8 @@
 <resources>
     <!-- Common -->
     <string name="app_name" translatable="false">MagicApp</string>
-    <string name="image_content_description">Card Image</string>
+    <string name="image_card_content_description">Card Image</string>
+    <string name="image_section_content_description">Section Image</string>
 
     <!-- App Bar -->
     <string name="magic_title" translatable="false">Magic</string>
@@ -55,4 +56,9 @@
     <string name="oldschool" translatable="false">Old School</string>
     <string name="premodern" translatable="false">Premodern</string>
     <string name="predh" translatable="false">PreDH</string>
+
+    <!-- Glossary -->
+    <string name="glossary_section_title">Glossary</string>
+    <string name="glossary_section_description">Learn the meaning of the most common terms in the Magic: The Gathering universe.</string>
+    <string name="image_glossary_content_description">Glossary Image</string>
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppSection"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivGlossaryImage"
+        style="@style/AppGlossaryIcon"
+        android:layout_width="@dimen/section_icon_m"
+        android:layout_height="@dimen/section_icon_m"
+        android:contentDescription="@string/image_glossary_content_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/magic"/>
+
+    <TextView
+        android:id="@+id/tvTerm"
+        style="@style/AppGlossaryTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/ivGlossaryImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivGlossaryImage"
+        tools:text="@string/glossary_section_title"/>
+
+    <TextView
+        android:id="@+id/tvDefinition"
+        style="@style/AppSectionDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvTerm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTerm"
+        tools:text="@string/glossary_section_description"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

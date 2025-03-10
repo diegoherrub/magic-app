@@ -13,6 +13,14 @@ class ToolbarController(
     private val navController: NavController
 ) {
 
+    private val topLevelDestinations = setOf(
+        R.id.magicFragment,
+        R.id.collectionsFragment,
+        R.id.decksFragment,
+        R.id.randomCardFragment,
+        R.id.searchFragment,
+    )
+
     init {
         activity.setSupportActionBar(toolbar)
         configureToolbar()
@@ -26,15 +34,16 @@ class ToolbarController(
     }
 
     private fun updateToolbar(destination: NavDestination) {
+
         toolbar.title = destination.label
 
-//        if (destination.id != navController.graph.startDestinationId) {
-//            activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//            toolbar.setNavigationOnClickListener { navController.navigateUp() }
-//        } else {
-//            activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-//            toolbar.setNavigationOnClickListener(null)
-//        }
+        if (destination.id in topLevelDestinations) {
+            activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            toolbar.setNavigationOnClickListener(null)
+        } else {
+            activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            toolbar.setNavigationOnClickListener { navController.navigateUp() }
+        }
 
         if (destination.id == R.id.randomCardFragment) {
             toolbar.menu.clear()

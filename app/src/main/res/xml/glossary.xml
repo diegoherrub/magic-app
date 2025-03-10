@@ -1,0 +1,1193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glossary>
+    <!-- Keywords -->
+    <entry
+        category="keyword"
+        definition="@string/deadtouch_definition"
+        image="@drawable/dead_touch"
+        key="deadtouch"
+        term="@string/deadtouch_term" />
+    <entry
+        category="keyword"
+        definition="@string/defender_definition"
+        image="@drawable/defender"
+        key="defender"
+        term="@string/defender_term" />
+    <entry
+        category="keyword"
+        definition="@string/double_strike_definition"
+        image="@drawable/double_strike"
+        key="double_strike"
+        term="@string/double_strike_term" />
+    <entry
+        category="keyword"
+        definition="@string/enchant_definition"
+        image="@drawable/magic"
+        key="enchant"
+        term="@string/enchant_term" />
+    <entry
+        category="keyword"
+        definition="@string/equip_definition"
+        image="@drawable/magic"
+        key="equip"
+        term="@string/equip_term" />
+    <entry
+        category="keyword"
+        definition="@string/first_strike_definition"
+        image="@drawable/first_strike"
+        key="first_strike"
+        term="@string/first_strike_term" />
+    <entry
+        category="keyword"
+        definition="@string/flash_definition"
+        image="@drawable/flash"
+        key="flash"
+        term="@string/flash_term" />
+    <entry
+        category="keyword"
+        definition="@string/flying_definition"
+        image="@drawable/flying"
+        key="flying"
+        term="@string/flying_term" />
+    <entry
+        category="keyword"
+        definition="@string/haste_definition"
+        image="@drawable/haste"
+        key="haste"
+        term="@string/haste_term" />
+    <entry
+        category="keyword"
+        definition="@string/hexproof_definition"
+        image="@drawable/hexproof"
+        key="hexproof"
+        term="@string/hexproof_term" />
+    <entry
+        category="keyword"
+        definition="@string/indestructible_definition"
+        image="@drawable/indestructible"
+        key="indestructible"
+        term="@string/indestructible_term" />
+    <entry
+        category="keyword"
+        definition="@string/intimidate_definition"
+        image="@drawable/intimidate"
+        key="intimidate"
+        term="@string/intimidate_term" />
+    <entry
+        category="keyword"
+        definition="@string/landwalk_definition"
+        image="@drawable/landwalk"
+        key="landwalk"
+        term="@string/landwalk_term" />
+    <entry
+        category="keyword"
+        definition="@string/lifelink_definition"
+        image="@drawable/lifelink"
+        key="lifelink"
+        term="@string/lifelink_term" />
+    <entry
+        category="keyword"
+        definition="@string/protection_definition"
+        image="@drawable/protection"
+        key="protection"
+        term="@string/protection_term" />
+    <entry
+        category="keyword"
+        definition="@string/reach_definition"
+        image="@drawable/reach"
+        key="reach"
+        term="@string/reach_term" />
+    <entry
+        category="keyword"
+        definition="@string/shroud_definition"
+        image="@drawable/shroud"
+        key="shroud"
+        term="@string/shroud_term" />
+    <entry
+        category="keyword"
+        definition="@string/trample_definition"
+        image="@drawable/trample"
+        key="trample"
+        term="@string/trample_term" />
+    <entry
+        category="keyword"
+        definition="@string/vigilance_definition"
+        image="@drawable/vigilance"
+        key="vigilance"
+        term="@string/vigilance_term" />
+    <entry
+        category="keyword"
+        definition="@string/ward_definition"
+        image="@drawable/ward"
+        key="ward"
+        term="@string/ward_term" />
+    <entry
+        category="keyword"
+        definition="@string/banding_definition"
+        image="@drawable/magic"
+        key="banding"
+        term="@string/banding_term" />
+    <entry
+        category="keyword"
+        definition="@string/rampage_definition"
+        image="@drawable/magic"
+        key="rampage"
+        term="@string/rampage_term" />
+    <entry
+        category="keyword"
+        definition="@string/cumulative_upkeep_definition"
+        image="@drawable/magic"
+        key="cumulative_upkeep"
+        term="@string/cumulative_upkeep_term" />
+    <entry
+        category="keyword"
+        definition="@string/flanking_definition"
+        image="@drawable/magic"
+        key="flanking"
+        term="@string/flanking_term" />
+    <entry
+        category="keyword"
+        definition="@string/phasing_definition"
+        image="@drawable/magic"
+        key="phasing"
+        term="@string/phasing_term" />
+    <entry
+        category="keyword"
+        definition="@string/buyback_definition"
+        image="@drawable/magic"
+        key="buyback"
+        term="@string/buyback_term" />
+    <entry
+        category="keyword"
+        definition="@string/shadow_definition"
+        image="@drawable/magic"
+        key="shadow"
+        term="@string/shadow_term" />
+    <entry
+        category="keyword"
+        definition="@string/cycling_definition"
+        image="@drawable/cycling"
+        key="cycling"
+        term="@string/cycling_term" />
+    <entry
+        category="keyword"
+        definition="@string/echo_definition"
+        image="@drawable/magic"
+        key="echo"
+        term="@string/echo_term" />
+    <entry
+        category="keyword"
+        definition="@string/horsemanship_definition"
+        image="@drawable/magic"
+        key="horsemanship"
+        term="@string/horsemanship_term" />
+    <entry
+        category="keyword"
+        definition="@string/fading_definition"
+        image="@drawable/magic"
+        key="fading"
+        term="@string/fading_term" />
+    <entry
+        category="keyword"
+        definition="@string/kicker_definition"
+        image="@drawable/kicker"
+        key="kicker"
+        term="@string/kicker_term" />
+    <entry
+        category="keyword"
+        definition="@string/flashback_definition"
+        image="@drawable/flashback"
+        key="flashback"
+        term="@string/flashback_term" />
+    <entry
+        category="keyword"
+        definition="@string/madness_definition"
+        image="@drawable/magic"
+        key="madness"
+        term="@string/madness_term" />
+    <entry
+        category="keyword"
+        definition="@string/fear_definition"
+        image="@drawable/fear"
+        key="fear"
+        term="@string/fear_term" />
+    <entry
+        category="keyword"
+        definition="@string/morph_definition"
+        image="@drawable/morph"
+        key="morph"
+        term="@string/morph_term" />
+    <entry
+        category="keyword"
+        definition="@string/amplify_definition"
+        image="@drawable/magic"
+        key="amplify"
+        term="@string/amplify_term" />
+    <entry
+        category="keyword"
+        definition="@string/provoke_definition"
+        image="@drawable/magic"
+        key="provoke"
+        term="@string/provoke_term" />
+    <entry
+        category="keyword"
+        definition="@string/storm_definition"
+        image="@drawable/magic"
+        key="storm"
+        term="@string/storm_term" />
+    <entry
+        category="keyword"
+        definition="@string/affinity_definition"
+        image="@drawable/magic"
+        key="affinity"
+        term="@string/affinity_term" />
+    <entry
+        category="keyword"
+        definition="@string/entwine_definition"
+        image="@drawable/magic"
+        key="entwine"
+        term="@string/entwine_term" />
+    <entry
+        category="keyword"
+        definition="@string/modular_definition"
+        image="@drawable/magic"
+        key="modular"
+        term="@string/modular_term" />
+    <entry
+        category="keyword"
+        definition="@string/sunburst_definition"
+        image="@drawable/magic"
+        key="sunburst"
+        term="@string/sunburst_term" />
+    <entry
+        category="keyword"
+        definition="@string/bushido_definition"
+        image="@drawable/magic"
+        key="bushido"
+        term="@string/bushido_term" />
+    <entry
+        category="keyword"
+        definition="@string/soulshift_definition"
+        image="@drawable/magic"
+        key="soulshift"
+        term="@string/soulshift_term" />
+    <entry
+        category="keyword"
+        definition="@string/splice_definition"
+        image="@drawable/magic"
+        key="splice"
+        term="@string/splice_term" />
+    <entry
+        category="keyword"
+        definition="@string/offering_definition"
+        image="@drawable/magic"
+        key="offering"
+        term="@string/offering_term" />
+    <entry
+        category="keyword"
+        definition="@string/ninjutsu_definition"
+        image="@drawable/ninjutsu"
+        key="ninjutsu"
+        term="@string/ninjutsu_term" />
+    <entry
+        category="keyword"
+        definition="@string/epic_definition"
+        image="@drawable/magic"
+        key="epic"
+        term="@string/epic_term" />
+    <entry
+        category="keyword"
+        definition="@string/convoke_definition"
+        image="@drawable/convoke"
+        key="convoke"
+        term="@string/convoke_term" />
+    <entry
+        category="keyword"
+        definition="@string/dredge_definition"
+        image="@drawable/magic"
+        key="dredge"
+        term="@string/dredge_term" />
+    <entry
+        category="keyword"
+        definition="@string/transmute_definition"
+        image="@drawable/magic"
+        key="transmute"
+        term="@string/transmute_term" />
+    <entry
+        category="keyword"
+        definition="@string/bloodthirst_definition"
+        image="@drawable/magic"
+        key="bloodthirst"
+        term="@string/bloodthirst_term" />
+    <entry
+        category="keyword"
+        definition="@string/haunt_definition"
+        image="@drawable/magic"
+        key="haunt"
+        term="@string/haunt_term" />
+    <entry
+        category="keyword"
+        definition="@string/replicate_definition"
+        image="@drawable/magic"
+        key="replicate"
+        term="@string/replicate_term" />
+    <entry
+        category="keyword"
+        definition="@string/forecast_definition"
+        image="@drawable/magic"
+        key="forecast"
+        term="@string/forecast_term" />
+    <entry
+        category="keyword"
+        definition="@string/graft_definition"
+        image="@drawable/magic"
+        key="graft"
+        term="@string/graft_term" />
+    <entry
+        category="keyword"
+        definition="@string/recover_definition"
+        image="@drawable/magic"
+        key="recover"
+        term="@string/recover_term" />
+    <entry
+        category="keyword"
+        definition="@string/ripple_definition"
+        image="@drawable/magic"
+        key="ripple"
+        term="@string/ripple_term" />
+    <entry
+        category="keyword"
+        definition="@string/split_second_definition"
+        image="@drawable/magic"
+        key="split_second"
+        term="@string/split_second_term" />
+    <entry
+        category="keyword"
+        definition="@string/suspend_definition"
+        image="@drawable/magic"
+        key="suspend"
+        term="@string/suspend_term" />
+    <entry
+        category="keyword"
+        definition="@string/vanishing_definition"
+        image="@drawable/magic"
+        key="vanishing"
+        term="@string/vanishing_term" />
+    <entry
+        category="keyword"
+        definition="@string/absorb_definition"
+        image="@drawable/magic"
+        key="absorb"
+        term="@string/absorb_term" />
+    <entry
+        category="keyword"
+        definition="@string/aura_swap_definition"
+        image="@drawable/magic"
+        key="aura_swap"
+        term="@string/aura_swap_term" />
+    <entry
+        category="keyword"
+        definition="@string/delve_definition"
+        image="@drawable/delve"
+        key="delve"
+        term="@string/delve_term" />
+    <entry
+        category="keyword"
+        definition="@string/fortify_definition"
+        image="@drawable/magic"
+        key="fortify"
+        term="@string/fortify_term" />
+    <entry
+        category="keyword"
+        definition="@string/frenzy_definition"
+        image="@drawable/magic"
+        key="frenzy"
+        term="@string/frenzy_term" />
+    <entry
+        category="keyword"
+        definition="@string/gravestorm_definition"
+        image="@drawable/magic"
+        key="gravestorm"
+        term="@string/gravestorm_term" />
+    <entry
+        category="keyword"
+        definition="@string/poisonous_definition"
+        image="@drawable/magic"
+        key="poisonous"
+        term="@string/poisonous_term" />
+    <entry
+        category="keyword"
+        definition="@string/transfigure_definition"
+        image="@drawable/magic"
+        key="transfigure"
+        term="@string/transfigure_term" />
+    <entry
+        category="keyword"
+        definition="@string/champion_definition"
+        image="@drawable/magic"
+        key="champion"
+        term="@string/champion_term" />
+    <entry
+        category="keyword"
+        definition="@string/changeling_definition"
+        image="@drawable/changeling"
+        key="changeling"
+        term="@string/changeling_term" />
+    <entry
+        category="keyword"
+        definition="@string/evoke_definition"
+        image="@drawable/magic"
+        key="evoke"
+        term="@string/evoke_term" />
+    <entry
+        category="keyword"
+        definition="@string/cascade_definition"
+        image="@drawable/magic"
+        key="cascade"
+        term="@string/cascade_term" />
+    <entry
+        category="keyword"
+        definition="@string/hideaway_definition"
+        image="@drawable/hideaway"
+        key="hideaway"
+        term="@string/hideaway_term" />
+    <entry
+        category="keyword"
+        definition="@string/prowl_definition"
+        image="@drawable/magic"
+        key="prowl"
+        term="@string/prowl_term" />
+    <entry
+        category="keyword"
+        definition="@string/reinforce_definition"
+        image="@drawable/magic"
+        key="reinforce"
+        term="@string/reinforce_term" />
+    <entry
+        category="keyword"
+        definition="@string/conspire_definition"
+        image="@drawable/magic"
+        key="conspire"
+        term="@string/conspire_term" />
+    <entry
+        category="keyword"
+        definition="@string/persist_definition"
+        image="@drawable/magic"
+        key="persist"
+        term="@string/persist_term" />
+    <entry
+        category="keyword"
+        definition="@string/wither_definition"
+        image="@drawable/magic"
+        key="wither"
+        term="@string/wither_term" />
+    <entry
+        category="keyword"
+        definition="@string/retrace_definition"
+        image="@drawable/magic"
+        key="retrace"
+        term="@string/retrace_term" />
+    <entry
+        category="keyword"
+        definition="@string/devour_definition"
+        image="@drawable/magic"
+        key="devour"
+        term="@string/devour_term" />
+    <entry
+        category="keyword"
+        definition="@string/exalted_definition"
+        image="@drawable/exalted"
+        key="exalted"
+        term="@string/exalted_term" />
+    <entry
+        category="keyword"
+        definition="@string/unearth_definition"
+        image="@drawable/unearth"
+        key="unearth"
+        term="@string/unearth_term" />
+    <entry
+        category="keyword"
+        definition="@string/annihilator_definition"
+        image="@drawable/magic"
+        key="annihilator"
+        term="@string/annihilator_term" />
+    <entry
+        category="keyword"
+        definition="@string/level_up_definition"
+        image="@drawable/magic"
+        key="level_up"
+        term="@string/level_up_term" />
+    <entry
+        category="keyword"
+        definition="@string/rebound_definition"
+        image="@drawable/magic"
+        key="rebound"
+        term="@string/rebound_term" />
+    <entry
+        category="keyword"
+        definition="@string/infect_definition"
+        image="@drawable/magic"
+        key="infect"
+        term="@string/infect_term" />
+    <entry
+        category="keyword"
+        definition="@string/battle_cry_definition"
+        image="@drawable/magic"
+        key="battle_cry"
+        term="@string/battle_cry_term" />
+    <entry
+        category="keyword"
+        definition="@string/living_weapon_definition"
+        image="@drawable/magic"
+        key="living_weapon"
+        term="@string/living_weapon_term" />
+    <entry
+        category="keyword"
+        definition="@string/undying_definition"
+        image="@drawable/magic"
+        key="undying"
+        term="@string/undying_term" />
+    <entry
+        category="keyword"
+        definition="@string/miracle_definition"
+        image="@drawable/magic"
+        key="miracle"
+        term="@string/miracle_term" />
+    <entry
+        category="keyword"
+        definition="@string/soulbond_definition"
+        image="@drawable/magic"
+        key="soulbond"
+        term="@string/soulbond_term" />
+    <entry
+        category="keyword"
+        definition="@string/overload_definition"
+        image="@drawable/magic"
+        key="overload"
+        term="@string/overload_term" />
+    <entry
+        category="keyword"
+        definition="@string/scavenge_definition"
+        image="@drawable/magic"
+        key="scavenge"
+        term="@string/scavenge_term" />
+    <entry
+        category="keyword"
+        definition="@string/unleash_definition"
+        image="@drawable/magic"
+        key="unleash"
+        term="@string/unleash_term" />
+    <entry
+        category="keyword"
+        definition="@string/cipher_definition"
+        image="@drawable/magic"
+        key="cipher"
+        term="@string/cipher_term" />
+    <entry
+        category="keyword"
+        definition="@string/evolve_definition"
+        image="@drawable/magic"
+        key="evolve"
+        term="@string/evolve_term" />
+    <entry
+        category="keyword"
+        definition="@string/extort_definition"
+        image="@drawable/magic"
+        key="extort"
+        term="@string/extort_term" />
+    <entry
+        category="keyword"
+        definition="@string/fuse_definition"
+        image="@drawable/magic"
+        key="fuse"
+        term="@string/fuse_term" />
+    <entry
+        category="keyword"
+        definition="@string/bestow_definition"
+        image="@drawable/magic"
+        key="bestow"
+        term="@string/bestow_term" />
+    <entry
+        category="keyword"
+        definition="@string/tribute_definition"
+        image="@drawable/magic"
+        key="tribute"
+        term="@string/tribute_term" />
+    <entry
+        category="keyword"
+        definition="@string/dethrone_definition"
+        image="@drawable/magic"
+        key="dethrone"
+        term="@string/dethrone_term" />
+    <entry
+        category="keyword"
+        definition="@string/outlast_definition"
+        image="@drawable/outlast"
+        key="outlast"
+        term="@string/outlast_term" />
+    <entry
+        category="keyword"
+        definition="@string/prowess_definition"
+        image="@drawable/prowess"
+        key="prowess"
+        term="@string/prowess_term" />
+    <entry
+        category="keyword"
+        definition="@string/dash_definition"
+        image="@drawable/magic"
+        key="dash"
+        term="@string/dash_term" />
+    <entry
+        category="keyword"
+        definition="@string/exploit_definition"
+        image="@drawable/exploit"
+        key="exploit"
+        term="@string/exploit_term" />
+    <entry
+        category="keyword"
+        definition="@string/menace_definition"
+        image="@drawable/menace"
+        key="menace"
+        term="@string/menace_term" />
+    <entry
+        category="keyword"
+        definition="@string/renown_definition"
+        image="@drawable/renown"
+        key="renown"
+        term="@string/renown_term" />
+    <entry
+        category="keyword"
+        definition="@string/awaken_definition"
+        image="@drawable/magic"
+        key="awaken"
+        term="@string/awaken_term" />
+    <entry
+        category="keyword"
+        definition="@string/devoid_definition"
+        image="@drawable/magic"
+        key="devoid"
+        term="@string/devoid_term" />
+    <entry
+        category="keyword"
+        definition="@string/ingest_definition"
+        image="@drawable/magic"
+        key="ingest"
+        term="@string/ingest_term" />
+    <entry
+        category="keyword"
+        definition="@string/myriad_definition"
+        image="@drawable/magic"
+        key="myriad"
+        term="@string/myriad_term" />
+    <entry
+        category="keyword"
+        definition="@string/surge_definition"
+        image="@drawable/magic"
+        key="surge"
+        term="@string/surge_term" />
+    <entry
+        category="keyword"
+        definition="@string/skulk_definition"
+        image="@drawable/magic"
+        key="skulk"
+        term="@string/skulk_term" />
+    <entry
+        category="keyword"
+        definition="@string/emerge_definition"
+        image="@drawable/magic"
+        key="emerge"
+        term="@string/emerge_term" />
+    <entry
+        category="keyword"
+        definition="@string/escalate_definition"
+        image="@drawable/magic"
+        key="escalate"
+        term="@string/escalate_term" />
+    <entry
+        category="keyword"
+        definition="@string/melee_definition"
+        image="@drawable/magic"
+        key="melee"
+        term="@string/melee_term" />
+    <entry
+        category="keyword"
+        definition="@string/crew_definition"
+        image="@drawable/magic"
+        key="crew"
+        term="@string/crew_term" />
+    <entry
+        category="keyword"
+        definition="@string/fabricate_definition"
+        image="@drawable/fabricate"
+        key="fabricate"
+        term="@string/fabricate_term" />
+    <entry
+        category="keyword"
+        definition="@string/partner_definition"
+        image="@drawable/magic"
+        key="partner"
+        term="@string/partner_term" />
+    <entry
+        category="keyword"
+        definition="@string/undaunted_definition"
+        image="@drawable/magic"
+        key="undaunted"
+        term="@string/undaunted_term" />
+    <entry
+        category="keyword"
+        definition="@string/improvise_definition"
+        image="@drawable/improvise"
+        key="improvise"
+        term="@string/improvise_term" />
+    <entry
+        category="keyword"
+        definition="@string/aftermath_definition"
+        image="@drawable/aftermath"
+        key="aftermath"
+        term="@string/aftermath_term" />
+    <entry
+        category="keyword"
+        definition="@string/embalm_definition"
+        image="@drawable/embalm"
+        key="embalm"
+        term="@string/embalm_term" />
+    <entry
+        category="keyword"
+        definition="@string/eternalize_definition"
+        image="@drawable/eternalize"
+        key="eternalize"
+        term="@string/eternalize_term" />
+    <entry
+        category="keyword"
+        definition="@string/afflict_definition"
+        image="@drawable/afflict"
+        key="afflict"
+        term="@string/afflict_term" />
+    <entry
+        category="keyword"
+        definition="@string/ascend_definition"
+        image="@drawable/ascend"
+        key="ascend"
+        term="@string/ascend_term" />
+    <entry
+        category="keyword"
+        definition="@string/assist_definition"
+        image="@drawable/magic"
+        key="assist"
+        term="@string/assist_term" />
+    <entry
+        category="keyword"
+        definition="@string/jump_start_definition"
+        image="@drawable/jump_start"
+        key="jump_start"
+        term="@string/jump_start_term" />
+    <entry
+        category="keyword"
+        definition="@string/mentor_definition"
+        image="@drawable/mentor"
+        key="mentor"
+        term="@string/mentor_term" />
+    <entry
+        category="keyword"
+        definition="@string/afterlife_definition"
+        image="@drawable/afterlife"
+        key="afterlife"
+        term="@string/afterlife_term" />
+    <entry
+        category="keyword"
+        definition="@string/riot_definition"
+        image="@drawable/riot"
+        key="riot"
+        term="@string/riot_term" />
+    <entry
+        category="keyword"
+        definition="@string/spectacle_definition"
+        image="@drawable/spectacle"
+        key="spectacle"
+        term="@string/spectacle_term" />
+    <entry
+        category="keyword"
+        definition="@string/escape_definition"
+        image="@drawable/escape"
+        key="escape"
+        term="@string/escape_term" />
+    <entry
+        category="keyword"
+        definition="@string/companion_definition"
+        image="@drawable/companion"
+        key="companion"
+        term="@string/companion_term" />
+    <entry
+        category="keyword"
+        definition="@string/mutate_definition"
+        image="@drawable/mutate"
+        key="mutate"
+        term="@string/mutate_term" />
+    <entry
+        category="keyword"
+        definition="@string/encore_definition"
+        image="@drawable/magic"
+        key="encore"
+        term="@string/encore_term" />
+    <entry
+        category="keyword"
+        definition="@string/boast_definition"
+        image="@drawable/boast"
+        key="boast"
+        term="@string/boast_term" />
+    <entry
+        category="keyword"
+        definition="@string/foretell_definition"
+        image="@drawable/foretell"
+        key="foretell"
+        term="@string/foretell_term" />
+    <entry
+        category="keyword"
+        definition="@string/demonstrate_definition"
+        image="@drawable/magic"
+        key="demonstrate"
+        term="@string/demonstrate_term" />
+    <entry
+        category="keyword"
+        definition="@string/daybound_nightbound_definition"
+        image="@drawable/magic"
+        key="daybound_nightbound"
+        term="@string/daybound_nightbound_term" />
+    <entry
+        category="keyword"
+        definition="@string/disturb_definition"
+        image="@drawable/disturb"
+        key="disturb"
+        term="@string/disturb_term" />
+    <entry
+        category="keyword"
+        definition="@string/decayed_definition"
+        image="@drawable/decayed"
+        key="decayed"
+        term="@string/decayed_term" />
+    <entry
+        category="keyword"
+        definition="@string/cleave_definition"
+        image="@drawable/cleave"
+        key="cleave"
+        term="@string/cleave_term" />
+    <entry
+        category="keyword"
+        definition="@string/training_definition"
+        image="@drawable/training"
+        key="training"
+        term="@string/training_term" />
+    <entry
+        category="keyword"
+        definition="@string/compleated_definition"
+        image="@drawable/magic"
+        key="compleated"
+        term="@string/compleated_term" />
+    <entry
+        category="keyword"
+        definition="@string/reconfigure_definition"
+        image="@drawable/reconfigure"
+        key="reconfigure"
+        term="@string/reconfigure_term" />
+    <entry
+        category="keyword"
+        definition="@string/blitz_definition"
+        image="@drawable/blitz"
+        key="blitz"
+        term="@string/blitz_term" />
+    <entry
+        category="keyword"
+        definition="@string/casualty_definition"
+        image="@drawable/casualty"
+        key="casualty"
+        term="@string/casualty_term" />
+    <entry
+        category="keyword"
+        definition="@string/enlist_definition"
+        image="@drawable/enlist"
+        key="enlist"
+        term="@string/enlist_term" />
+    <entry
+        category="keyword"
+        definition="@string/read_ahead_definition"
+        image="@drawable/read_ahead"
+        key="read_ahead"
+        term="@string/read_ahead_term" />
+    <entry
+        category="keyword"
+        definition="@string/ravenous_definition"
+        image="@drawable/magic"
+        key="ravenous"
+        term="@string/ravenous_term" />
+    <entry
+        category="keyword"
+        definition="@string/squad_definition"
+        image="@drawable/magic"
+        key="squad"
+        term="@string/squad_term" />
+    <entry
+        category="keyword"
+        definition="@string/space_sculptor_definition"
+        image="@drawable/magic"
+        key="space_sculptor"
+        term="@string/space_sculptor_term" />
+    <entry
+        category="keyword"
+        definition="@string/visit_definition"
+        image="@drawable/magic"
+        key="visit"
+        term="@string/visit_term" />
+    <entry
+        category="keyword"
+        definition="@string/prototype_definition"
+        image="@drawable/prototype"
+        key="prototype"
+        term="@string/prototype_term" />
+    <entry
+        category="keyword"
+        definition="@string/living_metal_definition"
+        image="@drawable/magic"
+        key="living_metal"
+        term="@string/living_metal_term" />
+    <entry
+        category="keyword"
+        definition="@string/more_than_meets_the_eye_definition"
+        image="@drawable/magic"
+        key="more_than_meets_the_eye"
+        term="@string/more_than_meets_the_eye_term" />
+    <entry
+        category="keyword"
+        definition="@string/for_mirrodin_definition"
+        image="@drawable/for_mirrodin"
+        key="for_mirrodin"
+        term="@string/for_mirrodin_term" />
+    <entry
+        category="keyword"
+        definition="@string/toxic_definition"
+        image="@drawable/toxic"
+        key="toxic"
+        term="@string/toxic_term" />
+    <entry
+        category="keyword"
+        definition="@string/backup_definition"
+        image="@drawable/backup"
+        key="backup"
+        term="@string/backup_term" />
+    <entry
+        category="keyword"
+        definition="@string/bargain_definition"
+        image="@drawable/bargain"
+        key="bargain"
+        term="@string/bargain_term" />
+    <entry
+        category="keyword"
+        definition="@string/craft_definition"
+        image="@drawable/craft"
+        key="craft"
+        term="@string/craft_term" />
+    <entry
+        category="keyword"
+        definition="@string/disguise_definition"
+        image="@drawable/disguise"
+        key="disguise"
+        term="@string/disguise_term" />
+    <entry
+        category="keyword"
+        definition="@string/solved_definition"
+        image="@drawable/magic"
+        key="solved"
+        term="@string/solved_term" />
+    <entry
+        category="keyword"
+        definition="@string/plot_definition"
+        image="@drawable/plot"
+        key="plot"
+        term="@string/plot_term" />
+    <entry
+        category="keyword"
+        definition="@string/saddle_definition"
+        image="@drawable/saddle"
+        key="saddle"
+        term="@string/saddle_term" />
+    <entry
+        category="keyword"
+        definition="@string/spree_definition"
+        image="@drawable/spree"
+        key="spree"
+        term="@string/spree_term" />
+    <entry
+        category="keyword"
+        definition="@string/freerunning_definition"
+        image="@drawable/magic"
+        key="freerunning"
+        term="@string/freerunning_term" />
+    <entry
+        category="keyword"
+        definition="@string/gift_definition"
+        image="@drawable/gift"
+        key="gift"
+        term="@string/gift_term" />
+    <entry
+        category="keyword"
+        definition="@string/offspring_definition"
+        image="@drawable/offspring"
+        key="offspring"
+        term="@string/offspring_term" />
+    <entry
+        category="keyword"
+        definition="@string/impending_definition"
+        image="@drawable/impending"
+        key="impending"
+        term="@string/impending_term" />
+    <entry
+        category="keyword"
+        definition="@string/exhaust_definition"
+        image="@drawable/exhaust"
+        key="exhaust"
+        term="@string/exhaust_term" />
+    <entry
+        category="keyword"
+        definition="@string/max_speed_definition"
+        image="@drawable/magic"
+        key="max_speed"
+        term="@string/max_speed_term" />
+    <entry
+        category="keyword"
+        definition="@string/start_your_engines_definition"
+        image="@drawable/start_your_engines"
+        key="start_your_engines"
+        term="@string/start_your_engines_term" />
+    <!-- Legalities -->
+    <entry
+        category="legality"
+        definition="@string/standard_definition"
+        image="@drawable/magic"
+        key="standard"
+        term="@string/standard_term" />
+    <entry
+        category="legality"
+        definition="@string/future_definition"
+        image="@drawable/magic"
+        key="future"
+        term="@string/future_term" />
+    <entry
+        category="legality"
+        definition="@string/historic_definition"
+        image="@drawable/magic"
+        key="historic"
+        term="@string/historic_term" />
+    <entry
+        category="legality"
+        definition="@string/timeless_definition"
+        image="@drawable/magic"
+        key="timeless"
+        term="@string/timeless_term" />
+    <entry
+        category="legality"
+        definition="@string/gladiator_definition"
+        image="@drawable/magic"
+        key="gladiator"
+        term="@string/gladiator_term" />
+    <entry
+        category="legality"
+        definition="@string/pioneer_definition"
+        image="@drawable/magic"
+        key="pioneer"
+        term="@string/pioneer_term" />
+    <entry
+        category="legality"
+        definition="@string/explorer_term"
+        image="@drawable/magic"
+        key="explorer"
+        term="@string/explorer_term" />
+    <entry
+        category="legality"
+        definition="@string/modern_definition"
+        image="@drawable/magic"
+        key="modern"
+        term="@string/modern_term" />
+    <entry
+        category="legality"
+        definition="@string/legacy_definition"
+        image="@drawable/magic"
+        key="legacy"
+        term="@string/legacy_term" />
+    <entry
+        category="legality"
+        definition="@string/pauper_definition"
+        image="@drawable/magic"
+        key="pauper"
+        term="@string/pauper_term" />
+    <entry
+        category="legality"
+        definition="@string/vintage_definition"
+        image="@drawable/magic"
+        key="vintage"
+        term="@string/vintage_term" />
+    <entry
+        category="legality"
+        definition="@string/penny_dreadful_definition"
+        image="@drawable/magic"
+        key="penny_dreadful"
+        term="@string/penny_dreadful_term" />
+    <entry
+        category="legality"
+        definition="@string/commander_definition"
+        image="@drawable/magic"
+        key="commander"
+        term="@string/commander_term" />
+    <entry
+        category="legality"
+        definition="@string/oathbreaker_definition"
+        image="@drawable/magic"
+        key="oathbreaker"
+        term="@string/oathbreaker_term" />
+    <entry
+        category="legality"
+        definition="@string/standard_brawl_definition"
+        image="@drawable/magic"
+        key="standard_brawl"
+        term="@string/standard_brawl_term" />
+    <entry
+        category="legality"
+        definition="@string/brawl_definition"
+        image="@drawable/magic"
+        key="brawl"
+        term="@string/brawl_term" />
+    <entry
+        category="legality"
+        definition="@string/alchemy_definition"
+        image="@drawable/magic"
+        key="alchemy"
+        term="@string/alchemy_term" />
+    <entry
+        category="legality"
+        definition="@string/pauper_commander_definition"
+        image="@drawable/magic"
+        key="pauper_commander"
+        term="@string/pauper_commander_term" />
+    <entry
+        category="legality"
+        definition="@string/duel_commander_definition"
+        image="@drawable/magic"
+        key="duel_commander"
+        term="@string/duel_commander_term" />
+    <entry
+        category="legality"
+        definition="@string/old_school_definition"
+        image="@drawable/magic"
+        key="old_school"
+        term="@string/old_school_term" />
+    <entry
+        category="legality"
+        definition="@string/premodern_definition"
+        image="@drawable/magic"
+        key="premodern"
+        term="@string/premodern_term" />
+    <entry
+        category="legality"
+        definition="@string/predh_definition"
+        image="@drawable/magic"
+        key="predh"
+        term="@string/predh_term" />
+</glossary>
