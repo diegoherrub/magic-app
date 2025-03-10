@@ -14,6 +14,7 @@ import pol.rubiano.magicapp.features.domain.GlossaryItem
 class StickyHeaderDecoration(
     private val adapter: GlossaryAdapter
 ) : RecyclerView.ItemDecoration(){
+
     override fun onDrawOver(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         val topChild = parent.getChildAt(0) ?: return
         val topChildPos = parent.getChildAdapterPosition(topChild)

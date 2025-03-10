@@ -9,6 +9,7 @@ data class GlossaryTerm(
 )
 
 sealed class GlossaryItem {
-    data class Header(val category: String) : GlossaryItem()
+    data class Header(val category: String, var isExpanded: Boolean = true) : GlossaryItem()
     data class Entry(val glossaryTerm: GlossaryTerm) : GlossaryItem()
 }
+

@@ -33,17 +33,26 @@ class GlossaryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_HEADER) {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.glossary_item_header_view, parent, false)
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.glossary_item_header_view, parent, false)
             HeaderViewHolder(view)
         } else {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.glossary_item_entry_view, parent, false)
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.glossary_item_entry_view, parent, false)
             EntryViewHolder(view)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = filteredItems[position]) {
-            is GlossaryItem.Header -> (holder as HeaderViewHolder).bind(item)
+            is GlossaryItem.Header -> (holder as HeaderViewHolder).bind(item) { pos ->
+                val headerPos = findHeaderPositionForItemInOriginalList(pos)
+                if (headerPos != -1) {
+                    val header = originalItems[headerPos] as GlossaryItem.Header
+                    header.isExpanded = !header.isExpanded
+                    updateList()
+                }
+            }
             is GlossaryItem.Entry -> (holder as EntryViewHolder).bind(item.glossaryTerm)
         }
     }
@@ -54,8 +63,10 @@ class GlossaryAdapter(
 
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvHeader: TextView = itemView.findViewById(R.id.tvHeader)
-        fun bind(item: GlossaryItem.Header) {
+        fun bind(item: GlossaryItem.Header, toggle: (Int) -> Unit) {
             tvHeader.text = item.category
+            // Al pulsar en la cabecera, se activa el toggle
+            itemView.setOnClickListener { toggle(adapterPosition) }
         }
     }
 
@@ -75,6 +86,40 @@ class GlossaryAdapter(
         }
     }
 
+    private fun updateList() {
+        val newList = mutableListOf<GlossaryItem>()
+        var currentHeader: GlossaryItem.Header? = null
+        for (item in originalItems) {
+            when (item) {
+                is GlossaryItem.Header -> {
+                    newList.add(item)
+                    currentHeader = item
+                }
+                is GlossaryItem.Entry -> {
+                    if (currentHeader?.isExpanded == true) {
+                        newList.add(item)
+                    }
+                }
+            }
+        }
+        filteredItems = newList
+        notifyDataSetChanged()
+    }
+
+    // Mapea la posición visible de la cabecera a la posición en originalItems
+    private fun findHeaderPositionForItemInOriginalList(visiblePos: Int): Int {
+        var visibleHeaderCount = 0
+        for (i in originalItems.indices) {
+            if (originalItems[i] is GlossaryItem.Header) {
+                if (visibleHeaderCount == visiblePos) {
+                    return i
+                }
+                visibleHeaderCount++
+            }
+        }
+        return -1
+    }
+
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
@@ -85,7 +130,9 @@ class GlossaryAdapter(
                     // Filtramos solo los elementos de tipo Entry y luego los reagrupamos
                     val filteredEntries = originalItems.filter { item ->
                         when (item) {
-                            is GlossaryItem.Entry -> item.glossaryTerm.term.lowercase().contains(query)
+                            is GlossaryItem.Entry -> item.glossaryTerm.term.lowercase()
+                                .contains(query)
+
                             is GlossaryItem.Header -> false
                         }
                     }.map { (it as GlossaryItem.Entry).glossaryTerm }
