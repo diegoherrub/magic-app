@@ -11,8 +11,10 @@
     <dimen name="size_xs">12sp</dimen>
     <dimen name="size_s">14sp</dimen>
     <dimen name="size_m">16sp</dimen>
+    <dimen name="size_ml">18sp</dimen>
     <dimen name="size_l">20sp</dimen>
     <dimen name="size_xl">24sp</dimen>
 
+    <dimen name="section_icon_s">54dp</dimen>
     <dimen name="section_icon_m">64dp</dimen>
 </resources>

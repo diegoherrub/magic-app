@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font app:font="@font/app_light" />
+    <font app:font="@font/app_italic" />
+    <font app:font="@font/app_regular" />
+    <font app:font="@font/app_bold" />
+    <font app:font="@font/app_semibold" />
+    <font app:font="@font/app_extrabold" />
+    <font app:font="@font/appcond_light" />
+    <font app:font="@font/appcond_italic" />
+    <font app:font="@font/appcond_regular" />
+    <font app:font="@font/appcond_bold" />
+    <font app:font="@font/appcond_semibold" />
+    <font app:font="@font/appcond_extrabold" />
+    <font app:font="@font/card_light" />
+    <font app:font="@font/card_italic" />
+    <font app:font="@font/card_regular" />
+    <font app:font="@font/card_bold" />
+    <font app:font="@font/card_semibold" />
+    <font app:font="@font/card_extrabold" />
+    <font app:font="@font/cardcond_light" />
+    <font app:font="@font/cardcond_italic" />
+    <font app:font="@font/cardcond_regular" />
+    <font app:font="@font/cardcond_bold" />
+    <font app:font="@font/cardcond_semibold" />
+    <font app:font="@font/cardcond_extrabold" />
+</font-family>

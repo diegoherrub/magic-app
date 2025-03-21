@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.presentation.sections.AppSectionUI
 import pol.rubiano.magicapp.databinding.MagicFragmentBinding
-import pol.rubiano.magicapp.features.presentation.ui.magic.GlossaryFragment
 
 class MagicFragment : Fragment() {
 
@@ -34,10 +33,16 @@ class MagicFragment : Fragment() {
         val sectionsMap = mapOf(
             binding.glossarySection to AppSectionUI(
                 R.drawable.glossary,
-                getString(R.string.glossary_section_title),
-                getString(R.string.glossary_section_description),
+                getString(R.string.glossary_title),
+                getString(R.string.glossary_description),
                 requireContext()
-            )
+            ),
+            binding.legalitiesSection to AppSectionUI(
+                R.drawable.legalities,
+                getString(R.string.legalities_title),
+                getString(R.string.legalities_description),
+                requireContext()
+            ),
         )
         sectionsMap.forEach { (layout, section) ->
             layout.render(section)

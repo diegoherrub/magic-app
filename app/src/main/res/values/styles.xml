@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Top App Bar -->
+    <style name="AppBarLayoutStyle" parent="Widget.Material3.Toolbar">
+        <item name="android:elevation">0dp</item>
+        <item name="titleTextAppearance">@style/app_tool_bar_title</item>
+        <item name="titleCentered">true</item>
+        <item name="android:background">@color/md_theme_primary</item>
+    </style>
+
+    <!-- Glossary -->
+    <style name="app_section_glossary_search" parent="Widget.AppCompat.SearchView">
+        <item name="iconTint">@color/md_theme_primary</item>
+        <item name="queryBackground">@null</item>
+        <item name="android:clickable">true</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:queryHint">@string/search_title</item>
+        <item name="android:layout_marginTop">@dimen/dimen_s</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
+    </style>
+
     <!-- Bottom Navigation -->
     <style name="AppBottomBar" parent="Widget.Material3.BottomNavigationView">
         <item name="itemActiveIndicatorStyle">@style/AppBottomShape</item>
@@ -47,48 +66,35 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <!-- App Common -->
-    <style name="AppIcon">
-        <item name="android:paddingTop">@dimen/dimen_s</item>
-        <item name="android:paddingEnd">@dimen/dimen_s</item>
-        <item name="android:paddingBottom">@dimen/dimen_s</item>
-    </style>
-    <style name="AppTitle" parent="TextAppearance.Material3.BodyMedium">
-        <item name="android:paddingTop">@dimen/dimen_xs</item>
-        <item name="android:paddingStart">@dimen/dimen_s</item>
-        <item name="android:textStyle">bold</item>
+    <!-- AppSectionView -->
+    <style name="app_section_sticky_header" parent="text_section_sticky_header_title">
+        <item name="android:background">@color/md_theme_primaryContainer</item>
+        <item name="android:textColor">@color/md_theme_onPrimaryContainer</item>
+        <item name="android:padding">@dimen/dimen_m</item>
+        <item name="android:textSize">@dimen/size_l</item>
     </style>
 
-    <!-- AppSectionView -->
-    <style name="AppSection">
+    <style name="app_section_list">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
 
-    <style name="AppSectionIcon" parent="AppIcon">
+    <style name="app_section_list_item">
+        <item name="android:padding">@dimen/dimen_m</item>
+    </style>
+
+    <style name="app_section_list_icon">
         <item name="tint">@color/md_theme_primary</item>
     </style>
 
-    <style name="AppSectionTitle" parent="AppTitle">
+    <style name="app_section_list_title" parent="text_section_list_item_title">
+        <item name="android:layout_marginStart">@dimen/dimen_m</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_m</item>
         <item name="android:textColor">@color/md_theme_primary</item>
     </style>
 
-    <style name="AppSectionDescription" parent="TextAppearance.Material3.BodySmall">
-        <item name="android:paddingStart">@dimen/dimen_s</item>
-        <item name="android:paddingEnd">@dimen/dimen_s</item>
-    </style>
+    <style name="app_section_list_description" parent="text_section_list_item_description">
+        <item name="android:breakStrategy">simple</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_m</item>
 
-    <!-- Glossary -->
-    <style name="AppGlossaryHeader">
-        <item name="android:background">@color/md_theme_primary</item>
-        <item name="android:textColor">@color/md_theme_onPrimary</item>
-        <item name="android:padding">@dimen/dimen_m</item>
-        <item name="android:textSize">@dimen/size_l</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="AppGlossaryIcon" parent="AppIcon">
-        <item name="tint">@color/md_theme_secondary</item>
-    </style>
-    <style name="AppGlossaryTitle" parent="AppTitle">
-        <item name="android:textColor">@color/md_theme_secondary</item>
     </style>
 </resources>

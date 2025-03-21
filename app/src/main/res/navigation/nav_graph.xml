@@ -14,6 +14,11 @@
             app:destination="@+id/glossary_fragment"/>
     </fragment>
 
+    <fragment
+        android:id="@+id/glossary_fragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.GlossaryFragment"
+        android:label="@string/glossary_title" />
+
     <!-- Collections Section -->
     <fragment
         android:id="@+id/collectionsFragment"
@@ -36,12 +41,18 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.SearchFragment"
-        android:label="@string/search_title" />
+        android:label="@string/search_title">
+        <action
+            android:id="@+id/action_search_fragment_to_results_fragment"
+            app:destination="@+id/search_results_fragment"/>
+    </fragment>
 
-    <!-- Glossary Subsection -->
     <fragment
-        android:id="@+id/glossary_fragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.GlossaryFragment"
-        android:label="@string/glossary_section_title" />
-
+        android:id="@+id/search_results_fragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.search.ResultsFragment"
+        android:label="@string/search_results_title">
+        <argument
+            android:name="query"
+            app:argType="string"/>
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.data.local.datasources
+package pol.rubiano.magicapp.features.data.local
 
 import android.content.Context
 import org.xmlpull.v1.XmlPullParser

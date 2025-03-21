@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import pol.rubiano.magicapp.app.presentation.styckyheader.StickyHeaderDecoration
 import pol.rubiano.magicapp.databinding.GlossaryFragmentBinding
-import pol.rubiano.magicapp.features.data.local.datasources.groupGlossaryTerms
-import pol.rubiano.magicapp.features.data.local.datasources.loadGlossaryFromXml
+import pol.rubiano.magicapp.features.data.local.groupGlossaryTerms
+import pol.rubiano.magicapp.features.data.local.loadGlossaryFromXml
 import pol.rubiano.magicapp.features.presentation.adapters.GlossaryAdapter
 
 class GlossaryFragment : Fragment() {
@@ -34,15 +35,18 @@ class GlossaryFragment : Fragment() {
         // Cargamos y agrupamos los términos
         val glossaryTerms = loadGlossaryFromXml(requireContext())
         val groupedItems = groupGlossaryTerms(glossaryTerms.sortedBy { it.term })
+
         adapter = GlossaryAdapter(groupedItems)
         binding.recyclerViewGlossary.adapter = adapter
 
         // Configuramos el SearchView para filtrar
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.appGlossarySearchBar.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 adapter.filter.filter(query)
                 return false
             }
+
             override fun onQueryTextChange(newText: String?): Boolean {
                 adapter.filter.filter(newText)
                 return false

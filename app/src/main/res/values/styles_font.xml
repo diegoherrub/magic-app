@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- App Bar Layout -->
+    <style name="app_tool_bar_title">
+        <item name="android:fontFamily">@font/app_semibold</item>
+        <item name="android:textSize">@dimen/size_l</item>
+        <item name="android:textColor">@color/md_theme_onPrimary</item>
+    </style>
+
+    <!-- Section List -->
+    <style name="text_section_sticky_header_title">
+        <item name="android:fontFamily">@font/app_italic</item>
+        <item name="android:textSize">@dimen/size_ml</item>
+    </style>
+    <style name="text_section_list_item_title">
+        <item name="android:fontFamily">@font/app_bold</item>
+        <item name="android:textSize">@dimen/size_ml</item>
+    </style>
+    <style name="text_section_list_item_description">
+        <item name="android:fontFamily">@font/card_regular</item>
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+
+    <!-- Card -->
+    <style name="CardTitle">
+        <item name="android:fontFamily">@font/card_bold</item>
+        <item name="android:textSize">@dimen/size_xl</item>
+    </style>
+    <style name="CardName">
+        <item name="android:fontFamily">@font/card_bold</item>
+        <item name="android:textSize">@dimen/size_ml</item>
+    </style>
+    <style name="CardType">
+        <item name="android:fontFamily">@font/card_semibold</item>
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+    <style name="CardOracle">
+        <item name="android:fontFamily">@font/card_regular</item>
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+    <style name="CardFlavour">
+        <item name="android:fontFamily">@font/card_italic</item>
+        <item name="android:textSize">@dimen/size_s</item>
+    </style>
+</resources>

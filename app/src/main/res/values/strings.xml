@@ -7,7 +7,6 @@
     <!-- App Bar -->
     <string name="magic_title" translatable="false">Magic</string>
     <string name="random_card_title">Random Card</string>
-    <string name="search_title">Search</string>
     <string name="collections_title">Collections</string>
     <string name="decks_title">Decks</string>
 
@@ -21,12 +20,10 @@
     <!-- navigation bar -->
     <string name="magic" translatable="false">Magic</string>
     <string name="random_card">Random</string>
-    <string name="search">Search</string>
     <string name="collections">Collections</string>
     <string name="decks">Decks</string>
 
     <!-- Titles -->
-    <string name="legalities_title">Legalities</string>
     <string name="name_title">Name</string>
     <string name="type_line_title">Type</string>
     <string name="rarity_title">Rarity</string>
@@ -34,6 +31,8 @@
     <string name="set_name_title">Set</string>
 
     <!-- Legalities -->
+    <string name="legalities_title">Legalities</string>
+    <string name="legalities_description">Explore the different ways to play Magic, from Standard to Commander and beyond.</string>
     <string name="standard" translatable="false">Standard</string>
     <string name="future" translatable="false">Future</string>
     <string name="historic" translatable="false">Historic</string>
@@ -58,7 +57,13 @@
     <string name="predh" translatable="false">PreDH</string>
 
     <!-- Glossary -->
-    <string name="glossary_section_title">Glossary</string>
-    <string name="glossary_section_description">Learn the meaning of the most common terms in the Magic: The Gathering universe.</string>
+    <string name="glossary_title">Glossary</string>
+    <string name="glossary_description">Learn the meaning of the most common terms in the Magic: The Gathering universe.</string>
     <string name="image_glossary_content_description">Glossary Image</string>
+
+    <!-- Search -->
+    <string name="search_title">Search</string>
+    <string name="search_results_title">Search Results</string>
+    <string name="button_select_colors">Seleccionar colores</string>
+    <string name="label_select_colors">Seleccione colores</string>
 </resources>

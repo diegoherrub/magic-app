@@ -40,7 +40,7 @@ class CardBindingHandler {
                 } ?: card.oracleText?.let {
                     randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
                 }
-                val imageUrl = face.faceBorderCrop ?: card.borderCrop
+                val imageUrl = face.faceImageNormal ?: card.imageNormal
                 imageUrl?.let { randomCardImage.loadUrl(it) }
             } else {
                 randomCardName.text = card.name
@@ -48,7 +48,7 @@ class CardBindingHandler {
                 card.oracleText?.let {
                     randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
                 }
-                card.borderCrop?.let { randomCardImage.loadUrl(it) }
+                card.imageNormal?.let { randomCardImage.loadUrl(it) }
             }
         }
     }

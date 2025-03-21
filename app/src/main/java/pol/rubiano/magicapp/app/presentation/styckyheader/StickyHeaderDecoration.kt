@@ -60,7 +60,7 @@ class StickyHeaderDecoration(
         val layoutInflater = LayoutInflater.from(parent.context)
         val headerView = layoutInflater.inflate(R.layout.glossary_item_header_view, parent, false)
         val headerItem = (adapter.getItem(headerPosition) as GlossaryItem.Header)
-        headerView.findViewById<TextView>(R.id.tvHeader).text = headerItem.category
+        headerView.findViewById<TextView>(R.id.title_sticky_header).text = headerItem.category
         return headerView
     }
 

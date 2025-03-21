@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.features.data.local.datasources.groupGlossaryTerms
+import pol.rubiano.magicapp.features.data.local.groupGlossaryTerms
 import pol.rubiano.magicapp.features.domain.GlossaryItem
 import pol.rubiano.magicapp.features.domain.GlossaryTerm
 
@@ -62,7 +62,7 @@ class GlossaryAdapter(
     fun getItem(position: Int): GlossaryItem = filteredItems[position]
 
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvHeader: TextView = itemView.findViewById(R.id.tvHeader)
+        private val tvHeader: TextView = itemView.findViewById(R.id.title_sticky_header)
         fun bind(item: GlossaryItem.Header, toggle: (Int) -> Unit) {
             tvHeader.text = item.category
             // Al pulsar en la cabecera, se activa el toggle

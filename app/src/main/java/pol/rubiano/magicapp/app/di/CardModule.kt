@@ -18,7 +18,7 @@ class CardModule {
     }
 
     @Single
-    fun providePharmacyDao(db: MagicAppDataBase): CardDao {
+    fun provideCardDao(db: MagicAppDataBase): CardDao {
         return db.cardDao()
     }
 }

@@ -4,22 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="@dimen/dimen_xs">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_scrollEffect="compress"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:title="@string/magic_title"
-            app:titleCentered="true"/>
-    </com.google.android.material.appbar.AppBarLayout>
-
+    <include layout="@layout/apptopbarlayout_view"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -30,12 +15,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/nav_graph" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        style="@style/AppBottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-        app:menu="@menu/bottom_nav_menu" />
+    <include layout="@layout/appnavigationbarlayout_view" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

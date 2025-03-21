@@ -5,10 +5,10 @@
     android:layout_height="match_parent">
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/app_glossary_search_bar"
+        style="@style/app_section_glossary_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:queryHint="Buscar términos" />
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewGlossary"

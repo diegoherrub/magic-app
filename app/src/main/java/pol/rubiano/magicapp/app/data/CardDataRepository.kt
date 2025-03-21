@@ -32,19 +32,31 @@ class CardDataRepository(
             // TODO - comprobar si está en local
             local.saveCardToLocal(card)
 
-            card.borderCrop?.let { mainImageUrl ->
+            card.imageNormal?.let { mainImageUrl ->
                 val fileName = "${card.id}.png"
                 downloadAndSaveImage(context, mainImageUrl, fileName)
             }
+            card.imageSmall?.let { smallImageUrl ->
+                val fileName = "${card.id}_small.png"
+                downloadAndSaveImage(context, smallImageUrl, fileName)
+            }
 
-            card.frontFace?.faceBorderCrop?.let { frontImageUrl ->
+            card.frontFace?.faceImageNormal?.let { frontImageUrl ->
                 val fileName = "${card.id}_front.png"
                 downloadAndSaveImage(context, frontImageUrl, fileName)
             }
+            card.frontFace?.faceImageSmall?.let { frontSmallImageUrl ->
+                val fileName = "${card.id}_small_front.png"
+                downloadAndSaveImage(context, frontSmallImageUrl, fileName)
+            }
 
-            card.backFace?.faceBorderCrop?.let { backImageUrl ->
+            card.backFace?.faceImageNormal?.let { backImageUrl ->
                 val fileName = "${card.id}_back.png"
                 downloadAndSaveImage(context, backImageUrl, fileName)
+            }
+            card.backFace?.faceImageSmall?.let { backSmallImageUrl ->
+                val fileName = "${card.id}_small_back.png"
+                downloadAndSaveImage(context, backSmallImageUrl, fileName)
             }
 
             return Result.success(remoteCard.getOrThrow())

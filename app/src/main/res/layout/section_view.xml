@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/image_view_section_icon"
-        style="@style/AppSectionIcon"
-        android:layout_width="@dimen/section_icon_m"
-        android:layout_height="@dimen/section_icon_m"
+        style="@style/app_section_list_icon"
+        android:layout_width="@dimen/section_icon_s"
+        android:layout_height="@dimen/section_icon_s"
         android:contentDescription="@string/image_section_content_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,21 +17,21 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_section_title"
-        style="@style/AppSectionTitle"
+        style="@style/app_section_list_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/image_view_section_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/image_view_section_icon"
-        tools:text="@string/glossary_section_title" />
+        tools:text="@string/glossary_title" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_section_description"
-        style="@style/AppSectionDescription"
+        style="@style/app_section_list_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/text_view_section_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_section_title"
-        tools:text="@string/glossary_section_description"/>
+        tools:text="@string/glossary_description"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
