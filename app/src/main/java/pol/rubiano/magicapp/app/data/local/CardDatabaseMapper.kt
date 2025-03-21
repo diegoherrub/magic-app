@@ -1,6 +1,5 @@
-package pol.rubiano.magicapp.app.data.local.dbmappers
+package pol.rubiano.magicapp.app.data.local
 
-import pol.rubiano.magicapp.app.data.local.entities.CardEntity
 import pol.rubiano.magicapp.app.domain.entities.Card
 
 fun Card.toEntity() : CardEntity {

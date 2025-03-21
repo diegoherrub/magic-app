@@ -31,41 +31,6 @@
         <item name="android:height">0dp</item>
     </style>
 
-    <style name="AppTextCard">
-        <item name="android:padding">@dimen/dimen_l</item>
-        <item name="android:textSize">@dimen/size_m</item>
-        <item name="android:textAlignment">textStart</item>
-    </style>
-
-    <style name="AppTextCardBold" parent="AppTextCard">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="AppTitleForCard">
-        <item name="android:padding">@dimen/dimen_m</item>
-        <item name="android:textSize">@dimen/size_l</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/md_theme_onPrimaryContainer</item>
-        <item name="android:background">@color/md_theme_primaryContainer</item>
-    </style>
-
-    <style name="AppTitleForCardMini" parent="AppTitleForCard">
-        <item name="android:paddingLeft">@dimen/dimen_s</item>
-        <item name="android:paddingRight">@dimen/dimen_s</item>
-        <item name="android:textSize">@dimen/size_m</item>
-    </style>
-
-    <style name="AppLegalitiesContainer">
-        <item name="android:layout_marginTop">@dimen/dimen_m</item>
-        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
-    </style>
-
-    <style name="AppLegality">
-        <item name="android:layout_margin">@dimen/dimen_s</item>
-        <item name="android:padding">@dimen/dimen_s</item>
-        <item name="android:textAlignment">center</item>
-    </style>
-
     <!-- AppSectionView -->
     <style name="app_section_sticky_header" parent="text_section_sticky_header_title">
         <item name="android:background">@color/md_theme_primaryContainer</item>
@@ -95,6 +60,42 @@
     <style name="app_section_list_description" parent="text_section_list_item_description">
         <item name="android:breakStrategy">simple</item>
         <item name="android:layout_marginEnd">@dimen/dimen_m</item>
+    </style>
 
+    <!-- Card -->
+    <style name="style_app_card_image">
+        <item name="android:paddingStart">@dimen/dimen_m</item>
+        <item name="android:paddingEnd">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_l</item>
+    </style>
+
+    <style name="style_app_card_header">
+        <item name="android:paddingStart">@dimen/dimen_m</item>
+        <item name="android:paddingEnd">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_sm</item>
+        <item name="android:paddingBottom">@dimen/dimen_sm</item>
+        <item name="android:textAppearance">@style/app_font_random_card_header</item>
+        <item name="android:background">@color/md_theme_primaryContainer_50</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="style_app_card_content">
+        <item name="android:paddingEnd">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_m</item>
+        <item name="android:paddingStart">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_l</item>
+        <item name="android:textAppearance">@style/app_font_random_card_content</item>
+    </style>
+
+    <style name="style_app_card_legalities_container">
+        <item name="android:layout_marginTop">@dimen/dimen_m</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_l</item>
+    </style>
+
+    <style name="style_app_card_legalities">
+        <item name="android:layout_margin">@dimen/dimen_s</item>
+        <item name="android:padding">@dimen/dimen_s</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>

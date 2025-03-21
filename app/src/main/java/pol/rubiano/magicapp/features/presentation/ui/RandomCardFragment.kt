@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.faltenreich.skeletonlayout.SkeletonLayout
+//import com.faltenreich.skeletonlayout.SkeletonLayout
+//import com.faltenreich.skeletonlayout.createSkeleton
 import pol.rubiano.magicapp.databinding.RandomCardFragmentBinding
 import pol.rubiano.magicapp.features.presentation.viewmodels.RandomCardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.android.ext.android.inject
-import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.common.extensions.CardBindingHandler
+//import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.app.presentation.adapters.CardBindingHandler
 import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.domain.ErrorApp
 import pol.rubiano.magicapp.app.domain.entities.toLegalityItemList
@@ -27,7 +28,7 @@ class RandomCardFragment : Fragment() {
     private val viewModel: RandomCardViewModel by viewModel()
     private val errorFactory: ErrorAppUIFactory by inject()
 
-    private lateinit var skeleton: SkeletonLayout
+//    private lateinit var skeleton: SkeletonLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -38,7 +39,8 @@ class RandomCardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        skeleton = binding.root.findViewById(R.id.random_card_skeleton)
+        //skeleton = binding.root.findViewById(R.id.random_card_skeleton)
+//        skeleton = view.createSkeleton()
         setupLegalitiesRecyclerView()
         setupObserver()
         if (savedInstanceState == null && viewModel.uiState.value?.card == null) {
@@ -71,7 +73,7 @@ class RandomCardFragment : Fragment() {
 
     private fun setupObserver() {
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
-            checkLoading(uiState.isLoading)
+//            checkLoading(uiState.isLoading)
             bindError(uiState.errorApp)
             uiState.card?.let { card ->
                 cardBinder.bind(card, binding)
@@ -89,13 +91,13 @@ class RandomCardFragment : Fragment() {
         }
     }
 
-    private fun checkLoading(isLoading: Boolean) {
-        if (isLoading) {
-            skeleton.showSkeleton()
-        } else {
-            skeleton.showOriginal()
-        }
-    }
+//    private fun checkLoading(isLoading: Boolean) {
+//        if (isLoading) {
+//            skeleton.showSkeleton()
+//        } else {
+//            skeleton.showOriginal()
+//        }
+//    }
 
     private fun bindError(errorApp: ErrorApp?) {
         errorApp?.let {

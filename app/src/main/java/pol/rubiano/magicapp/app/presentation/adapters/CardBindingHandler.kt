@@ -1,5 +1,6 @@
-package pol.rubiano.magicapp.app.common.extensions
+package pol.rubiano.magicapp.app.presentation.adapters
 
+import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.data.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.entities.Card
 import pol.rubiano.magicapp.databinding.RandomCardFragmentBinding

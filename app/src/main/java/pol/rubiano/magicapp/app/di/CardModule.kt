@@ -4,8 +4,8 @@ import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.data.local.MagicAppDataBase
-import pol.rubiano.magicapp.app.data.local.daos.CardDao
-import pol.rubiano.magicapp.app.data.remote.services.CardService
+import pol.rubiano.magicapp.app.data.local.CardDao
+import pol.rubiano.magicapp.app.data.remote.CardService
 import retrofit2.Retrofit
 
 @Module

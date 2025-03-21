@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.app.data.remote.apimodels
+package pol.rubiano.magicapp.app.data.remote
 
 import com.google.gson.annotations.SerializedName
 

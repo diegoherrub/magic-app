@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.app.data.local.entities
+package pol.rubiano.magicapp.app.data.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded

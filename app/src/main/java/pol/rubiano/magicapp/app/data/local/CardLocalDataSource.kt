@@ -1,8 +1,6 @@
-package pol.rubiano.magicapp.app.data.local.datasources
+package pol.rubiano.magicapp.app.data.local
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.data.local.daos.CardDao
-import pol.rubiano.magicapp.app.data.local.dbmappers.toEntity
 import pol.rubiano.magicapp.app.domain.entities.Card
 
 @Single

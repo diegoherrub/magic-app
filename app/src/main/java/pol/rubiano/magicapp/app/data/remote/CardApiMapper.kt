@@ -1,6 +1,5 @@
-package pol.rubiano.magicapp.app.data.remote.apimappers
+package pol.rubiano.magicapp.app.data.remote
 
-import pol.rubiano.magicapp.app.data.remote.apimodels.CardApiModel
 import pol.rubiano.magicapp.app.domain.entities.Card
 import java.text.SimpleDateFormat
 import java.util.Date

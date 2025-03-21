@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/search_results_item_card_name"
-        style="@style/CardName"
+        style="@style/app_font_card_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"

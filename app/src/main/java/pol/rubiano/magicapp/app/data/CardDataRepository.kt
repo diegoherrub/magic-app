@@ -3,12 +3,11 @@ package pol.rubiano.magicapp.app.data
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.data.local.datasources.CardLocalDataSource
-import pol.rubiano.magicapp.app.data.remote.datasources.CardRemoteDataSource
+import pol.rubiano.magicapp.app.data.local.CardLocalDataSource
+import pol.rubiano.magicapp.app.data.remote.CardRemoteDataSource
 import pol.rubiano.magicapp.app.domain.ErrorApp
 import pol.rubiano.magicapp.app.domain.entities.Card
 import pol.rubiano.magicapp.app.domain.repositories.CardRepository

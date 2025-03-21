@@ -1,9 +1,7 @@
-package pol.rubiano.magicapp.app.data.remote.datasources
+package pol.rubiano.magicapp.app.data.remote
 
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.data.remote.extensions.apiCall
-import pol.rubiano.magicapp.app.data.remote.services.CardService
-import pol.rubiano.magicapp.app.data.remote.apimappers.toModel
 import pol.rubiano.magicapp.app.domain.entities.Card
 
 @Single

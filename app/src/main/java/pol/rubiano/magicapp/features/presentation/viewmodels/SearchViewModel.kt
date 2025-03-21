@@ -1,6 +1,5 @@
 package pol.rubiano.magicapp.features.presentation.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,10 +7,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
-import pol.rubiano.magicapp.app.data.remote.apimodels.CardApiModel
 import pol.rubiano.magicapp.app.domain.ErrorApp
 import pol.rubiano.magicapp.app.domain.entities.Card
-import pol.rubiano.magicapp.features.domain.Scryfall
 import pol.rubiano.magicapp.features.domain.usecases.GetSearchUseCase
 
 @KoinViewModel

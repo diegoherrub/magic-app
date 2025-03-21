@@ -2,9 +2,9 @@
 <com.faltenreich.skeletonlayout.SkeletonLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/random_card_skeleton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+<!--    android:id="@+id/random_card_skeleton"-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,40 +16,42 @@
 
             <ImageView
                 android:id="@+id/random_card_image"
+                style="@style/style_app_card_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/image_card_content_description"
                 android:scaleType="fitCenter"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/card_back" />
+                android:src="@drawable/card_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/flip_button"
                 style="?attr/floatingActionButtonSurfaceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/fab_flip"
                 android:layout_marginEnd="@dimen/dimen_l"
+                android:contentDescription="@string/fab_flip"
                 android:src="@drawable/flip"
-                app:layout_constraintTop_toTopOf="@id/random_card_image"
+                app:layout_constraintBottom_toBottomOf="@id/random_card_image"
                 app:layout_constraintEnd_toEndOf="@id/random_card_image"
-                app:layout_constraintBottom_toBottomOf="@id/random_card_image"/>
+                app:layout_constraintTop_toTopOf="@id/random_card_image"
+                android:visibility="gone"/>
 
             <!-- Name -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/name_title"
-                style="@style/AppTitleForCardMini"
+                style="@style/style_app_card_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/name_title"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/random_card_image" />
 
             <TextView
                 android:id="@+id/random_card_name"
-                style="@style/AppTextCard"
+                style="@style/style_app_card_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +62,7 @@
             <!-- Type Line -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/type_line_title"
-                style="@style/AppTitleForCardMini"
+                style="@style/style_app_card_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/type_line_title"
@@ -70,7 +72,7 @@
 
             <TextView
                 android:id="@+id/random_card_tipe_line"
-                style="@style/AppTextCard"
+                style="@style/style_app_card_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +83,7 @@
             <!-- Rarity -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/rarity_title"
-                style="@style/AppTitleForCardMini"
+                style="@style/style_app_card_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/rarity_title"
@@ -91,7 +93,7 @@
 
             <TextView
                 android:id="@+id/random_card_rarity"
-                style="@style/AppTextCard"
+                style="@style/style_app_card_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +104,7 @@
             <!-- Oracle Text -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/oracle_text_title"
-                style="@style/AppTitleForCardMini"
+                style="@style/style_app_card_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/oracle_text_title"
@@ -112,7 +114,7 @@
 
             <TextView
                 android:id="@+id/random_card_oracle_text"
-                style="@style/AppTextCard"
+                style="@style/style_app_card_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +125,7 @@
             <!-- Set Name -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/set_name_title"
-                style="@style/AppTitleForCardMini"
+                style="@style/style_app_card_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/set_name_title"
@@ -133,7 +135,7 @@
 
             <TextView
                 android:id="@+id/random_card_set_name"
-                style="@style/AppTextCard"
+                style="@style/style_app_card_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +146,7 @@
             <!-- Legalities -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/legalities_title"
-                style="@style/AppTitleForCard"
+                style="@style/style_app_card_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/legality_title"
@@ -154,7 +156,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/legalities_list"
-                style="@style/AppLegalitiesContainer"
+                style="@style/style_app_card_legalities_container"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"

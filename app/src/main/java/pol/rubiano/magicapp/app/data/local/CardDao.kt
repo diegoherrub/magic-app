@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.app.data.local.daos
+package pol.rubiano.magicapp.app.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.RoomWarnings
-import pol.rubiano.magicapp.app.data.local.entities.CardEntity
 import pol.rubiano.magicapp.app.domain.entities.Card
 
 @Dao

@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.features.data.remote
 
 import com.google.gson.annotations.SerializedName
-import pol.rubiano.magicapp.app.data.remote.apimodels.CardApiModel
+import pol.rubiano.magicapp.app.data.remote.CardApiModel
 
 data class ScryfallApiModel(
     @SerializedName("data") val data: List<CardApiModel>? = null,

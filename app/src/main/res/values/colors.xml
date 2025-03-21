@@ -3,6 +3,7 @@
     <color name="md_theme_primary_50">#B2725B29</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#C4A76D</color>
+    <color name="md_theme_primaryContainer_50">#B2C4A76D</color>
     <color name="md_theme_onPrimaryContainer">#503C0C</color>
     <color name="md_theme_secondary">#242525</color>
     <color name="md_theme_secondary_50">#B2242525</color>
