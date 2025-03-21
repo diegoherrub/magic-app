@@ -31,8 +31,9 @@
     <string name="set_name_title">Set</string>
 
     <!-- Legalities -->
-    <string name="legalities_title">Legalities</string>
-    <string name="legalities_description">Explore the different ways to play Magic, from Standard to Commander and beyond.</string>
+    <string name="legality_title">Legalities</string>
+    <string name="legality_description">Explore the different ways to play Magic, from Standard to Commander and beyond.</string>
+    <string name="image_legality_content_description">Legality Image</string>
     <string name="standard" translatable="false">Standard</string>
     <string name="future" translatable="false">Future</string>
     <string name="historic" translatable="false">Historic</string>

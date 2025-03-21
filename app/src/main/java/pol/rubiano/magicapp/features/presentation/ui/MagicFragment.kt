@@ -39,8 +39,8 @@ class MagicFragment : Fragment() {
             ),
             binding.legalitiesSection to AppSectionUI(
                 R.drawable.legalities,
-                getString(R.string.legalities_title),
-                getString(R.string.legalities_description),
+                getString(R.string.legality_title),
+                getString(R.string.legality_description),
                 requireContext()
             ),
         )
@@ -52,6 +52,9 @@ class MagicFragment : Fragment() {
     private fun bindSections() {
         binding.glossarySection.setOnClickListener {
             findNavController().navigate(MagicFragmentDirections.actionFromMagicToGlossary())
+        }
+        binding.legalitiesSection.setOnClickListener {
+            findNavController().navigate(MagicFragmentDirections.actionFromMagicToLegality())
         }
     }
 

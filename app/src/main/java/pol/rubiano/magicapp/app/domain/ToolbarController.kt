@@ -1,11 +1,14 @@
 package pol.rubiano.magicapp.app.domain
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.navOptions
 import com.google.android.material.appbar.MaterialToolbar
 import pol.rubiano.magicapp.R
+import androidx.core.view.size
+import androidx.core.view.get
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -45,9 +48,15 @@ class ToolbarController(
             toolbar.setNavigationOnClickListener { navController.navigateUp() }
         }
 
+        toolbar.navigationIcon?.setTint(ContextCompat.getColor(activity, R.color.md_theme_onPrimary))
+
         if (destination.id == R.id.randomCardFragment) {
             toolbar.menu.clear()
             toolbar.inflateMenu(R.menu.random_card_menu)
+            for (i in 0 until toolbar.menu.size) {
+                toolbar.menu[i].icon?.setTint(ContextCompat.getColor(activity, R.color.md_theme_onPrimary))
+            }
+
             toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_refresh -> {

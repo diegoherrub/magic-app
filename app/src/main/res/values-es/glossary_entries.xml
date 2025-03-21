@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Keywords -->
     <string name="deadtouch_term">Toque mortal</string>
     <string name="deadtouch_definition">Cualquier cantidad de daño que esta criatura inflija a otra es suficiente para destruirla.</string>
     <string name="deadtouch_image_description">Imagen de Toque mortal</string>
@@ -535,49 +534,4 @@
     <string name="start_your_engines_term">¡Arranquen los Motores!</string>
     <string name="start_your_engines_definition">Un efecto poderoso que activa todos los Vehículos o mecánicas similares simultáneamente.</string>
     <string name="start_your_engines_image_description">Imagen de ¡Arranquen los Motores!</string>
-    <!-- Legalities -->
-    <string name="standard_term">Estándar</string>
-    <string name="standard_definition">Formato rotativo con las colecciones más recientes (generalmente de los últimos dos años). Es el formato más común en torneos oficiales.</string>
-    <string name="future_term">Futuro</string>
-    <string name="future_definition">No es un formato oficial, pero podría referirse a pruebas experimentales con cartas o mecánicas aún no publicadas.</string>
-    <string name="historic_term">Histórico</string>
-    <string name="historic_definition">Formato digital exclusivo de MTG Arena. Incluye todas las cartas legales en Arena sin rotación.</string>
-    <string name="timeless_term">Atemporal</string>
-    <string name="timeless_definition">Formato digital en MTG Arena que permite jugar con todas las cartas disponibles en la plataforma, incluyendo las de Alchemy.</string>
-    <string name="gladiator_term">Gladiador</string>
-    <string name="gladiator_definition">Formato singleton (una sola copia por carta, excepto tierras básicas) exclusivo para MTG Arena, con mazos de 100 cartas sin comandante.</string>
-    <string name="pioneer_term">Pionero</string>
-    <string name="pioneer_definition">Formato no rotativo que incluye todas las cartas desde Return to Ravnica (2012) en adelante, sin las restricciones de Estándar.</string>
-    <string name="explorer_term">Explorador</string>
-    <string name="explorer_definition">Versión digital de Pioneer en MTG Arena. Solo usa cartas disponibles en la plataforma, con la intención de expandirse hasta igualar Pioneer.</string>
-    <string name="modern_term">Moderno</string>
-    <string name="modern_definition">Formato no rotativo que incluye todas las cartas desde Octava Edición (2003) en adelante. Es muy popular en torneos y tiene una gran variedad de estrategias.</string>
-    <string name="legacy_term">Legado</string>
-    <string name="legacy_definition">Formato eterno que permite todas las cartas de Magic (excepto prohibidas). Tiene listas de restricciones, pero permite combinaciones poderosas.</string>
-    <string name="pauper_term">Pauper</string>
-    <string name="pauper_definition">Formato donde solo se pueden jugar cartas comunes (common). Se juega tanto en físico como en digital (MTGO y Arena).</string>
-    <string name="vintage_term">Vintage</string>
-    <string name="vintage_definition">Formato eterno donde se permiten todas las cartas, incluso las más poderosas de la historia. Algunas están restringidas a una copia por mazo.</string>
-    <string name="penny_dreadful_term">Penny Dreadful</string>
-    <string name="penny_dreadful_definition">Formato no oficial de MTGO donde solo se pueden jugar cartas con un precio de 0.01 céntimo en el mercado digital.</string>
-    <string name="commander_term">Commander (EDH)</string>
-    <string name="commander_definition">Formato multijugador casual con mazos de 100 cartas y un comandante legendario. Solo se permite una copia de cada carta, excepto tierras básicas.</string>
-    <string name="oathbreaker_term">Oathbreaker</string>
-    <string name="oathbreaker_definition">Formato similar a Commander, pero con un mazo de 60 cartas y un "hechizo firma" asociado al Planeswalker comandante.</string>
-    <string name="standard_brawl_term">Brawl Estándar</string>
-    <string name="standard_brawl_definition">Variante de Brawl que solo permite cartas del formato Estándar.</string>
-    <string name="brawl_term">Brawl</string>
-    <string name="brawl_definition">Versión de Commander con mazos de 60 cartas y sin restricciones de multijugador. Se juega en físico y en MTG Arena.</string>
-    <string name="alchemy_term">Alquimia</string>
-    <string name="alchemy_definition">Formato digital en MTG Arena con cartas exclusivas y balanceadas dinámicamente. Similar a Histórico pero con cartas modificadas.</string>
-    <string name="pauper_commander_term">Commander Pauper (Pauper Commander / PDH)</string>
-    <string name="pauper_commander_definition">Versión de Commander donde todas las cartas deben ser comunes, excepto el comandante, que puede ser infrecuente (uncommon).</string>
-    <string name="duel_commander_term">Commander Duelo</string>
-    <string name="duel_commander_definition">Versión competitiva de Commander para 1v1 con reglas y lista de prohibidas específicas.</string>
-    <string name="old_school_term">Vieja Escuela</string>
-    <string name="old_school_definition">Formato con cartas de ediciones antiguas (generalmente 1993\-1994). Existen variaciones según las reglas usadas.</string>
-    <string name="premodern_term">Premoderno</string>
-    <string name="premodern_definition">Formato que permite cartas desde Cuarta Edición hasta M15, pero excluye Modern. Enfocado en estrategias clásicas.</string>
-    <string name="predh_term">PreDH</string>
-    <string name="predh_definition">No es un formato ampliamente reconocido, pero podría referirse a jugar Commander con reglas anteriores a ciertos cambios oficiales.</string>
 </resources>
