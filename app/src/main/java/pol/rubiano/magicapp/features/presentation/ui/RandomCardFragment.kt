@@ -16,7 +16,7 @@ import org.koin.android.ext.android.inject
 import pol.rubiano.magicapp.app.presentation.adapters.CardBindingHandler
 import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.domain.ErrorApp
-import pol.rubiano.magicapp.app.domain.entities.toLegalityItemList
+import pol.rubiano.magicapp.app.domain.toLegalityItemList
 import pol.rubiano.magicapp.app.presentation.error.ErrorAppUIFactory
 import pol.rubiano.magicapp.app.presentation.legalities.LegalitiesAdapter
 

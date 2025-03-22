@@ -9,8 +9,8 @@ import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.data.local.CardLocalDataSource
 import pol.rubiano.magicapp.app.data.remote.CardRemoteDataSource
 import pol.rubiano.magicapp.app.domain.ErrorApp
-import pol.rubiano.magicapp.app.domain.entities.Card
-import pol.rubiano.magicapp.app.domain.repositories.CardRepository
+import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.app.domain.CardRepository
 import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
@@ -31,7 +31,7 @@ class CardDataRepository(
             // TODO - comprobar si está en local
             local.saveCardToLocal(card)
 
-            card.imageNormal?.let { mainImageUrl ->
+            card.imageCrop?.let { mainImageUrl ->
                 val fileName = "${card.id}.png"
                 downloadAndSaveImage(context, mainImageUrl, fileName)
             }

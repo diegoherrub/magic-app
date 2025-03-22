@@ -8,8 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.ErrorApp
-import pol.rubiano.magicapp.app.domain.entities.Card
-import pol.rubiano.magicapp.features.domain.usecases.GetRandomCardUseCase
+import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.features.domain.GetRandomCardUseCase
 
 @KoinViewModel
 class RandomCardViewModel(

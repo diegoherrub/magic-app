@@ -26,7 +26,6 @@ class SearchFragment : Fragment() {
     private lateinit var spinnerCardType: Spinner
     private lateinit var spinnerCardColor: Spinner
     private lateinit var btnCardSearch: Button
-    // TODO - añadir error factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

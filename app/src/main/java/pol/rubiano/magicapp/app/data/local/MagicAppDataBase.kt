@@ -9,7 +9,7 @@ import pol.rubiano.magicapp.app.data.local.extensions.Converters
     entities = [
         CardEntity::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

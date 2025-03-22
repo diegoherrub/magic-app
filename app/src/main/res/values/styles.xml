@@ -10,13 +10,13 @@
 
     <!-- Glossary -->
     <style name="app_section_glossary_search" parent="Widget.AppCompat.SearchView">
-        <item name="iconTint">@color/md_theme_primary</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
+        <item name="iconTint">@color/md_theme_onPrimary</item>
         <item name="queryBackground">@null</item>
         <item name="android:clickable">true</item>
         <item name="android:iconifiedByDefault">false</item>
         <item name="android:queryHint">@string/search_title</item>
-        <item name="android:layout_marginTop">@dimen/dimen_s</item>
-        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
+        <item name="android:background">@color/md_theme_primaryContainer_50</item>
     </style>
 
     <!-- Bottom Navigation -->

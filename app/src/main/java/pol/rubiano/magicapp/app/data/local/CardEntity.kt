@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import pol.rubiano.magicapp.app.data.local.extensions.Converters
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 import java.util.Date
 
 const val CARDS_TABLE = "cards"
@@ -28,7 +28,7 @@ class CardEntity (
     @ColumnInfo(name = "produced_mana") val producedMana: List<String>?,
     @ColumnInfo(name = "released_at") val releasedAt: Date?,
     @ColumnInfo(name = "small") val imageSmall: String?,
-    @ColumnInfo(name = "normal") val imageNormal: String?,
+    @ColumnInfo(name = "crop") val imageCrop: String?,
     @ColumnInfo(name = "set") val set: String?,
     @ColumnInfo(name = "set_name") val setName: String?,
     @ColumnInfo(name = "set_type") val setType: String?,

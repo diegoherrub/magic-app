@@ -3,7 +3,7 @@ package pol.rubiano.magicapp.features.data.remote
 import android.util.Log
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.features.domain.Scryfall
-import pol.rubiano.magicapp.features.domain.repositories.ScryfallRepository
+import pol.rubiano.magicapp.features.domain.ScryfallRepository
 
 @Single
 class ScryfallDataRepository(
@@ -20,11 +20,11 @@ class ScryfallDataRepository(
         }
     }
 
-//    override suspend fun getNextPage(nextPageUrl: String): Result<Scryfall> {
-//        return try {
-//            remote.getNextPage(nextPageUrl)
-//        } catch (e: Exception) {
-//            Result.failure(e)
-//        }
-//    }
+    override suspend fun getNextPage(nextPageUrl: String): Result<Scryfall> {
+        return try {
+            remote.getNextPage(nextPageUrl)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

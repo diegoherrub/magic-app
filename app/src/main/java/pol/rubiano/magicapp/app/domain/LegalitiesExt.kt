@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.app.domain.entities
+package pol.rubiano.magicapp.app.domain
 
 fun Card.Legalities.toLegalityItemList(): List<LegalityItem?> {
     return listOf(

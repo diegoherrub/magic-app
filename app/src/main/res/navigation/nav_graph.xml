@@ -62,5 +62,8 @@
         <argument
             android:name="query"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_results_fragment_self"
+            app:destination="@+id/search_results_fragment"/>
     </fragment>
 </navigation>

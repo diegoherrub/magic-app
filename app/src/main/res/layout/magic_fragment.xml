@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/app_section_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,10 +8,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Legalities -->
+        <!-- Glossary Section -->
         <pol.rubiano.magicapp.app.presentation.sections.AppSectionView
-            android:id="@+id/legalities_section"
-            style="@style/app_section_list_item"
+            android:id="@+id/glossary_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -20,10 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- Glossary Section -->
+        <!-- Legalities -->
         <pol.rubiano.magicapp.app.presentation.sections.AppSectionView
-            android:id="@+id/glossary_section"
-            style="@style/app_section_list_item"
+            android:id="@+id/legalities_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

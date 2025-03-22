@@ -2,7 +2,7 @@ package pol.rubiano.magicapp.app.data.remote
 
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.data.remote.extensions.apiCall
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 
 @Single
 class CardRemoteDataSource(

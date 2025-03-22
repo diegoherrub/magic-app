@@ -27,7 +27,7 @@ data class CardApiModel(
 
     data class ImageUris(
         @SerializedName("small") val imageSmall: String?,
-        @SerializedName("normal") val imageNormal: String?
+        @SerializedName("border_crop") val imageCrop: String?
     )
 
     data class CardFace(

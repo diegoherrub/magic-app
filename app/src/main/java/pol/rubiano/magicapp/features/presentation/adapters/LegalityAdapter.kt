@@ -19,7 +19,7 @@ class LegalityAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.legality_item_entry_view, parent, false)
+            .inflate(R.layout.legality_item_view, parent, false)
         return EntryViewHolder(view)
     }
 

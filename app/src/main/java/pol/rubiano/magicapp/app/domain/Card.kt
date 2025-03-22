@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.app.domain.entities
+package pol.rubiano.magicapp.app.domain
 
 import java.util.Date
 
@@ -17,7 +17,7 @@ data class Card(
     val producedMana: List<String>?,
     val releasedAt: Date?,
     val imageSmall: String?,
-    val imageNormal: String?,
+    val imageCrop: String?,
     val set: String?,
     val setName: String?,
     val setType: String?,

@@ -10,8 +10,8 @@
         android:id="@+id/search_results_item_image"
         android:layout_width="100dp"
         android:layout_height="139dp"
-        android:src="@drawable/card_back"
         android:contentDescription="@string/image_card_content_description"
+        android:src="@drawable/card_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +24,7 @@
         app:layout_constraintStart_toEndOf="@+id/search_results_item_image"
         app:layout_constraintTop_toTopOf="@+id/search_results_item_image"
         tools:text="Card's Name" />
+
     <TextView
         android:id="@+id/search_results_item_card_name1"
         style="@style/CardType"
@@ -33,6 +34,7 @@
         app:layout_constraintStart_toEndOf="@+id/search_results_item_image"
         app:layout_constraintTop_toBottomOf="@+id/search_results_item_card_name"
         tools:text="Card's Name" />
+
     <TextView
         android:id="@+id/search_results_item_card_name2"
         style="@style/CardOracle"
@@ -42,6 +44,7 @@
         app:layout_constraintStart_toEndOf="@+id/search_results_item_image"
         app:layout_constraintTop_toBottomOf="@+id/search_results_item_card_name1"
         tools:text="Card's Name" />
+
     <TextView
         android:id="@+id/search_results_item_card_name3"
         style="@style/CardFlavour"

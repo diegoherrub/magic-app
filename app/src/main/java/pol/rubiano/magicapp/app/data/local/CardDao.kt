@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.RoomWarnings
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 
 @Dao
 interface CardDao {

@@ -2,7 +2,7 @@ package pol.rubiano.magicapp.app.presentation.adapters
 
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.data.mapManaSymbols
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 import pol.rubiano.magicapp.databinding.RandomCardFragmentBinding
 
 class CardBindingHandler {
@@ -41,7 +41,7 @@ class CardBindingHandler {
                 } ?: card.oracleText?.let {
                     randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
                 }
-                val imageUrl = face.faceImageNormal ?: card.imageNormal
+                val imageUrl = face.faceImageNormal ?: card.imageCrop
                 imageUrl?.let { randomCardImage.loadUrl(it) }
             } else {
                 randomCardName.text = card.name
@@ -49,7 +49,7 @@ class CardBindingHandler {
                 card.oracleText?.let {
                     randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
                 }
-                card.imageNormal?.let { randomCardImage.loadUrl(it) }
+                card.imageCrop?.let { randomCardImage.loadUrl(it) }
             }
         }
     }

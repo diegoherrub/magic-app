@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.app.data.remote
 
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -30,7 +30,7 @@ fun CardApiModel.toModel(): Card {
         producedMana = producedMana,
         releasedAt = parsedDate,
         imageSmall = imageUris?.imageSmall,
-        imageNormal = imageUris?.imageNormal,
+        imageCrop = imageUris?.imageCrop,
         set = set,
         setName = setName,
         setType = setType,
@@ -45,7 +45,7 @@ fun CardApiModel.toModel(): Card {
                 faceLoyalty = face.loyalty,
                 faceArtist = face.artist,
                 faceImageSmall = face.imageUris?.imageSmall,
-                faceImageNormal = face.imageUris?.imageNormal,
+                faceImageNormal = face.imageUris?.imageCrop,
                 faceCmc = face.cmc,
                 faceManaCost = face.manaCost,
                 faceProducedMana = face.producedMana
@@ -61,7 +61,7 @@ fun CardApiModel.toModel(): Card {
                 faceLoyalty = face.loyalty,
                 faceArtist = face.artist,
                 faceImageSmall = face.imageUris?.imageSmall,
-                faceImageNormal = face.imageUris?.imageNormal,
+                faceImageNormal = face.imageUris?.imageCrop,
                 faceCmc = face.cmc,
                 faceManaCost = face.manaCost,
                 faceProducedMana = face.producedMana

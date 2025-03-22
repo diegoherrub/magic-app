@@ -15,7 +15,6 @@ class ScryfallDataSource(
             if (response.isSuccessful) {
                 response.body()?.let { apiModel ->
                     Result.success(apiModel.toModel())
-                    //Result.success(apiModel)
                 } ?: Result.failure(Exception("Respuesta vacía"))
             } else {
                 Result.failure(Exception("Error code: ${response.code()}"))
@@ -25,18 +24,18 @@ class ScryfallDataSource(
         }
     }
 
-    //suspend fun getNextPage(nextPageUrl: String): Result<Scryfall> {
-    //    return try {
-    //        val response = service.getNextPage(nextPageUrl)
-    //        if (response.isSuccessful) {
-    //            response.body()?.let {
-    //                Result.success(it)
-    //            } ?: Result.failure(Exception("Respuesta vacía"))
-    //        } else {
-    //            Result.failure(Exception("Error code: ${response.code()}"))
-    //        }
-    //    } catch (e: Exception) {
-    //        Result.failure(e)
-    //    }
-    //}
+    suspend fun getNextPage(nextPageUrl: String): Result<Scryfall> {
+        return try {
+            val response = service.getNextPage(nextPageUrl)
+            if (response.isSuccessful) {
+                response.body()?.let { apiModel ->
+                    Result.success(apiModel.toModel())
+                } ?: Result.failure(Exception("Respuesta vacía"))
+            } else {
+                Result.failure(Exception("Error code: ${response.code()}"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

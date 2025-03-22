@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import pol.rubiano.magicapp.app.presentation.styckyheader.StickyHeaderDecoration
 import pol.rubiano.magicapp.databinding.GlossaryFragmentBinding
 import pol.rubiano.magicapp.features.data.local.groupGlossaryTerms
 import pol.rubiano.magicapp.features.data.local.loadGlossaryFromXml
@@ -32,6 +32,10 @@ class GlossaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerViewGlossary.layoutManager = LinearLayoutManager(context)
 
+        binding.recyclerViewGlossary.addItemDecoration(
+            DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        )
+
         // Cargamos y agrupamos los términos
         val glossaryTerms = loadGlossaryFromXml(requireContext())
         val groupedItems = groupGlossaryTerms(glossaryTerms.sortedBy { it.term })
@@ -53,7 +57,7 @@ class GlossaryFragment : Fragment() {
             }
         })
 
-        binding.recyclerViewGlossary.addItemDecoration(StickyHeaderDecoration(adapter))
+        binding.recyclerViewGlossary.adapter = adapter
     }
 
     override fun onDestroyView() {

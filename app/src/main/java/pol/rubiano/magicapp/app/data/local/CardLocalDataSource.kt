@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.app.data.local
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 
 @Single
 class CardLocalDataSource(

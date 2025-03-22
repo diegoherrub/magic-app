@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import pol.rubiano.magicapp.databinding.LegalityFragmentBinding
 import pol.rubiano.magicapp.features.data.local.loadLegalityFromXml
@@ -28,7 +29,10 @@ class LegalityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.appRecyclerViewLegalities.layoutManager = LinearLayoutManager(context)
 
-        // Cargamos y ordenamos los términos
+        binding.appRecyclerViewLegalities.addItemDecoration(
+            DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        )
+
         val legalityTerms = loadLegalityFromXml(requireContext())
         val sortedTerms = legalityTerms.sortedBy { it.term }
 

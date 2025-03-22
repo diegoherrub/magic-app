@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.app.data.local
 
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 
 fun Card.toEntity() : CardEntity {
     return CardEntity(
@@ -18,7 +18,7 @@ fun Card.toEntity() : CardEntity {
         this.producedMana,
         this.releasedAt,
         this.imageSmall,
-        this.imageNormal,
+        this.imageCrop,
         this.set,
         this.setName,
         this.setType,

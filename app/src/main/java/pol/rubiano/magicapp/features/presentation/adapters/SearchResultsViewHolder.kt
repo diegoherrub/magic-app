@@ -3,10 +3,9 @@ package pol.rubiano.magicapp.features.presentation.adapters
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.delay
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.databinding.SearchResultsItemBinding
-import pol.rubiano.magicapp.app.domain.entities.Card
+import pol.rubiano.magicapp.app.domain.Card
 
 class SearchResultsViewHolder (
     val view: View

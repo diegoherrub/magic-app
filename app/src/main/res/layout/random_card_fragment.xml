@@ -31,12 +31,14 @@
                 style="?attr/floatingActionButtonSurfaceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dimen_l"
                 android:contentDescription="@string/fab_flip"
                 android:src="@drawable/flip"
                 app:layout_constraintBottom_toBottomOf="@id/random_card_image"
                 app:layout_constraintEnd_toEndOf="@id/random_card_image"
                 app:layout_constraintTop_toTopOf="@id/random_card_image"
+                app:layout_constraintStart_toStartOf="@id/random_card_image"
+                app:layout_constraintVertical_bias="0.47"
+                app:layout_constraintHorizontal_bias="0.86"
                 android:visibility="gone"/>
 
             <!-- Name -->
