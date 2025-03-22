@@ -21,37 +21,41 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_results_item_image"
         app:layout_constraintTop_toTopOf="@+id/search_results_item_image"
-        tools:text="Card's Name" />
+        tools:text="Name" />
 
     <TextView
-        android:id="@+id/search_results_item_card_name1"
+        android:id="@+id/search_results_item_card_type_line"
         style="@style/CardType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_results_item_image"
         app:layout_constraintTop_toBottomOf="@+id/search_results_item_card_name"
-        tools:text="Card's Name" />
+        tools:text="Type line" />
 
     <TextView
-        android:id="@+id/search_results_item_card_name2"
+        android:id="@+id/search_results_item_card_rarity_mana_cost"
         style="@style/CardOracle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_results_item_image"
-        app:layout_constraintTop_toBottomOf="@+id/search_results_item_card_name1"
-        tools:text="Card's Name" />
+        app:layout_constraintTop_toBottomOf="@+id/search_results_item_card_type_line"
+        tools:text="Mana Cost" />
 
     <TextView
-        android:id="@+id/search_results_item_card_name3"
-        style="@style/CardFlavour"
+        android:id="@+id/search_results_item_card_oracle"
+        style="@style/CardOracle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_results_item_image"
-        app:layout_constraintTop_toBottomOf="@+id/search_results_item_card_name2"
-        tools:text="Card's Name" />
+        app:layout_constraintTop_toBottomOf="@+id/search_results_item_card_rarity_mana_cost"
+        tools:text="Oracle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

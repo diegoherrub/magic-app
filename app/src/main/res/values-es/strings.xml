@@ -21,11 +21,15 @@
     <string name="fab_flip">Girar carta</string>
     <string name="image_section_content_description">Image de sección</string>
     <string name="glossary_title">Glosario</string>
-    <string name="glossary_description">Aprende el significado de los términos más comunes en el universo de Magic: The Gathering.</string>
+    <string name="glossary_content">Aprende el significado de los términos más comunes en el universo de Magic: The Gathering.</string>
     <string name="image_glossary_content_description">Imagen de Glosario</string>
     <string name="label_select_colors">Selecciona los colores</string>
     <string name="button_select_colors">Seleccionar colores</string>
     <string name="search_results_title">Resultados de la búsqueda</string>
-    <string name="legality_description">ChatGPT Plus Explora las diferentes formas de jugar a Magic, desde Estándar hasta Commander y más allá.</string>
+    <string name="legality_content">ChatGPT Plus Explora las diferentes formas de jugar a Magic, desde Estándar hasta Commander y más allá.</string>
     <string name="image_legality_content_description">Imagen Formato Legal</string>
+    <string name="previous_page">Página anterior</string>
+    <string name="next_page">Página siguiente</string>
+    <string name="pagination_bar">Barra de paginación</string>
+    <string name="search_results_add">Agregar...</string>
 </resources>

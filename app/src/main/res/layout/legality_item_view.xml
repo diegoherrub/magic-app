@@ -34,5 +34,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/app_legalities_item_term"
         app:layout_constraintTop_toBottomOf="@id/app_legalities_item_term"
-        tools:text="@string/legality_description" />
+        tools:text="@string/legality_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

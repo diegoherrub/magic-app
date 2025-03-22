@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="zero_dp">0dp</dimen>
     <dimen name="dimen_xxs">1dp</dimen>
     <dimen name="dimen_xs">4dp</dimen>
     <dimen name="dimen_s">8dp</dimen>
@@ -8,9 +9,11 @@
     <dimen name="dimen_l">32dp</dimen>
     <dimen name="dimen_xl">64dp</dimen>
 
+    <dimen name="zero_sp">0sp</dimen>
     <dimen name="size_xxs">10sp</dimen>
     <dimen name="size_xs">12sp</dimen>
     <dimen name="size_s">14sp</dimen>
+    <dimen name="size_sm">14sp</dimen>
     <dimen name="size_m">16sp</dimen>
     <dimen name="size_ml">18sp</dimen>
     <dimen name="size_l">20sp</dimen>
@@ -18,4 +21,6 @@
 
     <dimen name="section_icon_s">54dp</dimen>
     <dimen name="section_icon_m">64dp</dimen>
+
+    <dimen name="bottom_bar_height">56dp</dimen>
 </resources>

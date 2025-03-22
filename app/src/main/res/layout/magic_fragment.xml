@@ -8,24 +8,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Glossary Section -->
-        <pol.rubiano.magicapp.app.presentation.sections.AppSectionView
-            android:id="@+id/glossary_section"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/glossary"
+            layout="@layout/view_common_section_list_type_item" />
 
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <!-- Legalities -->
-        <pol.rubiano.magicapp.app.presentation.sections.AppSectionView
-            android:id="@+id/legalities_section"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/legalities"
+            layout="@layout/view_common_section_list_type_item" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

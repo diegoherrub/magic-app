@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.app.domain
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
@@ -9,10 +10,12 @@ import com.google.android.material.appbar.MaterialToolbar
 import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ToolbarController(
     private val activity: AppCompatActivity,
     private val toolbar: MaterialToolbar,
+    private val bottomNav: BottomNavigationView,
     private val navController: NavController
 ) {
 
@@ -47,6 +50,11 @@ class ToolbarController(
             activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
             toolbar.setNavigationOnClickListener { navController.navigateUp() }
         }
+        if (destination.id in topLevelDestinations) {
+            bottomNav.visibility = View.VISIBLE
+        } else {
+            bottomNav.visibility = View.GONE
+        }
 
         toolbar.navigationIcon?.setTint(ContextCompat.getColor(activity, R.color.md_theme_onPrimary))
 
@@ -69,6 +77,7 @@ class ToolbarController(
                     else -> false
                 }
             }
+
         } else {
             toolbar.menu.clear()
             toolbar.setOnMenuItemClickListener(null)

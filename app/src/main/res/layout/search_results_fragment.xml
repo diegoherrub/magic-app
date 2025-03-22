@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/tv_page_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Page 1/X" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/results_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_next_page"
+        android:contentDescription="@string/search_results_title"
+        app:layout_constraintBottom_toTopOf="@id/app_search_results_bottom_buttons_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_page_info"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/search_results_item" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_next_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Next Page"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/app_search_results_bottom_buttons_container"
+        style="@style/style_app_search_results_bottom_bar"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/bottom_bar_height"
+        android:contentDescription="@string/pagination_bar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_previous_page"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/zero_dp"
+            android:contentDescription="@string/previous_page"
+            app:icon="@drawable/navigate_before"
+            app:iconGravity="textStart"
+            app:iconSize="@dimen/dimen_l"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_next_page"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/zero_dp"
+            android:contentDescription="@string/next_page"
+            app:icon="@drawable/navigate_next"
+            app:iconGravity="textEnd"
+            app:iconSize="@dimen/dimen_l"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

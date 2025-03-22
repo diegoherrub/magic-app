@@ -27,19 +27,19 @@
     </style>
     <style name="app_font_card_name">
         <item name="android:fontFamily">@font/card_bold</item>
-        <item name="android:textSize">@dimen/size_ml</item>
+        <item name="android:textSize">@dimen/size_sm</item>
     </style>
     <style name="CardType">
         <item name="android:fontFamily">@font/card_semibold</item>
-        <item name="android:textSize">@dimen/size_m</item>
+        <item name="android:textSize">@dimen/size_sm</item>
     </style>
     <style name="CardOracle">
         <item name="android:fontFamily">@font/card_regular</item>
-        <item name="android:textSize">@dimen/size_m</item>
+        <item name="android:textSize">@dimen/size_sm</item>
     </style>
     <style name="CardFlavour">
         <item name="android:fontFamily">@font/card_italic</item>
-        <item name="android:textSize">@dimen/size_s</item>
+        <item name="android:textSize">@dimen/size_sm</item>
     </style>
 
     <!-- Random Card -->
@@ -54,4 +54,5 @@
         <item name="android:textSize">@dimen/size_m</item>
         <item name="android:lineHeight">@dimen/size_l</item>
     </style>
+
 </resources>

@@ -23,6 +23,6 @@ class MainActivity : AppCompatActivity() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setupWithNavController(navController)
 
-        ToolbarController(this, toolbar, navController)
+        ToolbarController(this, toolbar, bottomNav, navController)
     }
 }

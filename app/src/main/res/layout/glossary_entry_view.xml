@@ -34,5 +34,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tvTerm"
         app:layout_constraintTop_toBottomOf="@id/tvTerm"
-        tools:text="@string/glossary_description" />
+        tools:text="@string/glossary_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
