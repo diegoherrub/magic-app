@@ -4,15 +4,14 @@
         <style name="AppBarLayoutStyle" parent="Widget.Material3.Toolbar">
             <item name="android:elevation">0dp</item>
             <item name="titleTextAppearance">@style/app_tool_bar_title</item>
-            <item name="titleCentered">true</item>
             <item name="android:background">@color/md_theme_primary</item>
         </style>
 
         <!-- Glossary -->
-        <style name="app_section_glossary_search" parent="Widget.AppCompat.SearchView">
-            <item name="android:layout_marginBottom">@dimen/dimen_m</item>
+        <style name="app_section_glossary_search">
+            <item name="android:paddingTop">@dimen/dimen_sm</item>
+            <item name="android:paddingBottom">@dimen/dimen_m</item>
             <item name="iconTint">@color/md_theme_onPrimary</item>
-            <item name="queryBackground">@null</item>
             <item name="android:clickable">true</item>
             <item name="android:iconifiedByDefault">false</item>
             <item name="android:queryHint">@string/search_title</item>

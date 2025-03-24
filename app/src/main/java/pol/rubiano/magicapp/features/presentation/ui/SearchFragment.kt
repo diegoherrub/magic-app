@@ -72,9 +72,6 @@ class SearchFragment : Fragment() {
         if (selectedColor.isNotEmpty()) queryParts.add("c:$selectedColor")
         val query = queryParts.joinToString(" ")
 
-        Log.d("@POL", "query del buscador $query")
-
-        // Navegar a ResultsFragment pasando la query como argumento
         val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(query)
         findNavController().navigate(action)
     }

@@ -164,7 +164,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/legalities_title"
-                tools:listitem="@layout/legalities_item_view" />
+                tools:listitem="@layout/cardlegalities_item_view" />
 
             <pol.rubiano.magicapp.app.presentation.error.AppErrorView
                 android:id="@+id/errorApp"

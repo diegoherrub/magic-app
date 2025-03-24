@@ -36,9 +36,9 @@
     <string name="intimidate_term">Intimidate</string>
     <string name="intimidate_definition">This creature can\'t be blocked except by artifact creatures and/or creatures that share a color with it.</string>
     <string name="intimidate_image_description">Image of Intimidate</string>
-    <string name="landwalk_term">[Land]walk</string>
+    <string name="landwalk_term">Landwalk</string>
     <string name="landwalk_definition">This creature can\'t be blocked as long as defending player controls a land of the specified type.</string>
-    <string name="landwalk_image_description">Image of [Land]walk</string>
+    <string name="landwalk_image_description">Image of Landwalk</string>
     <string name="lifelink_term">Lifelink</string>
     <string name="lifelink_definition">Damage dealt by this creature also causes you to gain that much life.</string>
     <string name="lifelink_image_description">Image of Lifelink</string>

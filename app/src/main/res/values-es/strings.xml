@@ -20,9 +20,9 @@
     <string name="cd_refresh">Recarga el contenido con una nueva carta aleatoria</string>
     <string name="fab_flip">Girar carta</string>
     <string name="image_section_content_description">Image de sección</string>
-    <string name="glossary_title">Glosario</string>
-    <string name="glossary_content">Aprende el significado de los términos más comunes en el universo de Magic: The Gathering.</string>
-    <string name="image_glossary_content_description">Imagen de Glosario</string>
+    <string name="keyword_title">Palabras clave</string>
+    <string name="keyword_content">Aprende el significado de las palabras clave más del universo de Magic: The Gathering.</string>
+    <string name="image_keyword_content_description">Imagen de Palabras clave</string>
     <string name="label_select_colors">Selecciona los colores</string>
     <string name="button_select_colors">Seleccionar colores</string>
     <string name="search_results_title">Resultados de la búsqueda</string>

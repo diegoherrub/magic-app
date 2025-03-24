@@ -10,6 +10,7 @@
         android:id="@+id/view_common_section_list_type_icon"
         style="@style/style_view_common_section_list_type_icon"
         android:contentDescription="@string/image_section_content_description"
+        android:src="@drawable/magic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/magic" />
@@ -29,11 +30,4 @@
         app:layout_constraintStart_toStartOf="@id/view_common_section_list_type_title"
         app:layout_constraintTop_toBottomOf="@id/view_common_section_list_type_title"
         tools:text="@string/lorem_small" />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

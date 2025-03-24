@@ -7,37 +7,37 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import pol.rubiano.magicapp.databinding.LegalityFragmentBinding
-import pol.rubiano.magicapp.features.data.local.loadLegalityFromXml
-import pol.rubiano.magicapp.features.presentation.adapters.LegalityAdapter
+import pol.rubiano.magicapp.databinding.LegalitiesFragmentBinding
+import pol.rubiano.magicapp.features.data.local.loadLegalitiesFromXml
+import pol.rubiano.magicapp.features.presentation.adapters.LegalitiesAdapter
 
-class LegalityFragment : Fragment() {
-    private var _binding: LegalityFragmentBinding? = null
+class LegalitiesFragment : Fragment() {
+    private var _binding: LegalitiesFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: LegalityAdapter
+    private lateinit var adapter: LegalitiesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = LegalityFragmentBinding.inflate(inflater, container, false)
+        _binding = LegalitiesFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.appRecyclerViewLegalities.layoutManager = LinearLayoutManager(context)
 
-        binding.appRecyclerViewLegalities.addItemDecoration(
+        binding.recyclerViewLegalities.layoutManager = LinearLayoutManager(context)
+        binding.recyclerViewLegalities.addItemDecoration(
             DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         )
 
-        val legalityTerms = loadLegalityFromXml(requireContext())
-        val sortedTerms = legalityTerms.sortedBy { it.term }
+        val legalities = loadLegalitiesFromXml(requireContext())
+        adapter = LegalitiesAdapter()
+        binding.recyclerViewLegalities.adapter = adapter
 
-        adapter = LegalityAdapter(sortedTerms)
-        binding.appRecyclerViewLegalities.adapter = adapter
+        adapter.submitList(legalities)
     }
 
     override fun onDestroyView() {

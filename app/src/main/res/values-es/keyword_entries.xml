@@ -36,9 +36,9 @@
     <string name="intimidate_term">Intimidar</string>
     <string name="intimidate_definition">Esta criatura no puede ser bloqueada excepto por criaturas artefacto y/o criaturas que compartan un color con ella.</string>
     <string name="intimidate_image_description">Imagen de Intimidar</string>
-    <string name="landwalk_term">Camina[tierra]</string>
+    <string name="landwalk_term">Caminatierra</string>
     <string name="landwalk_definition">Esta criatura no puede ser bloqueada mientras el jugador defensor controle una tierra del tipo especificado.</string>
-    <string name="landwalk_image_description">Imagen de Camina[tierra]</string>
+    <string name="landwalk_image_description">Imagen de Caminatierra</string>
     <string name="lifelink_term">Vínculo vital</string>
     <string name="lifelink_definition">El daño infligido por esta criatura también te hace ganar esa cantidad de vida.</string>
     <string name="lifelink_image_description">Imagen de Vínculo vital</string>

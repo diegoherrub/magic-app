@@ -46,12 +46,15 @@ class ToolbarController(
         if (destination.id in topLevelDestinations) {
             activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
             toolbar.setNavigationOnClickListener(null)
+            toolbar.isTitleCentered = true
         } else {
             activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
             toolbar.setNavigationOnClickListener { navController.navigateUp() }
+            toolbar.isTitleCentered = false
         }
         if (destination.id in topLevelDestinations) {
             bottomNav.visibility = View.VISIBLE
+
         } else {
             bottomNav.visibility = View.GONE
         }

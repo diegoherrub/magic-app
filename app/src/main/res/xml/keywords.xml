@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyword>
+    <entry
+        image="@drawable/dead_touch"
+        term="@string/deadtouch_term"
+        information="@string/deadtouch_definition" />
+    <entry
+        image="@drawable/defender"
+        term="@string/defender_term"
+        information="@string/defender_definition" />
+    <entry
+        image="@drawable/double_strike"
+        term="@string/double_strike_term"
+        information="@string/double_strike_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/enchant_term"
+        information="@string/enchant_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/equip_term"
+        information="@string/equip_definition" />
+    <entry
+        image="@drawable/first_strike"
+        term="@string/first_strike_term"
+        information="@string/first_strike_definition" />
+    <entry
+        image="@drawable/flash"
+        term="@string/flash_term"
+        information="@string/flash_definition" />
+    <entry
+        image="@drawable/flying"
+        term="@string/flying_term"
+        information="@string/flying_definition" />
+    <entry
+        image="@drawable/haste"
+        term="@string/haste_term"
+        information="@string/haste_definition" />
+    <entry
+        image="@drawable/hexproof"
+        term="@string/hexproof_term"
+        information="@string/hexproof_definition" />
+    <entry
+        image="@drawable/indestructible"
+        term="@string/indestructible_term"
+        information="@string/indestructible_definition" />
+    <entry
+        image="@drawable/intimidate"
+        term="@string/intimidate_term"
+        information="@string/intimidate_definition" />
+    <entry
+        image="@drawable/landwalk"
+        term="@string/landwalk_term"
+        information="@string/landwalk_definition" />
+    <entry
+        image="@drawable/lifelink"
+        term="@string/lifelink_term"
+        information="@string/lifelink_definition" />
+    <entry
+        image="@drawable/protection"
+        term="@string/protection_term"
+        information="@string/protection_definition" />
+    <entry
+        image="@drawable/reach"
+        term="@string/reach_term"
+        information="@string/reach_definition" />
+    <entry
+        image="@drawable/shroud"
+        term="@string/shroud_term"
+        information="@string/shroud_definition" />
+    <entry
+        image="@drawable/trample"
+        term="@string/trample_term"
+        information="@string/trample_definition" />
+    <entry
+        image="@drawable/vigilance"
+        term="@string/vigilance_term"
+        information="@string/vigilance_definition" />
+    <entry
+        image="@drawable/ward"
+        term="@string/ward_term"
+        information="@string/ward_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/banding_term"
+        information="@string/banding_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/rampage_term"
+        information="@string/rampage_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/cumulative_upkeep_term"
+        information="@string/cumulative_upkeep_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/flanking_term"
+        information="@string/flanking_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/phasing_term"
+        information="@string/phasing_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/buyback_term"
+        information="@string/buyback_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/shadow_term"
+        information="@string/shadow_definition" />
+    <entry
+        image="@drawable/cycling"
+        term="@string/cycling_term"
+        information="@string/cycling_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/echo_term"
+        information="@string/echo_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/horsemanship_term"
+        information="@string/horsemanship_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/fading_term"
+        information="@string/fading_definition" />
+    <entry
+        image="@drawable/kicker"
+        term="@string/kicker_term"
+        information="@string/kicker_definition" />
+    <entry
+        image="@drawable/flashback"
+        term="@string/flashback_term"
+        information="@string/flashback_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/madness_term"
+        information="@string/madness_definition" />
+    <entry
+        image="@drawable/fear"
+        term="@string/fear_term"
+        information="@string/fear_definition" />
+    <entry
+        image="@drawable/morph"
+        term="@string/morph_term"
+        information="@string/morph_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/amplify_term"
+        information="@string/amplify_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/provoke_term"
+        information="@string/provoke_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/storm_term"
+        information="@string/storm_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/affinity_term"
+        information="@string/affinity_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/entwine_term"
+        information="@string/entwine_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/modular_term"
+        information="@string/modular_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/sunburst_term"
+        information="@string/sunburst_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/bushido_term"
+        information="@string/bushido_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/soulshift_term"
+        information="@string/soulshift_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/splice_term"
+        information="@string/splice_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/offering_term"
+        information="@string/offering_definition" />
+    <entry
+        image="@drawable/ninjutsu"
+        term="@string/ninjutsu_term"
+        information="@string/ninjutsu_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/epic_term"
+        information="@string/epic_definition" />
+    <entry
+        image="@drawable/convoke"
+        term="@string/convoke_term"
+        information="@string/convoke_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/dredge_term"
+        information="@string/dredge_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/transmute_term"
+        information="@string/transmute_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/bloodthirst_term"
+        information="@string/bloodthirst_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/haunt_term"
+        information="@string/haunt_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/replicate_term"
+        information="@string/replicate_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/forecast_term"
+        information="@string/forecast_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/graft_term"
+        information="@string/graft_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/recover_term"
+        information="@string/recover_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/ripple_term"
+        information="@string/ripple_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/split_second_term"
+        information="@string/split_second_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/suspend_term"
+        information="@string/suspend_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/vanishing_term"
+        information="@string/vanishing_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/absorb_term"
+        information="@string/absorb_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/aura_swap_term"
+        information="@string/aura_swap_definition" />
+    <entry
+        image="@drawable/delve"
+        term="@string/delve_term"
+        information="@string/delve_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/fortify_term"
+        information="@string/fortify_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/frenzy_term"
+        information="@string/frenzy_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/gravestorm_term"
+        information="@string/gravestorm_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/poisonous_term"
+        information="@string/poisonous_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/transfigure_term"
+        information="@string/transfigure_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/champion_term"
+        information="@string/champion_definition" />
+    <entry
+        image="@drawable/changeling"
+        term="@string/changeling_term"
+        information="@string/changeling_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/evoke_term"
+        information="@string/evoke_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/cascade_term"
+        information="@string/cascade_definition" />
+    <entry
+        image="@drawable/hideaway"
+        term="@string/hideaway_term"
+        information="@string/hideaway_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/prowl_term"
+        information="@string/prowl_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/reinforce_term"
+        information="@string/reinforce_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/conspire_term"
+        information="@string/conspire_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/persist_term"
+        information="@string/persist_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/wither_term"
+        information="@string/wither_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/retrace_term"
+        information="@string/retrace_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/devour_term"
+        information="@string/devour_definition" />
+    <entry
+        image="@drawable/exalted"
+        term="@string/exalted_term"
+        information="@string/exalted_definition" />
+    <entry
+        image="@drawable/unearth"
+        term="@string/unearth_term"
+        information="@string/unearth_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/annihilator_term"
+        information="@string/annihilator_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/level_up_term"
+        information="@string/level_up_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/rebound_term"
+        information="@string/rebound_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/infect_term"
+        information="@string/infect_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/battle_cry_term"
+        information="@string/battle_cry_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/living_weapon_term"
+        information="@string/living_weapon_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/undying_term"
+        information="@string/undying_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/miracle_term"
+        information="@string/miracle_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/soulbond_term"
+        information="@string/soulbond_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/overload_term"
+        information="@string/overload_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/scavenge_term"
+        information="@string/scavenge_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/unleash_term"
+        information="@string/unleash_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/cipher_term"
+        information="@string/cipher_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/evolve_term"
+        information="@string/evolve_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/extort_term"
+        information="@string/extort_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/fuse_term"
+        information="@string/fuse_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/bestow_term"
+        information="@string/bestow_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/tribute_term"
+        information="@string/tribute_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/dethrone_term"
+        information="@string/dethrone_definition" />
+    <entry
+        image="@drawable/outlast"
+        term="@string/outlast_term"
+        information="@string/outlast_definition" />
+    <entry
+        image="@drawable/prowess"
+        term="@string/prowess_term"
+        information="@string/prowess_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/dash_term"
+        information="@string/dash_definition" />
+    <entry
+        image="@drawable/exploit"
+        term="@string/exploit_term"
+        information="@string/exploit_definition" />
+    <entry
+        image="@drawable/menace"
+        term="@string/menace_term"
+        information="@string/menace_definition" />
+    <entry
+        image="@drawable/renown"
+        term="@string/renown_term"
+        information="@string/renown_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/awaken_term"
+        information="@string/awaken_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/devoid_term"
+        information="@string/devoid_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/ingest_term"
+        information="@string/ingest_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/myriad_term"
+        information="@string/myriad_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/surge_term"
+        information="@string/surge_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/skulk_term"
+        information="@string/skulk_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/emerge_term"
+        information="@string/emerge_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/escalate_term"
+        information="@string/escalate_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/melee_term"
+        information="@string/melee_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/crew_term"
+        information="@string/crew_definition" />
+    <entry
+        image="@drawable/fabricate"
+        term="@string/fabricate_term"
+        information="@string/fabricate_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/partner_term"
+        information="@string/partner_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/undaunted_term"
+        information="@string/undaunted_definition" />
+    <entry
+        image="@drawable/improvise"
+        term="@string/improvise_term"
+        information="@string/improvise_definition" />
+    <entry
+        image="@drawable/aftermath"
+        term="@string/aftermath_term"
+        information="@string/aftermath_definition" />
+    <entry
+        image="@drawable/embalm"
+        term="@string/embalm_term"
+        information="@string/embalm_definition" />
+    <entry
+        image="@drawable/eternalize"
+        term="@string/eternalize_term"
+        information="@string/eternalize_definition" />
+    <entry
+        image="@drawable/afflict"
+        term="@string/afflict_term"
+        information="@string/afflict_definition" />
+    <entry
+        image="@drawable/ascend"
+        term="@string/ascend_term"
+        information="@string/ascend_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/assist_term"
+        information="@string/assist_definition" />
+    <entry
+        image="@drawable/jump_start"
+        term="@string/jump_start_term"
+        information="@string/jump_start_definition" />
+    <entry
+        image="@drawable/mentor"
+        term="@string/mentor_term"
+        information="@string/mentor_definition" />
+    <entry
+        image="@drawable/afterlife"
+        term="@string/afterlife_term"
+        information="@string/afterlife_definition" />
+    <entry
+        image="@drawable/riot"
+        term="@string/riot_term"
+        information="@string/riot_definition" />
+    <entry
+        image="@drawable/spectacle"
+        term="@string/spectacle_term"
+        information="@string/spectacle_definition" />
+    <entry
+        image="@drawable/escape"
+        term="@string/escape_term"
+        information="@string/escape_definition" />
+    <entry
+        image="@drawable/companion"
+        term="@string/companion_term"
+        information="@string/companion_definition" />
+    <entry
+        image="@drawable/mutate"
+        term="@string/mutate_term"
+        information="@string/mutate_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/encore_term"
+        information="@string/encore_definition" />
+    <entry
+        image="@drawable/boast"
+        term="@string/boast_term"
+        information="@string/boast_definition" />
+    <entry
+        image="@drawable/foretell"
+        term="@string/foretell_term"
+        information="@string/foretell_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/demonstrate_term"
+        information="@string/demonstrate_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/daybound_nightbound_term"
+        information="@string/daybound_nightbound_definition" />
+    <entry
+        image="@drawable/disturb"
+        term="@string/disturb_term"
+        information="@string/disturb_definition" />
+    <entry
+        image="@drawable/decayed"
+        term="@string/decayed_term"
+        information="@string/decayed_definition" />
+    <entry
+        image="@drawable/cleave"
+        term="@string/cleave_term"
+        information="@string/cleave_definition" />
+    <entry
+        image="@drawable/training"
+        term="@string/training_term"
+        information="@string/training_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/compleated_term"
+        information="@string/compleated_definition" />
+    <entry
+        image="@drawable/reconfigure"
+        term="@string/reconfigure_term"
+        information="@string/reconfigure_definition" />
+    <entry
+        image="@drawable/blitz"
+        term="@string/blitz_term"
+        information="@string/blitz_definition" />
+    <entry
+        image="@drawable/casualty"
+        term="@string/casualty_term"
+        information="@string/casualty_definition" />
+    <entry
+        image="@drawable/enlist"
+        term="@string/enlist_term"
+        information="@string/enlist_definition" />
+    <entry
+        image="@drawable/read_ahead"
+        term="@string/read_ahead_term"
+        information="@string/read_ahead_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/ravenous_term"
+        information="@string/ravenous_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/squad_term"
+        information="@string/squad_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/space_sculptor_term"
+        information="@string/space_sculptor_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/visit_term"
+        information="@string/visit_definition" />
+    <entry
+        image="@drawable/prototype"
+        term="@string/prototype_term"
+        information="@string/prototype_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/living_metal_term"
+        information="@string/living_metal_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/more_than_meets_the_eye_term"
+        information="@string/more_than_meets_the_eye_definition" />
+    <entry
+        image="@drawable/for_mirrodin"
+        term="@string/for_mirrodin_term"
+        information="@string/for_mirrodin_definition" />
+    <entry
+        image="@drawable/toxic"
+        term="@string/toxic_term"
+        information="@string/toxic_definition" />
+    <entry
+        image="@drawable/backup"
+        term="@string/backup_term"
+        information="@string/backup_definition" />
+    <entry
+        image="@drawable/bargain"
+        term="@string/bargain_term"
+        information="@string/bargain_definition" />
+    <entry
+        image="@drawable/craft"
+        term="@string/craft_term"
+        information="@string/craft_definition" />
+    <entry
+        image="@drawable/disguise"
+        term="@string/disguise_term"
+        information="@string/disguise_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/solved_term"
+        information="@string/solved_definition" />
+    <entry
+        image="@drawable/plot"
+        term="@string/plot_term"
+        information="@string/plot_definition" />
+    <entry
+        image="@drawable/saddle"
+        term="@string/saddle_term"
+        information="@string/saddle_definition" />
+    <entry
+        image="@drawable/spree"
+        term="@string/spree_term"
+        information="@string/spree_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/freerunning_term"
+        information="@string/freerunning_definition" />
+    <entry
+        image="@drawable/gift"
+        term="@string/gift_term"
+        information="@string/gift_definition" />
+    <entry
+        image="@drawable/offspring"
+        term="@string/offspring_term"
+        information="@string/offspring_definition" />
+    <entry
+        image="@drawable/impending"
+        term="@string/impending_term"
+        information="@string/impending_definition" />
+    <entry
+        image="@drawable/exhaust"
+        term="@string/exhaust_term"
+        information="@string/exhaust_definition" />
+    <entry
+        image="@drawable/magic"
+        term="@string/max_speed_term"
+        information="@string/max_speed_definition" />
+    <entry
+        image="@drawable/start_your_engines"
+        term="@string/start_your_engines_term"
+        information="@string/start_your_engines_definition" />
+</keyword>

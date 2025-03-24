@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<legality>
+    <entry
+        term="@string/standard_term"
+        information="@string/standard_information" />
+    <entry
+        term="@string/future_term"
+        information="@string/future_information" />
+    <entry
+        term="@string/historic_term"
+        information="@string/historic_information" />
+    <entry
+        term="@string/timeless_term"
+        information="@string/timeless_information" />
+    <entry
+        term="@string/gladiator_term"
+        information="@string/gladiator_information" />
+    <entry
+        term="@string/pioneer_term"
+        information="@string/pioneer_information" />
+    <entry
+        term="@string/explorer_term"
+        information="@string/explorer_term" />
+    <entry
+        term="@string/modern_term"
+        information="@string/modern_information" />
+    <entry
+        term="@string/legacy_term"
+        information="@string/legacy_information" />
+    <entry
+        term="@string/pauper_term"
+        information="@string/pauper_information" />
+    <entry
+        term="@string/vintage_term"
+        information="@string/vintage_information" />
+    <entry
+        term="@string/penny_dreadful_term"
+        information="@string/penny_dreadful_information" />
+    <entry
+        term="@string/commander_term"
+        information="@string/commander_information" />
+    <entry
+        term="@string/oathbreaker_term"
+        information="@string/oathbreaker_information" />
+    <entry
+        term="@string/standard_brawl_term"
+        information="@string/standard_brawl_information" />
+    <entry
+        term="@string/brawl_term"
+        information="@string/brawl_information" />
+    <entry
+        term="@string/alchemy_term"
+        information="@string/alchemy_information" />
+    <entry
+        term="@string/pauper_commander_term"
+        information="@string/pauper_commander_information" />
+    <entry
+        term="@string/duel_commander_term"
+        information="@string/duel_commander_information" />
+    <entry
+        term="@string/old_school_term"
+        information="@string/old_school_information" />
+    <entry
+        term="@string/premodern_term"
+        information="@string/premodern_information" />
+    <entry
+        term="@string/predh_term"
+        information="@string/predh_information" />
+</legality>

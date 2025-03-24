@@ -1,16 +1,16 @@
 package pol.rubiano.magicapp.features.data.local
 
-import pol.rubiano.magicapp.features.domain.Legality
 import android.content.Context
 import org.xmlpull.v1.XmlPullParser
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.data.mapManaSymbols
+import pol.rubiano.magicapp.features.domain.Keyword
 
-fun loadLegalitiesFromXml(
+fun loadKeywordsFromXml(
     context: Context
-): List<Legality> {
-    val legalitiesList = mutableListOf<Legality>()
-    val parser = context.resources.getXml(R.xml.legalities)
+): List<Keyword> {
+    val keywordsList = mutableListOf<Keyword>()
+    val parser = context.resources.getXml(R.xml.keywords)
     var eventType = parser.eventType
 
     while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -23,8 +23,8 @@ fun loadLegalitiesFromXml(
             val information =
                 mapManaSymbols(context, context.getString(informationResId)).toString()
 
-            legalitiesList.add(
-                Legality(
+            keywordsList.add(
+                Keyword(
                     icon = imageResId,
                     term = term,
                     information = information
@@ -33,5 +33,5 @@ fun loadLegalitiesFromXml(
         }
         eventType = parser.next()
     }
-    return legalitiesList
+    return keywordsList
 }

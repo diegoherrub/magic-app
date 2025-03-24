@@ -57,10 +57,10 @@
     <string name="premodern" translatable="false">Premodern</string>
     <string name="predh" translatable="false">PreDH</string>
 
-    <!-- Glossary -->
-    <string name="glossary_title">Glossary</string>
-    <string name="glossary_content">Learn the meaning of the most common terms in the Magic: The Gathering universe.</string>
-    <string name="image_glossary_content_description">Glossary Image</string>
+    <!-- Keywords -->
+    <string name="keyword_title">Keywords</string>
+    <string name="keyword_content">Learn the meaning of the keywords in the Magic: The Gathering universe.</string>
+    <string name="image_keyword_content_description">Keyword Image</string>
 
     <!-- Search -->
     <string name="search_title">Search</string>

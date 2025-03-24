@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/apptopbarlayout_view"/>
+    <include layout="@layout/top_bar_view"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -15,5 +15,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/nav_graph" />
 
-    <include layout="@layout/appnavigationbarlayout_view" />
+    <include layout="@layout/navigation_bar_view" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

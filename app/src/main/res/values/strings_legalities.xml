@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="standard_term">Standard</string>
+    <string name="standard_information">A rotating format featuring the most recent sets (typically from the last two years). It is the most common format in official tournaments.</string>
+    <string name="future_term">Future</string>
+    <string name="future_information">Not an official format, but it may refer to experimental playtesting with unreleased cards or mechanics.</string>
+    <string name="historic_term">Historic</string>
+    <string name="historic_information">A digital-only format exclusive to MTG Arena. It includes all legal cards in Arena without rotation.</string>
+    <string name="timeless_term">Timeless</string>
+    <string name="timeless_information">A digital format in MTG Arena that allows playing with all available cards on the platform, including Alchemy cards.</string>
+    <string name="gladiator_term">Gladiator</string>
+    <string name="gladiator_information">A singleton format (one copy per card, except basic lands) exclusive to MTG Arena, featuring 100-card decks without a commander.</string>
+    <string name="pioneer_term">Pioneer</string>
+    <string name="pioneer_information">A non-rotating format that includes all cards from Return to Ravnica (2012) onward, without Standard restrictions.</string>
+    <string name="explorer_term">Explorer</string>
+    <string name="explorer_information">A digital version of Pioneer in MTG Arena. It only uses cards available on the platform, aiming to expand until it fully matches Pioneer.</string>
+    <string name="modern_term">Modern</string>
+    <string name="modern_information">A non-rotating format that includes all cards from Eighth Edition (2003) onward. It is highly popular in tournaments and offers a wide variety of strategies.</string>
+    <string name="legacy_term">Legacy</string>
+    <string name="legacy_information">An eternal format that allows all Magic cards (except banned ones). It has restriction lists but enables powerful combinations.</string>
+    <string name="pauper_term">Pauper</string>
+    <string name="pauper_information">A format where only common cards can be played. It is available both in paper and digital (MTGO and Arena).</string>
+    <string name="vintage_term">Vintage</string>
+    <string name="vintage_information">An eternal format where all cards are legal, including the most powerful ones in Magic\'s history. Some cards are restricted to one copy per deck.</string>
+    <string name="penny_dreadful_term">Penny Dreadful</string>
+    <string name="penny_dreadful_information">An unofficial MTGO format where only cards priced at 0.01 tix in the digital market can be played.</string>
+    <string name="commander_term">Commander (EDH)</string>
+    <string name="commander_information">A casual multiplayer format with 100-card decks and a legendary commander. Only one copy of each card is allowed, except for basic lands.</string>
+    <string name="oathbreaker_term">Oathbreaker</string>
+    <string name="oathbreaker_information">A format similar to Commander, but with a 60-card deck and a "signature spell" associated with the Planeswalker commander.</string>
+    <string name="standard_brawl_term">Standard Brawl</string>
+    <string name="standard_brawl_information">A Brawl variant that only allows Standard-legal cards.</string>
+    <string name="brawl_term">Brawl</string>
+    <string name="brawl_information">A Commander variant with 60-card decks and no multiplayer restrictions. It is played both in paper and on MTG Arena.</string>
+    <string name="alchemy_term">Alchemy</string>
+    <string name="alchemy_information">A digital format in MTG Arena featuring exclusive and dynamically balanced cards. Similar to Historic but with modified cards.</string>
+    <string name="pauper_commander_term">Pauper Commander (PDH)</string>
+    <string name="pauper_commander_information">A Commander variant where all cards must be commons, except for the commander, which can be an uncommon.</string>
+    <string name="duel_commander_term">Duel Commander</string>
+    <string name="duel_commander_information">A competitive 1v1 version of Commander with specific rules and a unique ban list.</string>
+    <string name="old_school_term">Old School</string>
+    <string name="old_school_information">A format featuring only older sets (generally 1993\-1994). Variations exist depending on the specific rules used.</string>
+    <string name="premodern_term">Premodern</string>
+    <string name="premodern_information">A format that allows cards from Fourth Edition to M15 but excludes Modern. Focused on classic strategies.</string>
+    <string name="predh_term">PreDH</string>
+    <string name="predh_information">Not a widely recognized format, but it may refer to playing Commander with rules from before certain official changes.</string>
+</resources>

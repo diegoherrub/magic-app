@@ -15,7 +15,7 @@ class MagicFragment : Fragment() {
     private var _binding: MagicFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var glossary: ViewCommonSectionListTypeItemBinding
+    private lateinit var keywords: ViewCommonSectionListTypeItemBinding
     private lateinit var legalities: ViewCommonSectionListTypeItemBinding
 
     override fun onCreateView(
@@ -30,19 +30,19 @@ class MagicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        glossary = ViewCommonSectionListTypeItemBinding.bind(binding.root.findViewById(R.id.glossary))
+        keywords = ViewCommonSectionListTypeItemBinding.bind(binding.root.findViewById(R.id.glossary))
         legalities = ViewCommonSectionListTypeItemBinding.bind(binding.root.findViewById(R.id.legalities))
 
         setupViews()
     }
 
     private fun setupViews() {
-        setupSection(glossary, R.drawable.glossary, R.string.glossary_title, R.string.glossary_content) {
-            findNavController().navigate(MagicFragmentDirections.actionFromMagicToGlossary())
+        setupSection(keywords, R.drawable.glossary, R.string.keyword_title, R.string.keyword_content) {
+            findNavController().navigate(MagicFragmentDirections.actionFromMagicToKeywords())
         }
 
         setupSection(legalities, R.drawable.legalities, R.string.legality_title, R.string.legality_content) {
-            findNavController().navigate(MagicFragmentDirections.actionFromMagicToLegality())
+            findNavController().navigate(MagicFragmentDirections.actionFromMagicToLegalities())
         }
     }
 

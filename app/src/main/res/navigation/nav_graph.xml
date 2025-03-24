@@ -10,21 +10,21 @@
         android:label="@string/magic_title" >
 
         <action
-            android:id="@+id/action_from_magic_to_glossary"
-            app:destination="@+id/glossary_fragment"/>
+            android:id="@+id/action_from_magic_to_keywords"
+            app:destination="@+id/keywords_fragment"/>
         <action
-            android:id="@+id/action_from_magic_to_legality"
-            app:destination="@+id/legality_fragment"/>
+            android:id="@+id/action_from_magic_to_legalities"
+            app:destination="@+id/legalities_fragment"/>
     </fragment>
 
     <fragment
-        android:id="@+id/glossary_fragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.GlossaryFragment"
-        android:label="@string/glossary_title" />
+        android:id="@+id/keywords_fragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.KeywordsFragment"
+        android:label="@string/keyword_title" />
 
     <fragment
-        android:id="@+id/legality_fragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.LegalityFragment"
+        android:id="@+id/legalities_fragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.LegalitiesFragment"
         android:label="@string/legality_title" />
 
     <!-- Collections Section -->

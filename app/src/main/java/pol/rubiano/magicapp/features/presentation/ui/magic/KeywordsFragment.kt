@@ -4,48 +4,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import pol.rubiano.magicapp.databinding.GlossaryFragmentBinding
-import pol.rubiano.magicapp.features.data.local.groupGlossaryTerms
-import pol.rubiano.magicapp.features.data.local.loadGlossaryFromXml
-import pol.rubiano.magicapp.features.presentation.adapters.GlossaryAdapter
+import pol.rubiano.magicapp.databinding.KeywordsFragmentBinding
+import pol.rubiano.magicapp.features.data.local.loadKeywordsFromXml
+import pol.rubiano.magicapp.features.presentation.adapters.KeywordsAdapter
 
-class GlossaryFragment : Fragment() {
-    private var _binding: GlossaryFragmentBinding? = null
+class KeywordsFragment : Fragment() {
+    private var _binding: KeywordsFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: GlossaryAdapter
+    private lateinit var adapter: KeywordsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = GlossaryFragmentBinding.inflate(inflater, container, false)
+        _binding = KeywordsFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerViewGlossary.layoutManager = LinearLayoutManager(context)
 
-        binding.recyclerViewGlossary.addItemDecoration(
+        binding.recyclerViewKeyword.layoutManager = LinearLayoutManager(context)
+        binding.recyclerViewKeyword.addItemDecoration(
             DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         )
 
-        // Cargamos y agrupamos los términos
-        val glossaryTerms = loadGlossaryFromXml(requireContext())
-        val groupedItems = groupGlossaryTerms(glossaryTerms.sortedBy { it.term })
-
-        adapter = GlossaryAdapter(groupedItems)
-        binding.recyclerViewGlossary.adapter = adapter
-
-        // Configuramos el SearchView para filtrar
-        binding.appGlossarySearchBar.setOnQueryTextListener(object :
-            SearchView.OnQueryTextListener {
+        val keywords = loadKeywordsFromXml(requireContext())
+            .sortedBy { it.term.lowercase() }
+        adapter = KeywordsAdapter()
+        binding.recyclerViewKeyword.adapter = adapter
+        adapter.setKeywords(keywords)
+        binding.appKeywordsSearchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 adapter.filter.filter(query)
                 return false
@@ -57,7 +51,7 @@ class GlossaryFragment : Fragment() {
             }
         })
 
-        binding.recyclerViewGlossary.adapter = adapter
+        binding.recyclerViewKeyword.adapter = adapter
     }
 
     override fun onDestroyView() {

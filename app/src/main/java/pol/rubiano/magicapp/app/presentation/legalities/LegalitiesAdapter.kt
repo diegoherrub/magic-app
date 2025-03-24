@@ -10,7 +10,7 @@ class LegalitiesAdapter : ListAdapter<LegalityItem, LegalitiesViewHolder>(Legali
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LegalitiesViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.legalities_item_view, parent, false)
+            .inflate(R.layout.cardlegalities_item_view, parent, false)
         return LegalitiesViewHolder(view)
     }
 
