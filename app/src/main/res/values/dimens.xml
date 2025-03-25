@@ -6,6 +6,7 @@
     <dimen name="dimen_s">8dp</dimen>
     <dimen name="dimen_sm">10dp</dimen>
     <dimen name="dimen_m">16dp</dimen>
+    <dimen name="dimen_ml">18dp</dimen>
     <dimen name="dimen_l">32dp</dimen>
     <dimen name="dimen_xl">64dp</dimen>
 
@@ -19,6 +20,7 @@
     <dimen name="size_l">20sp</dimen>
     <dimen name="size_xl">24sp</dimen>
 
+    <dimen name="section_icon_xs">48dp</dimen>
     <dimen name="section_icon_s">54dp</dimen>
     <dimen name="section_icon_m">64dp</dimen>
 

@@ -11,7 +11,6 @@ class ScryfallDataSource(
     suspend fun getsearchCards(query: String): Result<Scryfall> {
         return try {
             val response = service.searchCards(query)
-            Log.d("@POL", "Scryfall recibido de la api: $response")
             if (response.isSuccessful) {
                 response.body()?.let { apiModel ->
                     Result.success(apiModel.toModel())

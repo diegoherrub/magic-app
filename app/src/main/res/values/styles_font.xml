@@ -55,4 +55,11 @@
         <item name="android:lineHeight">@dimen/size_l</item>
     </style>
 
+    <!-- Search -->
+    <style name="app_font_search_label">
+        <item name="android:fontFamily">@font/app_light</item>
+        <item name="android:textSize">@dimen/size_m</item>
+        <item name="android:lineHeight">@dimen/size_l</item>
+    </style>
+
 </resources>

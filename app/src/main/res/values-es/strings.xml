@@ -32,4 +32,18 @@
     <string name="next_page">Página siguiente</string>
     <string name="pagination_bar">Barra de paginación</string>
     <string name="search_results_add">Agregar...</string>
+    <string name="edit_card_name">Nombre de la carta</string>
+    <string name="rarity_mythic">Mítica</string>
+    <string name="color_white">Blanco</string>
+    <string name="color_blue">Azul</string>
+    <string name="color_black">Negro</string>
+    <string name="color_red">Rojo</string>
+    <string name="color_green">Verde</string>
+    <string name="color_colorless">Incoloro</string>
+    <string name="rarity_common">Común</string>
+    <string name="rarity_uncommon">Infrecuente</string>
+    <string name="rarity_rare">Rara</string>
+    <string name="search_name_label">Buscar nombre</string>
+    <string name="search_rarities_label">Selecciona rareza(s)</string>
+    <string name="search_colors_label">Selecciona color(es)</string>
 </resources>

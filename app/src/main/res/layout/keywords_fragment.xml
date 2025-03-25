@@ -7,7 +7,7 @@
 
     <SearchView
         android:id="@+id/app_keywords_search_bar"
-        style="@style/app_section_glossary_search"
+        style="@style/app_section_keywords_search"
         android:layout_width="@dimen/zero_dp"
         android:layout_height="@dimen/bottom_bar_height"
         app:layout_constraintEnd_toEndOf="parent"

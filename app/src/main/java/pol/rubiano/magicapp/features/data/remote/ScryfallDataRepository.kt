@@ -1,6 +1,5 @@
 package pol.rubiano.magicapp.features.data.remote
 
-import android.util.Log
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.features.domain.Scryfall
 import pol.rubiano.magicapp.features.domain.ScryfallRepository
@@ -13,7 +12,6 @@ class ScryfallDataRepository(
     override suspend fun getScryfallSearch(query: String): Result<Scryfall> {
         return try {
             val resultScryfallDataRepository = remote.getsearchCards(query)
-            Log.d("@POL", "resultScryfallDataRepository: $resultScryfallDataRepository")
             return resultScryfallDataRepository
         } catch (e: Exception) {
             Result.failure(e)

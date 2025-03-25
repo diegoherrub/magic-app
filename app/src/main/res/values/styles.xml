@@ -1,109 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <!-- Top App Bar -->
-        <style name="AppBarLayoutStyle" parent="Widget.Material3.Toolbar">
-            <item name="android:elevation">0dp</item>
-            <item name="titleTextAppearance">@style/app_tool_bar_title</item>
-            <item name="android:background">@color/md_theme_primary</item>
-        </style>
+    <!-- Top App Bar -->
+    <style name="AppBarLayoutStyle" parent="Widget.Material3.Toolbar">
+        <item name="android:elevation">0dp</item>
+        <item name="titleTextAppearance">@style/app_tool_bar_title</item>
+        <item name="android:background">@color/md_theme_primary</item>
+    </style>
 
-        <!-- Glossary -->
-        <style name="app_section_glossary_search">
-            <item name="android:paddingTop">@dimen/dimen_sm</item>
-            <item name="android:paddingBottom">@dimen/dimen_m</item>
-            <item name="iconTint">@color/md_theme_onPrimary</item>
-            <item name="android:clickable">true</item>
-            <item name="android:iconifiedByDefault">false</item>
-            <item name="android:queryHint">@string/search_title</item>
-            <item name="android:background">@color/md_theme_primaryContainer_50</item>
-        </style>
+    <!-- Keywords -->
+    <style name="app_section_keywords_search">
+        <item name="android:paddingTop">@dimen/dimen_sm</item>
+        <item name="android:paddingBottom">@dimen/dimen_m</item>
+        <item name="iconTint">@color/md_theme_onPrimary</item>
+        <item name="android:clickable">true</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:queryHint">@string/search_title</item>
+        <item name="android:background">@color/md_theme_primaryContainer_50</item>
+    </style>
 
-        <!-- Bottom Navigation -->
-        <style name="AppBottomBar" parent="Widget.Material3.BottomNavigationView">
-            <item name="itemActiveIndicatorStyle">@style/AppBottomShape</item>
-            <item name="itemIconTint">@color/bottom_nav_item_color</item>
-            <item name="itemTextColor">@color/bottom_nav_item_color</item>
-        </style>
-        <style name="AppBottomShape">
-            <item name="android:color">@android:color/transparent</item>
-            <item name="android:height">0dp</item>
-        </style>
+    <!-- Bottom Navigation -->
+    <style name="AppBottomBar" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/AppBottomShape</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+    </style>
 
-        <!-- AppSectionView -->
-        <style name="app_section_sticky_header" parent="text_section_sticky_header_title">
-            <item name="android:background">@color/md_theme_primaryContainer</item>
-            <item name="android:textColor">@color/md_theme_onPrimaryContainer</item>
-            <item name="android:padding">@dimen/dimen_m</item>
-            <item name="android:textSize">@dimen/size_l</item>
-        </style>
-        <style name="app_section_list">
-            <item name="android:padding">@dimen/dimen_m</item>
-        </style>
-        <style name="app_section_list_item">
-            <item name="android:padding">@dimen/dimen_m</item>
-        </style>
-        <style name="app_section_list_icon">
-            <item name="tint">@color/md_theme_primary</item>
-        </style>
-        <style name="app_section_list_title" parent="text_section_list_item_title">
-            <item name="android:layout_marginStart">@dimen/dimen_m</item>
-            <item name="android:layout_marginEnd">@dimen/dimen_m</item>
-            <item name="android:textColor">@color/md_theme_primary</item>
-        </style>
+    <style name="AppBottomShape">
+        <item name="android:color">@android:color/transparent</item>
+        <item name="android:height">0dp</item>
+    </style>
 
-        <style name="app_section_list_description" parent="text_section_list_item_description">
-            <item name="android:breakStrategy">simple</item>
-            <item name="android:layout_marginEnd">@dimen/dimen_m</item>
-        </style>
+    <!-- AppSectionView -->
+    <style name="app_section_sticky_header" parent="text_section_sticky_header_title">
+        <item name="android:background">@color/md_theme_primaryContainer</item>
+        <item name="android:textColor">@color/md_theme_onPrimaryContainer</item>
+        <item name="android:padding">@dimen/dimen_m</item>
+        <item name="android:textSize">@dimen/size_l</item>
+    </style>
 
-        <!-- Card -->
-        <style name="style_app_card_image">
-            <item name="android:paddingStart">@dimen/dimen_m</item>
-            <item name="android:paddingEnd">@dimen/dimen_m</item>
-            <item name="android:paddingTop">@dimen/dimen_m</item>
-            <item name="android:paddingBottom">@dimen/dimen_l</item>
-        </style>
+    <style name="app_section_list">
+        <item name="android:padding">@dimen/dimen_m</item>
+    </style>
 
-        <style name="style_app_card_header">
-            <item name="android:paddingStart">@dimen/dimen_m</item>
-            <item name="android:paddingEnd">@dimen/dimen_m</item>
-            <item name="android:paddingTop">@dimen/dimen_sm</item>
-            <item name="android:paddingBottom">@dimen/dimen_sm</item>
-            <item name="android:textAppearance">@style/app_font_random_card_header</item>
-            <item name="android:background">@color/md_theme_primaryContainer_50</item>
-            <item name="android:textAlignment">center</item>
-        </style>
+    <style name="app_section_list_item">
+        <item name="android:padding">@dimen/dimen_m</item>
+    </style>
 
-        <style name="style_app_card_content">
-            <item name="android:paddingEnd">@dimen/dimen_m</item>
-            <item name="android:paddingTop">@dimen/dimen_m</item>
-            <item name="android:paddingStart">@dimen/dimen_m</item>
-            <item name="android:paddingBottom">@dimen/dimen_l</item>
-            <item name="android:textAppearance">@style/app_font_random_card_content</item>
-        </style>
+    <style name="app_section_list_icon">
+        <item name="tint">@color/md_theme_primary</item>
+    </style>
 
-        <style name="style_app_card_legalities_container">
-            <item name="android:layout_marginTop">@dimen/dimen_m</item>
-            <item name="android:layout_marginBottom">@dimen/dimen_l</item>
-        </style>
+    <style name="app_section_list_title" parent="text_section_list_item_title">
+        <item name="android:layout_marginStart">@dimen/dimen_m</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_m</item>
+        <item name="android:textColor">@color/md_theme_primary</item>
+    </style>
 
-        <style name="style_app_card_legalities">
-            <item name="android:layout_margin">@dimen/dimen_s</item>
-            <item name="android:padding">@dimen/dimen_s</item>
-            <item name="android:textAlignment">center</item>
-        </style>
+    <style name="app_section_list_description" parent="text_section_list_item_description">
+        <item name="android:breakStrategy">simple</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_m</item>
+    </style>
 
-        <!-- Search Results -->
-        <style name="style_app_search_results_bottom_bar">
-            <item name="android:background">@color/md_theme_primaryContainer_50</item>
-            <item name="android:padding">@dimen/zero_dp</item>
-        </style>
+    <!-- Card -->
+    <style name="style_app_card_image">
+        <item name="android:paddingStart">@dimen/dimen_m</item>
+        <item name="android:paddingEnd">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_l</item>
+    </style>
 
+    <style name="style_app_card_header">
+        <item name="android:paddingStart">@dimen/dimen_m</item>
+        <item name="android:paddingEnd">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_sm</item>
+        <item name="android:paddingBottom">@dimen/dimen_sm</item>
+        <item name="android:textAppearance">@style/app_font_random_card_header</item>
+        <item name="android:background">@color/md_theme_primaryContainer_50</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 
+    <style name="style_app_card_content">
+        <item name="android:paddingEnd">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_m</item>
+        <item name="android:paddingStart">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_l</item>
+        <item name="android:textAppearance">@style/app_font_random_card_content</item>
+    </style>
 
+    <style name="style_app_card_legalities_container">
+        <item name="android:layout_marginTop">@dimen/dimen_m</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_l</item>
+    </style>
 
+    <style name="style_app_card_legalities">
+        <item name="android:layout_margin">@dimen/dimen_s</item>
+        <item name="android:padding">@dimen/dimen_s</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 
+    <!-- Search Results -->
+    <style name="style_app_search_main_container">
+        <item name="android:layout_margin">@dimen/dimen_m</item>
+    </style>
+    <style name="style_search_label">
+        <item name="android:layout_marginTop">@dimen/dimen_ml</item>
+        <item name="android:textAppearance">@style/app_font_search_label</item>
+    </style>
 
+    <style name="style_app_edit_card_name">
+        <item name="android:paddingTop">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_m</item>
+    </style>
+
+    <style name="style_app_search_chips_group">
+        <item name="android:layout_marginTop">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_m</item>
+    </style>
+
+    <style name="style_app_search_chip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/md_theme_secondary</item>
+        <item name="android:checkable">true</item>
+    </style>
+
+    <!--        aqui demás estilos del buscador-->
+    <style name="style_app_search_button">
+        <item name="android:layout_marginTop">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_m</item>
+    </style>
+
+    <style name="style_app_search_results_bottom_bar">
+        <item name="android:background">@color/md_theme_primaryContainer_50</item>
+        <!--            <item name="android:padding">@dimen/zero_dp</item>-->
+    </style>
 
 
     <!-- common section -->
@@ -113,11 +144,13 @@
         <item name="android:layout_marginLeft">@dimen/dimen_m</item>
         <item name="android:paddingBottom">@dimen/zero_dp</item>
     </style>
+
     <style name="style_view_common_section_list_type_icon">
         <item name="android:layout_width">@dimen/section_icon_s</item>
         <item name="android:layout_height">@dimen/section_icon_s</item>
         <item name="android:tint">@color/md_theme_primary</item>
     </style>
+
     <style name="style_view_common_section_list_type_title">
         <item name="android:layout_width">@dimen/zero_dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -126,6 +159,7 @@
         <item name="android:textColor">@color/md_theme_primary</item>
         <item name="android:layout_marginStart">@dimen/dimen_s</item>
     </style>
+
     <style name="style_view_common_section_list_type_content">
         <item name="android:layout_width">@dimen/zero_dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -135,5 +169,4 @@
         <item name="android:textSize">@dimen/size_m</item>
         <item name="android:breakStrategy">simple</item>
     </style>
-
 </resources>

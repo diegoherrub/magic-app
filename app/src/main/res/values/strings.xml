@@ -70,7 +70,23 @@
     <string name="previous_page">Previous page</string>
     <string name="next_page">Next page</string>
     <string name="pagination_bar">Pagination bar</string>
-    <string name="search_results_add">Add...</string>
+    <string name="search_results_add">Add…</string>
+    <string name="edit_card_name">Card\'s name</string>
+    <string name="rarity_common">Common</string>
+    <string name="rarity_uncommon">Uncommon</string>
+    <string name="rarity_rare">Rare</string>
+    <string name="rarity_mythic">Mythic</string>
+    <string name="color_white">White</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_black">Black</string>
+    <string name="color_red">Red</string>
+    <string name="color_green">Green</string>
+    <string name="color_colorless">Colorless</string>
+    <string name="search_name_label">Search name</string>
+    <string name="search_rarities_label">Select rarity(ies)</string>
+    <string name="search_colors_label">Select color(s)</string>
+    <string name="search_type_label">Select type</string>
+
 
     <!-- Flavour -->
     <string name="loremt_title" translatable="false">Lorem ipsum dolor</string>

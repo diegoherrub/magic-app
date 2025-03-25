@@ -1,6 +1,16 @@
 <resources>
+<!--1A-->
+<!--33-->
+<!--4D-->
+<!--66-->
+<!--80-->
+<!--99-->
+<!--B2-->
+<!--CC-->
+<!--E5-->
+<!--FF-->
     <color name="md_theme_primary">#725B29</color>
-    <color name="md_theme_primary_50">#B2725B29</color>
+    <color name="md_theme_primary_70">#B2725B29</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#C4A76D</color>
     <color name="md_theme_primaryContainer_50">#B2C4A76D</color>
