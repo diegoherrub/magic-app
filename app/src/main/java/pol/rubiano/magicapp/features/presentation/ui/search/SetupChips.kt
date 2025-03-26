@@ -19,16 +19,12 @@ fun addChip(chipText: String, chipGroupFilters: ChipGroup, view: View) {
         isCloseIconVisible = true
         setOnCloseIconClickListener {
             chipGroupFilters.removeView(this)
-            when (chipText) {
-                "Común" -> view.findViewById<MaterialSwitch>(R.id.switch_common)?.isChecked = false
-                "Infrecuente" -> view.findViewById<MaterialSwitch>(R.id.switch_uncommon)?.isChecked = false
-                "Rara" -> view.findViewById<MaterialSwitch>(R.id.switch_rare)?.isChecked = false
-                "Mítica" -> view.findViewById<MaterialSwitch>(R.id.switch_mythic)?.isChecked = false
-            }
+            (view as? FilterCardView)?.unselectOption(chipText)
         }
     }
     chipGroupFilters.addView(chip)
 }
+
 
 fun removeChip(chipText: String, chipGroupFilters: ChipGroup) {
     for (i in 0 until chipGroupFilters.childCount) {

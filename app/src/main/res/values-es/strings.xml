@@ -34,6 +34,8 @@
     <string name="search_results_add">Agregar...</string>
     <string name="edit_card_name">Nombre de la carta</string>
 
+    <string name="type">Tipo</string>
+    <string name="types">Tipos</string>
     <string name="type_artifact">Artefacto</string>
     <string name="type_battle">Batalla</string>
     <string name="type_conspiracy">Conspiración</string>
@@ -49,8 +51,26 @@
     <string name="type_scheme">Estrategema</string>
     <string name="type_sorcery">Conjuro</string>
     <string name="type_vanguard">Vanguardia</string>
+    <string-array name="types_options">
+        <item>@string/type_artifact</item>
+        <item>@string/type_battle</item>
+        <item>@string/type_conspiracy</item>
+        <item>@string/type_creature</item>
+        <item>@string/type_dungeon</item>
+        <item>@string/type_enchantment</item>
+        <item>@string/type_instant</item>
+        <item>@string/type_kindred</item>
+        <item>@string/type_land</item>
+        <item>@string/type_phenomenon</item>
+        <item>@string/type_plane</item>
+        <item>@string/type_planeswalker</item>
+        <item>@string/type_scheme</item>
+        <item>@string/type_sorcery</item>
+        <item>@string/type_vanguard</item>
+    </string-array>
 
-
+    <string name="rarity">Rareza</string>
+    <string name="rarities">Rarezas</string>
     <string name="rarity_common">Común</string>
     <string name="rarity_uncommon">Infrecuente</string>
     <string name="rarity_rare">Rara</string>

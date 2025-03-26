@@ -72,7 +72,8 @@
     <string name="search_results_add">Add…</string>
     <string name="edit_card_name">Card\'s name</string>
 
-
+    <string name="type">Type</string>
+    <string name="types">Types</string>
     <string name="type_artifact">Artifact</string>
     <string name="type_battle">Battle</string>
     <string name="type_conspiracy">Conspiracy</string>
@@ -88,8 +89,26 @@
     <string name="type_scheme">Scheme</string>
     <string name="type_sorcery">Sorcery</string>
     <string name="type_vanguard">Vanguard</string>
+    <string-array name="types_options">
+        <item>@string/type_artifact</item>
+        <item>@string/type_battle</item>
+        <item>@string/type_conspiracy</item>
+        <item>@string/type_creature</item>
+        <item>@string/type_dungeon</item>
+        <item>@string/type_enchantment</item>
+        <item>@string/type_instant</item>
+        <item>@string/type_kindred</item>
+        <item>@string/type_land</item>
+        <item>@string/type_phenomenon</item>
+        <item>@string/type_plane</item>
+        <item>@string/type_planeswalker</item>
+        <item>@string/type_scheme</item>
+        <item>@string/type_sorcery</item>
+        <item>@string/type_vanguard</item>
+    </string-array>
 
-
+    <string name="rarity">Rarity</string>
+    <string name="rarities">Rarities</string>
     <string name="rarity_common">Common</string>
     <string name="rarity_uncommon">Uncommon</string>
     <string name="rarity_rare">Rare</string>
