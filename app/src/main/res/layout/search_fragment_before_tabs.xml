@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        style="@style/style_app_search_main_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/edit_card_name_label"-->
+<!--            style="@style/style_search_label"-->
+<!--            android:layout_width="@dimen/zero_dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/search_name_label"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/edit_card_name"-->
+<!--            style="@style/style_app_edit_card_name"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:autofillHints="text"-->
+<!--            android:hint="@string/edit_card_name"-->
+<!--            android:inputType="text"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="@id/edit_card_name_label"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edit_card_name_label" />-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/search_rarities_container_label"-->
+<!--            style="@style/style_search_label"-->
+<!--            android:layout_width="@dimen/zero_dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/search_rarities_label"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edit_card_name" />-->
+
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/search_rarities_container"-->
+<!--            style="@style/style_app_search_chips_group"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/search_rarities_container_label"-->
+<!--            app:singleSelection="false">-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_common"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/rarity_common" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_uncommon"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/rarity_uncommon" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_rare"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/rarity_rare" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_mythic"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/rarity_mythic" />-->
+<!--        </com.google.android.material.chip.ChipGroup>-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/search_colors_container_label"-->
+<!--            style="@style/style_search_label"-->
+<!--            android:layout_width="@dimen/zero_dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/search_colors_label"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/search_rarities_container" />-->
+
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/search_colors_container"-->
+<!--            style="@style/style_app_search_chips_group"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/search_colors_container_label"-->
+<!--            app:singleLine="true"-->
+<!--            app:singleSelection="false">-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_white"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                app:chipIcon="@drawable/mana_w"-->
+<!--                app:chipIconSize="@dimen/dimen_l"-->
+<!--                app:chipMinHeight="@dimen/section_icon_s"-->
+<!--                app:iconEndPadding="@dimen/zero_dp"-->
+<!--                app:iconStartPadding="@dimen/zero_dp"-->
+<!--                app:textEndPadding="@dimen/zero_dp"-->
+<!--                app:textStartPadding="@dimen/zero_dp" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_blue"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                app:chipIcon="@drawable/mana_u"-->
+<!--                app:chipIconSize="@dimen/dimen_l"-->
+<!--                app:chipMinHeight="@dimen/section_icon_s"-->
+<!--                app:iconEndPadding="@dimen/zero_dp"-->
+<!--                app:iconStartPadding="@dimen/zero_dp"-->
+<!--                app:textEndPadding="@dimen/zero_dp"-->
+<!--                app:textStartPadding="@dimen/zero_dp" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_black"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                app:chipIcon="@drawable/mana_b"-->
+<!--                app:chipIconSize="@dimen/dimen_l"-->
+<!--                app:chipMinHeight="@dimen/section_icon_s"-->
+<!--                app:iconEndPadding="@dimen/zero_dp"-->
+<!--                app:iconStartPadding="@dimen/zero_dp"-->
+<!--                app:textEndPadding="@dimen/zero_dp"-->
+<!--                app:textStartPadding="@dimen/zero_dp" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_red"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                app:chipIcon="@drawable/mana_r"-->
+<!--                app:chipIconSize="@dimen/dimen_l"-->
+<!--                app:chipMinHeight="@dimen/section_icon_s"-->
+<!--                app:iconEndPadding="@dimen/zero_dp"-->
+<!--                app:iconStartPadding="@dimen/zero_dp"-->
+<!--                app:textEndPadding="@dimen/zero_dp"-->
+<!--                app:textStartPadding="@dimen/zero_dp" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_green"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                app:chipIcon="@drawable/mana_g"-->
+<!--                app:chipIconSize="@dimen/dimen_l"-->
+<!--                app:chipMinHeight="@dimen/section_icon_s"-->
+<!--                app:iconEndPadding="@dimen/zero_dp"-->
+<!--                app:iconStartPadding="@dimen/zero_dp"-->
+<!--                app:textEndPadding="@dimen/zero_dp"-->
+<!--                app:textStartPadding="@dimen/zero_dp" />-->
+<!--        </com.google.android.material.chip.ChipGroup>-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/search_types_container_label"-->
+<!--            style="@style/style_search_label"-->
+<!--            android:layout_width="@dimen/zero_dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/search_type_label"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/search_colors_container" />-->
+
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/search_types_container"-->
+<!--            style="@style/style_app_search_chips_group"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:chipSpacingVertical="@dimen/zero_dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/search_types_container_label"-->
+<!--            app:singleLine="false"-->
+<!--            app:singleSelection="false">-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_artifact"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_artifact" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_battle"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_battle" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_conspiracy"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_conspiracy" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_creature"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_creature" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_dungeon"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_dungeon" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_enchantment"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_enchantment" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_instant"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_instant" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_kindred"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_kindred" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_land"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_land" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_phenomenon"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_phenomenon" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_plane"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_plane" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_planeswalker"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_planeswalker" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_scheme"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_scheme" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_sorcery"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_sorcery" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/chip_vanguard"-->
+<!--                style="@style/style_app_search_chip"-->
+<!--                android:text="@string/type_vanguard" />-->
+<!--        </com.google.android.material.chip.ChipGroup>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_card_search"-->
+<!--            style="@style/style_app_search_button"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/search_title"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/search_types_container" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+</androidx.core.widget.NestedScrollView>

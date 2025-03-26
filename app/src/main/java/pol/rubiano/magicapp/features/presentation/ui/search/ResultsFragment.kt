@@ -61,21 +61,15 @@ class ResultsFragment : Fragment() {
             }
         })
 
-        // Si el argumento recibido es una URL (inicia con "http"), se invoca fetchSearchPage.
-        // Si no, se trata de la búsqueda inicial.
         if (args.query.startsWith("http")) {
             viewModel.fetchSearchPage(args.query)
         } else {
             viewModel.fetchSearchCard(args.query)
         }
 
-        // Listener para el botón "Next Page"
         binding.btnNextPage.setOnClickListener {
-            // Se obtiene la URL para la siguiente página desde el ViewModel
             val newQuery = viewModel.getNextPageUrl() ?: args.query
-            // Si no hay cambio (por ejemplo, no existe siguiente página), no hacemos nada.
             if (newQuery == args.query) return@setOnClickListener
-            // Navegar al mismo fragmento pasando la nueva URL (o query) como argumento.
             val action = ResultsFragmentDirections.actionResultsFragmentSelf(newQuery)
             findNavController().navigate(action)
         }

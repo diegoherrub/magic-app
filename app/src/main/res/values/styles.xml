@@ -100,8 +100,12 @@
 
     <!-- Search Results -->
     <style name="style_app_search_main_container">
+        <item name="android:padding">@dimen/dimen_m</item>
+    </style>
+    <style name="style_app_chip_group_filters">
         <item name="android:layout_margin">@dimen/dimen_m</item>
     </style>
+
     <style name="style_search_label">
         <item name="android:layout_marginTop">@dimen/dimen_ml</item>
         <item name="android:textAppearance">@style/app_font_search_label</item>
@@ -109,12 +113,12 @@
 
     <style name="style_app_edit_card_name">
         <item name="android:paddingTop">@dimen/dimen_m</item>
-        <item name="android:paddingBottom">@dimen/dimen_m</item>
+<!--        <item name="android:paddingBottom">@dimen/dimen_m</item>-->
     </style>
 
     <style name="style_app_search_chips_group">
         <item name="android:layout_marginTop">@dimen/dimen_m</item>
-        <item name="android:paddingBottom">@dimen/dimen_m</item>
+<!--        <item name="android:paddingBottom">@dimen/dimen_m</item>-->
     </style>
 
     <style name="style_app_search_chip">
@@ -125,11 +129,7 @@
     </style>
 
     <!--        aqui demás estilos del buscador-->
-    <style name="style_app_search_button">
-        <item name="android:layout_marginTop">@dimen/dimen_m</item>
-        <item name="android:paddingTop">@dimen/dimen_m</item>
-        <item name="android:paddingBottom">@dimen/dimen_m</item>
-    </style>
+
 
     <style name="style_app_search_results_bottom_bar">
         <item name="android:background">@color/md_theme_primaryContainer_50</item>

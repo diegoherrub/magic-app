@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_search_filter_card_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dimen_m"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="@dimen/dimen_m">
+
+    <TextView
+        android:id="@+id/app_search_filter_card_name_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dimen_m"
+        android:textAppearance="@style/app_font_random_card_header"
+        app:drawableEndCompat="@drawable/arrow_drop_down"
+        tools:text="Filter" />
+
+    <!-- Contenido expandible con los Switch -->
+    <LinearLayout
+        android:id="@+id/app_search_filter_card_switch_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dimen_xl"
+        android:paddingBottom="@dimen/dimen_m"
+        android:paddingStart="@dimen/dimen_l"
+        android:paddingEnd="@dimen/dimen_l"
+        android:visibility="visible">
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="option 1"/>
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="option 2"/>
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="option 3"/>
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="option 4"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

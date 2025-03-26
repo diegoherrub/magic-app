@@ -2,6 +2,7 @@ package pol.rubiano.magicapp.features.presentation.adapters
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import pol.rubiano.magicapp.app.data.mapManaSymbols
 import pol.rubiano.magicapp.databinding.ViewCommonSectionListTypeItemBinding
 import pol.rubiano.magicapp.features.domain.Keyword
 
@@ -17,7 +18,7 @@ class KeywordsViewHolder(
         binding.apply {
             keyword.icon?.let { viewCommonSectionListTypeIcon.setImageResource(it) }
             viewCommonSectionListTypeTitle.text = keyword.term
-            viewCommonSectionListTypeContent.text = keyword.information
+            viewCommonSectionListTypeContent.text = mapManaSymbols(viewCommonSectionListTypeContent.context, keyword.information)
         }
     }
 }

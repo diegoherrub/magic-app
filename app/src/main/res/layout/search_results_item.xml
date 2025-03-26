@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/search_results_item_card_rarity_mana_cost"
-        style="@style/CardOracle"
+        style="@style/CardOracleBold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"

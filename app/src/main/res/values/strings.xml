@@ -26,7 +26,6 @@
     <!-- Titles -->
     <string name="name_title">Name</string>
     <string name="type_line_title">Type</string>
-    <string name="rarity_title">Rarity</string>
     <string name="oracle_text_title">Oracle text</string>
     <string name="set_name_title">Set</string>
 
@@ -72,21 +71,52 @@
     <string name="pagination_bar">Pagination bar</string>
     <string name="search_results_add">Add…</string>
     <string name="edit_card_name">Card\'s name</string>
+
+
+    <string name="type_artifact">Artifact</string>
+    <string name="type_battle">Battle</string>
+    <string name="type_conspiracy">Conspiracy</string>
+    <string name="type_creature">Creature</string>
+    <string name="type_dungeon">Dungeon</string>
+    <string name="type_enchantment">Enchantment</string>
+    <string name="type_instant">Instant</string>
+    <string name="type_kindred">Kindred</string>
+    <string name="type_land">Land</string>
+    <string name="type_phenomenon">Phenomenon</string>
+    <string name="type_plane">Plane</string>
+    <string name="type_planeswalker">Planeswalker</string>
+    <string name="type_scheme">Scheme</string>
+    <string name="type_sorcery">Sorcery</string>
+    <string name="type_vanguard">Vanguard</string>
+
+
     <string name="rarity_common">Common</string>
     <string name="rarity_uncommon">Uncommon</string>
     <string name="rarity_rare">Rare</string>
     <string name="rarity_mythic">Mythic</string>
+    <string-array name="rarities_options">
+        <item>@string/rarity_common</item>
+        <item>@string/rarity_uncommon</item>
+        <item>@string/rarity_rare</item>
+        <item>@string/rarity_mythic</item>
+    </string-array>
+
+    <string name="color" translatable="false">Color</string>
+    <string name="colors">Colors</string>
     <string name="color_white">White</string>
     <string name="color_blue">Blue</string>
     <string name="color_black">Black</string>
     <string name="color_red">Red</string>
     <string name="color_green">Green</string>
     <string name="color_colorless">Colorless</string>
-    <string name="search_name_label">Search name</string>
-    <string name="search_rarities_label">Select rarity(ies)</string>
-    <string name="search_colors_label">Select color(s)</string>
-    <string name="search_type_label">Select type</string>
-
+    <string-array name="colors_options">
+        <item>@string/color_white</item>
+        <item>@string/color_blue</item>
+        <item>@string/color_black</item>
+        <item>@string/color_red</item>
+        <item>@string/color_green</item>
+        <item>@string/color_colorless</item>
+    </string-array>
 
     <!-- Flavour -->
     <string name="loremt_title" translatable="false">Lorem ipsum dolor</string>

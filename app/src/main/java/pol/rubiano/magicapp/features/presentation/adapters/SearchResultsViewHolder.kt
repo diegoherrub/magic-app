@@ -32,7 +32,7 @@ class SearchResultsViewHolder(
                 }
                 searchResultsItemCardTypeLine.text = card.typeLine
                 searchResultsItemCardRarityManaCost.text = buildSpannedString {
-                    append(card.rarity)
+                    append(card.rarity?.replaceFirstChar { char -> char.uppercaseChar() })
                     card.manaCost?.let {
                         append(" - ")
                         append(mapManaSymbols(searchResultsItemCardRarityManaCost.context, it))
@@ -47,7 +47,7 @@ class SearchResultsViewHolder(
                         ?: R.drawable.card_back
                     searchResultsItemCardTypeLine.text = face.faceTypeLine
                     searchResultsItemCardRarityManaCost.text = buildSpannedString {
-                        append(card.rarity)
+                        append(card.rarity?.replaceFirstChar { char -> char.uppercaseChar() })
                         face.faceManaCost?.let {
                             append(" - ")
                             append(mapManaSymbols(searchResultsItemCardRarityManaCost.context, it))

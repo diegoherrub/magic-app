@@ -37,6 +37,10 @@
         <item name="android:fontFamily">@font/card_regular</item>
         <item name="android:textSize">@dimen/size_sm</item>
     </style>
+    <style name="CardOracleBold">
+        <item name="android:fontFamily">@font/card_semibold</item>
+        <item name="android:textSize">@dimen/size_sm</item>
+    </style>
     <style name="CardFlavour">
         <item name="android:fontFamily">@font/card_italic</item>
         <item name="android:textSize">@dimen/size_sm</item>
