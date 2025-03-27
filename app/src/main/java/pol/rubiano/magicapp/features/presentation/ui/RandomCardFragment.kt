@@ -1,23 +1,26 @@
 package pol.rubiano.magicapp.features.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-//import com.faltenreich.skeletonlayout.SkeletonLayout
-//import com.faltenreich.skeletonlayout.createSkeleton
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import pol.rubiano.magicapp.databinding.RandomCardFragmentBinding
 import pol.rubiano.magicapp.features.presentation.viewmodels.RandomCardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.android.ext.android.inject
-//import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.presentation.adapters.CardBindingHandler
 import pol.rubiano.magicapp.app.common.extensions.gone
-import pol.rubiano.magicapp.app.domain.ErrorApp
+import pol.rubiano.magicapp.app.common.extensions.visible
+import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.toLegalityItemList
-import pol.rubiano.magicapp.app.presentation.error.ErrorAppUIFactory
+import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.app.presentation.legalities.LegalitiesAdapter
 
 class RandomCardFragment : Fragment() {
@@ -26,9 +29,7 @@ class RandomCardFragment : Fragment() {
     private val binding get() = _binding!!
     private val cardBinder = CardBindingHandler()
     private val viewModel: RandomCardViewModel by viewModel()
-    private val errorFactory: ErrorAppUIFactory by inject()
-
-//    private lateinit var skeleton: SkeletonLayout
+    private val errorFactory: AppErrorUIFactory by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -39,8 +40,6 @@ class RandomCardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //skeleton = binding.root.findViewById(R.id.random_card_skeleton)
-//        skeleton = view.createSkeleton()
         setupLegalitiesRecyclerView()
         setupObserver()
         if (savedInstanceState == null && viewModel.uiState.value?.card == null) {
@@ -60,6 +59,7 @@ class RandomCardFragment : Fragment() {
                     binding.randomCardImage.animate().rotationY(0f).setDuration(300).start()
                 }.start()
         }
+
     }
 
     private fun setupLegalitiesRecyclerView() {
@@ -73,8 +73,7 @@ class RandomCardFragment : Fragment() {
 
     private fun setupObserver() {
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
-//            checkLoading(uiState.isLoading)
-            bindError(uiState.errorApp)
+            bindError(uiState.appError)
             uiState.card?.let { card ->
                 cardBinder.bind(card, binding)
 
@@ -91,21 +90,23 @@ class RandomCardFragment : Fragment() {
         }
     }
 
-//    private fun checkLoading(isLoading: Boolean) {
-//        if (isLoading) {
-//            skeleton.showSkeleton()
-//        } else {
-//            skeleton.showOriginal()
-//        }
-//    }
+    private fun bindError(appError: AppError?) {
+        appError?.let {
+            binding.randomCardContainer.gone()
+            binding.appErrorViewContainer.visible()
+            binding.appErrorViewContainer.render(errorFactory.build(it))
+            binding.appErrorViewContainer.setOnRetryClickListener {
+                binding.appErrorViewContainer.gone()
+                binding.randomCardContainer.gone()
 
-    private fun bindError(errorApp: ErrorApp?) {
-        errorApp?.let {
-            binding.errorApp.render(
-                errorFactory.build(it)
-            )
+                viewLifecycleOwner.lifecycleScope.launch {
+                    delay(2000)
+                    viewModel.fetchRandomCard()
+                }
+            }
         } ?: run {
-            binding.errorApp.gone()
+            binding.randomCardContainer.visible()
+            binding.appErrorViewContainer.gone()
         }
     }
 

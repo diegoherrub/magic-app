@@ -11,6 +11,7 @@ import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import pol.rubiano.magicapp.features.presentation.ui.SearchFragment
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -24,7 +25,7 @@ class ToolbarController(
         R.id.collectionsFragment,
         R.id.decksFragment,
         R.id.randomCardFragment,
-        R.id.searchFragment,
+        //R.id.searchFragment,
     )
 
     init {
@@ -59,31 +60,73 @@ class ToolbarController(
             bottomNav.visibility = View.GONE
         }
 
-        toolbar.navigationIcon?.setTint(ContextCompat.getColor(activity, R.color.md_theme_onPrimary))
+        toolbar.navigationIcon?.setTint(
+            ContextCompat.getColor(
+                activity,
+                R.color.md_theme_onPrimary
+            )
+        )
 
-        if (destination.id == R.id.randomCardFragment) {
-            toolbar.menu.clear()
-            toolbar.inflateMenu(R.menu.random_card_menu)
-            for (i in 0 until toolbar.menu.size) {
-                toolbar.menu[i].icon?.setTint(ContextCompat.getColor(activity, R.color.md_theme_onPrimary))
-            }
-
-            toolbar.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.action_refresh -> {
-                        val options = navOptions {
-                            popUpTo(R.id.randomCardFragment) { inclusive = true }
+        when (destination.id) {
+            R.id.randomCardFragment -> {
+                toolbar.menu.clear()
+                toolbar.inflateMenu(R.menu.random_card_menu)
+                for (i in 0 until toolbar.menu.size) {
+                    toolbar.menu[i].icon?.setTint(
+                        ContextCompat.getColor(
+                            activity,
+                            R.color.md_theme_onPrimary
+                        )
+                    )
+                }
+                toolbar.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.action_refresh -> {
+                            val options = navOptions {
+                                popUpTo(R.id.randomCardFragment) { inclusive = true }
+                            }
+                            navController.navigate(R.id.randomCardFragment, null, options)
+                            true
                         }
-                        navController.navigate(R.id.randomCardFragment, null, options)
-                        true
+
+                        else -> false
                     }
-                    else -> false
                 }
             }
 
-        } else {
-            toolbar.menu.clear()
-            toolbar.setOnMenuItemClickListener(null)
+            R.id.searchFragment -> {
+                toolbar.menu.clear()
+                toolbar.inflateMenu(R.menu.search_menu)
+                for (i in 0 until toolbar.menu.size) {
+                    toolbar.menu[i].icon?.setTint(
+                        ContextCompat.getColor(
+                            activity,
+                            R.color.md_theme_onPrimary
+                        )
+                    )
+                }
+                toolbar.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.action_search -> {
+                            val navHostFragment =
+                                activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                            val currentFragment =
+                                navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
+                            if (currentFragment is SearchFragment) {
+                                currentFragment.performSearch()
+                            }
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+            }
+
+            else -> {
+                toolbar.menu.clear()
+                toolbar.setOnMenuItemClickListener(null)
+            }
         }
     }
 }

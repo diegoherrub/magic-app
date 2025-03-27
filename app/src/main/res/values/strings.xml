@@ -62,6 +62,7 @@
     <string name="image_keyword_content_description">Keyword Image</string>
 
     <!-- Search -->
+    <string name="filters_content_description">Search filters</string>
     <string name="search_title">Search</string>
     <string name="search_results_title">Search Results</string>
     <string name="button_select_colors">Seleccionar colores</string>
@@ -71,7 +72,7 @@
     <string name="pagination_bar">Pagination bar</string>
     <string name="search_results_add">Add…</string>
     <string name="edit_card_name">Card\'s name</string>
-
+    <string name="search_name_label">Search name</string>
     <string name="type">Type</string>
     <string name="types">Types</string>
     <string name="type_artifact">Artifact</string>
@@ -136,6 +137,10 @@
         <item>@string/color_green</item>
         <item>@string/color_colorless</item>
     </string-array>
+
+    <!-- Error -->
+    <string name="image_error_content_description">Error Image</string>
+    <string name="error_button_retry">Retry</string>
 
     <!-- Flavour -->
     <string name="loremt_title" translatable="false">Lorem ipsum dolor</string>

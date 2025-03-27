@@ -19,7 +19,7 @@ object CardEffects {
     ) {
         imageView.animate().rotationY(90f).setDuration(duration)
             .withEndAction {
-                flipAction()  // Cambia la imagen
+                flipAction()
                 imageView.rotationY = -90f
                 imageView.animate().rotationY(0f).setDuration(duration).start()
             }.start()

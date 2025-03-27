@@ -15,32 +15,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:singleLine="false">
+
     </com.google.android.material.chip.ChipGroup>
+
+    <EditText
+        android:id="@+id/edit_card_name"
+        style="@style/style_app_edit_card_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="text"
+        android:hint="@string/edit_card_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/app_chip_group_filters"
+        app:layout_constraintTop_toBottomOf="@id/app_chip_group_filters" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:contentDescription="@string/filters_content_description"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/app_chip_group_filters"
-        app:layout_constraintBottom_toTopOf="@id/btn_card_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/edit_card_name">
 
         <LinearLayout
             android:id="@+id/search_filter_cardviews_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <!-- Filters -->
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <Button
-        android:id="@+id/btn_card_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/search_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

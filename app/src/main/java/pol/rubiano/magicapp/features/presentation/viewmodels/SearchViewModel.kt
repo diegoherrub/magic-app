@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
-import pol.rubiano.magicapp.app.domain.ErrorApp
+import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.Card
 import pol.rubiano.magicapp.features.domain.GetSearchUseCase
 
@@ -34,7 +34,7 @@ class SearchViewModel(
                 nextPageUrl = scryfall.nextPage
                 _uiState.postValue(UiState(isLoading = false))
             }.onFailure {
-                _uiState.postValue(UiState(isLoading = false, errorApp = ErrorApp.DataErrorApp))
+                _uiState.postValue(UiState(isLoading = false, appError = AppError.AppDataError))
             }
         }
     }
@@ -49,7 +49,7 @@ class SearchViewModel(
                 nextPageUrl = scryfall.nextPage
                 _uiState.postValue(UiState(isLoading = false))
             }.onFailure {
-                _uiState.postValue(UiState(isLoading = false, errorApp = ErrorApp.DataErrorApp))
+                _uiState.postValue(UiState(isLoading = false, appError = AppError.AppDataError))
             }
         }
     }
@@ -72,6 +72,7 @@ class SearchViewModel(
 
     data class UiState(
         val isLoading: Boolean = false,
-        val errorApp: ErrorApp? = null
+        val appError: AppError? = null,
+        val cards: LiveData<List<Card>>? = null
     )
 }

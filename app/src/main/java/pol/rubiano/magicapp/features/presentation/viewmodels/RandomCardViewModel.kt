@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
-import pol.rubiano.magicapp.app.domain.ErrorApp
+import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.Card
 import pol.rubiano.magicapp.features.domain.GetRandomCardUseCase
 
@@ -30,13 +30,20 @@ class RandomCardViewModel(
                         card = card
                     )
                 )
+            }.onFailure { throwable ->
+                _uiState.postValue(
+                    UiState(
+                        isLoading = false,
+                        appError = throwable as? AppError
+                    )
+                )
             }
         }
     }
 
     data class UiState(
         val isLoading: Boolean = false,
-        val errorApp: ErrorApp? = null,
+        val appError: AppError? = null,
         val card: Card? = null
     )
 }

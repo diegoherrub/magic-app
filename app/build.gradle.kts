@@ -67,7 +67,6 @@ dependencies {
     implementation(libs.room.runtime)
     ksp(libs.room.ksp)
     implementation(libs.room.coroutines)
-    implementation(libs.skeleton)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)

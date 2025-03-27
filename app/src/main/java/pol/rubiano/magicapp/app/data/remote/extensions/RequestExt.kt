@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.app.data.remote.extensions
 
-import pol.rubiano.magicapp.app.domain.ErrorApp
+import pol.rubiano.magicapp.app.domain.AppError
 import retrofit2.Response
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -12,19 +12,19 @@ suspend fun <T : Any> apiCall(call: suspend () -> Response<T>): Result<T> {
         response = call.invoke()
     } catch (exception: Throwable) {
         return when (exception) {
-            is ConnectException -> Result.failure(ErrorApp.ConnectionErrorApp)
-            is UnknownHostException -> Result.failure(ErrorApp.InternetErrorApp)
-            is SocketTimeoutException -> Result.failure(ErrorApp.InternetErrorApp)
-            else -> Result.failure(ErrorApp.UnknowErrorApp)
+            is ConnectException -> Result.failure(AppError.AppConnectionError)
+            is UnknownHostException -> Result.failure(AppError.AppInternetError)
+            is SocketTimeoutException -> Result.failure(AppError.AppInternetError)
+            else -> Result.failure(AppError.AppUnknowError)
         }
     }
     return if (response.isSuccessful && response.body() != null) {
         Result.success(response.body()!!)
     } else {
         when (response.code()) {
-            in 500..599 -> Result.failure(ErrorApp.ServerErrorApp)
-            in 400..499 -> Result.failure(ErrorApp.DataErrorApp)
-            else -> Result.failure(ErrorApp.UnknowErrorApp)
+            in 500..599 -> Result.failure(AppError.AppServerError)
+            in 400..499 -> Result.failure(AppError.AppDataError)
+            else -> Result.failure(AppError.AppUnknowError)
         }
     }
 }

@@ -6,20 +6,24 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
-import pol.rubiano.magicapp.databinding.ErrorAppViewBinding
+import pol.rubiano.magicapp.databinding.ViewCommonErrorsBinding
 
 class AppErrorView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
 ) : FrameLayout(context, attrs) {
 
-    private val binding = ErrorAppViewBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = ViewCommonErrorsBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         gone()
     }
 
-    fun render(errorAppUI: ErrorAppUI) {
-        binding.errorMessage.text = errorAppUI.getErrorMessage()
+    fun render(appErrorUI: AppErrorUI) {
+        binding.errorImage.setImageResource(appErrorUI.getErrorImage())
         visible()
+    }
+
+    fun setOnRetryClickListener(listener: () -> Unit) {
+        binding.errorButtonRetry.setOnClickListener { listener() }
     }
 }

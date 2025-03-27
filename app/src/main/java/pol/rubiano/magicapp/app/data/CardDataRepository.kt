@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.data.local.CardLocalDataSource
 import pol.rubiano.magicapp.app.data.remote.CardRemoteDataSource
-import pol.rubiano.magicapp.app.domain.ErrorApp
+import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.Card
 import pol.rubiano.magicapp.app.domain.CardRepository
 import java.io.File
@@ -60,7 +60,7 @@ class CardDataRepository(
 
             return Result.success(remoteCard.getOrThrow())
         }
-        return Result.failure(ErrorApp.ServerErrorApp)
+        return Result.failure(AppError.AppServerError)
     }
 
     private suspend fun downloadAndSaveImage(

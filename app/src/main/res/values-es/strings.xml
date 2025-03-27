@@ -4,6 +4,7 @@
     <string name="collections">Colecciones</string>
     <string name="decks">Mazos</string>
     <string name="random_card_title">Aleatoria</string>
+    <string name="filters_content_description">Filtros de búsqueda</string>
     <string name="search_title">Búsqueda</string>
     <string name="collections_title">Colecciones</string>
     <string name="decks_title">Mazos</string>
@@ -34,6 +35,7 @@
     <string name="search_results_add">Agregar...</string>
     <string name="edit_card_name">Nombre de la carta</string>
 
+    <string name="search_name_label">Burcar nombre</string>
     <string name="type">Tipo</string>
     <string name="types">Tipos</string>
     <string name="type_artifact">Artefacto</string>
@@ -98,4 +100,6 @@
         <item>@string/color_green</item>
         <item>@string/color_colorless</item>
     </string-array>
+    <string name="image_error_content_description">Imagen de error</string>
+    <string name="error_button_retry">Reintentar</string>
 </resources>

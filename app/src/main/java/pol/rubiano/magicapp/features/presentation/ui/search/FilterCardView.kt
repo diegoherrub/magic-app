@@ -3,7 +3,6 @@ package pol.rubiano.magicapp.features.presentation.ui.search
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
@@ -24,9 +23,6 @@ class FilterCardView @JvmOverloads constructor(
         switchContainer = findViewById(R.id.app_search_filter_card_switch_container)
     }
 
-    /**
-     * Configura la tarjeta con el nombre del filtro y las opciones.
-     */
     fun setup(filterName: String, options: List<String>) {
         headerTextView.text = filterName
         tag = filterName
@@ -35,14 +31,10 @@ class FilterCardView @JvmOverloads constructor(
         options.forEach { option ->
             val materialSwitch = MaterialSwitch(context)
             materialSwitch.text = option
-            // Configuración adicional del switch si es necesaria
             switchContainer.addView(materialSwitch)
         }
     }
 
-    /**
-     * Devuelve la lista de opciones seleccionadas (según los switches marcados).
-     */
     fun getSelectedOptions(): List<String> {
         val selected = mutableListOf<String>()
         for (i in 0 until switchContainer.childCount) {
@@ -63,11 +55,7 @@ class FilterCardView @JvmOverloads constructor(
         }
     }
 
-    /**
-     * Configura el comportamiento de drop-down y la integración con el ChipGroup.
-     */
     fun configureDropDown(chipGroupFilters: ChipGroup) {
         setupDropDown(this, switchContainer, chipGroupFilters)
     }
-
 }

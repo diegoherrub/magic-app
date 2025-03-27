@@ -103,17 +103,19 @@
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
     <style name="style_app_chip_group_filters">
-        <item name="android:layout_margin">@dimen/dimen_m</item>
+        <item name="android:paddingStart">@dimen/dimen_m</item>
     </style>
 
-    <style name="style_search_label">
-        <item name="android:layout_marginTop">@dimen/dimen_ml</item>
-        <item name="android:textAppearance">@style/app_font_search_label</item>
-    </style>
+<!--    <style name="style_search_label">-->
+<!--        <item name="android:layout_marginTop">@dimen/dimen_ml</item>-->
+<!--        <item name="android:layout_marginStart">@dimen/dimen_m</item>-->
+<!--        <item name="android:textAppearance">@style/app_font_search_label</item>-->
+<!--    </style>-->
 
     <style name="style_app_edit_card_name">
+        <item name="android:layout_margin">@dimen/dimen_m</item>
         <item name="android:paddingTop">@dimen/dimen_m</item>
-<!--        <item name="android:paddingBottom">@dimen/dimen_m</item>-->
+        <item name="android:paddingBottom">@dimen/dimen_m</item>
     </style>
 
     <style name="style_app_search_chips_group">
@@ -169,4 +171,8 @@
         <item name="android:textSize">@dimen/size_m</item>
         <item name="android:breakStrategy">simple</item>
     </style>
+
+
+    <!-- Error -->
+
 </resources>
