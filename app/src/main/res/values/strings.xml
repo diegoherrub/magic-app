@@ -138,6 +138,10 @@
         <item>@string/color_colorless</item>
     </string-array>
 
+    <!-- View Card -->
+    <string name="view_card_label">View Card</string>
+
+
     <!-- Error -->
     <string name="image_error_content_description">Error Image</string>
     <string name="error_button_retry">Retry</string>

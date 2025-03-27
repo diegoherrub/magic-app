@@ -10,14 +10,16 @@ import pol.rubiano.magicapp.databinding.SearchResultsItemBinding
 import pol.rubiano.magicapp.app.domain.Card
 
 class SearchResultsViewHolder(
-    val view: View
+    val view: View,
+    private val onCardClicked: (Card) -> Unit
 ) : RecyclerView.ViewHolder(view) {
     private lateinit var binding: SearchResultsItemBinding
     private var isTwoFaced: Boolean = false
 
     fun bind(card: Card) {
-        isTwoFaced = (card.frontFace != null && card.backFace != null)
+        view.setOnClickListener { onCardClicked(card) }
 
+        isTwoFaced = (card.frontFace != null && card.backFace != null)
         binding = SearchResultsItemBinding.bind(view)
         binding.apply {
             searchResultsItemCardName.text = card.name

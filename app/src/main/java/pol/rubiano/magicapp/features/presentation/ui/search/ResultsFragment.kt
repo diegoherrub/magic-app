@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.google.gson.Gson
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
 import pol.rubiano.magicapp.features.presentation.adapters.SearchResultsAdapter
 import pol.rubiano.magicapp.features.presentation.viewmodels.SearchViewModel
@@ -35,31 +36,39 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = SearchResultsAdapter()
+        adapter = SearchResultsAdapter { card ->
+            // Crea la acción que navega a ViewCardFragment y pasa la carta.
+            val cardJson = Gson().toJson(card)
+            val action = ResultsFragmentDirections.actionSearchResultsFragmentToViewCardFragment(cardJson)
+            findNavController().navigate(action)
+        }
         binding.resultsRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.resultsRecyclerView.adapter = adapter
 
-        viewModel.cards.observe(viewLifecycleOwner, Observer { cards ->
-            adapter.submitList(cards)
-        })
+        viewModel.cards.observe(
+            viewLifecycleOwner, Observer
+            { cards ->
+                adapter.submitList(cards)
+            })
 
         binding.resultsRecyclerView.addItemDecoration(
             DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         )
 
-        binding.resultsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val totalItemCount = layoutManager.itemCount
-                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+        binding.resultsRecyclerView.addOnScrollListener(
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    val totalItemCount = layoutManager.itemCount
+                    val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
 
-                if (lastVisibleItem >= totalItemCount - 5) {
-                    viewModel.loadMoreCards()
+                    if (lastVisibleItem >= totalItemCount - 5) {
+                        viewModel.loadMoreCards()
+                    }
                 }
-            }
-        })
+            })
 
         if (args.query.startsWith("http")) {
             viewModel.fetchSearchPage(args.query)

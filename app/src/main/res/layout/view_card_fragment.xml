@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/view_card_container"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/zero_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/view_card_image"
+                style="@style/style_app_card_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image_card_content_description"
+                android:scaleType="fitCenter"
+                android:src="@drawable/card_back"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/card_back" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/flip_button"
+                style="?attr/floatingActionButtonSurfaceStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/fab_flip"
+                android:src="@drawable/flip"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/view_card_image"
+                app:layout_constraintEnd_toEndOf="@id/view_card_image"
+                app:layout_constraintHorizontal_bias="0.86"
+                app:layout_constraintStart_toStartOf="@id/view_card_image"
+                app:layout_constraintTop_toTopOf="@id/view_card_image"
+                app:layout_constraintVertical_bias="0.47" />
+
+            <!-- Name -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/name_title"
+                style="@style/style_app_card_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_card_image" />
+
+            <TextView
+                android:id="@+id/view_card_name"
+                style="@style/style_app_card_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name_title"
+                tools:text="@string/name_title" />
+
+            <!-- Type Line -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/type_line_title"
+                style="@style/style_app_card_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/type_line_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_card_name" />
+
+            <TextView
+                android:id="@+id/view_card_tipe_line"
+                style="@style/style_app_card_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type_line_title"
+                tools:text="@string/type_line_title" />
+
+            <!-- Rarity -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/rarity_title"
+                style="@style/style_app_card_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rarity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_card_tipe_line" />
+
+            <TextView
+                android:id="@+id/view_card_rarity"
+                style="@style/style_app_card_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rarity_title"
+                tools:text="@string/rarity" />
+
+            <!-- Oracle Text -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/oracle_text_title"
+                style="@style/style_app_card_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/oracle_text_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_card_rarity" />
+
+            <TextView
+                android:id="@+id/view_card_oracle_text"
+                style="@style/style_app_card_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/oracle_text_title"
+                tools:text="oracle text" />
+
+            <!-- Set Name -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/set_name_title"
+                style="@style/style_app_card_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/set_name_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_card_oracle_text" />
+
+            <TextView
+                android:id="@+id/view_card_set_name"
+                style="@style/style_app_card_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/set_name_title"
+                tools:text="set name" />
+
+            <!-- Legalities -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/legalities_title"
+                style="@style/style_app_card_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/legality_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_card_set_name" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/legalities_list"
+                style="@style/style_app_card_legalities_container"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/legalities_title"
+                tools:listitem="@layout/cardlegalities_item_view" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <pol.rubiano.magicapp.app.presentation.error.AppErrorView
+        android:id="@+id/app_error_view_container"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/zero_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+

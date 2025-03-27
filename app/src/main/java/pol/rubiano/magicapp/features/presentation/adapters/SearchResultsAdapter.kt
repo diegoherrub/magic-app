@@ -6,13 +6,15 @@ import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.Card
 
-class SearchResultsAdapter() : ListAdapter<Card, SearchResultsViewHolder>(SearchResultsDiffUtil()) {
+class SearchResultsAdapter(
+    private val onCardClicked: (Card) -> Unit
+) : ListAdapter<Card, SearchResultsViewHolder>(SearchResultsDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultsViewHolder {
         val view = LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.search_results_item, parent, false)
-        return SearchResultsViewHolder(view)
+        return SearchResultsViewHolder(view, onCardClicked)
     }
 
     override fun onBindViewHolder(holder: SearchResultsViewHolder, position: Int) {

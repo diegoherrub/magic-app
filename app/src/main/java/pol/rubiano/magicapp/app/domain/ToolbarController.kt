@@ -25,7 +25,6 @@ class ToolbarController(
         R.id.collectionsFragment,
         R.id.decksFragment,
         R.id.randomCardFragment,
-        //R.id.searchFragment,
     )
 
     init {
@@ -48,15 +47,11 @@ class ToolbarController(
             activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
             toolbar.setNavigationOnClickListener(null)
             toolbar.isTitleCentered = true
+            bottomNav.visibility = View.VISIBLE
         } else {
             activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
             toolbar.setNavigationOnClickListener { navController.navigateUp() }
             toolbar.isTitleCentered = false
-        }
-        if (destination.id in topLevelDestinations) {
-            bottomNav.visibility = View.VISIBLE
-
-        } else {
             bottomNav.visibility = View.GONE
         }
 
@@ -88,12 +83,10 @@ class ToolbarController(
                             navController.navigate(R.id.randomCardFragment, null, options)
                             true
                         }
-
                         else -> false
                     }
                 }
             }
-
             R.id.searchFragment -> {
                 toolbar.menu.clear()
                 toolbar.inflateMenu(R.menu.search_menu)
@@ -117,12 +110,10 @@ class ToolbarController(
                             }
                             true
                         }
-
                         else -> false
                     }
                 }
             }
-
             else -> {
                 toolbar.menu.clear()
                 toolbar.setOnMenuItemClickListener(null)

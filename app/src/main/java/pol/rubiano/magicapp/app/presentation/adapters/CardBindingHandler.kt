@@ -1,60 +1,74 @@
 package pol.rubiano.magicapp.app.presentation.adapters
 
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.data.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.Card
-import pol.rubiano.magicapp.databinding.RandomCardFragmentBinding
+import pol.rubiano.magicapp.app.domain.toLegalityItemList
+import pol.rubiano.magicapp.app.presentation.legalities.LegalitiesAdapter
+import pol.rubiano.magicapp.databinding.ViewCardFragmentBinding
 
 class CardBindingHandler {
     private var currentCard: Card? = null
     private var isTwoFaced: Boolean = false
     private var isFront: Boolean = true
 
-    fun bind(card: Card, binding: RandomCardFragmentBinding) {
+    fun bind(card: Card, binding: ViewCardFragmentBinding) {
         currentCard = card
         isTwoFaced = (card.frontFace != null && card.backFace != null)
         isFront = true
 
         binding.apply {
-            randomCardRarity.text = card.rarity
-            randomCardSetName.text = card.setName
-
-            if (isTwoFaced) {
-                updateVariableFields(card.frontFace, card, binding)
-            } else {
-                updateVariableFields(null, card, binding)
+            viewCardRarity.text = card.rarity
+            viewCardSetName.text = card.setName
+            card.legalities?.let { legalities ->
+                if (binding.legalitiesList.adapter !is LegalitiesAdapter) {
+                    binding.legalitiesList.adapter = LegalitiesAdapter()
+                }
+                (binding.legalitiesList.adapter as LegalitiesAdapter)
+                    .submitList(legalities.toLegalityItemList())
             }
+            if (card.frontFace != null && card.backFace != null) {
+                binding.flipButton.visibility = View.VISIBLE
+            } else {
+                binding.flipButton.visibility = View.GONE
+            }
+
+            if (isTwoFaced) updateVariableFields(card.frontFace, card, binding)
+            else updateVariableFields(null, card, binding)
         }
     }
 
     private fun updateVariableFields(
         face: Card.Face?,
         card: Card,
-        binding: RandomCardFragmentBinding
+        binding: ViewCardFragmentBinding
     ) {
         binding.apply {
             if (face != null) {
-                randomCardName.text = face.faceName ?: card.name
-                randomCardTipeLine.text = face.faceTypeLine ?: card.typeLine
+                viewCardName.text = face.faceName ?: card.name
+                viewCardTipeLine.text = face.faceTypeLine ?: card.typeLine
                 face.faceOracleText?.let {
-                    randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
+                    viewCardOracleText.text = mapManaSymbols(viewCardOracleText.context, it)
                 } ?: card.oracleText?.let {
-                    randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
+                    viewCardOracleText.text = mapManaSymbols(viewCardOracleText.context, it)
                 }
                 val imageUrl = face.faceImageNormal ?: card.imageCrop
-                imageUrl?.let { randomCardImage.loadUrl(it) }
+                imageUrl?.let { viewCardImage.loadUrl(it) }
             } else {
-                randomCardName.text = card.name
-                randomCardTipeLine.text = card.typeLine
+                viewCardName.text = card.name
+                viewCardTipeLine.text = card.typeLine
                 card.oracleText?.let {
-                    randomCardOracleText.text = mapManaSymbols(randomCardOracleText.context, it)
+                    viewCardOracleText.text = mapManaSymbols(viewCardOracleText.context, it)
                 }
-                card.imageCrop?.let { randomCardImage.loadUrl(it) }
+                card.imageCrop?.let { viewCardImage.loadUrl(it) }
             }
         }
     }
 
-    fun flipCard(binding: RandomCardFragmentBinding) {
+    fun flipCard(binding: ViewCardFragmentBinding) {
         val card = currentCard ?: return
         if (!isTwoFaced) return
 
@@ -65,6 +79,16 @@ class CardBindingHandler {
             } else {
                 updateVariableFields(card.backFace, card, binding)
             }
+        }
+    }
+
+    fun setupLegalitiesRecyclerView(legalitiesList: RecyclerView) {
+        val spanCount = 2
+        val layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
+        legalitiesList.layoutManager = layoutManager
+
+        if (legalitiesList.adapter !is LegalitiesAdapter) {
+            legalitiesList.adapter = LegalitiesAdapter()
         }
     }
 }

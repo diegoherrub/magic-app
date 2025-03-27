@@ -100,6 +100,7 @@
         <item>@string/color_green</item>
         <item>@string/color_colorless</item>
     </string-array>
+    <string name="view_card_label">Ver Carta</string>
     <string name="image_error_content_description">Imagen de error</string>
     <string name="error_button_retry">Reintentar</string>
 </resources>

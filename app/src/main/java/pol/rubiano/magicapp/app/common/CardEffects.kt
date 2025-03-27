@@ -15,7 +15,7 @@ object CardEffects {
     inline fun flip(
         imageView: ImageView,
         duration: Long = 300,
-        crossinline flipAction: () -> Unit
+        crossinline flipAction: () -> Unit = { }
     ) {
         imageView.animate().rotationY(90f).setDuration(duration)
             .withEndAction {
