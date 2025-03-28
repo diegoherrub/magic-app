@@ -10,19 +10,10 @@ class ScryfallDataRepository(
 ) : ScryfallRepository {
 
     override suspend fun getScryfallSearch(query: String): Result<Scryfall> {
-        return try {
-            val resultScryfallDataRepository = remote.getsearchCards(query)
-            return resultScryfallDataRepository
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+        return remote.getsearchCards(query)
     }
 
     override suspend fun getNextPage(nextPageUrl: String): Result<Scryfall> {
-        return try {
-            remote.getNextPage(nextPageUrl)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+        return remote.getNextPage(nextPageUrl)
     }
 }

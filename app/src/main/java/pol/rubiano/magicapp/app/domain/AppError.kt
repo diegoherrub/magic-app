@@ -18,6 +18,10 @@ sealed class AppError : Throwable() {
         private fun readResolve(): Any = AppDataError
     }
 
+    object NoResultsError : AppError() {
+        private fun readResolve(): Any = NoResultsError
+    }
+
     object AppUnknowError : AppError() {
         private fun readResolve(): Any = AppUnknowError
     }

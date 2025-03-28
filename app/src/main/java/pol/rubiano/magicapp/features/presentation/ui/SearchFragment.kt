@@ -1,6 +1,7 @@
 package pol.rubiano.magicapp.features.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -151,6 +152,7 @@ class SearchFragment : Fragment() {
         if (view?.let { selectedTypes } != "") queryParts.add(selectedTypes)
 
         val query = queryParts.joinToString(" ")
+        Log.d("@POL", "Query: $query")
         val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(query)
         findNavController().navigate(action)
     }

@@ -28,7 +28,6 @@ class CardDataRepository(
         val remoteCard = remote.getRandomCard()
         val card = remoteCard.getOrNull()
         if (card != null) {
-            // TODO - comprobar si está en local
             local.saveCardToLocal(card)
 
             card.imageCrop?.let { mainImageUrl ->

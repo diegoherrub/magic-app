@@ -11,6 +11,8 @@ class CardRemoteDataSource(
     suspend fun getRandomCard(): Result<Card> {
         return apiCall {
             service.getRandomCard()
-        }.map { it.toModel() }
+        }.map {
+            it.toModel()
+        }
     }
 }
