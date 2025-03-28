@@ -22,10 +22,16 @@ class SearchViewModel(
     private val _cards = MutableLiveData<List<Card>>()
     val cards: LiveData<List<Card>> = _cards
 
-    // Almacena la URL de la siguiente página
+    // Store URL for the next page and last query attempted
     private var nextPageUrl: String? = null
+    var lastQueryAttempt: String? = null
+        private set
+
+    // Flag to prevent multiple simultaneous pagination requests
+    private var isLoadingMore: Boolean = false
 
     fun fetchSearchCard(query: String) {
+        lastQueryAttempt = query
         _uiState.value = UiState(isLoading = true)
         viewModelScope.launch(Dispatchers.IO) {
             val result = getSearchUseCase.invoke(query)
@@ -39,8 +45,8 @@ class SearchViewModel(
         }
     }
 
-    // Nueva función para buscar usando la URL de la siguiente página
     fun fetchSearchPage(url: String) {
+        lastQueryAttempt = url
         _uiState.value = UiState(isLoading = true)
         viewModelScope.launch(Dispatchers.IO) {
             val result = getSearchUseCase.loadNextPage(url)
@@ -55,20 +61,23 @@ class SearchViewModel(
     }
 
     fun loadMoreCards() {
-        if (nextPageUrl == null) return
+        if (nextPageUrl == null || isLoadingMore) return
 
+        isLoadingMore = true
+        lastQueryAttempt = nextPageUrl
         viewModelScope.launch(Dispatchers.IO) {
             val result = getSearchUseCase.loadNextPage(nextPageUrl!!)
             result.onSuccess { scryfall ->
                 val currentList = _cards.value.orEmpty()
                 _cards.postValue(currentList + scryfall.data.orEmpty())
                 nextPageUrl = scryfall.nextPage
+                isLoadingMore = false
+            }.onFailure {
+                _uiState.postValue(UiState(isLoading = false, appError = AppError.AppDataError))
+                isLoadingMore = false
             }
         }
     }
-
-    // Método para exponer la URL de la siguiente página
-    fun getNextPageUrl(): String? = nextPageUrl
 
     data class UiState(
         val isLoading: Boolean = false,

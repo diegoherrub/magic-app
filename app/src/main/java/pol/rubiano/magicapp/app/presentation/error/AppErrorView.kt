@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
-import pol.rubiano.magicapp.databinding.ViewCommonErrorsBinding
+import pol.rubiano.magicapp.databinding.ViewCommonErrorBinding
 
 class AppErrorView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
 ) : FrameLayout(context, attrs) {
 
-    private val binding = ViewCommonErrorsBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = ViewCommonErrorBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         gone()

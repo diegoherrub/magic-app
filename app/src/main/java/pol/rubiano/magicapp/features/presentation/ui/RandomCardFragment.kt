@@ -6,20 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import pol.rubiano.magicapp.databinding.RandomCardFragmentBinding
 import pol.rubiano.magicapp.features.presentation.viewmodels.RandomCardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.android.ext.android.inject
-import pol.rubiano.magicapp.app.common.CardEffects
 import pol.rubiano.magicapp.app.presentation.adapters.CardBindingHandler
 import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
-import pol.rubiano.magicapp.app.presentation.legalities.LegalitiesAdapter
 import pol.rubiano.magicapp.databinding.ViewCardFragmentBinding
 
 class RandomCardFragment : Fragment() {
@@ -43,10 +39,7 @@ class RandomCardFragment : Fragment() {
         if (savedInstanceState == null && viewModel.uiState.value?.card == null) {
             viewModel.fetchRandomCard()
         }
-
-
     }
-
 
     private fun setupObserver() {
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
