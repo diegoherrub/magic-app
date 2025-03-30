@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.adapters
+package pol.rubiano.magicapp.features.presentation.adapters.viewholders
 
 import android.view.View
 import androidx.core.text.buildSpannedString

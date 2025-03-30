@@ -12,8 +12,8 @@ class CardLocalDataSource(
         dao.saveCardToLocal(cardEntity)
     }
 
-    suspend fun saveCardsToLocal(cards: List<Card>) {
-        val cardsEntities = cards.map { it.toEntity() }
-        dao.saveCardsToLocal(*cardsEntities.toTypedArray())
-    }
+//    suspend fun saveCardsToLocal(cards: List<Card>) {
+//        val cardsEntities = cards.map { it.toEntity() }
+//        dao.saveCardsToLocal(*cardsEntities.toTypedArray())
+//    }
 }

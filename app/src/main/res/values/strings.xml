@@ -1,5 +1,7 @@
 <resources>
     <!-- Common -->
+    <string name="str_add_card">Add card</string>
+
     <string name="app_name" translatable="false">MagicApp</string>
     <string name="image_card_content_description">Card Image</string>
     <string name="image_section_content_description">Section Image</string>
@@ -8,7 +10,6 @@
     <string name="magic_title" translatable="false">Magic</string>
     <string name="random_card_title">Random Card</string>
     <string name="collections_title">Collections</string>
-    <string name="decks_title">Decks</string>
 
     <!-- Random Card Fragment -->
     <string name="save_card">Save</string>
@@ -21,7 +22,6 @@
     <string name="magic" translatable="false">Magic</string>
     <string name="random_card">Random</string>
     <string name="collections">Collections</string>
-    <string name="decks">Decks</string>
 
     <!-- Titles -->
     <string name="name_title">Name</string>
@@ -138,9 +138,69 @@
         <item>@string/color_colorless</item>
     </string-array>
 
+    <!-- Strings for Search Query -->
+    <string name="q_rarity_common" translatable="false">common</string>
+    <string name="q_rarity_uncommon" translatable="false">cncommon</string>
+    <string name="q_rarity_rare" translatable="false">rare</string>
+    <string name="q_rarity_mythic" translatable="false">mythic</string>
+    <string-array name="q_rarities_options">
+        <item>@string/q_rarity_common</item>
+        <item>@string/q_rarity_uncommon</item>
+        <item>@string/q_rarity_rare</item>
+        <item>@string/q_rarity_mythic</item>
+    </string-array>
+
+    <string name="q_color_white" translatable="false">white</string>
+    <string name="q_color_blue" translatable="false">blue</string>
+    <string name="q_color_black" translatable="false">black</string>
+    <string name="q_color_red" translatable="false">red</string>
+    <string name="q_color_green" translatable="false">green</string>
+    <string name="q_color_colorless" translatable="false">colorless</string>
+    <string-array name="q_colors_options">
+        <item>@string/q_color_white</item>
+        <item>@string/q_color_blue</item>
+        <item>@string/q_color_black</item>
+        <item>@string/q_color_red</item>
+        <item>@string/q_color_green</item>
+        <item>@string/q_color_colorless</item>
+    </string-array>
+
+
+    <string name="q_type_artifact" translatable="false">Artifact</string>
+    <string name="q_type_battle" translatable="false">Battle</string>
+    <string name="q_type_conspiracy" translatable="false">Conspiracy</string>
+    <string name="q_type_creature" translatable="false">Creature</string>
+    <string name="q_type_dungeon" translatable="false">Dungeon</string>
+    <string name="q_type_enchantment" translatable="false">Enchantment</string>
+    <string name="q_type_instant" translatable="false">Instant</string>
+    <string name="q_type_kindred" translatable="false">Kindred</string>
+    <string name="q_type_land" translatable="false">Land</string>
+    <string name="q_type_phenomenon" translatable="false">Phenomenon</string>
+    <string name="q_type_plane" translatable="false">Plane</string>
+    <string name="q_type_planeswalker" translatable="false">Planeswalker</string>
+    <string name="q_type_scheme" translatable="false">Scheme</string>
+    <string name="q_type_sorcery" translatable="false">Sorcery</string>
+    <string name="q_type_vanguard" translatable="false">Vanguard</string>
+    <string-array name="q_types_options">
+        <item>@string/q_type_artifact</item>
+        <item>@string/q_type_battle</item>
+        <item>@string/q_type_conspiracy</item>
+        <item>@string/q_type_creature</item>
+        <item>@string/q_type_dungeon</item>
+        <item>@string/q_type_enchantment</item>
+        <item>@string/q_type_instant</item>
+        <item>@string/q_type_kindred</item>
+        <item>@string/q_type_land</item>
+        <item>@string/q_type_phenomenon</item>
+        <item>@string/q_type_plane</item>
+        <item>@string/q_type_planeswalker</item>
+        <item>@string/q_type_scheme</item>
+        <item>@string/q_type_sorcery</item>
+        <item>@string/q_type_vanguard</item>
+    </string-array>
+
     <!-- View Card -->
     <string name="view_card_label">View Card</string>
-
 
     <!-- Error -->
     <string name="image_error_content_description">Error Image</string>

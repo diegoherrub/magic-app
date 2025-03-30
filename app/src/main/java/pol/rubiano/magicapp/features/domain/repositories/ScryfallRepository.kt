@@ -1,4 +1,6 @@
-package pol.rubiano.magicapp.features.domain
+package pol.rubiano.magicapp.features.domain.repositories
+
+import pol.rubiano.magicapp.features.domain.entities.Scryfall
 
 interface ScryfallRepository {
     suspend fun getScryfallSearch(query: String): Result<Scryfall>

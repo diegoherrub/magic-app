@@ -1,0 +1,39 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/st_cointainer">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cfg_deck_name"
+        style="@style/st_conf_deck_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Deck name" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cfg_deck_colors"
+        style="@style/st_conf_deck_colors"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="{U}{W}" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cfg_deck_description"
+        style="@style/st_cfg_deck_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cfg_deck_name"
+        tools:text="@string/lorem_small" />
+
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/saveDeckButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:text="Guardar Cambios"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/editDeckDescription" />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

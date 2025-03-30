@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- CONFIG -->
+    <style name="st_conf_deck_name" parent="st_wrap_wrap_parent">
+        <item name="android:textAppearance">@style/txt_cfg_deck_name</item>
+    </style>
+
+    <style name="st_conf_deck_colors" parent="st_wrap_wrap_parent">
+        <item name="android:textAppearance">@style/txt_cfg_deck_colors</item>
+    </style>
+
+    <style name="st_cfg_deck_description" parent="st_match_wrap_parent">
+        <item name="android:layout_marginTop">@dimen/dimen_s</item>
+        <item name="android:textAppearance">@style/txt_cfg_deck_description</item>
+    </style>
+
+    <!-- TEXTS APPEARANCE -->
+    <style name="txt_cfg_deck_name">
+        <item name="android:fontFamily">@font/card_bold</item>
+        <item name="android:textSize">@dimen/size_m</item>
+        <item name="android:textColor">@color/md_theme_primary</item>
+    </style>
+
+    <style name="txt_cfg_deck_colors">
+        <item name="android:textSize">@dimen/size_l</item>
+    </style>
+
+    <style name="txt_cfg_deck_description">
+        <item name="android:fontFamily">@font/app_regular</item>
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+
+</resources>

@@ -1,9 +1,9 @@
-package pol.rubiano.magicapp.features.presentation.adapters
+package pol.rubiano.magicapp.features.presentation.adapters.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.databinding.ViewCommonSectionListTypeItemBinding
-import pol.rubiano.magicapp.features.domain.Legality
+import pol.rubiano.magicapp.features.domain.entities.Legality
 
 class LegalitiesViewHolder(
     val view: View

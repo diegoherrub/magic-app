@@ -12,7 +12,7 @@
     <item
         android:id="@+id/decksFragment"
         android:icon="@drawable/deck"
-        android:title="@string/decks_title" />
+        android:title="@string/str_decks" />
     <item
         android:id="@+id/randomCardFragment"
         android:icon="@drawable/random"

@@ -14,7 +14,7 @@
     android:layout_margin="@dimen/dimen_m"
     android:layout_marginVertical="@dimen/dimen_m"
     android:clickable="true"
-    android:focusable="true"
+    android:focusable="false"
     app:cardCornerRadius="8dp">
 
     <TextView

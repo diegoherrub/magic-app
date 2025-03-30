@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="str_decks">Decks</string>
+    <string name="str_deck_name">Deck name</string>
+    <string name="str_deck_description">Deck description</string>
+    <string name="str_new_deck">New Deck</string>
+    <string name="str_config_deck_title">Deck Config</string>
+    <string name="str_edit_deck_title">Edit deck</string>
+    <string name="str_edit_deck_save">Save deck</string>
+</resources>

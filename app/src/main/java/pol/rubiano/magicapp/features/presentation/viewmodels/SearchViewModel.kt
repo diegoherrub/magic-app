@@ -9,7 +9,7 @@
 //import org.koin.android.annotation.KoinViewModel
 //import pol.rubiano.magicapp.app.domain.AppError
 //import pol.rubiano.magicapp.app.domain.Card
-//import pol.rubiano.magicapp.features.domain.GetSearchUseCase
+//import pol.rubiano.magicapp.features.domain.usecases.GetSearchUseCase
 //import retrofit2.HttpException
 //
 //@KoinViewModel
@@ -125,8 +125,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.Card
-import pol.rubiano.magicapp.features.domain.GetSearchUseCase
-import retrofit2.HttpException
+import pol.rubiano.magicapp.features.domain.usecases.GetSearchUseCase
 
 @KoinViewModel
 class SearchViewModel(

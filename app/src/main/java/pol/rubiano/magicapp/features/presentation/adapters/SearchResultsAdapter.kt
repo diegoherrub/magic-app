@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.features.presentation.adapters.diffutils.SearchResultsDiffUtil
+import pol.rubiano.magicapp.features.presentation.adapters.viewholders.SearchResultsViewHolder
 
 class SearchResultsAdapter(
     private val onCardClicked: (Card) -> Unit

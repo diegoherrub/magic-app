@@ -8,29 +8,17 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.ChipGroup
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.common.extensions.gone
-import pol.rubiano.magicapp.app.common.extensions.visible
-import pol.rubiano.magicapp.app.domain.AppError
-import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.databinding.SearchFragmentBinding
-import pol.rubiano.magicapp.features.presentation.viewmodels.SearchViewModel
-import pol.rubiano.magicapp.features.domain.Filter
+import pol.rubiano.magicapp.features.domain.entities.Filter
 import pol.rubiano.magicapp.features.presentation.ui.search.FilterCardView
 
 class SearchFragment : Fragment() {
 
     private var _binding: SearchFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SearchViewModel by viewModel()
-    private val errorFactory: AppErrorUIFactory by inject()
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -48,9 +36,9 @@ class SearchFragment : Fragment() {
         chipGroupFilters = view.findViewById(R.id.app_chip_group_filters)
         filtersContainer = view.findViewById(R.id.search_filter_cardviews_container)
 
-        val raritiesOptions = resources.getStringArray(R.array.rarities_options).toList()
-        val colorsOptions = resources.getStringArray(R.array.colors_options).toList()
-        val typesOptions = resources.getStringArray(R.array.types_options).toList()
+        val raritiesOptions = resources.getStringArray(R.array.q_rarities_options).toList()
+        val colorsOptions = resources.getStringArray(R.array.q_colors_options).toList()
+        val typesOptions = resources.getStringArray(R.array.q_types_options).toList()
 
         val filters = listOf(
             Filter(getString(R.string.rarities), raritiesOptions),
@@ -104,12 +92,12 @@ class SearchFragment : Fragment() {
         if (selectedOptions.isEmpty()) return ""
 
         val mapping = mapOf(
-            getString(R.string.color_white) to "w",
-            getString(R.string.color_blue) to "u",
-            getString(R.string.color_black) to "b",
-            getString(R.string.color_red) to "r",
-            getString(R.string.color_green) to "g",
-            getString(R.string.color_colorless) to "c"
+            getString(R.string.q_color_white) to "w",
+            getString(R.string.q_color_blue) to "u",
+            getString(R.string.q_color_black) to "b",
+            getString(R.string.q_color_red) to "r",
+            getString(R.string.q_color_green) to "g",
+            getString(R.string.q_color_colorless) to "c"
         )
 
         val letters = selectedOptions.mapNotNull { mapping[it] }.joinToString(separator = "")

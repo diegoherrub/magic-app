@@ -1,10 +1,10 @@
-package pol.rubiano.magicapp.features.presentation.adapters
+package pol.rubiano.magicapp.features.presentation.adapters.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.app.data.mapManaSymbols
 import pol.rubiano.magicapp.databinding.ViewCommonSectionListTypeItemBinding
-import pol.rubiano.magicapp.features.domain.Keyword
+import pol.rubiano.magicapp.features.domain.entities.Keyword
 
 class KeywordsViewHolder(
     val view: View

@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.features.domain.Legality
+import pol.rubiano.magicapp.features.domain.entities.Legality
+import pol.rubiano.magicapp.features.presentation.adapters.diffutils.LegalitiesDiffUtil
+import pol.rubiano.magicapp.features.presentation.adapters.viewholders.LegalitiesViewHolder
 
 class LegalitiesAdapter() : ListAdapter<Legality, LegalitiesViewHolder> (LegalitiesDiffUtil()) {
 

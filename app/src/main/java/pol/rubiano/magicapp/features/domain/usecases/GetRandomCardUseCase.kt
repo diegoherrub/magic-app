@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.domain
+package pol.rubiano.magicapp.features.domain.usecases
 
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.domain.Card

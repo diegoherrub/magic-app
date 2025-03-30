@@ -2,12 +2,11 @@
 <resources>
     <string name="random_card">Aleatoria</string>
     <string name="collections">Colecciones</string>
-    <string name="decks">Mazos</string>
+    <string name="str_decks">Mazos</string>
     <string name="random_card_title">Aleatoria</string>
     <string name="filters_content_description">Filtros de búsqueda</string>
     <string name="search_title">Búsqueda</string>
     <string name="collections_title">Colecciones</string>
-    <string name="decks_title">Mazos</string>
     <string name="image_card_content_description">Imagen de la carta</string>
     <string name="legality_title">Formatos legales</string>
     <string name="name_title">Nombre</string>
@@ -15,6 +14,7 @@
 
     <string name="oracle_text_title">Texto oficial</string>
     <string name="set_name_title">Colección</string>
+    <string name="str_new_deck">Nuevo mazo</string>
     <string name="save_card">Guardar</string>
     <string name="cd_save_card">Guarda la carta de la imagen dentro del almacenamiento de la aplicación</string>
     <string name="refresh">Recargar</string>
@@ -101,6 +101,9 @@
         <item>@string/color_colorless</item>
     </string-array>
     <string name="view_card_label">Ver Carta</string>
+    <string name="str_config_deck_title">Configuración del mazo</string>
+    <string name="str_add_card">Agregar carta</string>
+    <string name="str_edit_deck_title">Editar mazo</string>
     <string name="image_error_content_description">Imagen de error</string>
     <string name="error_button_retry">Reintentar</string>
 </resources>

@@ -8,6 +8,7 @@ import pol.rubiano.magicapp.app.di.AppModule
 import pol.rubiano.magicapp.app.di.CardModule
 import pol.rubiano.magicapp.app.di.LocalModule
 import pol.rubiano.magicapp.app.di.RemoteModule
+import pol.rubiano.magicapp.features.di.DeckModule
 import pol.rubiano.magicapp.features.di.ScryfallModule
 
 class MagicApp : Application() {
@@ -20,7 +21,8 @@ class MagicApp : Application() {
                 LocalModule().module,
                 RemoteModule().module,
                 CardModule().module,
-                ScryfallModule().module
+                ScryfallModule().module,
+                DeckModule().module
             )
         }
     }

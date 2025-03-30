@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.domain
+package pol.rubiano.magicapp.features.domain.entities
 
 import pol.rubiano.magicapp.app.domain.Card
 

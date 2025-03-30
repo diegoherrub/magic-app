@@ -2,7 +2,7 @@ package pol.rubiano.magicapp.features.data.remote
 
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.data.remote.extensions.apiCall
-import pol.rubiano.magicapp.features.domain.Scryfall
+import pol.rubiano.magicapp.features.domain.entities.Scryfall
 
 @Single
 class ScryfallDataSource(

@@ -13,12 +13,12 @@ class LocalModule {
 
     @Single
     fun provideDataBase(context: Context): MagicAppDataBase {
-        val database = Room.databaseBuilder(
+        return Room.databaseBuilder(
             context,
             MagicAppDataBase::class.java,
             "magicapp-db"
         )
-        database.fallbackToDestructiveMigration()
-        return database.build()
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }
