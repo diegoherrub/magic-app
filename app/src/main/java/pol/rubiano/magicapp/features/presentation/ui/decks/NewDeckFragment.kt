@@ -15,7 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.DeckFragmentNewDeckBinding
 import pol.rubiano.magicapp.features.domain.entities.Deck
-import pol.rubiano.magicapp.features.presentation.viewmodels.DeckViewModel
+import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 import java.util.UUID
 
 class NewDeckFragment : Fragment() {
@@ -23,7 +23,7 @@ class NewDeckFragment : Fragment() {
     private var _binding: DeckFragmentNewDeckBinding? = null
     private val binding get() = _binding!!
 
-    private val deckViewModel: DeckViewModel by viewModel()
+    private val decksViewModel: DecksViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +51,7 @@ class NewDeckFragment : Fragment() {
                 )
 
                 lifecycleScope.launch {
-                    deckViewModel.addDeck(newDeck)
+                    decksViewModel.addDeck(newDeck)
                     val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
                     delay(1000)

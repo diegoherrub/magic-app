@@ -1,4 +1,4 @@
-ckage pol.rubiano.magicapp.features.presentation.viewmodels
+package pol.rubiano.magicapp.features.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -6,15 +6,17 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
+import pol.rubiano.magicapp.app.domain.Card
 import pol.rubiano.magicapp.features.domain.entities.Deck
 import pol.rubiano.magicapp.features.domain.repositories.DeckRepository
 import pol.rubiano.magicapp.features.domain.usecases.AddDeckUseCase
 import pol.rubiano.magicapp.features.domain.usecases.GetDecksUseCase
 
 @KoinViewModel
-class DeckViewModel(
+class DecksViewModel(
     private val getDecksUseCase: GetDecksUseCase,
     private val addDeckUseCase: AddDeckUseCase,
     private val repository: DeckRepository
@@ -23,33 +25,38 @@ class DeckViewModel(
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
 
-    init {
-        loadDecks()
-    }
+    private val _selectedDeck = MutableLiveData<Deck?>()
+    val selectedDeck: LiveData<Deck?> = _selectedDeck
 
     fun loadDecks() {
-        _uiState.value = UiState(isLoading = true)
+        _uiState.postValue(UiState(isLoading = true))
+
         viewModelScope.launch(Dispatchers.IO) {
             val decks = repository.getDecks()
-                _uiState.postValue(
-                    UiState(
-                        isLoading = false,
-                        decks = decks
-                    )
+            withContext(Dispatchers.Main) {
+                _uiState.value = UiState(
+                    isLoading = false,
+                    decks = decks
                 )
+            }
+        }
+    }
+
+    fun loadDeckById(deckId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val deck = repository.getDeckById(deckId)
+            withContext(Dispatchers.Main) {
+                _selectedDeck.value = deck
+            }
         }
     }
 
     fun addDeck(deck: Deck) {
-        _uiState.value = UiState(isLoading = true)
+        //_uiState.postValue(UiState(isLoading = true))
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertDeck(deck)
             loadDecks()
         }
-    }
-
-    suspend fun getDeckById(deckId: String): Deck? {
-        return repository.getDeckById(deckId)
     }
 
     fun updateDeck(deck: Deck) {
@@ -59,14 +66,13 @@ class DeckViewModel(
         }
     }
 
-//    fun addCardToSideboard(deck: Deck, cardId: String): Deck {
-//        return if (deck.sideBoard.size < 15) {
-//            deck.copy(sideBoard = deck.sideBoard + cardId)
-//        } else {
-//            // TODO notify the user that the sideboard is full
-//            deck
-//        }
-//    }
+    fun addCardToDeck(deckId: String, card: Card) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addCardToDeck(deckId, card.id)
+            // TODO Opcional: refrescar el deck si es necesario
+            loadDeckById(deckId)
+        }
+    }
 
     data class UiState(
         val isLoading: Boolean = false,

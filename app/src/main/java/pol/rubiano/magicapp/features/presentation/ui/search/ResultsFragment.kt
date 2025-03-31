@@ -24,13 +24,15 @@ import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
 import pol.rubiano.magicapp.features.presentation.adapters.SearchResultsAdapter
+import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 import pol.rubiano.magicapp.features.presentation.viewmodels.SearchViewModel
 
 class ResultsFragment : Fragment() {
 
     private var _binding: SearchResultsFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SearchViewModel by viewModel()
+    private val searchViewModel: SearchViewModel by viewModel()
+    private val decksViewModel: DecksViewModel by viewModel()
     private lateinit var adapter: SearchResultsAdapter
     private val args: ResultsFragmentArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
@@ -47,17 +49,27 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // If it comes from decks, we need to pass the deckId to add the card to the deck
+        val deckId = args.deckId
+
         adapter = SearchResultsAdapter { card ->
-            val cardJson = Gson().toJson(card)
-            val action =
-                ResultsFragmentDirections.actionSearchResultsFragmentToViewCardFragment(cardJson)
-            findNavController().navigate(action)
+            if (deckId != null) {
+                decksViewModel.addCardToDeck(deckId, card)
+                val action = ResultsFragmentDirections
+                    .actionSearchResultsFragmentToDeckConfigFragment(deckId)
+            } else {
+                val cardJson = Gson().toJson(card)
+                val action = ResultsFragmentDirections
+                    .actionSearchResultsFragmentToViewCardFragment(cardJson)
+                findNavController().navigate(action)
+            }
         }
+
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.resultsRecyclerView.layoutManager = layoutManager
         binding.resultsRecyclerView.adapter = adapter
 
-        viewModel.cards.observe(viewLifecycleOwner, Observer { cards ->
+        searchViewModel.cards.observe(viewLifecycleOwner, Observer { cards ->
             adapter.submitList(cards)
         })
 
@@ -73,7 +85,7 @@ class ResultsFragment : Fragment() {
                 val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
 
                 if (lastVisibleItem >= totalItemCount - 5) {
-                    viewModel.loadMoreCards()
+                    searchViewModel.loadMoreCards()
                 }
             }
         })
@@ -87,11 +99,11 @@ class ResultsFragment : Fragment() {
         }
 
         // Only trigger a new query if no cards are currently loaded
-        if (viewModel.cards.value.isNullOrEmpty()) {
+        if (searchViewModel.cards.value.isNullOrEmpty()) {
             if (args.query.startsWith("http")) {
-                viewModel.fetchSearchPage(args.query)
+                searchViewModel.fetchSearchPage(args.query)
             } else {
-                viewModel.fetchSearchCard(args.query)
+                searchViewModel.fetchSearchCard(args.query)
             }
         }
 
@@ -100,7 +112,7 @@ class ResultsFragment : Fragment() {
     }
 
     private fun setupObserver() {
-        viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
+        searchViewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             bindError(uiState.appError)
         }
     }
@@ -115,11 +127,11 @@ class ResultsFragment : Fragment() {
                 binding.resultsRecyclerView.visible()
                 viewLifecycleOwner.lifecycleScope.launch {
                     delay(2000)
-                    viewModel.lastQueryAttempt?.let { lastQuery ->
+                    searchViewModel.lastQueryAttempt?.let { lastQuery ->
                         if (lastQuery.startsWith("http")) {
-                            viewModel.fetchSearchPage(lastQuery)
+                            searchViewModel.fetchSearchPage(lastQuery)
                         } else {
-                            viewModel.fetchSearchCard(lastQuery)
+                            searchViewModel.fetchSearchCard(lastQuery)
                         }
                     }
                 }

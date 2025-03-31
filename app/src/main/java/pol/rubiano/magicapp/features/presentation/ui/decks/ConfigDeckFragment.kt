@@ -6,21 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import androidx.lifecycle.lifecycleScope
 import pol.rubiano.magicapp.databinding.DeckFragmentConfigDeckBinding
-import pol.rubiano.magicapp.features.domain.entities.Deck
-import pol.rubiano.magicapp.features.presentation.viewmodels.DeckViewModel
+import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
 class ConfigDeckFragment : Fragment() {
 
     private var _binding: DeckFragmentConfigDeckBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: DeckViewModel by viewModel()
+    private val viewModel: DecksViewModel by viewModel()
+
+    // retrieve the deckId from the arguments
     private val args: ConfigDeckFragmentArgs by navArgs()
 
-    private lateinit var currentDeck: Deck
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,19 +30,18 @@ class ConfigDeckFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val deckId = args.deckId
+        viewModel.loadDeckById(deckId)
+        setupObservers()
+    }
 
-        lifecycleScope.launch {
-            val deck = viewModel.getDeckById(deckId)
-            if (deck != null) {
-                currentDeck = deck
-                binding.cfgDeckName.setText(deck.name)
-                binding.cfgDeckDescription.setText(deck.description)
+    private fun setupObservers() {
+        viewModel.selectedDeck.observe(viewLifecycleOwner) { deck ->
+            deck?.let {
+                binding.cfgDeckName.text = it.name
+                binding.cfgDeckDescription.text = it.description
             }
         }
-
-
     }
 
     override fun onDestroyView() {

@@ -1,34 +1,22 @@
 package pol.rubiano.magicapp.features.presentation.adapters
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import pol.rubiano.magicapp.databinding.DeckFragmentItemBinding
+import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.presentation.adapters.diffutils.DeckDiffUtil
 import pol.rubiano.magicapp.features.presentation.adapters.viewholders.DecksViewHolder
 
 class DecksAdapter(
-    private var decks: List<Deck> = emptyList(),
-    private val onItemClicked: (Deck) -> Unit
-) : RecyclerView.Adapter<DecksViewHolder>() {
-
-
+    private val onDeckClickToConfig: (Deck) -> Unit,
+   // private val onDeckClickToEdit: (Deck) -> Unit
+) : ListAdapter<Deck, DecksViewHolder>(DeckDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DecksViewHolder {
-        val binding = DeckFragmentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return DecksViewHolder(binding, onItemClicked)
+        return DecksViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: DecksViewHolder, position: Int) {
-        val deck = decks[position]
-        holder.bind(deck)
+        val item = getItem(position)
+        holder.bind(item, onDeckClickToConfig)
     }
-
-    override fun getItemCount(): Int = decks.size
-
-        fun updateDecks(newDecks: List<Deck>) {
-        decks = newDecks
-        notifyDataSetChanged()
-    }
-
 }

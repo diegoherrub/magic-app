@@ -140,7 +140,6 @@ class SearchFragment : Fragment() {
         if (view?.let { selectedTypes } != "") queryParts.add(selectedTypes)
 
         val query = queryParts.joinToString(" ")
-        Log.d("@POL", "Query: $query")
         val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(query)
         findNavController().navigate(action)
     }

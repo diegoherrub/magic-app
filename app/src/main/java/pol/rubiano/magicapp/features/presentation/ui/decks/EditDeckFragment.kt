@@ -10,17 +10,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.databinding.DeckFragmentEditDeckBinding
 import pol.rubiano.magicapp.features.domain.entities.Deck
-import pol.rubiano.magicapp.features.presentation.ui.DecksFragmentDirections
-import pol.rubiano.magicapp.features.presentation.viewmodels.DeckViewModel
+import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
 class EditDeckFragment : Fragment() {
 
     private var _binding: DeckFragmentEditDeckBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: DeckViewModel by viewModel()
+    private val viewModel: DecksViewModel by viewModel()
     private val args: EditDeckFragmentArgs by navArgs()
 
     private lateinit var currentDeck: Deck
@@ -35,15 +35,17 @@ class EditDeckFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val deckId = args.deckId
+        viewModel.loadDeckById(deckId)
+        setupObservers()
+    }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val deck = viewModel.getDeckById(deckId)
-            if (deck != null) {
-                currentDeck = deck
-                binding.editDeckName.setText(deck.name)
-                binding.editDeckDescription.setText(deck.description)
+    private fun setupObservers() {
+        viewModel.selectedDeck.observe(viewLifecycleOwner) { deck ->
+            deck?.let {
+                currentDeck = it
+                binding.editDeckName.setText(it.name)
+                binding.editDeckDescription.setText(it.description)
             }
         }
     }
@@ -53,10 +55,11 @@ class EditDeckFragment : Fragment() {
             name = binding.editDeckName.text.toString(),
             description = binding.editDeckDescription.text.toString()
         )
-        lifecycleScope.launch {
-            viewModel.updateDeck(updatedDeck)
-            findNavController().navigate(EditDeckFragmentDirections.actionDeckEditFragmentToDecksFragment())
-        }
+        viewModel.updateDeck(updatedDeck)
+
+        findNavController().navigate(
+            EditDeckFragmentDirections.actionDeckEditFragmentToDecksFragment()
+        )
     }
 
     override fun onDestroyView() {

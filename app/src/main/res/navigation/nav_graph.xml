@@ -106,12 +106,20 @@
         <argument
             android:name="query"
             app:argType="string" />
+        <argument
+            android:name="deckId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
         <action
             android:id="@+id/action_results_fragment_self"
             app:destination="@+id/search_results_fragment" />
         <action
             android:id="@+id/action_search_results_fragment_to_view_card_fragment"
             app:destination="@+id/view_card_fragment" />
+        <action
+            android:id="@+id/action_search_results_fragment_to_deck_config_fragment"
+            app:destination="@+id/deckConfigFragment" />
     </fragment>
 
     <!-- View Card -->

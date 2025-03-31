@@ -128,10 +128,14 @@ class ToolbarController(
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.cfg_deck_add_card -> {
-//                            val options = navOptions {
-//                                popUpTo(R.id.randomCardFragment) { inclusive = true }
-//                            }
-//                            navController.navigate(R.id.randomCardFragment, null, options)
+                            val currentArgs = navController.currentBackStackEntry?.arguments
+                            val deckId = currentArgs?.getString("deckId")
+                            if (deckId != null) {
+                                val bundle = Bundle().apply {
+                                    putString("deckId", deckId)
+                                }
+                                navController.navigate(R.id.searchFragment, bundle)
+                            }
                             true
                         }
 
@@ -181,7 +185,6 @@ class ToolbarController(
                     }
                 }
             }
-
 
             else -> {
                 toolbar.menu.clear()

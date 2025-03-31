@@ -23,4 +23,12 @@ class DeckDataSource(
         return deckDao.getDeckById(id)?.toDeck()
     }
 
+    suspend fun addCardToDeck(deckId: String, cardId: String) {
+        val deck = getDeckById(deckId)
+        if (deck != null) {
+            val updatedMainboard = deck.cardIds + cardId
+            val updatedDeck = deck.copy(cardIds = updatedMainboard)
+            insertDeck(updatedDeck)
+        }
+    }
 }

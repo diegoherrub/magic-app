@@ -9,6 +9,7 @@ import pol.rubiano.magicapp.features.domain.repositories.DeckRepository
 class DeckDataRepository(
     private val local: DeckDataSource
 ) : DeckRepository {
+
     override suspend fun getDecks(): List<Deck> {
         return local.getDecks()
     }
@@ -19,5 +20,9 @@ class DeckDataRepository(
 
     override suspend fun getDeckById(deckId: String): Deck? {
         return local.getDeckById(deckId)
+    }
+
+    override suspend fun addCardToDeck(deckId: String, cardId: String) {
+        local.addCardToDeck(deckId, cardId)
     }
 }

@@ -39,7 +39,7 @@
         style="@style/st_edit_input"
         android:autofillHints="no"
         android:hint="@string/str_deck_description"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@id/edit_deck_description_label"
         app:layout_constraintStart_toStartOf="@id/edit_deck_description_label"
         app:layout_constraintTop_toBottomOf="@+id/edit_deck_description_label"
