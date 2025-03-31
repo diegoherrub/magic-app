@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.domain.entities
+package pol.rubiano.magicapp.features.domain.models
 
 data class Deck(
     val id: String,

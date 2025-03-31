@@ -75,6 +75,7 @@
     <string name="search_name_label">Search name</string>
     <string name="type">Type</string>
     <string name="types">Types</string>
+    <string name="type_spell">Spell</string>
     <string name="type_artifact">Artifact</string>
     <string name="type_battle">Battle</string>
     <string name="type_conspiracy">Conspiracy</string>

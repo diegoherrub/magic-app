@@ -1,8 +1,8 @@
 package pol.rubiano.magicapp.features.domain.usecases
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.domain.Card
-import pol.rubiano.magicapp.app.domain.CardRepository
+import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.app.domain.repositories.CardRepository
 
 @Single
 class GetRandomCardUseCase(

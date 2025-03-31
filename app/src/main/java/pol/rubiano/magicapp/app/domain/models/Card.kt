@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.app.domain
+package pol.rubiano.magicapp.app.domain.models
 
 import java.util.Date
 

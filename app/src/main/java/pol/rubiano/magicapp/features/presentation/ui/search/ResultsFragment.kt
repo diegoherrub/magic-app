@@ -22,6 +22,7 @@ import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
+import pol.rubiano.magicapp.app.presentation.viewmodels.CardsViewModel
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
 import pol.rubiano.magicapp.features.presentation.adapters.SearchResultsAdapter
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
@@ -33,6 +34,7 @@ class ResultsFragment : Fragment() {
     private val binding get() = _binding!!
     private val searchViewModel: SearchViewModel by viewModel()
     private val decksViewModel: DecksViewModel by viewModel()
+    private val cardsViewModel: CardsViewModel by viewModel()
     private lateinit var adapter: SearchResultsAdapter
     private val args: ResultsFragmentArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
@@ -54,9 +56,11 @@ class ResultsFragment : Fragment() {
 
         adapter = SearchResultsAdapter { card ->
             if (deckId != null) {
+                cardsViewModel.saveCardToLocal(card)
                 decksViewModel.addCardToDeck(deckId, card)
                 val action = ResultsFragmentDirections
                     .actionSearchResultsFragmentToDeckConfigFragment(deckId)
+                findNavController().navigate(action)
             } else {
                 val cardJson = Gson().toJson(card)
                 val action = ResultsFragmentDirections

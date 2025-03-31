@@ -38,6 +38,7 @@
     <string name="search_name_label">Buscar nombre</string>
     <string name="type">Tipo</string>
     <string name="types">Tipos</string>
+    <string name="type_spell">Hechizo</string>
     <string name="type_artifact">Artefacto</string>
     <string name="type_battle">Batalla</string>
     <string name="type_conspiracy">Conspiración</string>

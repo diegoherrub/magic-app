@@ -5,15 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.databinding.DeckFragmentEditDeckBinding
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
 class EditDeckFragment : Fragment() {

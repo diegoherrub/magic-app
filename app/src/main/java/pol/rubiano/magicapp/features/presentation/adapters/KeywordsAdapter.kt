@@ -6,7 +6,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.features.domain.entities.Keyword
+import pol.rubiano.magicapp.features.domain.models.Keyword
 import pol.rubiano.magicapp.features.presentation.adapters.diffutils.KeywordsDiffUtil
 import pol.rubiano.magicapp.features.presentation.adapters.viewholders.KeywordsViewHolder
 

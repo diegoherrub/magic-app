@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.features.data.remote
 
 import pol.rubiano.magicapp.app.data.remote.toModel
-import pol.rubiano.magicapp.features.domain.entities.Scryfall
+import pol.rubiano.magicapp.features.domain.models.Scryfall
 
 fun ScryfallApiModel.toModel(): Scryfall {
     return Scryfall(

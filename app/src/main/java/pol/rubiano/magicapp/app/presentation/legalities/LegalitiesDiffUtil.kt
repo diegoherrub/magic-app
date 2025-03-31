@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.app.presentation.legalities
 
 import androidx.recyclerview.widget.DiffUtil
-import pol.rubiano.magicapp.app.domain.LegalityItem
+import pol.rubiano.magicapp.app.domain.models.LegalityItem
 
 class LegalitiesDiffUtil : DiffUtil.ItemCallback<LegalityItem>() {
     override fun areItemsTheSame(oldItem: LegalityItem, newItem: LegalityItem): Boolean {

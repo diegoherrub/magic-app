@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.features.data.local
 
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.domain.models.Deck
 
 fun DeckEntity.toDeck(): Deck {
     return Deck(

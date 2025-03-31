@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.features.domain.repositories
 
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.domain.models.Deck
 
 interface DeckRepository {
     suspend fun getDecks(): List<Deck>

@@ -6,11 +6,12 @@ import android.graphics.BitmapFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.annotation.Single
+import pol.rubiano.magicapp.app.data.local.CardEntity
 import pol.rubiano.magicapp.app.data.local.CardLocalDataSource
 import pol.rubiano.magicapp.app.data.remote.CardRemoteDataSource
 import pol.rubiano.magicapp.app.domain.AppError
-import pol.rubiano.magicapp.app.domain.Card
-import pol.rubiano.magicapp.app.domain.CardRepository
+import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.app.domain.repositories.CardRepository
 import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
@@ -92,6 +93,14 @@ class CardDataRepository(
                 false
             }
         }
+    }
+
+    override suspend fun getCardById(cardId: String): Card? {
+        return local.getCardById(cardId)
+    }
+
+    override suspend fun saveCardToLocal(card: Card) {
+        local.saveCardToLocal(card)
     }
 }
 

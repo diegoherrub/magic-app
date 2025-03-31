@@ -2,7 +2,7 @@ package pol.rubiano.magicapp.features.data.local
 
 import android.util.Log
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.domain.models.Deck
 
 @Single
 class DeckDataSource(

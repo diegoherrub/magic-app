@@ -1,7 +1,6 @@
 package pol.rubiano.magicapp.features.presentation.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +8,22 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.chip.ChipGroup
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.SearchFragmentBinding
-import pol.rubiano.magicapp.features.domain.entities.Filter
+import pol.rubiano.magicapp.features.domain.models.Filter
 import pol.rubiano.magicapp.features.presentation.ui.search.FilterCardView
+import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
 
     private var _binding: SearchFragmentBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: DecksViewModel by viewModel()
+    private val args: SearchFragmentArgs by navArgs()
+    private var deckId: String? = null
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -32,6 +37,9 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        deckId = args.deckId
+
         editCardName = view.findViewById(R.id.edit_card_name)
         chipGroupFilters = view.findViewById(R.id.app_chip_group_filters)
         filtersContainer = view.findViewById(R.id.search_filter_cardviews_container)
@@ -140,9 +148,18 @@ class SearchFragment : Fragment() {
         if (view?.let { selectedTypes } != "") queryParts.add(selectedTypes)
 
         val query = queryParts.joinToString(" ")
-        val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(query)
+        val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
+            query = query,
+            deckId = deckId
+        )
         findNavController().navigate(action)
     }
+
+    override fun onResume() {
+        super.onResume()
+        deckId?.let { viewModel.loadDeckById(it) }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,5 +1,8 @@
 package pol.rubiano.magicapp.app.domain
 
+import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.app.domain.models.LegalityItem
+
 fun Card.Legalities.toLegalityItemList(): List<LegalityItem?> {
     return listOf(
         this.standard?.let { LegalityItem("standard", it) },

@@ -92,9 +92,8 @@ import pol.rubiano.magicapp.app.common.CardEffects
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.adapters.CardBindingHandler
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
-import androidx.lifecycle.observe
 import com.google.gson.Gson
-import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.app.domain.models.Card
 
 class ViewCardFragment : Fragment() {
 
@@ -115,7 +114,6 @@ class ViewCardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupView()
         setupObservers()
-//        if (savedInstanceState == null) viewModel.loadCard()
         val args = ViewCardFragmentArgs.fromBundle(requireArguments())
         val cardJson = args.cardJson
         val card = Gson().fromJson(cardJson, Card::class.java)
@@ -136,10 +134,8 @@ class ViewCardFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.card.observe(viewLifecycleOwner) { card: Card ->
-            // Utilizamos el CardBindingHandler para asignar los datos de la carta a la vista
             cardBinder.bind(card, binding)
         }
-
         viewModel.uiError.observe(viewLifecycleOwner) { appError: AppError? ->
             bindError(appError)
         }
@@ -153,7 +149,6 @@ class ViewCardFragment : Fragment() {
             binding.appErrorViewContainer.setOnRetryClickListener {
                 binding.appErrorViewContainer.visibility = View.GONE
                 binding.viewCardContainer.visibility = View.VISIBLE
-//                viewModel.loadCard()
             }
         } ?: run {
             binding.viewCardContainer.visibility = View.VISIBLE

@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.features.data.remote
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.features.domain.entities.Scryfall
+import pol.rubiano.magicapp.features.domain.models.Scryfall
 import pol.rubiano.magicapp.features.domain.repositories.ScryfallRepository
 
 @Single

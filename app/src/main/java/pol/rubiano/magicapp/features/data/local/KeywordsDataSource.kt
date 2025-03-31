@@ -4,7 +4,7 @@ import android.content.Context
 import org.xmlpull.v1.XmlPullParser
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.data.mapManaSymbols
-import pol.rubiano.magicapp.features.domain.entities.Keyword
+import pol.rubiano.magicapp.features.domain.models.Keyword
 
 fun loadKeywordsFromXml(
     context: Context

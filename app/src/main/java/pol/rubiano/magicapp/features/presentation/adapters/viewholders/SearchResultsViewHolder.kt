@@ -7,7 +7,7 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.data.mapManaSymbols
 import pol.rubiano.magicapp.databinding.SearchResultsItemBinding
-import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.app.domain.models.Card
 
 class SearchResultsViewHolder(
     val view: View,

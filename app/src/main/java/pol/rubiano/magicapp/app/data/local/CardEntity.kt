@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import pol.rubiano.magicapp.app.data.local.extensions.Converters
-import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.app.domain.models.Card
 import java.util.Date
 
 const val CARDS_TABLE = "cards"

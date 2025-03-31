@@ -13,6 +13,7 @@ import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pol.rubiano.magicapp.features.presentation.ui.SearchFragment
+import pol.rubiano.magicapp.features.presentation.ui.decks.ConfigDeckFragmentDirections
 import pol.rubiano.magicapp.features.presentation.ui.decks.EditDeckFragment
 
 class ToolbarController(
@@ -131,28 +132,21 @@ class ToolbarController(
                             val currentArgs = navController.currentBackStackEntry?.arguments
                             val deckId = currentArgs?.getString("deckId")
                             if (deckId != null) {
-                                val bundle = Bundle().apply {
-                                    putString("deckId", deckId)
-                                }
-                                navController.navigate(R.id.searchFragment, bundle)
+                                val direction =
+                                    ConfigDeckFragmentDirections.actionDeckConfigFragmentToSearchFragment(
+                                        deckId
+                                    )
+                                navController.navigate(direction)
                             }
                             true
                         }
 
                         R.id.cfg_deck_edit -> {
-                            // Retrieve the deckId from the current fragment's arguments.
-                            val currentArgs = navController.currentBackStackEntry?.arguments
-                            val deckId = currentArgs?.getString("deckId")
+                            val deckId = navController.currentBackStackEntry?.arguments?.getString("deckId")
                             if (deckId != null) {
-                                val bundle = Bundle().apply {
-                                    putString("deckId", deckId)
-                                }
-                                val options = navOptions {
-                                    popUpTo(R.id.deckConfigFragment) { inclusive = false }
-                                }
-                                navController.navigate(R.id.deckEditFragment, bundle, options)
-                            } else {
-                                // Optionally handle the missing deckId case (e.g., log or show an error)
+                                val direction = ConfigDeckFragmentDirections
+                                    .actionDeckConfigFragmentToDeckEditFragment(deckId)
+                                navController.navigate(direction)
                             }
                             true
                         }
@@ -174,13 +168,16 @@ class ToolbarController(
                     when (item.itemId) {
                         R.id.edit_deck_save -> {
                             // Retrieve the current fragment and call its save method.
-                            val navHostFragment = activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-                            val currentFragment = navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
+                            val navHostFragment =
+                                activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                            val currentFragment =
+                                navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
                             if (currentFragment is EditDeckFragment) {
                                 currentFragment.saveDeckChanges()
                             }
                             true
                         }
+
                         else -> false
                     }
                 }

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.databinding.DeckFragmentItemBinding
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.domain.models.Deck
 
 class DecksViewHolder(
     private val binding: DeckFragmentItemBinding

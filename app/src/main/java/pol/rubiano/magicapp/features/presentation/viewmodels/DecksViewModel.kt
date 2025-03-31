@@ -9,8 +9,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
-import pol.rubiano.magicapp.app.domain.Card
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.app.domain.repositories.CardRepository
+import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.repositories.DeckRepository
 import pol.rubiano.magicapp.features.domain.usecases.AddDeckUseCase
 import pol.rubiano.magicapp.features.domain.usecases.GetDecksUseCase
@@ -19,7 +20,8 @@ import pol.rubiano.magicapp.features.domain.usecases.GetDecksUseCase
 class DecksViewModel(
     private val getDecksUseCase: GetDecksUseCase,
     private val addDeckUseCase: AddDeckUseCase,
-    private val repository: DeckRepository
+    private val repository: DeckRepository,
+    private val cardRepository: CardRepository
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData<UiState>()
@@ -27,6 +29,9 @@ class DecksViewModel(
 
     private val _selectedDeck = MutableLiveData<Deck?>()
     val selectedDeck: LiveData<Deck?> = _selectedDeck
+
+    private val _deckCards = MutableLiveData<List<Card>>()
+    val deckCards: LiveData<List<Card>> = _deckCards
 
     fun loadDecks() {
         _uiState.postValue(UiState(isLoading = true))
@@ -71,6 +76,19 @@ class DecksViewModel(
             repository.addCardToDeck(deckId, card.id)
             // TODO Opcional: refrescar el deck si es necesario
             loadDeckById(deckId)
+        }
+    }
+
+    fun loadDeckCards(deckId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val deck = repository.getDeckById(deckId)
+            val cards = deck?.cardIds?.mapNotNull { cardId ->
+                cardRepository.getCardById(cardId)
+            } ?: emptyList()
+
+            withContext(Dispatchers.Main) {
+                _deckCards.value = cards
+            }
         }
     }
 

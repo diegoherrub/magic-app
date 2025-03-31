@@ -1,6 +1,6 @@
-package pol.rubiano.magicapp.features.domain.entities
+package pol.rubiano.magicapp.features.domain.models
 
-import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.app.domain.models.Card
 
 data class Scryfall(
     val totalCards: Int?,

@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.DeckFragmentNewDeckBinding
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 import java.util.UUID
 

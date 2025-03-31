@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.app.data.local
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.domain.Card
+import pol.rubiano.magicapp.app.domain.models.Card
 
 @Single
 class CardLocalDataSource(
@@ -12,8 +12,7 @@ class CardLocalDataSource(
         dao.saveCardToLocal(cardEntity)
     }
 
-//    suspend fun saveCardsToLocal(cards: List<Card>) {
-//        val cardsEntities = cards.map { it.toEntity() }
-//        dao.saveCardsToLocal(*cardsEntities.toTypedArray())
-//    }
+    suspend fun getCardById(cardId: String): Card? {
+        return dao.getCardById(cardId)?.toDomain()
+    }
 }

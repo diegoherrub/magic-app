@@ -65,9 +65,18 @@
         android:name="pol.rubiano.magicapp.features.presentation.ui.decks.ConfigDeckFragment"
         android:label="@string/str_config_deck_title">
 
+        <action
+            android:id="@+id/action_deckConfigFragment_to_searchFragment"
+            app:destination="@+id/searchFragment" />
+
+        <action
+            android:id="@+id/action_deckConfigFragment_to_deckEditFragment"
+            app:destination="@+id/deckEditFragment" />
+
         <argument
             android:name="deckId"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="false"/>
     </fragment>
 
     <!-- DECK EDIT -->
@@ -83,13 +92,13 @@
             app:destination="@+id/decksFragment" />
     </fragment>
 
-    <!-- Random Card Section -->
+    <!-- RANDOM CARD -->
     <fragment
         android:id="@+id/randomCardFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.RandomCardFragment"
         android:label="@string/random_card_title" />
 
-    <!-- Search Section -->
+    <!-- SEARCH FRAGMENT -->
     <fragment
         android:id="@+id/searchFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.SearchFragment"
@@ -97,8 +106,13 @@
         <action
             android:id="@+id/action_search_fragment_to_results_fragment"
             app:destination="@+id/search_results_fragment" />
+        <argument
+            android:name="deckId"
+            app:argType="string"
+            app:nullable="true"/>
     </fragment>
 
+    <!-- SEARCH RESULTS -->
     <fragment
         android:id="@+id/search_results_fragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.search.ResultsFragment"
@@ -109,8 +123,7 @@
         <argument
             android:name="deckId"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null"/>
+            app:nullable="true"/>
         <action
             android:id="@+id/action_results_fragment_self"
             app:destination="@+id/search_results_fragment" />

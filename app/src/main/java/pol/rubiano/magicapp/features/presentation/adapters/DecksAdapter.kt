@@ -2,7 +2,7 @@ package pol.rubiano.magicapp.features.presentation.adapters
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import pol.rubiano.magicapp.features.domain.entities.Deck
+import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.presentation.adapters.diffutils.DeckDiffUtil
 import pol.rubiano.magicapp.features.presentation.adapters.viewholders.DecksViewHolder
 

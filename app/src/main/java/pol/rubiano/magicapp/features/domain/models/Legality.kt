@@ -1,6 +1,6 @@
-package pol.rubiano.magicapp.features.domain.entities
+package pol.rubiano.magicapp.features.domain.models
 
-data class Keyword(
+data class Legality(
     val icon: Int? = null,
     val term: String,
     val information: String

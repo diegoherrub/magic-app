@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.features.data.local
 
-import pol.rubiano.magicapp.features.domain.entities.Legality
+import pol.rubiano.magicapp.features.domain.models.Legality
 import android.content.Context
 import org.xmlpull.v1.XmlPullParser
 import pol.rubiano.magicapp.R
