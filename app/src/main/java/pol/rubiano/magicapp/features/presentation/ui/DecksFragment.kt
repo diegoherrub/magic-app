@@ -12,7 +12,7 @@ import pol.rubiano.magicapp.databinding.DecksFragmentBinding
 import pol.rubiano.magicapp.features.presentation.adapters.DecksAdapter
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
-class DecksFragment : Fragment() {
+abstract class DecksFragment : Fragment() {
 
     private var _binding: DecksFragmentBinding? = null
     private val binding get() = _binding!!
@@ -34,21 +34,26 @@ class DecksFragment : Fragment() {
         adapter = DecksAdapter(
             // asign the navigation's action at the deck pressed to the config fragment
             onDeckClickToConfig = { deck ->
-                findNavController().navigate(
-                    DecksFragmentDirections.actionDecksFragmentToDeckConfigFragment(
-                        deck.id
-                    )
-                )
+                onClickCard(deck.id)
             }
         )
         binding.decksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.decksRecyclerView.adapter = adapter
 
         decksViewModel.uiState.observe(viewLifecycleOwner) { state ->
-            state.decks?.let { decks ->
-                adapter.submitList(decks)
+            val decks = state?.decks
+            if (decks != null) {
+                if (decks.isEmpty()) {
+                    findNavController().navigate(
+                        DecksFragmentDirections.actionDecksFragmentToNewDeckFragment()
+                    )
+                } else {
+                    adapter.submitList(decks)
+                }
             }
         }
+
+
     }
 
     override fun onResume() {
@@ -60,5 +65,7 @@ class DecksFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    protected abstract fun onClickCard(deckId: String)
 }
 

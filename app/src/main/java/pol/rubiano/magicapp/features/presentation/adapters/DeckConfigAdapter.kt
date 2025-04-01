@@ -88,7 +88,7 @@ class DeckConfigAdapter(
                 item.cards.forEach { card ->
                     val cardView = LayoutInflater.from(context)
                         .inflate(R.layout.deck_item_card, container, false)
-                    cardView.findViewById<TextView>(R.id.cardName).text = card.name
+//                    cardView.findViewById<TextView>(R.id.cardName).text = card.name
                     container.addView(cardView)
                 }
             }

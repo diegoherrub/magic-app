@@ -22,8 +22,13 @@ class SearchFragment : Fragment() {
     private var _binding: SearchFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
-    private val args: SearchFragmentArgs by navArgs()
-    private var deckId: String? = null
+    private val deckId: String? by lazy {
+        try {
+            arguments?.let { SearchFragmentArgs.fromBundle(it).deckId }
+        } catch (e: IllegalArgumentException) {
+            null // Si no se pasa deckId, lo dejamos como null
+        }
+    }
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -38,7 +43,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        deckId = args.deckId
+//        deckId = args.deckId
 
         editCardName = view.findViewById(R.id.edit_card_name)
         chipGroupFilters = view.findViewById(R.id.app_chip_group_filters)
@@ -150,7 +155,7 @@ class SearchFragment : Fragment() {
         val query = queryParts.joinToString(" ")
         val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
             query = query,
-            deckId = deckId
+            deckId = deckId ?: "" // evita pasar null directamente
         )
         findNavController().navigate(action)
     }

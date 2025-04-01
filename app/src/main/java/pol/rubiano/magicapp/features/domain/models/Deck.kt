@@ -4,7 +4,8 @@ data class Deck(
     val id: String,
     val name: String,
     val description: String,
-    val cardIds: List<String>,
+    val colors: List<String> = emptyList(),
+    val cardIds: List<String> = emptyList(),
     val sideBoard: List<String> = emptyList(),
     val maybeBoard: List<String> = emptyList()
 )

@@ -7,6 +7,7 @@ fun DeckEntity.toDeck(): Deck {
         this.id,
         this.name,
         this.description,
+        this.colors,
         this.cardIds,
         this.sideBoard,
         this.maybeBoard
@@ -18,6 +19,7 @@ fun Deck.toEntity(): DeckEntity {
         this.id,
         this.name,
         this.description,
+        this.colors,
         this.cardIds,
         this.sideBoard,
         this.maybeBoard

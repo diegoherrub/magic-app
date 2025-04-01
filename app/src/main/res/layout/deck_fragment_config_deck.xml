@@ -28,10 +28,11 @@
         tools:text="@string/lorem_small" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewCardsOfDeck"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
+        android:layout_height="0dp"
         android:clipToPadding="false"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/cfg_deck_description"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

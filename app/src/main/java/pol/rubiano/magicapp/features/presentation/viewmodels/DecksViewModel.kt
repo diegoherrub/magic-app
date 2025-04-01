@@ -24,7 +24,10 @@ class DecksViewModel(
     private val cardRepository: CardRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableLiveData<UiState>()
+//    private val _uiState = MutableLiveData<UiState>()
+//    val uiState: LiveData<UiState> = _uiState
+
+    private val _uiState = MutableLiveData(UiState(decks = emptyList()))
     val uiState: LiveData<UiState> = _uiState
 
     private val _selectedDeck = MutableLiveData<Deck?>()
@@ -33,16 +36,24 @@ class DecksViewModel(
     private val _deckCards = MutableLiveData<List<Card>>()
     val deckCards: LiveData<List<Card>> = _deckCards
 
-    fun loadDecks() {
-        _uiState.postValue(UiState(isLoading = true))
+//    fun loadDecks() {
+//        _uiState.postValue(UiState(isLoading = true))
 
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val decks = repository.getDecks()
+//            withContext(Dispatchers.Main) {
+//                _uiState.value = UiState(
+//                    isLoading = false,
+//                    decks = decks
+//                )
+//            }
+//        }
+//    }
+    fun loadDecks() {
         viewModelScope.launch(Dispatchers.IO) {
             val decks = repository.getDecks()
             withContext(Dispatchers.Main) {
-                _uiState.value = UiState(
-                    isLoading = false,
-                    decks = decks
-                )
+                _uiState.value = _uiState.value?.copy(decks = decks)
             }
         }
     }

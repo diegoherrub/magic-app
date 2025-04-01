@@ -23,6 +23,7 @@
     <dimen name="section_icon_xs">48dp</dimen>
     <dimen name="section_icon_s">54dp</dimen>
     <dimen name="section_icon_m">64dp</dimen>
+    <dimen name="padding_deck_item">14dp</dimen>
 
     <dimen name="bottom_bar_height">56dp</dimen>
 </resources>

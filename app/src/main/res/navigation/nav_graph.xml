@@ -39,7 +39,7 @@
         android:name="pol.rubiano.magicapp.features.presentation.ui.DecksFragment"
         android:label="@string/str_decks" >
         <action
-            android:id="@+id/action_decks_fragment_to_new_deck_fragment"
+            android:id="@+id/action_decksFragment_to_newDeckFragment"
             app:destination="@+id/newDeckFragment" />
         <action
             android:id="@+id/action_decks_fragment_to_deck_config_fragment"

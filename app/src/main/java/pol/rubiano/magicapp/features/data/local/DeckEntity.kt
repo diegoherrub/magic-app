@@ -16,6 +16,7 @@ class DeckEntity(
     @PrimaryKey @ColumnInfo(name = DECK_ID) val id: String,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "description") val description: String,
+    @ColumnInfo(name = "colors") val colors: List<String>,
     @ColumnInfo(name = "card_ids") val cardIds: List<String>,
     @ColumnInfo(name = "side_board") val sideBoard: List<String>,
     @ColumnInfo(name = "maybe_board") val maybeBoard: List<String>

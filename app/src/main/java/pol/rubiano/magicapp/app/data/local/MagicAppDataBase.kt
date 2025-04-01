@@ -12,7 +12,7 @@ import pol.rubiano.magicapp.features.data.local.DeckEntity
         CardEntity::class,
         DeckEntity::class
     ],
-    version = 7,
+    version = 8,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
