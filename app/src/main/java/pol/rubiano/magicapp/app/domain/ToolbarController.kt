@@ -13,9 +13,9 @@ import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.presentation.ui.SearchFragment
+import pol.rubiano.magicapp.features.presentation.ui.decks.DeckDetailsFragmentDirections
 import pol.rubiano.magicapp.features.presentation.ui.decks.EditDeckFragment
 import pol.rubiano.magicapp.features.presentation.ui.decks.NewDeckFragment
-import pol.rubiano.magicapp.features.presentation.ui.decks.DeckConfigFragmentDirections
 
 
 class ToolbarController(
@@ -28,8 +28,11 @@ class ToolbarController(
     private val topLevelDestinations = setOf(
         R.id.magicFragment,
         R.id.collectionsFragment,
-        R.id.decksFragment,
         R.id.randomCardFragment,
+    )
+    private val secondaryDestinations = setOf(
+        R.id.decksFragment,
+        R.id.searchFragment
     )
 
     init {
@@ -53,10 +56,12 @@ class ToolbarController(
             toolbar.setNavigationOnClickListener(null)
             toolbar.isTitleCentered = true
             bottomNav.visibility = View.VISIBLE
-        } else {
+        } else if (destination.id in secondaryDestinations) {
             activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
             toolbar.setNavigationOnClickListener { navController.navigateUp() }
             toolbar.isTitleCentered = false
+            bottomNav.visibility = View.VISIBLE
+        } else {
             bottomNav.visibility = View.GONE
         }
 
@@ -65,6 +70,18 @@ class ToolbarController(
         )
 
         when (destination.id) {
+            R.id.decksFragment -> {
+                prepareToolbar(R.menu.decks_menu)
+                toolbar.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.add_deck -> {
+                            navController.navigate(R.id.action_decksFragment_to_newDeckFragment)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
             R.id.randomCardFragment -> {
                 prepareToolbar(R.menu.random_card_menu)
                 toolbar.setOnMenuItemClickListener { item ->
@@ -81,7 +98,6 @@ class ToolbarController(
                     }
                 }
             }
-
             R.id.searchFragment -> {
                 prepareToolbar(R.menu.search_menu)
                 toolbar.setOnMenuItemClickListener { item ->
@@ -101,10 +117,8 @@ class ToolbarController(
                     }
                 }
             }
-
-            R.id.deckConfigFragment -> {
+            R.id.deckDetailsFragment -> {
                 prepareToolbar(R.menu.deck_config_menu)
-
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.cfg_deck_add_card -> {
@@ -115,7 +129,7 @@ class ToolbarController(
                                     )
                             if (deck != null) {
                                 val direction =
-                                    DeckConfigFragmentDirections.actionDeckConfigFragmentToSearchFragment(
+                                    DeckDetailsFragmentDirections.actionDeckDetailsFragmentToSearchFragment(
                                         deck
                                     )
                                 navController.navigate(direction)
@@ -131,7 +145,7 @@ class ToolbarController(
                                     )
                             if (deck != null) {
                                 val direction =
-                                    DeckConfigFragmentDirections.actionDeckConfigFragmentToDeckEditFragment(
+                                    DeckDetailsFragmentDirections.actionDeckDetailsFragmentToDeckEditFragment(
                                             deck
                                         )
                                 navController.navigate(direction)
@@ -143,7 +157,6 @@ class ToolbarController(
                     }
                 }
             }
-
             R.id.editDeckFragment -> {
                 prepareToolbar(R.menu.deck_edit_menu)
                 toolbar.setOnMenuItemClickListener { item ->
@@ -163,7 +176,6 @@ class ToolbarController(
                     }
                 }
             }
-
             R.id.newDeckFragment -> {
                 prepareToolbar(R.menu.new_deck_menu)
                 toolbar.setOnMenuItemClickListener { item ->
@@ -183,7 +195,6 @@ class ToolbarController(
                     }
                 }
             }
-
             else -> {
                 toolbar.menu.clear()
                 toolbar.setOnMenuItemClickListener(null)

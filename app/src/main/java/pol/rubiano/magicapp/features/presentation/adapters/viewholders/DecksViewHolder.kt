@@ -11,7 +11,8 @@ class DecksViewHolder(
     private val binding: DeckFragmentItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(deck: Deck, onDeckClick: (Deck) -> Unit) {
+//    fun bind(deck: Deck, onDeckClick: (Deck) -> Unit) {
+    fun bind(deck: Deck) {
         binding.deckItemName.text = deck.name
         binding.deckDescription.text = deck.description
         binding.deckColors.text = mapManaSymbols(
@@ -19,9 +20,9 @@ class DecksViewHolder(
             deck.colors.joinToString(" ") { "{$it}" }
         )
 
-        binding.root.setOnClickListener {
-            onDeckClick(deck)
-        }
+//        binding.root.setOnClickListener {
+//            onDeckClick(deck)
+//        }
     }
 
     companion object {

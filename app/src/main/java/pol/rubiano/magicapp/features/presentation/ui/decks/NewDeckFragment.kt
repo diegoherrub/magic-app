@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.AppError
@@ -20,6 +21,7 @@ class NewDeckFragment : Fragment() {
     private var _binding: NewDeckFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
+    private val args: NewDeckFragmentDirections by navArgs()
 
     private lateinit var newDeck: Deck
 
@@ -40,12 +42,14 @@ class NewDeckFragment : Fragment() {
     private fun setupObserver() {
         viewModel.addedDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
-                UiState.Loading -> { }
-                UiState.Success(newDeck) -> {
-                    findNavController().navigate(R.id.action_newDeckFragment_to_deckConfigFragment)
+                is UiState.Loading -> { }
+                is UiState.Success -> {
+                    val deck = state.data
+                    val action = NewDeckFragmentDirections.actionNewDeckFragmentToDeckConfigFragment(deck)
+                    findNavController().navigate(action)
                 }
-                UiState.Error(AppError.AppDataError) -> { }
-                else -> Unit
+                is UiState.Error -> { AppError.AppDataError }
+                is UiState.Empty -> {}
             }
         }
     }
@@ -64,6 +68,7 @@ class NewDeckFragment : Fragment() {
                 maybeBoard = emptyList()
             )
             viewModel.addDeck(newDeck)
+
         }
 //        else {
 //            TODO AVISAR DE METER NOMBRE

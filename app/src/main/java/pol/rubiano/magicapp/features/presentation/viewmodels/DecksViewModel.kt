@@ -64,6 +64,7 @@ class DecksViewModel(
                 repository.insertDeck(deck)
                 withContext(Dispatchers.Main) {
                     _addedDeck.value = UiState.Success(deck)
+                    _currentDeck.value = _addedDeck.value
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {

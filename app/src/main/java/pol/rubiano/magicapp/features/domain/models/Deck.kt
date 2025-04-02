@@ -1,5 +1,9 @@
 package pol.rubiano.magicapp.features.domain.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Deck(
     val id: String,
     val name: String,
@@ -8,4 +12,4 @@ data class Deck(
     val cardIds: List<String> = emptyList(),
     val sideBoard: List<String> = emptyList(),
     val maybeBoard: List<String> = emptyList()
-)
+) : Parcelable

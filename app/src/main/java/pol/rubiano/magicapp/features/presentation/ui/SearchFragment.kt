@@ -25,7 +25,7 @@ class SearchFragment : Fragment() {
     private val viewModelDecks: DecksViewModel by viewModel()
     private val args: SearchFragmentArgs by navArgs()
 
-    private lateinit var deck: Deck
+//    private var deck: Deck? = null
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -40,7 +40,8 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        deck = args.deck
+
+//            deck = args.deck
 
 
         editCardName = view.findViewById(R.id.edit_card_name)
@@ -151,8 +152,8 @@ class SearchFragment : Fragment() {
         if (selectedTypes.isNotEmpty()) queryParts.add(selectedTypes)
 
         val query = queryParts.joinToString(" ")
-        val action = SearchFragmentDirections.actionSearchFragmentToDeckConfigFragment(args.deck)
-        findNavController().navigate(action)
+//        val action = SearchFragmentDirections.actionSearchFragmentToDeckConfigFragment(deck!!)
+//        findNavController().navigate(action)
     }
 
     override fun onResume() {

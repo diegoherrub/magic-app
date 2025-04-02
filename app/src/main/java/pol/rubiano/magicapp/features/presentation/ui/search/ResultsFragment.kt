@@ -51,14 +51,14 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val deck = args.deck
+//        val deck = args.deck
 
         adapter = SearchResultsAdapter { card ->
             cardsViewModel.saveCardToLocal(card)
 //                decksViewModel.addCardToDeck(deckId, card)
-            val action = ResultsFragmentDirections
-                .actionSearchResultsFragmentToDeckConfigFragment(deck)
-            findNavController().navigate(action)
+//            val action = ResultsFragmentDirections
+//                .actionSearchResultsFragmentToDeckConfigFragment(deck)
+//            findNavController().navigate(action)
         }
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

@@ -7,9 +7,9 @@
         android:title="@string/strSave"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/btnCloseNewDeck"
-        android:icon="@drawable/close"
-        android:title="@string/strClose"
-        app:showAsAction="always" />
+<!--    <item-->
+<!--        android:id="@+id/btnCloseNewDeck"-->
+<!--        android:icon="@drawable/close"-->
+<!--        android:title="@string/strClose"-->
+<!--        app:showAsAction="always" />-->
 </menu>

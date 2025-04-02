@@ -4,10 +4,9 @@
 //import pol.rubiano.magicapp.features.domain.models.Deck
 //import pol.rubiano.magicapp.features.presentation.ui.DecksFragment
 //
-//class DeckListFragment : DecksFragment () {
-//    override fun onClickCard(deck: Deck) {
-//        val action = DeckListFragmentDirections.actionDecksFragmentToDeckConfigFragment(deck)
+//class DecksListFragment : DecksFragment () {
+//    override fun onClickDeck(deck: Deck) {
+//        val action = DecksListFragmentDirections.actionDecksListFragmentToDeckConfigFragment(deck)
 //        findNavController().navigate(action)
 //    }
-//
 //}

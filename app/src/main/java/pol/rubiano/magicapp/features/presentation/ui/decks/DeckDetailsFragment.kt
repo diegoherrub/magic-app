@@ -20,15 +20,14 @@ import pol.rubiano.magicapp.databinding.DeckFragmentConfigDeckBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
 import pol.rubiano.magicapp.features.presentation.adapters.DeckConfigAdapter
-import pol.rubiano.magicapp.features.presentation.ui.decks.DeckConfigFragmentDirections.Companion.actionDeckConfigFragmentToSearchFragment
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
-class DeckConfigFragment : Fragment() {
+class DeckDetailsFragment : Fragment() {
 
     private var _binding: DeckFragmentConfigDeckBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
-    private val args: DeckConfigFragmentArgs by navArgs()
+    private val args: DeckDetailsFragmentArgs by navArgs()
 
     private lateinit var adapter: DeckConfigAdapter
     private lateinit var receivedDeck: Deck
@@ -50,11 +49,11 @@ class DeckConfigFragment : Fragment() {
     }
 
     private fun setupRecyclerViewCardsOfDeck() {
-//        adapter = DeckConfigAdapter { category ->
-//            val action = DeckConfigFragmentArgs
-//                .actionDeckConfigFragmentToSearchFragment(receivedDeck)
-//            findNavController().navigate(action)
-//        }
+        adapter = DeckConfigAdapter {
+            val action = DeckDetailsFragmentDirections
+                .actionDeckDetailsFragmentToSearchFragment(receivedDeck)
+            findNavController().navigate(action)
+        }
         binding.recyclerViewCardsOfDeck.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewCardsOfDeck.adapter = adapter
     }

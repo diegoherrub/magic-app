@@ -7,8 +7,7 @@ import pol.rubiano.magicapp.features.presentation.adapters.diffutils.DeckDiffUti
 import pol.rubiano.magicapp.features.presentation.adapters.viewholders.DecksViewHolder
 
 class DecksAdapter(
-    private val onDeckClickToConfig: (Deck) -> Unit,
-   // private val onDeckClickToEdit: (Deck) -> Unit
+//    private val onDeckClickToDetails: (Deck) -> Unit,
 ) : ListAdapter<Deck, DecksViewHolder>(DeckDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DecksViewHolder {
@@ -17,6 +16,6 @@ class DecksAdapter(
 
     override fun onBindViewHolder(holder: DecksViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, onDeckClickToConfig)
+        holder.bind(item)//, onDeckClickToDetails)
     }
 }

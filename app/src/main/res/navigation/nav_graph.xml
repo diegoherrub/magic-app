@@ -37,15 +37,21 @@
     <!-- DECKS -->
     <fragment
         android:id="@+id/decksFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.decks.DeckListFragment"
-        android:label="@string/str_decks"
-        tools:layout="@layout/decks_fragment">
+        android:name="pol.rubiano.magicapp.features.presentation.ui.DecksFragment"
+        android:label="@string/str_decks">
+
         <action
             android:id="@+id/action_decksFragment_to_newDeckFragment"
             app:destination="@+id/newDeckFragment" />
+        <argument
+            android:name="deck"
+            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
+            app:nullable="false" />
         <action
-            android:id="@+id/action_decks_fragment_to_deck_config_fragment"
-            app:destination="@id/deckConfigFragment" />
+            android:id="@+id/action_decksFragment_to_deckDetailsFragment"
+            app:destination="@id/deckDetailsFragment">
+
+        </action>
         <action
             android:id="@+id/action_decks_fragment_to_deck_edit_fragment"
             app:destination="@id/editDeckFragment" />
@@ -56,6 +62,11 @@
         android:id="@+id/newDeckFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.decks.NewDeckFragment"
         android:label="@string/str_new_deck">
+        <!--        <argument-->
+        <!--            android:name="deck"-->
+        <!--            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+        <!--            app:nullable="false" />-->
+
         <action
             android:id="@+id/action_newDeckFragment_to_deckConfigFragment"
             app:destination="@+id/deckConfigFragment">
@@ -66,18 +77,19 @@
         </action>
     </fragment>
 
-    <!-- DECK CONFIG -->
+    <!-- DECK DETAILS -->
     <fragment
-        android:id="@+id/deckConfigFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.decks.DeckConfigFragment"
+        android:id="@+id/deckDetailsFragment"
+        android:name="pol.rubiano.magicapp.features.presentation.ui.decks.DeckDetailsFragment"
         android:label="@string/str_config_deck_title">
+
         <argument
             android:name="deck"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
             app:nullable="false" />
 
         <action
-            android:id="@+id/action_deckConfigFragment_to_searchFragment"
+            android:id="@+id/action_deckDetailsFragment_to_searchFragment"
             app:destination="@+id/searchFragment">
             <argument
                 android:name="deck"
@@ -86,7 +98,7 @@
         </action>
 
         <action
-            android:id="@+id/action_deckConfigFragment_to_deckEditFragment"
+            android:id="@+id/action_deckDetailsFragment_to_deckEditFragment"
             app:destination="@+id/editDeckFragment">
             <argument
                 android:name="deck"
@@ -130,19 +142,19 @@
         <argument
             android:name="deck"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-            app:nullable="false" />
+            app:nullable="true" />
 
         <action
             android:id="@+id/action_search_fragment_to_results_fragment"
             app:destination="@+id/search_results_fragment" />
-        <action
-            android:id="@+id/action_searchFragment_To_DeckConfigFragment"
-            app:destination="@+id/deckConfigFragment">
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="false" />
-        </action>
+        <!--        <action-->
+        <!--            android:id="@+id/action_searchFragment_To_DeckConfigFragment"-->
+        <!--            app:destination="@+id/deckConfigFragment">-->
+        <!--            <argument-->
+        <!--                android:name="deck"-->
+        <!--                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+        <!--                app:nullable="true" />-->
+        <!--        </action>-->
     </fragment>
 
     <!-- SEARCH RESULTS -->
@@ -153,10 +165,10 @@
         <argument
             android:name="query"
             app:argType="string" />
-        <argument
-            android:name="deck"
-            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-            app:nullable="false" />
+        <!--        <argument-->
+        <!--            android:name="deck"-->
+        <!--            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+        <!--            app:nullable="false" />-->
         <action
             android:id="@+id/action_results_fragment_self"
             app:destination="@+id/search_results_fragment" />
