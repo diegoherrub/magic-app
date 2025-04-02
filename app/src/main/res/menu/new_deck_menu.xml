@@ -2,13 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/cfg_deck_add_card"
-        android:icon="@drawable/add"
-        android:title="@string/strAddCard"
+        android:id="@+id/btnSaveNewDeck"
+        android:icon="@drawable/save"
+        android:title="@string/strSave"
         app:showAsAction="always" />
+
     <item
-        android:id="@+id/cfg_deck_edit"
-        android:icon="@drawable/edit"
-        android:title="@string/str_edit_deck_title"
+        android:id="@+id/btnCloseNewDeck"
+        android:icon="@drawable/close"
+        android:title="@string/strClose"
         app:showAsAction="always" />
 </menu>

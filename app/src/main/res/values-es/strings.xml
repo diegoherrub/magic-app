@@ -15,7 +15,6 @@
     <string name="oracle_text_title">Texto oficial</string>
     <string name="set_name_title">Colección</string>
     <string name="str_new_deck">Nuevo mazo</string>
-    <string name="save_card">Guardar</string>
     <string name="cd_save_card">Guarda la carta de la imagen dentro del almacenamiento de la aplicación</string>
     <string name="refresh">Recargar</string>
     <string name="cd_refresh">Recarga el contenido con una nueva carta aleatoria</string>
@@ -103,8 +102,10 @@
     </string-array>
     <string name="view_card_label">Ver Carta</string>
     <string name="str_config_deck_title">Configuración del mazo</string>
-    <string name="str_add_card">Agregar carta</string>
+    <string name="strAddCard">Agregar carta</string>
     <string name="str_edit_deck_title">Editar mazo</string>
     <string name="image_error_content_description">Imagen de error</string>
     <string name="error_button_retry">Reintentar</string>
+    <string name="strSave">Guardar</string>
+    <string name="strClose">Cerrar</string>
 </resources>

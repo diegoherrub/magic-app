@@ -7,12 +7,13 @@ import pol.rubiano.magicapp.features.domain.models.Deck
 class DeckDataSource(
     private val deckDao: DeckDao
 ) {
-    suspend fun getDecks(): List<Deck> {
-        val deckEntities = deckDao.getAllDecks()
+    suspend fun getUserDecks(): List<Deck> {
+        val deckEntities = deckDao.getUserDecks()
         return deckEntities.map { it.toDeck() }
     }
 
     suspend fun insertDeck(deck: Deck) {
+        val insertedDeck = deck
         deckDao.insertDeck(deck.toEntity())
     }
 

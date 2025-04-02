@@ -1,6 +1,5 @@
 package pol.rubiano.magicapp.app.domain
 
-import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,9 +11,12 @@ import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.presentation.ui.SearchFragment
-import pol.rubiano.magicapp.features.presentation.ui.decks.ConfigDeckFragmentDirections
 import pol.rubiano.magicapp.features.presentation.ui.decks.EditDeckFragment
+import pol.rubiano.magicapp.features.presentation.ui.decks.NewDeckFragment
+import pol.rubiano.magicapp.features.presentation.ui.decks.DeckConfigFragmentDirections
+
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -64,16 +66,7 @@ class ToolbarController(
 
         when (destination.id) {
             R.id.randomCardFragment -> {
-                toolbar.menu.clear()
-                toolbar.inflateMenu(R.menu.random_card_menu)
-                for (i in 0 until toolbar.menu.size) {
-                    toolbar.menu[i].icon?.setTint(
-                        ContextCompat.getColor(
-                            activity,
-                            R.color.md_theme_onPrimary
-                        )
-                    )
-                }
+                prepareToolbar(R.menu.random_card_menu)
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.action_refresh -> {
@@ -90,16 +83,7 @@ class ToolbarController(
             }
 
             R.id.searchFragment -> {
-                toolbar.menu.clear()
-                toolbar.inflateMenu(R.menu.search_menu)
-                for (i in 0 until toolbar.menu.size) {
-                    toolbar.menu[i].icon?.setTint(
-                        ContextCompat.getColor(
-                            activity,
-                            R.color.md_theme_onPrimary
-                        )
-                    )
-                }
+                prepareToolbar(R.menu.search_menu)
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.action_search -> {
@@ -119,22 +103,20 @@ class ToolbarController(
             }
 
             R.id.deckConfigFragment -> {
-                toolbar.menu.clear()
-                toolbar.inflateMenu(R.menu.deck_config_menu)
-                for (i in 0 until toolbar.menu.size) {
-                    toolbar.menu[i].icon?.setTint(
-                        ContextCompat.getColor(activity, R.color.md_theme_onPrimary)
-                    )
-                }
+                prepareToolbar(R.menu.deck_config_menu)
+
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.cfg_deck_add_card -> {
-                            val currentArgs = navController.currentBackStackEntry?.arguments
-                            val deckId = currentArgs?.getString("deckId")
-                            if (deckId != null) {
+                            val deck =
+                                navController.currentBackStackEntry?.arguments?.getParcelable(
+                                        "deck",
+                                        Deck::class.java
+                                    )
+                            if (deck != null) {
                                 val direction =
-                                    ConfigDeckFragmentDirections.actionDeckConfigFragmentToSearchFragment(
-                                        deckId
+                                    DeckConfigFragmentDirections.actionDeckConfigFragmentToSearchFragment(
+                                        deck
                                     )
                                 navController.navigate(direction)
                             }
@@ -142,10 +124,16 @@ class ToolbarController(
                         }
 
                         R.id.cfg_deck_edit -> {
-                            val deckId = navController.currentBackStackEntry?.arguments?.getString("deckId")
-                            if (deckId != null) {
-                                val direction = ConfigDeckFragmentDirections
-                                    .actionDeckConfigFragmentToDeckEditFragment(deckId)
+                            val deck =
+                                navController.currentBackStackEntry?.arguments?.getParcelable(
+                                        "deck",
+                                        Deck::class.java
+                                    )
+                            if (deck != null) {
+                                val direction =
+                                    DeckConfigFragmentDirections.actionDeckConfigFragmentToDeckEditFragment(
+                                            deck
+                                        )
                                 navController.navigate(direction)
                             }
                             true
@@ -156,18 +144,11 @@ class ToolbarController(
                 }
             }
 
-            R.id.deckEditFragment -> {
-                toolbar.menu.clear()
-                toolbar.inflateMenu(R.menu.deck_edit_menu)
-                for (i in 0 until toolbar.menu.size) {
-                    toolbar.menu[i].icon?.setTint(
-                        ContextCompat.getColor(activity, R.color.md_theme_onPrimary)
-                    )
-                }
+            R.id.editDeckFragment -> {
+                prepareToolbar(R.menu.deck_edit_menu)
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.edit_deck_save -> {
-                            // Retrieve the current fragment and call its save method.
                             val navHostFragment =
                                 activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
                             val currentFragment =
@@ -183,10 +164,40 @@ class ToolbarController(
                 }
             }
 
+            R.id.newDeckFragment -> {
+                prepareToolbar(R.menu.new_deck_menu)
+                toolbar.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.btnSaveNewDeck -> {
+                            val navHostFragment =
+                                activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                            val currentFragment =
+                                navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
+                            if (currentFragment is NewDeckFragment) {
+                                currentFragment.newDeck()
+                            }
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+            }
+
             else -> {
                 toolbar.menu.clear()
                 toolbar.setOnMenuItemClickListener(null)
             }
+        }
+    }
+
+    private fun prepareToolbar(menuId: Int) {
+        toolbar.menu.clear()
+        toolbar.inflateMenu(menuId)
+        for (i in 0 until toolbar.menu.size) {
+            toolbar.menu[i].icon?.setTint(
+                ContextCompat.getColor(activity, R.color.md_theme_onPrimary)
+            )
         }
     }
 }

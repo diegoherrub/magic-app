@@ -8,13 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import pol.rubiano.magicapp.databinding.DeckFragmentEditDeckBinding
+import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.app.domain.AppError
+import pol.rubiano.magicapp.app.domain.UiState
+import pol.rubiano.magicapp.databinding.EditDeckFragmentBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
+import pol.rubiano.magicapp.features.presentation.ui.decks.EditDeckFragmentDirections.Companion.actionEditDeckFragmentToDeckConfigFragment
+import pol.rubiano.magicapp.features.presentation.ui.search.ResultsFragmentDirections
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
 class EditDeckFragment : Fragment() {
 
-    private var _binding: DeckFragmentEditDeckBinding? = null
+    private var _binding: EditDeckFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
     private val args: EditDeckFragmentArgs by navArgs()
@@ -25,23 +30,28 @@ class EditDeckFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DeckFragmentEditDeckBinding.inflate(inflater, container, false)
+        _binding = EditDeckFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val deckId = args.deckId
-        viewModel.loadDeckById(deckId)
+        viewModel.loadCurrentDeck(args.deck)
         setupObservers()
     }
 
     private fun setupObservers() {
-        viewModel.selectedDeck.observe(viewLifecycleOwner) { deck ->
-            deck?.let {
-                currentDeck = it
-                binding.editDeckName.setText(it.name)
-                binding.editDeckDescription.setText(it.description)
+        viewModel.currentDeck.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    currentDeck = state.data
+                    binding.editDeckName.setText(currentDeck.name)
+                    binding.editDeckDescription.setText(currentDeck.description)
+                }
+
+                is UiState.Loading -> {}
+                is UiState.Empty -> {}
+                is UiState.Error -> {}
             }
         }
     }
@@ -52,10 +62,9 @@ class EditDeckFragment : Fragment() {
             description = binding.editDeckDescription.text.toString()
         )
         viewModel.updateDeck(updatedDeck)
-
-        findNavController().navigate(
-            EditDeckFragmentDirections.actionDeckEditFragmentToDecksFragment()
-        )
+        val action = EditDeckFragmentDirections
+            .actionEditDeckFragmentToDeckConfigFragment(currentDeck)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -5,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- DECK NAME -->
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/edit_deck_name_label"
+        android:id="@+id/newDeckNameLabel"
         style="@style/st_edit_label"
         android:text="@string/str_deck_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,34 +15,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_deck_name"
+        android:id="@+id/newDeckName"
         style="@style/st_edit_input"
         android:autofillHints="no"
         android:hint="@string/str_deck_name"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@id/edit_deck_name_label"
-        app:layout_constraintStart_toStartOf="@id/edit_deck_name_label"
-        app:layout_constraintTop_toBottomOf="@+id/edit_deck_name_label"
+        app:layout_constraintEnd_toEndOf="@id/newDeckNameLabel"
+        app:layout_constraintStart_toStartOf="@id/newDeckNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/newDeckNameLabel"
         tools:text="@string/str_deck_name" />
 
     <!-- DECK DESCRIPTION -->
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/edit_deck_description_label"
+        android:id="@+id/newDeckDescriptionLabel"
         style="@style/st_edit_label"
         android:text="@string/str_deck_description"
-        app:layout_constraintEnd_toEndOf="@id/edit_deck_name"
-        app:layout_constraintStart_toStartOf="@id/edit_deck_name"
-        app:layout_constraintTop_toBottomOf="@+id/edit_deck_name" />
+        app:layout_constraintEnd_toEndOf="@id/newDeckName"
+        app:layout_constraintStart_toStartOf="@id/newDeckName"
+        app:layout_constraintTop_toBottomOf="@+id/newDeckName" />
 
     <EditText
-        android:id="@+id/edit_deck_description"
+        android:id="@+id/newDeckDescription"
         style="@style/st_edit_input"
         android:autofillHints="no"
         android:hint="@string/str_deck_description"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@id/edit_deck_description_label"
-        app:layout_constraintStart_toStartOf="@id/edit_deck_description_label"
-        app:layout_constraintTop_toBottomOf="@+id/edit_deck_description_label"
+        app:layout_constraintEnd_toEndOf="@id/newDeckDescriptionLabel"
+        app:layout_constraintStart_toStartOf="@id/newDeckDescriptionLabel"
+        app:layout_constraintTop_toBottomOf="@+id/newDeckDescriptionLabel"
         tools:text="@string/str_deck_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

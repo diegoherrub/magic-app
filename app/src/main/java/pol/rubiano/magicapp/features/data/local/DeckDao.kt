@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface DeckDao {
     @Query("SELECT * FROM decks")
-    suspend fun getAllDecks(): List<DeckEntity>
+    suspend fun getUserDecks(): List<DeckEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDeck(deck: DeckEntity)

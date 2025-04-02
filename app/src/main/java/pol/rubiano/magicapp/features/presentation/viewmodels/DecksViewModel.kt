@@ -9,103 +9,106 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
+import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.app.domain.models.Card
 import pol.rubiano.magicapp.app.domain.repositories.CardRepository
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.repositories.DeckRepository
-import pol.rubiano.magicapp.features.domain.usecases.AddDeckUseCase
-import pol.rubiano.magicapp.features.domain.usecases.GetDecksUseCase
 
 @KoinViewModel
 class DecksViewModel(
-    private val getDecksUseCase: GetDecksUseCase,
-    private val addDeckUseCase: AddDeckUseCase,
     private val repository: DeckRepository,
     private val cardRepository: CardRepository
 ) : ViewModel() {
 
-//    private val _uiState = MutableLiveData<UiState>()
-//    val uiState: LiveData<UiState> = _uiState
+    private val _addedDeck = MutableLiveData<UiState<Deck>>()
+    val addedDeck: LiveData<UiState<Deck>> = _addedDeck
 
-    private val _uiState = MutableLiveData(UiState(decks = emptyList()))
-    val uiState: LiveData<UiState> = _uiState
+    private val _fetchedCardsFromDeck = MutableLiveData<UiState<List<Card>>>()
+    val fetchedCardsFromDeck: LiveData<UiState<List<Card>>> = _fetchedCardsFromDeck
 
-    private val _selectedDeck = MutableLiveData<Deck?>()
-    val selectedDeck: LiveData<Deck?> = _selectedDeck
+    private val _updatedDeck = MutableLiveData<UiState<Deck>>()
+    val updatedDeck: LiveData<UiState<Deck>> = _updatedDeck
 
-    private val _deckCards = MutableLiveData<List<Card>>()
-    val deckCards: LiveData<List<Card>> = _deckCards
+    private val _userDecks = MutableLiveData<UiState<List<Deck>>>()
+    val userDecks: LiveData<UiState<List<Deck>>> = _userDecks
 
-//    fun loadDecks() {
-//        _uiState.postValue(UiState(isLoading = true))
+    private val _currentDeck = MutableLiveData<UiState<Deck>>()
+    val currentDeck: LiveData<UiState<Deck>> = _currentDeck
 
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val decks = repository.getDecks()
-//            withContext(Dispatchers.Main) {
-//                _uiState.value = UiState(
-//                    isLoading = false,
-//                    decks = decks
-//                )
-//            }
-//        }
-//    }
-    fun loadDecks() {
+
+    fun loadUserDecks() {
+        _userDecks.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
-            val decks = repository.getDecks()
-            withContext(Dispatchers.Main) {
-                _uiState.value = _uiState.value?.copy(decks = decks)
-            }
-        }
-    }
-
-    fun loadDeckById(deckId: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val deck = repository.getDeckById(deckId)
-            withContext(Dispatchers.Main) {
-                _selectedDeck.value = deck
+            try {
+                val userDecks = repository.getUserDecks()
+                withContext(Dispatchers.Main) {
+                    _userDecks.value = if (userDecks.isNotEmpty()) {
+                        UiState.Success(userDecks)
+                    } else {
+                        UiState.Empty
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    UiState.Error(AppError.AppDataError)
+                }
             }
         }
     }
 
     fun addDeck(deck: Deck) {
-        //_uiState.postValue(UiState(isLoading = true))
+        _addedDeck.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertDeck(deck)
-            loadDecks()
-        }
-    }
-
-    fun updateDeck(deck: Deck) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insertDeck(deck)
-            loadDecks()
-        }
-    }
-
-    fun addCardToDeck(deckId: String, card: Card) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addCardToDeck(deckId, card.id)
-            // TODO Opcional: refrescar el deck si es necesario
-            loadDeckById(deckId)
-        }
-    }
-
-    fun loadDeckCards(deckId: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val deck = repository.getDeckById(deckId)
-            val cards = deck?.cardIds?.mapNotNull { cardId ->
-                cardRepository.getCardById(cardId)
-            } ?: emptyList()
-
-            withContext(Dispatchers.Main) {
-                _deckCards.value = cards
+            try {
+                repository.insertDeck(deck)
+                withContext(Dispatchers.Main) {
+                    _addedDeck.value = UiState.Success(deck)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    UiState.Error(AppError.AppDataError)
+                }
             }
         }
     }
 
-    data class UiState(
-        val isLoading: Boolean = false,
-        val errorApp: AppError? = null,
-        val decks: List<Deck>? = null
-    )
+    fun updateDeck(deck: Deck) {
+        _updatedDeck.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                repository.insertDeck(deck)
+                withContext(Dispatchers.Main) {
+                    _updatedDeck.value = UiState.Success(deck)
+                    _currentDeck.value = _updatedDeck.value
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    UiState.Error(AppError.AppDataError)
+                }
+            }
+        }
+    }
+
+    fun loadDeckCards(deck: Deck) {
+        _fetchedCardsFromDeck.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val cardsFromDek = deck.cardIds.mapNotNull { cardId ->
+                    cardRepository.getCardById(cardId)
+                }
+                _fetchedCardsFromDeck.value = UiState.Success(cardsFromDek)
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    UiState.Error(AppError.AppDataError)
+                }
+            }
+        }
+    }
+
+    fun loadCurrentDeck(deck: Deck) {
+        _currentDeck.value = UiState.Success(deck)
+        loadDeckCards(deck)
+    }
 }
+

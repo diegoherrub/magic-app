@@ -4,6 +4,6 @@
     <item
         android:id="@+id/edit_deck_save"
         android:icon="@drawable/save"
-        android:title="@string/str_edit_deck_save"
+        android:title="@string/strSave"
         app:showAsAction="always" />
 </menu>

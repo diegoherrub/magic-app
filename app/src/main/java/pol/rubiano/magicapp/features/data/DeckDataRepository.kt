@@ -10,12 +10,13 @@ class DeckDataRepository(
     private val local: DeckDataSource
 ) : DeckRepository {
 
-    override suspend fun getDecks(): List<Deck> {
-        return local.getDecks()
+    override suspend fun getUserDecks(): List<Deck> {
+        return local.getUserDecks()
     }
 
-    override suspend fun insertDeck(deck: Deck) {
+    override suspend fun insertDeck(deck: Deck): Deck {
         local.insertDeck(deck)
+        return deck
     }
 
     override suspend fun getDeckById(deckId: String): Deck? {

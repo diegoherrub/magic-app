@@ -1,68 +1,73 @@
 package pol.rubiano.magicapp.features.presentation.ui.decks
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.databinding.DeckFragmentNewDeckBinding
+import pol.rubiano.magicapp.app.domain.AppError
+import pol.rubiano.magicapp.app.domain.UiState
+import pol.rubiano.magicapp.databinding.NewDeckFragmentBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 import java.util.UUID
 
 class NewDeckFragment : Fragment() {
 
-    private var _binding: DeckFragmentNewDeckBinding? = null
+    private var _binding: NewDeckFragmentBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: DecksViewModel by viewModel()
 
-    private val decksViewModel: DecksViewModel by viewModel()
+    private lateinit var newDeck: Deck
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DeckFragmentNewDeckBinding.inflate(inflater, container, false)
+        _binding = NewDeckFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupObserver()
+    }
 
-        binding.saveDeckButton.setOnClickListener {
-            val name = binding.deckNameInput.text.toString().trim()
-            val description = binding.deckDescriptionInput.text.toString().trim()
-            if (name.isNotEmpty()) {
-                // Create a new deck. Here we generate a random ID and set the current date.
-                val newDeck = Deck(
-                    id = UUID.randomUUID().toString(),
-                    name = name,
-                    description = description,
-                    cardIds = emptyList(),
-                    sideBoard = emptyList(),
-                    maybeBoard = emptyList()
-                )
-
-                lifecycleScope.launch {
-                    decksViewModel.addDeck(newDeck)
-                    val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
-                    delay(1000)
-                    parentFragmentManager.setFragmentResult("new_deck_created", Bundle())
-                    findNavController().navigate(R.id.action_new_deck_fragment_to_decks_fragment)
+    private fun setupObserver() {
+        viewModel.addedDeck.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                UiState.Loading -> { }
+                UiState.Success(newDeck) -> {
+                    findNavController().navigate(R.id.action_newDeckFragment_to_deckConfigFragment)
                 }
-            } else {
-                // Optionally notify the user to input a valid name.
-                binding.deckNameInput.error = "Please enter a deck name"
+                UiState.Error(AppError.AppDataError) -> { }
+                else -> Unit
             }
         }
+    }
+
+    fun newDeck() {
+        val name = binding.newDeckName.text.toString().trim()
+        val description = binding.newDeckDescription.text.toString().trim()
+        if (name.isNotEmpty()) {
+            val newDeck = Deck(
+                id = UUID.randomUUID().toString(),
+                name = name,
+                description = description,
+                colors = emptyList(),
+                cardIds = emptyList(),
+                sideBoard = emptyList(),
+                maybeBoard = emptyList()
+            )
+            viewModel.addDeck(newDeck)
+        }
+//        else {
+//            TODO AVISAR DE METER NOMBRE
+//        }
     }
 
     override fun onDestroyView() {
@@ -70,3 +75,4 @@ class NewDeckFragment : Fragment() {
         _binding = null
     }
 }
+

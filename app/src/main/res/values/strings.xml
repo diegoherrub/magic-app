@@ -1,8 +1,20 @@
 <resources>
-    <!-- Common -->
-    <string name="str_add_card">Add card</string>
-
+    <!-- COMMON -->
     <string name="app_name" translatable="false">MagicApp</string>
+
+    <!-- MENU -->
+    <string name="strAddCard">Add card</string>
+    <string name="strSave">Save</string>
+    <string name="strClose">Close</string>
+
+
+
+
+
+
+
+
+
     <string name="image_card_content_description">Card Image</string>
     <string name="image_section_content_description">Section Image</string>
 
@@ -12,7 +24,6 @@
     <string name="collections_title">Collections</string>
 
     <!-- Random Card Fragment -->
-    <string name="save_card">Save</string>
     <string name="cd_save_card">Save the card\'s image into app storage</string>
     <string name="refresh">Refresh</string>
     <string name="cd_refresh">Refresh the content with a new random card</string>

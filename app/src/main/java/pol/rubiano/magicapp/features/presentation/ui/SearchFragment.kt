@@ -16,19 +16,16 @@ import pol.rubiano.magicapp.features.domain.models.Filter
 import pol.rubiano.magicapp.features.presentation.ui.search.FilterCardView
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import pol.rubiano.magicapp.features.domain.models.Deck
 
 class SearchFragment : Fragment() {
 
     private var _binding: SearchFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: DecksViewModel by viewModel()
-    private val deckId: String? by lazy {
-        try {
-            arguments?.let { SearchFragmentArgs.fromBundle(it).deckId }
-        } catch (e: IllegalArgumentException) {
-            null // Si no se pasa deckId, lo dejamos como null
-        }
-    }
+    private val viewModelDecks: DecksViewModel by viewModel()
+    private val args: SearchFragmentArgs by navArgs()
+
+    private lateinit var deck: Deck
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -43,7 +40,8 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        deckId = args.deckId
+        deck = args.deck
+
 
         editCardName = view.findViewById(R.id.edit_card_name)
         chipGroupFilters = view.findViewById(R.id.app_chip_group_filters)
@@ -148,23 +146,18 @@ class SearchFragment : Fragment() {
         val selectedTypes = getSelectedTypes()
 
         if (nameInput.isNotEmpty()) queryParts.add("name:\"$nameInput\"")
-        if (view?.let { selectedRarities } != "") queryParts.add(selectedRarities)
-        if (view?.let { selectedColors } != "") queryParts.add(selectedColors)
-        if (view?.let { selectedTypes } != "") queryParts.add(selectedTypes)
+        if (selectedRarities.isNotEmpty()) queryParts.add(selectedRarities)
+        if (selectedColors.isNotEmpty()) queryParts.add(selectedColors)
+        if (selectedTypes.isNotEmpty()) queryParts.add(selectedTypes)
 
         val query = queryParts.joinToString(" ")
-        val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
-            query = query,
-            deckId = deckId ?: "" // evita pasar null directamente
-        )
+        val action = SearchFragmentDirections.actionSearchFragmentToDeckConfigFragment(args.deck)
         findNavController().navigate(action)
     }
 
     override fun onResume() {
         super.onResume()
-        deckId?.let { viewModel.loadDeckById(it) }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

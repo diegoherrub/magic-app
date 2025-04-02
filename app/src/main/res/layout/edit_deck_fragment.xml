@@ -1,0 +1,48 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/st_cointainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- DECK NAME -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/editDeckNameLabel"
+        style="@style/st_edit_label"
+        android:text="@string/str_deck_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editDeckName"
+        style="@style/st_edit_input"
+        android:autofillHints="no"
+        android:hint="@string/str_deck_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/editDeckNameLabel"
+        app:layout_constraintStart_toStartOf="@id/editDeckNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/editDeckNameLabel"
+        tools:text="@string/str_deck_name" />
+
+    <!-- DECK DESCRIPTION -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/editDeckDescriptionLabel"
+        style="@style/st_edit_label"
+        android:text="@string/str_deck_description"
+        app:layout_constraintEnd_toEndOf="@id/editDeckName"
+        app:layout_constraintStart_toStartOf="@id/editDeckName"
+        app:layout_constraintTop_toBottomOf="@+id/editDeckName" />
+
+    <EditText
+        android:id="@+id/editDeckDescription"
+        style="@style/st_edit_input"
+        android:autofillHints="no"
+        android:hint="@string/str_deck_description"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@id/editDeckDescriptionLabel"
+        app:layout_constraintStart_toStartOf="@id/editDeckDescriptionLabel"
+        app:layout_constraintTop_toBottomOf="@+id/editDeckDescriptionLabel"
+        tools:text="@string/str_deck_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,22 +51,14 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // If it comes from decks, we need to pass the deckId to add the card to the deck
-        val deckId = args.deckId
+        val deck = args.deck
 
         adapter = SearchResultsAdapter { card ->
-            if (deckId != null) {
-                cardsViewModel.saveCardToLocal(card)
-                decksViewModel.addCardToDeck(deckId, card)
-                val action = ResultsFragmentDirections
-                    .actionSearchResultsFragmentToDeckConfigFragment(deckId)
-                findNavController().navigate(action)
-            } else {
-                val cardJson = Gson().toJson(card)
-                val action = ResultsFragmentDirections
-                    .actionSearchResultsFragmentToViewCardFragment(cardJson)
-                findNavController().navigate(action)
-            }
+            cardsViewModel.saveCardToLocal(card)
+//                decksViewModel.addCardToDeck(deckId, card)
+            val action = ResultsFragmentDirections
+                .actionSearchResultsFragmentToDeckConfigFragment(deck)
+            findNavController().navigate(action)
         }
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
