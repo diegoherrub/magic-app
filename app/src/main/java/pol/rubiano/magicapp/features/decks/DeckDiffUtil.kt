@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.adapters.diffutils
+package pol.rubiano.magicapp.features.decks
 
 import androidx.recyclerview.widget.DiffUtil
 import pol.rubiano.magicapp.features.domain.models.Deck

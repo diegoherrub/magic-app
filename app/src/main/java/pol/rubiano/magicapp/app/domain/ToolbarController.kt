@@ -11,9 +11,9 @@ import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import pol.rubiano.magicapp.features.deckdetails.DeckDetailsFragmentDirections
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.presentation.ui.SearchFragment
-import pol.rubiano.magicapp.features.presentation.ui.decks.DeckDetailsFragmentDirections
 import pol.rubiano.magicapp.features.presentation.ui.decks.EditDeckFragment
 import pol.rubiano.magicapp.features.presentation.ui.decks.NewDeckFragment
 
@@ -75,7 +75,7 @@ class ToolbarController(
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.add_deck -> {
-                            navController.navigate(R.id.action_decksFragment_to_newDeckFragment)
+                            navController.navigate(R.id.act_decks_to_new_deck)
                             true
                         }
                         else -> false
@@ -117,7 +117,7 @@ class ToolbarController(
                     }
                 }
             }
-            R.id.deckDetailsFragment -> {
+            R.id.deckDetails -> {
                 prepareToolbar(R.menu.deck_config_menu)
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
@@ -128,30 +128,27 @@ class ToolbarController(
                                         Deck::class.java
                                     )
                             if (deck != null) {
-                                val direction =
-                                    DeckDetailsFragmentDirections.actionDeckDetailsFragmentToSearchFragment(
-                                        deck
-                                    )
+                                val direction = DeckDetailsFragmentDirections.actDeckDetailsToSearch(deck)
                                 navController.navigate(direction)
                             }
                             true
                         }
 
-                        R.id.cfg_deck_edit -> {
-                            val deck =
-                                navController.currentBackStackEntry?.arguments?.getParcelable(
-                                        "deck",
-                                        Deck::class.java
-                                    )
-                            if (deck != null) {
-                                val direction =
-                                    DeckDetailsFragmentDirections.actionDeckDetailsFragmentToDeckEditFragment(
-                                            deck
-                                        )
-                                navController.navigate(direction)
-                            }
-                            true
-                        }
+//                        R.id.cfg_deck_edit -> {
+//                            val deck =
+//                                navController.currentBackStackEntry?.arguments?.getParcelable(
+//                                        "deck",
+//                                        Deck::class.java
+//                                    )
+//                            if (deck != null) {
+//                                val direction =
+//                                    DeckDetailsFragmentDirections.actionDeckDetailsFragmentToDeckEditFragment(
+//                                            deck
+//                                        )
+//                                navController.navigate(R.id.actionDeckDetailsFragmentToDeckEditFragment)
+//                            }
+//                            true
+//                        }
 
                         else -> false
                     }

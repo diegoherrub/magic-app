@@ -6,11 +6,16 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.app.presentation.AppDiffUtil
 import pol.rubiano.magicapp.features.domain.models.Keyword
-import pol.rubiano.magicapp.features.presentation.adapters.diffutils.KeywordsDiffUtil
 import pol.rubiano.magicapp.features.presentation.adapters.viewholders.KeywordsViewHolder
 
-class KeywordsAdapter() : ListAdapter<Keyword, KeywordsViewHolder>(KeywordsDiffUtil()), Filterable {
+class KeywordsAdapter() : ListAdapter<Keyword, KeywordsViewHolder>(
+    AppDiffUtil<Keyword>(
+        itemSame = { old, new -> old.term == new.term },
+        contentSame = { old, new -> old == new }
+    )
+), Filterable {
 
     private var originalKeywords: List<Keyword> = emptyList()
     private var filteredKeywords: List<Keyword> = emptyList()

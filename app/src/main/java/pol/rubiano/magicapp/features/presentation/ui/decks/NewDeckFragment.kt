@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.NewDeckFragmentBinding
@@ -21,9 +19,9 @@ class NewDeckFragment : Fragment() {
     private var _binding: NewDeckFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
-    private val args: NewDeckFragmentDirections by navArgs()
+//    private val args: NewDeckFragmentDirections by navArgs()
 
-    private lateinit var newDeck: Deck
+//    private lateinit var newDeck: Deck
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +43,7 @@ class NewDeckFragment : Fragment() {
                 is UiState.Loading -> { }
                 is UiState.Success -> {
                     val deck = state.data
-                    val action = NewDeckFragmentDirections.actionNewDeckFragmentToDeckConfigFragment(deck)
+                    val action = NewDeckFragmentDirections.actNewDeckToDeckDetails(deck)
                     findNavController().navigate(action)
                 }
                 is UiState.Error -> { AppError.AppDataError }
@@ -56,6 +54,10 @@ class NewDeckFragment : Fragment() {
 
     fun newDeck() {
         val name = binding.newDeckName.text.toString().trim()
+        if (name.isEmpty()) { // TODO - REVISAR SI IMPLEMENTO
+            binding.newDeckName.error = "Name required"
+            return
+        }
         val description = binding.newDeckDescription.text.toString().trim()
         if (name.isNotEmpty()) {
             val newDeck = Deck(
@@ -68,11 +70,7 @@ class NewDeckFragment : Fragment() {
                 maybeBoard = emptyList()
             )
             viewModel.addDeck(newDeck)
-
         }
-//        else {
-//            TODO AVISAR DE METER NOMBRE
-//        }
     }
 
     override fun onDestroyView() {

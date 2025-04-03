@@ -34,27 +34,23 @@
         android:name="pol.rubiano.magicapp.features.presentation.ui.CollectionsFragment"
         android:label="@string/collections_title" />
 
-    <!-- DECKS -->
+    <!-- DECKS-->
     <fragment
         android:id="@+id/decksFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.DecksFragment"
+        android:name="pol.rubiano.magicapp.features.decks.DecksFragment"
         android:label="@string/str_decks">
-
         <action
-            android:id="@+id/action_decksFragment_to_newDeckFragment"
-            app:destination="@+id/newDeckFragment" />
-        <argument
-            android:name="deck"
-            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-            app:nullable="false" />
-        <action
-            android:id="@+id/action_decksFragment_to_deckDetailsFragment"
-            app:destination="@id/deckDetailsFragment">
-
+            android:id="@+id/act_decks_to_new_deck"
+            app:destination="@+id/newDeckFragment">
         </action>
         <action
-            android:id="@+id/action_decks_fragment_to_deck_edit_fragment"
-            app:destination="@id/editDeckFragment" />
+            android:id="@+id/act_decks_to_deck_details"
+            app:destination="@+id/deckDetails">
+            <argument
+                android:name="deck"
+                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
+                app:nullable="false"/>
+        </action>
     </fragment>
 
     <!-- DECK NEW -->
@@ -68,43 +64,46 @@
         <!--            app:nullable="false" />-->
 
         <action
-            android:id="@+id/action_newDeckFragment_to_deckConfigFragment"
-            app:destination="@+id/deckConfigFragment">
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="false" />
+            android:id="@+id/act_new_deck_to_deck_details"
+            app:destination="@+id/deckDetails">
+            <!--            <argument-->
+            <!--                android:name="deck"-->
+            <!--                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+            <!--                app:nullable="false" />-->
         </action>
     </fragment>
 
     <!-- DECK DETAILS -->
     <fragment
-        android:id="@+id/deckDetailsFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.decks.DeckDetailsFragment"
+        android:id="@+id/deckDetails"
+        android:name="pol.rubiano.magicapp.features.deckdetails.DeckDetailsFragment"
         android:label="@string/str_config_deck_title">
-
         <argument
             android:name="deck"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
             app:nullable="false" />
-
         <action
-            android:id="@+id/action_deckDetailsFragment_to_searchFragment"
-            app:destination="@+id/searchFragment">
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="false" />
+            android:id="@+id/act_deck_details_to_search"
+            app:destination="@id/searchFragment">
         </action>
 
-        <action
-            android:id="@+id/action_deckDetailsFragment_to_deckEditFragment"
-            app:destination="@+id/editDeckFragment">
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="false" />
-        </action>
+        <!--        <action-->
+        <!--            android:id="@+id/action_deckDetailsFragment_to_searchFragment"-->
+        <!--            app:destination="@+id/searchFragment">-->
+        <!--            <argument-->
+        <!--                android:name="deck"-->
+        <!--                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+        <!--                app:nullable="false" />-->
+        <!--        </action>-->
+
+        <!--        <action-->
+        <!--            android:id="@+id/action_deckDetailsFragment_to_deckEditFragment"-->
+        <!--            app:destination="@+id/editDeckFragment">-->
+        <!--            <argument-->
+        <!--                android:name="deck"-->
+        <!--                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+        <!--                app:nullable="false" />-->
+        <!--        </action>-->
     </fragment>
 
     <!-- EDIT DECK -->

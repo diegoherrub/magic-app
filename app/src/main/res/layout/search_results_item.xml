@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/search_results_item_card_name"
-        style="@style/app_font_card_name"
+        style="@style/font_card_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/search_results_item_card_rarity_mana_cost"
-        style="@style/CardOracleBold"
+        style="@style/font_card_oracle_sb"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"
@@ -50,7 +50,7 @@
 
     <TextView
         android:id="@+id/search_results_item_card_oracle"
-        style="@style/CardOracle"
+        style="@style/font_card_oracle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_m"

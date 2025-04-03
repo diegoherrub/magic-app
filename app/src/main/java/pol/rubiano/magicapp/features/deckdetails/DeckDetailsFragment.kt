@@ -1,6 +1,7 @@
-package pol.rubiano.magicapp.features.presentation.ui.decks
+package pol.rubiano.magicapp.features.deckdetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,42 +17,45 @@ import pol.rubiano.magicapp.app.domain.DeckStatsAnalyzer
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.app.domain.models.Card
 import pol.rubiano.magicapp.app.domain.models.CardCategory
-import pol.rubiano.magicapp.databinding.DeckFragmentConfigDeckBinding
+import pol.rubiano.magicapp.databinding.DeckDetailsBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
-import pol.rubiano.magicapp.features.presentation.adapters.DeckConfigAdapter
 import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
 class DeckDetailsFragment : Fragment() {
 
-    private var _binding: DeckFragmentConfigDeckBinding? = null
+    private var _binding: DeckDetailsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
     private val args: DeckDetailsFragmentArgs by navArgs()
 
-    private lateinit var adapter: DeckConfigAdapter
+    private lateinit var adapter: DeckDetailsAdapter
     private lateinit var receivedDeck: Deck
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DeckFragmentConfigDeckBinding.inflate(inflater, container, false)
+        _binding = DeckDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+            Log.d("@DeckDetailsFragment", "args.deck: ${args.deck}")
         receivedDeck = args.deck
-        viewModel.loadDeckCards(receivedDeck)
+            Log.d("@DeckDetailsFragment", "receivedDeck: $receivedDeck")
         setupRecyclerViewCardsOfDeck()
         setupObservers()
     }
 
     private fun setupRecyclerViewCardsOfDeck() {
-        adapter = DeckConfigAdapter {
+
+        viewModel.loadDeckCards(receivedDeck)
+
+        adapter = DeckDetailsAdapter {
             val action = DeckDetailsFragmentDirections
-                .actionDeckDetailsFragmentToSearchFragment(receivedDeck)
+                .actDeckDetailsToSearch(receivedDeck)
             findNavController().navigate(action)
         }
         binding.recyclerViewCardsOfDeck.layoutManager = LinearLayoutManager(requireContext())

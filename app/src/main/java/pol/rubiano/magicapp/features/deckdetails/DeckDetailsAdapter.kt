@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.adapters
+package pol.rubiano.magicapp.features.deckdetails
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,12 +11,17 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.models.CardCategory
+import pol.rubiano.magicapp.app.presentation.AppDiffUtil
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
-import pol.rubiano.magicapp.features.presentation.adapters.diffutils.DeckConfigDiffUtil
 
-class DeckConfigAdapter(
+class DeckDetailsAdapter(
     private val onAddCardClick: (CardCategory) -> Unit = {}
-) : ListAdapter<DeckConfigItem, RecyclerView.ViewHolder>(DeckConfigDiffUtil()) {
+) : ListAdapter<DeckConfigItem, RecyclerView.ViewHolder>(
+    AppDiffUtil<DeckConfigItem>(
+        itemSame = { old, new -> old == new },
+        contentSame = { old, new -> old == new }
+    )
+) {
 
     companion object {
         private const val VIEW_TYPE_HEADER = 0

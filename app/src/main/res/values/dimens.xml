@@ -26,4 +26,7 @@
     <dimen name="padding_deck_item">14dp</dimen>
 
     <dimen name="bottom_bar_height">56dp</dimen>
+
+    <dimen name="image_small_w">100dp</dimen>
+    <dimen name="image_small_h">139dp</dimen>
 </resources>
