@@ -78,7 +78,9 @@ class DecksViewModel(
                 val cardsFromDeck = deck.cardIds.mapNotNull { cardId ->
                     cardRepository.getCardById(cardId)
                 }
-                _fetchedCardsFromDeck.value = UiState.Success(cardsFromDeck)
+                withContext(Dispatchers.Main) {
+                    _fetchedCardsFromDeck.value = UiState.Success(cardsFromDeck)
+                }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     UiState.Error(AppError.AppDataError)

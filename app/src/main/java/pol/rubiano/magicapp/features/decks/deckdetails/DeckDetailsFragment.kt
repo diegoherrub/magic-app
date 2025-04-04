@@ -65,7 +65,6 @@ class DeckDetailsFragment : Fragment() {
                     val deck = state.data
                     binding.cfgDeckName.text = deck.name
                     binding.cfgDeckDescription.text = deck.description
-                    Log.d("@pol", "deck cards: ${deck.cardIds}" )
                 }
 
                 is UiState.Loading -> {}
@@ -81,6 +80,7 @@ class DeckDetailsFragment : Fragment() {
                 is UiState.Success -> {
                     val cards = state.data
                     val grouped = groupCardsByCategory(cards)
+                    Log.d("@pol", "Submitting list with ${grouped.size} items")
                     adapter.submitList(grouped)
                     val uniqueColors = DeckStatsAnalyzer.getUniqueColors(cards)
                         .joinToString(" ") { "{$it}" }
@@ -113,6 +113,7 @@ class DeckDetailsFragment : Fragment() {
         groupedItems += DeckConfigItem.CardGroup(lands, CardCategory.Lands)
         groupedItems += DeckConfigItem.Header("$spellsString (${spells.size})")
         groupedItems += DeckConfigItem.CardGroup(spells, CardCategory.Spells)
+        Log.d("@pol", "Grouped items: ${groupedItems.joinToString()}")
         return groupedItems
     }
 

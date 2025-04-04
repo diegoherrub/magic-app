@@ -1,12 +1,14 @@
 package pol.rubiano.magicapp.features.decks.deckdetails
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.R
@@ -55,7 +57,11 @@ class DeckDetailsAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = getItem(position)) {
-            is DeckConfigItem.Header -> (holder as HeaderViewHolder).bind(item)
+            is DeckConfigItem.Header -> {
+                Log.d("@pol", "Binding header: ${item.title}")
+                (holder as HeaderViewHolder).bind(item)
+            }
+
             is DeckConfigItem.CardGroup -> (holder as CardGroupViewHolder).bind(item)
         }
     }
@@ -70,7 +76,7 @@ class DeckDetailsAdapter(
         view: View,
         private val onAddCardClick: (CardCategory) -> Unit
     ) : RecyclerView.ViewHolder(view) {
-        private val container = itemView.findViewById<LinearLayout>(R.id.cardFirstCopy)
+        private val container = itemView.findViewById<ConstraintLayout>(R.id.cardRowContainer)
 
         fun bind(item: DeckConfigItem.CardGroup) {
             container.removeAllViews()
@@ -93,16 +99,43 @@ class DeckDetailsAdapter(
                 }
                 container.addView(addButton)
             } else {
-                item.cards.forEach { card ->
-                    val cardView = LayoutInflater.from(context)
-                        .inflate(R.layout.deck_item_card, container, false)
-//                    cardView.findViewById<TextView>(R.id.view_card_name).text = card.name
-                    container.addView(cardView)
+                // Group cards by a unique property (e.g., card id)
+                // Ensure that your Card model has an 'id' property
+                val groupedCards = item.cards.groupBy { it.id }
+                for ((_, cardList) in groupedCards) {
+                    val copiesCount = cardList.size // number of copies for this card
+
+                    // Inflate the row layout with 4 copies
+                    val rowView = LayoutInflater.from(context)
+                        .inflate(R.layout.deck_item_cards_row, container, false)
+
+                    // Get each of the 4 copy ImageViews
+                    val copy1 = rowView.findViewById<ImageView>(R.id.cardFirstCopy)
+                    val copy2 = rowView.findViewById<ImageView>(R.id.cardSecondCopy)
+                    val copy3 = rowView.findViewById<ImageView>(R.id.cardThirdCopy)
+                    val copy4 = rowView.findViewById<ImageView>(R.id.cardForthCopy)
+
+                    // Set the image for each copy (use your actual image source; here we use a placeholder)
+                    val cardImageRes =
+                        R.drawable.card_back  // Replace with your actual resource or image loader
+                    copy1.setImageResource(cardImageRes)
+                    copy2.setImageResource(cardImageRes)
+                    copy3.setImageResource(cardImageRes)
+                    copy4.setImageResource(cardImageRes)
+
+                    // Show or hide each copy based on copiesCount (1..4)
+                    copy1.visibility = if (copiesCount >= 1) View.VISIBLE else View.INVISIBLE
+                    copy2.visibility = if (copiesCount >= 2) View.VISIBLE else View.INVISIBLE
+                    copy3.visibility = if (copiesCount >= 3) View.VISIBLE else View.INVISIBLE
+                    copy4.visibility = if (copiesCount >= 4) View.VISIBLE else View.INVISIBLE
+
+                    // Optionally, add click listeners or other behavior per row here
+
+                    container.addView(rowView)
                 }
             }
         }
-
-        private fun Int.dp(context: Context): Int =
-            (this * context.resources.displayMetrics.density).toInt()
     }
 }
+private fun Int.dp(context: Context): Int =
+    (this * context.resources.displayMetrics.density).toInt()
