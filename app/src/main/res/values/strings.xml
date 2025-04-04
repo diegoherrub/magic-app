@@ -2,10 +2,12 @@
     <!-- COMMON -->
     <string name="app_name" translatable="false">MagicApp</string>
 
+    <string name="str_deck_details">Deck Details</string>
+
     <!-- MENU -->
     <string name="strAddCard">Add card</string>
     <string name="strAddDeck">Add deck</string>
-    <string name="cdAddDeck">Add a new deck</string>
+    <string name="strEditDeck">Edit deck</string>
     <string name="strSave">Save</string>
     <string name="strClose">Close</string>
 

@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardScrollRow"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:fillViewport="true"
-    android:scrollbars="horizontal">
+    style="@style/st_cointainer_item"
+    android:padding="@dimen/dimen_xs">
 
-    <LinearLayout
-        android:id="@+id/cardContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
-</HorizontalScrollView>
+    <ImageView
+        android:id="@+id/cardFirstCopy"
+        style="@style/st_image_small_spaced"
+        android:layout_width="@dimen/zero_dp"
+        android:contentDescription="@string/image_card_content_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" 
+        app:layout_constraintEnd_toStartOf="@id/cardSecondCopy"
+        />
+
+    <ImageView
+        android:id="@+id/cardSecondCopy"
+        style="@style/st_image_small_spaced"
+        android:layout_width="@dimen/zero_dp"
+        android:contentDescription="@string/image_card_content_description"
+        app:layout_constraintStart_toEndOf="@+id/cardFirstCopy"
+        app:layout_constraintEnd_toStartOf="@id/cardThirdCopy"
+        app:layout_constraintTop_toTopOf="@id/cardFirstCopy" />
+
+    <ImageView
+        android:id="@+id/cardThirdCopy"
+        style="@style/st_image_small_spaced"
+        android:layout_width="@dimen/zero_dp"
+        android:contentDescription="@string/image_card_content_description"
+        app:layout_constraintStart_toEndOf="@+id/cardSecondCopy"
+        app:layout_constraintEnd_toStartOf="@id/cardForthCopy"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cardForthCopy"
+        style="@style/st_image_small_spaced"
+        android:layout_width="@dimen/zero_dp"
+        android:contentDescription="@string/image_card_content_description"
+        app:layout_constraintStart_toEndOf="@+id/cardThirdCopy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,17 @@ package pol.rubiano.magicapp.features.decks
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import pol.rubiano.magicapp.app.presentation.AppDiffUtil
 import pol.rubiano.magicapp.features.domain.models.Deck
 
 class DecksAdapter(
     private val onDeckClickToDetails: (Deck) -> Unit,
-) : ListAdapter<Deck, DecksViewHolder>(DeckDiffUtil()) {
+) : ListAdapter<Deck, DecksViewHolder>(
+    AppDiffUtil<Deck>(
+        itemSame = { old, new -> old.id == new.id},
+        contentSame = { old, new -> old == new }
+    )
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DecksViewHolder {
         return DecksViewHolder.from(parent)

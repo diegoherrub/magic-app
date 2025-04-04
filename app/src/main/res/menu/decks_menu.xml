@@ -5,6 +5,6 @@
         android:id="@+id/add_deck"
         android:icon="@drawable/add"
         android:title="@string/strAddDeck"
-        android:contentDescription="@string/cdAddDeck"
+        android:contentDescription="@string/strAddDeck"
         app:showAsAction="always"/>
 </menu>

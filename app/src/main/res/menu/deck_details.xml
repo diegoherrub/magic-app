@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/cfg_deck_add_card"
+        android:id="@+id/icon_add_card"
         android:icon="@drawable/add"
         android:title="@string/strAddCard"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/cfg_deck_edit"
+        android:id="@+id/icon_edit_deck"
         android:icon="@drawable/edit"
-        android:title="@string/str_edit_deck_title"
-        app:showAsAction="always" />
+        android:title="@string/strEditDeck"
+        app:showAsAction="ifRoom" />
 </menu>

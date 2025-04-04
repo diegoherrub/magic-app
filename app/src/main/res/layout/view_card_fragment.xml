@@ -48,7 +48,7 @@
             <!-- Name -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/name_title"
-                style="@style/style_app_card_header"
+                style="@style/st_separator_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/name_title"
@@ -68,7 +68,7 @@
             <!-- Type Line -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/type_line_title"
-                style="@style/style_app_card_header"
+                style="@style/st_separator_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/type_line_title"
@@ -89,7 +89,7 @@
             <!-- Rarity -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/rarity_title"
-                style="@style/style_app_card_header"
+                style="@style/st_separator_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/rarity"
@@ -110,7 +110,7 @@
             <!-- Oracle Text -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/oracle_text_title"
-                style="@style/style_app_card_header"
+                style="@style/st_separator_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/oracle_text_title"
@@ -131,7 +131,7 @@
             <!-- Set Name -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/set_name_title"
-                style="@style/style_app_card_header"
+                style="@style/st_separator_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/set_name_title"
@@ -152,7 +152,7 @@
             <!-- Legalities -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/legalities_title"
-                style="@style/style_app_card_header"
+                style="@style/st_separator_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/legality_title"

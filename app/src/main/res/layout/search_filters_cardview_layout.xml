@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:padding="@dimen/dimen_m"
-        android:textAppearance="@style/app_font_random_card_header"
+        android:textAppearance="@style/ft_separator_header"
         app:drawableEndCompat="@drawable/arrow_drop_down"
         tools:text="Filter" />
 

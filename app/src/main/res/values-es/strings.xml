@@ -103,7 +103,7 @@
     <string name="view_card_label">Ver Carta</string>
     <string name="str_config_deck_title">Configuración del mazo</string>
     <string name="strAddCard">Agregar carta</string>
-    <string name="str_edit_deck_title">Editar mazo</string>
+    <string name="strEditDeck">Editar mazo</string>
     <string name="image_error_content_description">Imagen de error</string>
     <string name="error_button_retry">Reintentar</string>
     <string name="strSave">Guardar</string>

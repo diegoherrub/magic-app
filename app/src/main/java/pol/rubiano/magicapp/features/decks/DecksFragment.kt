@@ -11,7 +11,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.DecksFragmentBinding
-import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
 
 class DecksFragment : Fragment() {
 
@@ -36,20 +35,26 @@ class DecksFragment : Fragment() {
             val action = DecksFragmentDirections.actDecksToDeckDetails(deck)
             findNavController().navigate(action)
         }
+        binding.decksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.decksRecyclerView.adapter = adapter
 
+        setupObserver()
+    }
+
+    private fun setupObserver() {
         viewModel.userDecks.observe(viewLifecycleOwner) { state ->
             when (state) {
+                is UiState.Loading -> {}
                 is UiState.Success -> {
                     val decks = state.data
                     adapter.submitList(decks)
-                    binding.decksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    binding.decksRecyclerView.adapter = adapter
                 }
-                is UiState.Loading -> {}
+
                 is UiState.Empty -> {
                     val action = DecksFragmentDirections.actDecksToNewDeck()
                     findNavController().navigate(action)
                 }
+
                 is UiState.Error -> {
                     AppError.AppDataError
                 }

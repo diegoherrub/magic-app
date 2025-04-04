@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.deckdetails
+package pol.rubiano.magicapp.features.decks.deckdetails
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -62,7 +62,7 @@ class DeckDetailsAdapter(
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(item: DeckConfigItem.Header) {
-            itemView.findViewById<TextView>(R.id.headerTitle).text = item.title
+            itemView.findViewById<TextView>(R.id.deckHeader).text = item.title
         }
     }
 
@@ -70,7 +70,7 @@ class DeckDetailsAdapter(
         view: View,
         private val onAddCardClick: (CardCategory) -> Unit
     ) : RecyclerView.ViewHolder(view) {
-        private val container = itemView.findViewById<LinearLayout>(R.id.cardContainer)
+        private val container = itemView.findViewById<LinearLayout>(R.id.cardFirstCopy)
 
         fun bind(item: DeckConfigItem.CardGroup) {
             container.removeAllViews()
@@ -80,7 +80,10 @@ class DeckDetailsAdapter(
             if (item.cards.isEmpty()) {
                 val addButton = ImageView(context).apply {
                     setImageResource(android.R.drawable.ic_input_add)
-                    layoutParams = LinearLayout.LayoutParams(0, 100.dp(context), 1f).apply {
+                    layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        100.dp(context)
+                    ).apply {
                         marginStart = 8.dp(context)
                         marginEnd = 8.dp(context)
                     }
@@ -93,7 +96,7 @@ class DeckDetailsAdapter(
                 item.cards.forEach { card ->
                     val cardView = LayoutInflater.from(context)
                         .inflate(R.layout.deck_item_card, container, false)
-//                    cardView.findViewById<TextView>(R.id.cardName).text = card.name
+//                    cardView.findViewById<TextView>(R.id.view_card_name).text = card.name
                     container.addView(cardView)
                 }
             }

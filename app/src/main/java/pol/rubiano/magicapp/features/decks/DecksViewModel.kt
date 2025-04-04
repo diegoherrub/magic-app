@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.viewmodels
+package pol.rubiano.magicapp.features.decks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -26,9 +26,6 @@ class DecksViewModel(
 
     private val _fetchedCardsFromDeck = MutableLiveData<UiState<List<Card>>>()
     val fetchedCardsFromDeck: LiveData<UiState<List<Card>>> = _fetchedCardsFromDeck
-
-    private val _updatedDeck = MutableLiveData<UiState<Deck>>()
-    val updatedDeck: LiveData<UiState<Deck>> = _updatedDeck
 
     private val _userDecks = MutableLiveData<UiState<List<Deck>>>()
     val userDecks: LiveData<UiState<List<Deck>>> = _userDecks
@@ -74,31 +71,14 @@ class DecksViewModel(
         }
     }
 
-    fun updateDeck(deck: Deck) {
-        _updatedDeck.value = UiState.Loading
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                repository.insertDeck(deck)
-                withContext(Dispatchers.Main) {
-                    _updatedDeck.value = UiState.Success(deck)
-                    _currentDeck.value = _updatedDeck.value
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    UiState.Error(AppError.AppDataError)
-                }
-            }
-        }
-    }
-
-    fun loadDeckCards(deck: Deck) {
+    private fun loadDeckCards(deck: Deck) {
         _fetchedCardsFromDeck.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val cardsFromDek = deck.cardIds.mapNotNull { cardId ->
+                val cardsFromDeck = deck.cardIds.mapNotNull { cardId ->
                     cardRepository.getCardById(cardId)
                 }
-                _fetchedCardsFromDeck.value = UiState.Success(cardsFromDek)
+                _fetchedCardsFromDeck.value = UiState.Success(cardsFromDeck)
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     UiState.Error(AppError.AppDataError)
@@ -108,8 +88,9 @@ class DecksViewModel(
     }
 
     fun loadCurrentDeck(deck: Deck) {
-        _currentDeck.value = UiState.Success(deck)
+        _currentDeck.value = UiState.Loading
         loadDeckCards(deck)
+        _currentDeck.value = UiState.Success(deck)
     }
 }
 

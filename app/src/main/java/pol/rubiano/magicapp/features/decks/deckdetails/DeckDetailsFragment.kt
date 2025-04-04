@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.deckdetails
+package pol.rubiano.magicapp.features.decks.deckdetails
 
 import android.os.Bundle
 import android.util.Log
@@ -20,17 +20,17 @@ import pol.rubiano.magicapp.app.domain.models.CardCategory
 import pol.rubiano.magicapp.databinding.DeckDetailsBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
-import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
+import pol.rubiano.magicapp.features.decks.DecksViewModel
 
 class DeckDetailsFragment : Fragment() {
 
     private var _binding: DeckDetailsBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: DecksViewModel by viewModel()
+    private val decksViewModel: DecksViewModel by viewModel()
     private val args: DeckDetailsFragmentArgs by navArgs()
 
+    private lateinit var currentDeck: Deck
     private lateinit var adapter: DeckDetailsAdapter
-    private lateinit var receivedDeck: Deck
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,42 +42,41 @@ class DeckDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-            Log.d("@DeckDetailsFragment", "args.deck: ${args.deck}")
-        receivedDeck = args.deck
-            Log.d("@DeckDetailsFragment", "receivedDeck: $receivedDeck")
+        currentDeck = args.deck
+        decksViewModel.loadCurrentDeck(currentDeck)
         setupRecyclerViewCardsOfDeck()
         setupObservers()
     }
 
     private fun setupRecyclerViewCardsOfDeck() {
-
-        viewModel.loadDeckCards(receivedDeck)
-
-        adapter = DeckDetailsAdapter {
-            val action = DeckDetailsFragmentDirections
-                .actDeckDetailsToSearch(receivedDeck)
+        // Navega al buscador para añadir cartas
+        adapter = DeckDetailsAdapter { category ->
+            val action = DeckDetailsFragmentDirections.actionDeckDetailsToSearch(currentDeck)
             findNavController().navigate(action)
         }
-        binding.recyclerViewCardsOfDeck.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewCardsOfDeck.adapter = adapter
+        binding.recyclerViewCardsOfDeck.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun setupObservers() {
-        viewModel.addedDeck.observe(viewLifecycleOwner) { state ->
+        decksViewModel.currentDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
                     val deck = state.data
                     binding.cfgDeckName.text = deck.name
                     binding.cfgDeckDescription.text = deck.description
+                    Log.d("@pol", "deck cards: ${deck.cardIds}" )
                 }
 
                 is UiState.Loading -> {}
                 is UiState.Empty -> {}
-                is UiState.Error -> AppError.AppDataError
+                is UiState.Error -> {
+                    AppError.AppDataError
+                }
             }
         }
 
-        viewModel.fetchedCardsFromDeck.observe(viewLifecycleOwner) { state ->
+        decksViewModel.fetchedCardsFromDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
                     val cards = state.data
@@ -86,11 +85,15 @@ class DeckDetailsFragment : Fragment() {
                     val uniqueColors = DeckStatsAnalyzer.getUniqueColors(cards)
                         .joinToString(" ") { "{$it}" }
                     binding.cfgDeckColors.text = mapManaSymbols(requireContext(), uniqueColors)
+                    Log.d("@pol", "cards: ${cards}" )
+
                 }
 
                 is UiState.Loading -> {}
                 is UiState.Empty -> {}
-                is UiState.Error -> AppError.AppDataError
+                is UiState.Error -> {
+                    AppError.AppDataError
+                }
             }
         }
     }
@@ -101,10 +104,9 @@ class DeckDetailsFragment : Fragment() {
             cards.filter { it.typeLine?.contains("creature", ignoreCase = true) ?: false }
         val lands = cards.filter { it.typeLine?.contains("land", ignoreCase = true) ?: false }
         val spells = cards - creatures.toSet() - lands.toSet()
-//        val spells = cards - creatures - lands
-        val creaturesString = (R.string.type_creature).toString()
-        val landsString = (R.string.type_land).toString()
-        val spellsString = (R.string.type_spell).toString()
+        val creaturesString = getString(R.string.type_creature)
+        val landsString = getString(R.string.type_land)
+        val spellsString = getString(R.string.type_spell)
         groupedItems += DeckConfigItem.Header("$creaturesString (${creatures.size})")
         groupedItems += DeckConfigItem.CardGroup(creatures, CardCategory.Creatures)
         groupedItems += DeckConfigItem.Header("$landsString (${lands.size})")
@@ -113,6 +115,11 @@ class DeckDetailsFragment : Fragment() {
         groupedItems += DeckConfigItem.CardGroup(spells, CardCategory.Spells)
         return groupedItems
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.loadCurrentDeck(args.deck)
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

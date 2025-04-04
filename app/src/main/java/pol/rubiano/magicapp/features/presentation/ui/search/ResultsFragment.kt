@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -25,7 +23,7 @@ import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.app.presentation.viewmodels.CardsViewModel
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
 import pol.rubiano.magicapp.features.presentation.adapters.SearchResultsAdapter
-import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
+import pol.rubiano.magicapp.features.decks.DecksViewModel
 import pol.rubiano.magicapp.features.presentation.viewmodels.SearchViewModel
 
 class ResultsFragment : Fragment() {

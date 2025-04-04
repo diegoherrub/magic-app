@@ -14,7 +14,7 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.SearchFragmentBinding
 import pol.rubiano.magicapp.features.domain.models.Filter
 import pol.rubiano.magicapp.features.presentation.ui.search.FilterCardView
-import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
+import pol.rubiano.magicapp.features.decks.DecksViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.features.domain.models.Deck
 
@@ -25,7 +25,7 @@ class SearchFragment : Fragment() {
     private val viewModelDecks: DecksViewModel by viewModel()
     private val args: SearchFragmentArgs by navArgs()
 
-//    private var deck: Deck? = null
+    private var deck: Deck? = null
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -41,7 +41,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-//            deck = args.deck
+            deck = args.deck
 
 
         editCardName = view.findViewById(R.id.edit_card_name)
@@ -152,8 +152,8 @@ class SearchFragment : Fragment() {
         if (selectedTypes.isNotEmpty()) queryParts.add(selectedTypes)
 
         val query = queryParts.joinToString(" ")
-//        val action = SearchFragmentDirections.actionSearchFragmentToDeckConfigFragment(deck!!)
-//        findNavController().navigate(action)
+        val action = SearchFragmentDirections.actSearchToDeckDetails(deck!!)
+        findNavController().navigate(action)
     }
 
     override fun onResume() {

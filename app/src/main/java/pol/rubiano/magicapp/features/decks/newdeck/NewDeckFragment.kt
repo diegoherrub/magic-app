@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.ui.decks
+package pol.rubiano.magicapp.features.decks.newdeck
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.NewDeckFragmentBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
-import pol.rubiano.magicapp.features.presentation.viewmodels.DecksViewModel
+import pol.rubiano.magicapp.features.decks.DecksViewModel
 import java.util.UUID
 
 class NewDeckFragment : Fragment() {
