@@ -10,10 +10,9 @@ import com.google.android.material.appbar.MaterialToolbar
 import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
-import pol.rubiano.magicapp.features.presentation.ui.SearchFragment
+import pol.rubiano.magicapp.features.search.SearchFragment
 //import pol.rubiano.magicapp.features.presentation.ui.decks.EditDeckFragment
 import pol.rubiano.magicapp.features.decks.newdeck.NewDeckFragment
 import pol.rubiano.magicapp.features.domain.models.Deck

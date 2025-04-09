@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.ui.search
+package pol.rubiano.magicapp.features.search.results
 
 import android.os.Bundle
 import android.os.Parcelable
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,9 +23,8 @@ import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.app.presentation.viewmodels.CardsViewModel
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
-import pol.rubiano.magicapp.features.presentation.adapters.SearchResultsAdapter
 import pol.rubiano.magicapp.features.decks.DecksViewModel
-import pol.rubiano.magicapp.features.presentation.viewmodels.SearchViewModel
+import pol.rubiano.magicapp.features.search.SearchViewModel
 
 class ResultsFragment : Fragment() {
 
@@ -33,10 +33,10 @@ class ResultsFragment : Fragment() {
     private val searchViewModel: SearchViewModel by viewModel()
     private val decksViewModel: DecksViewModel by viewModel()
     private val cardsViewModel: CardsViewModel by viewModel()
-    private lateinit var adapter: SearchResultsAdapter
     private val args: ResultsFragmentArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
     private var layoutManagerState: Parcelable? = null
+    private lateinit var adapter: SearchResultsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,14 +49,16 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val deck = args.deck
+        val deck = args.deck
 
         adapter = SearchResultsAdapter { card ->
             cardsViewModel.saveCardToLocal(card)
-//                decksViewModel.addCardToDeck(deckId, card)
-//            val action = ResultsFragmentDirections
-//                .actionSearchResultsFragmentToDeckConfigFragment(deck)
-//            findNavController().navigate(action)
+            if (deck != null) {
+                decksViewModel.addCardToDeck(deck, card)
+            }
+            val action = ResultsFragmentDirections
+                .actSearchResultsToDeckDetails(deck)
+            findNavController().navigate(action)
         }
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

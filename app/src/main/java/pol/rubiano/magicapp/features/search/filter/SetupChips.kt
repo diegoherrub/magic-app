@@ -1,10 +1,8 @@
-package pol.rubiano.magicapp.features.presentation.ui.search
+package pol.rubiano.magicapp.features.search.filter
 
 import android.view.View
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.google.android.material.materialswitch.MaterialSwitch
-import pol.rubiano.magicapp.R
 
 fun addChip(chipText: String, chipGroupFilters: ChipGroup, view: View) {
     for (i in 0 until chipGroupFilters.childCount) {

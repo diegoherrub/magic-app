@@ -14,5 +14,5 @@ interface DeckDao {
     suspend fun insertDeck(deck: DeckEntity)
 
     @Query("SELECT * FROM decks WHERE id = :id LIMIT 1")
-    suspend fun getDeckById(id: String): DeckEntity?
+    suspend fun getDeckById(id: String): DeckEntity
 }

@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.adapters
+package pol.rubiano.magicapp.features.search.results
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.models.Card
 import pol.rubiano.magicapp.app.presentation.AppDiffUtil
-import pol.rubiano.magicapp.features.presentation.adapters.viewholders.SearchResultsViewHolder
 
 class SearchResultsAdapter(
     private val onCardClicked: (Card) -> Unit

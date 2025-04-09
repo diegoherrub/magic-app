@@ -1,9 +1,7 @@
-package pol.rubiano.magicapp.features.presentation.ui.search
+package pol.rubiano.magicapp.features.search.filter
 
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isGone
 import com.google.android.material.chip.ChipGroup

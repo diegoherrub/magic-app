@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.ui.search
+package pol.rubiano.magicapp.features.search.filter
 
 import android.content.Context
 import android.util.AttributeSet

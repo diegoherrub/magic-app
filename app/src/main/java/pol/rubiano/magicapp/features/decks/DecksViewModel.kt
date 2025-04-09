@@ -17,7 +17,7 @@ import pol.rubiano.magicapp.features.domain.repositories.DeckRepository
 
 @KoinViewModel
 class DecksViewModel(
-    private val repository: DeckRepository,
+    private val deckRepository: DeckRepository,
     private val cardRepository: CardRepository
 ) : ViewModel() {
 
@@ -33,12 +33,15 @@ class DecksViewModel(
     private val _currentDeck = MutableLiveData<UiState<Deck>>()
     val currentDeck: LiveData<UiState<Deck>> = _currentDeck
 
+    private val _addedCardToDeck = MutableLiveData<UiState<Deck>>()
+    val addedCardToDeck: LiveData<UiState<Deck>> = _addedCardToDeck
+
 
     fun loadUserDecks() {
         _userDecks.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val userDecks = repository.getUserDecks()
+                val userDecks = deckRepository.getUserDecks()
                 withContext(Dispatchers.Main) {
                     _userDecks.value = if (userDecks.isNotEmpty()) {
                         UiState.Success(userDecks)
@@ -58,7 +61,7 @@ class DecksViewModel(
         _addedDeck.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                repository.insertDeck(deck)
+                deckRepository.insertDeck(deck)
                 withContext(Dispatchers.Main) {
                     _addedDeck.value = UiState.Success(deck)
                     _currentDeck.value = _addedDeck.value
@@ -94,5 +97,27 @@ class DecksViewModel(
         loadDeckCards(deck)
         _currentDeck.value = UiState.Success(deck)
     }
+
+    fun addCardToDeck(deck: Deck, card: Card) {
+        _addedCardToDeck.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                deckRepository.addCardToDeck(deck.id, card.id)
+                val actualizedDeck = deckRepository.getDeckById(deck.id)
+                withContext(Dispatchers.Main) {
+                    if (actualizedDeck != null) {
+                        _addedCardToDeck.value = UiState.Success(actualizedDeck)
+                    } else {
+                        _addedCardToDeck.value = UiState.Error(AppError.AppDataError)
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _addedCardToDeck.value = UiState.Error(AppError.AppDataError)
+                }
+            }
+        }
+    }
+
 }
 

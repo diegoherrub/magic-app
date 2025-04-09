@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.presentation.viewmodels
+package pol.rubiano.magicapp.features.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

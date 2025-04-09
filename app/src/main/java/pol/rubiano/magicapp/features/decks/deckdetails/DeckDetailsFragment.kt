@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.data.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.DeckStatsAnalyzer
@@ -21,14 +21,15 @@ import pol.rubiano.magicapp.databinding.DeckDetailsBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
 import pol.rubiano.magicapp.features.decks.DecksViewModel
+import pol.rubiano.magicapp.features.search.results.ResultsFragmentArgs
 
 class DeckDetailsFragment : Fragment() {
 
     private var _binding: DeckDetailsBinding? = null
     private val binding get() = _binding!!
     private val decksViewModel: DecksViewModel by viewModel()
-    private val args: DeckDetailsFragmentArgs by navArgs()
-
+    private val deckDetailsFragmentArgs: DeckDetailsFragmentArgs by navArgs()
+//    private val resultsFragmentArgs: ResultsFragmentArgs by navArgs()
     private lateinit var currentDeck: Deck
     private lateinit var adapter: DeckDetailsAdapter
 
@@ -42,23 +43,44 @@ class DeckDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        currentDeck = args.deck
+
+        currentDeck = deckDetailsFragmentArgs.deck
+//        currentDeck = resultsFragmentArgs.deck
         decksViewModel.loadCurrentDeck(currentDeck)
         setupRecyclerViewCardsOfDeck()
         setupObservers()
     }
 
     private fun setupRecyclerViewCardsOfDeck() {
-        // Navega al buscador para añadir cartas
-        adapter = DeckDetailsAdapter { category ->
-            val action = DeckDetailsFragmentDirections.actionDeckDetailsToSearch(currentDeck)
-            findNavController().navigate(action)
-        }
+        adapter = DeckDetailsAdapter()
         binding.recyclerViewCardsOfDeck.adapter = adapter
         binding.recyclerViewCardsOfDeck.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun setupObservers() {
+        decksViewModel.addedCardToDeck.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    // Get the updated deck and update UI elements accordingly
+                    val updatedDeck = state.data
+                    binding.cfgDeckName.text = updatedDeck.name
+                    binding.cfgDeckDescription.text = updatedDeck.description
+                    // If you need to update other parts (e.g., refresh your adapter),
+                    // you might trigger another call to load the cards
+                }
+                is UiState.Loading -> {
+                    // Optionally show a loading indicator
+                }
+                is UiState.Error -> {
+                    // Optionally show an error message
+                }
+                is UiState.Empty -> {
+                    // Handle empty state if needed
+                }
+            }
+        }
+
+
         decksViewModel.currentDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
@@ -100,27 +122,48 @@ class DeckDetailsFragment : Fragment() {
 
     private fun groupCardsByCategory(cards: List<Card>): List<DeckConfigItem> {
         val groupedItems = mutableListOf<DeckConfigItem>()
-        val creatures =
-            cards.filter { it.typeLine?.contains("creature", ignoreCase = true) ?: false }
+
+        // Creatures
+        val creatures = cards.filter { it.typeLine?.contains("creature", ignoreCase = true) ?: false }
+        if (creatures.isNotEmpty()) {
+            val creaturesString = getString(R.string.type_creature)
+            groupedItems += DeckConfigItem.Header("$creaturesString (${creatures.size})")
+            val distinctCreatures = creatures.groupBy { it.id }
+            distinctCreatures.forEach { (_, cardList) ->
+                groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Creatures)
+            }
+        }
+
+        // Lands
         val lands = cards.filter { it.typeLine?.contains("land", ignoreCase = true) ?: false }
+        if (lands.isNotEmpty()) {
+            val landsString = getString(R.string.type_land)
+            groupedItems += DeckConfigItem.Header("$landsString (${lands.size})")
+            val distinctLands = lands.groupBy { it.id }
+            distinctLands.forEach { (_, cardList) ->
+                groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Lands)
+            }
+        }
+
+        // Spells (everything else)
         val spells = cards - creatures.toSet() - lands.toSet()
-        val creaturesString = getString(R.string.type_creature)
-        val landsString = getString(R.string.type_land)
-        val spellsString = getString(R.string.type_spell)
-        groupedItems += DeckConfigItem.Header("$creaturesString (${creatures.size})")
-        groupedItems += DeckConfigItem.CardGroup(creatures, CardCategory.Creatures)
-        groupedItems += DeckConfigItem.Header("$landsString (${lands.size})")
-        groupedItems += DeckConfigItem.CardGroup(lands, CardCategory.Lands)
-        groupedItems += DeckConfigItem.Header("$spellsString (${spells.size})")
-        groupedItems += DeckConfigItem.CardGroup(spells, CardCategory.Spells)
+        if (spells.isNotEmpty()) {
+            val spellsString = getString(R.string.type_spell)
+            groupedItems += DeckConfigItem.Header("$spellsString (${spells.size})")
+            val distinctSpells = spells.groupBy { it.id }
+            distinctSpells.forEach { (_, cardList) ->
+                groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Spells)
+            }
+        }
+
         Log.d("@pol", "Grouped items: ${groupedItems.joinToString()}")
         return groupedItems
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        viewModel.loadCurrentDeck(args.deck)
-//    }
+    override fun onResume() {
+        super.onResume()
+        decksViewModel.loadCurrentDeck(deckDetailsFragmentArgs.deck)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

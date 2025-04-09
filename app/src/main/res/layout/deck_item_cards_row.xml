@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardRowContainer"
-    style="@style/st_cointainer_item"
-    android:padding="@dimen/dimen_xs">
+    style="@style/st_cointainer_item_cards">
 
     <ImageView
         android:id="@+id/cardFirstCopy"
@@ -12,8 +11,7 @@
         android:contentDescription="@string/image_card_content_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" 
-        app:layout_constraintEnd_toStartOf="@id/cardSecondCopy"
-        />
+        app:layout_constraintEnd_toStartOf="@id/cardSecondCopy" />
 
     <ImageView
         android:id="@+id/cardSecondCopy"

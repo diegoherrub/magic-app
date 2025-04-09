@@ -14,19 +14,17 @@ class DeckDataSource(
 
     suspend fun insertDeck(deck: Deck) {
         val insertedDeck = deck
-        deckDao.insertDeck(deck.toEntity())
+        deckDao.insertDeck(insertedDeck.toEntity())
     }
 
-    suspend fun getDeckById(id: String): Deck? {
-        return deckDao.getDeckById(id)?.toDeck()
+    suspend fun getDeckById(id: String): Deck {
+        return deckDao.getDeckById(id).toDeck()
     }
 
     suspend fun addCardToDeck(deckId: String, cardId: String) {
         val deck = getDeckById(deckId)
-        if (deck != null) {
-            val updatedMainboard = deck.cardIds + cardId
-            val updatedDeck = deck.copy(cardIds = updatedMainboard)
-            insertDeck(updatedDeck)
-        }
+        val updatedMainboard = deck.cardIds + cardId
+        val updatedDeck = deck.copy(cardIds = updatedMainboard)
+        insertDeck(updatedDeck)
     }
 }

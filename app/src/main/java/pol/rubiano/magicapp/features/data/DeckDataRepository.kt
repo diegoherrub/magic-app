@@ -19,7 +19,7 @@ class DeckDataRepository(
         return deck
     }
 
-    override suspend fun getDeckById(deckId: String): Deck? {
+    override suspend fun getDeckById(deckId: String): Deck {
         return local.getDeckById(deckId)
     }
 

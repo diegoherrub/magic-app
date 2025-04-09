@@ -45,6 +45,10 @@
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
 
+    <style name="st_cointainer_item_cards" parent="st_cointainer_item">
+        <item name="android:padding">@dimen/zero_dp</item>
+    </style>
+
     <style name="st_cointainer_item_fit" parent="st_wrap_wrap_content">
         <item name="android:padding">@dimen/zero_dp</item>
     </style>
