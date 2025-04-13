@@ -153,4 +153,6 @@
     <color name="md_theme_surfaceContainer_highContrast">#E5E2E1</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#D7D4D3</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#C9C6C5</color>
+
+    <color name="custom_edit_list_item">#03A9F4</color>
 </resources>

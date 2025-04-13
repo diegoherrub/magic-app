@@ -8,16 +8,16 @@
     <string name="strAddCard">Add card</string>
     <string name="strAddDeck">Add deck</string>
     <string name="strEditDeck">Edit deck</string>
+    <string name="strAdd">Add</string>
     <string name="strSave">Save</string>
     <string name="strClose">Close</string>
+    <string name="str_decks">Decks</string>
+    <string name="str_deck_name">Deck name</string>
+    <string name="str_deck_description">Deck description</string>
+    <string name="str_new_deck">New Deck</string>
+    <string name="str_edit_deck_save">Save deck</string>
 
-
-
-
-
-
-
-
+    <string name="strCollectionName">Collection\'s name</string>
 
     <string name="image_card_content_description">Card Image</string>
     <string name="image_section_content_description">Section Image</string>
@@ -26,6 +26,7 @@
     <string name="magic_title" translatable="false">Magic</string>
     <string name="random_card_title">Random Card</string>
     <string name="collections_title">Collections</string>
+    <string name="str_new_collection_label">New Collection</string>
 
     <!-- Random Card Fragment -->
     <string name="cd_save_card">Save the card\'s image into app storage</string>
@@ -217,6 +218,10 @@
 
     <!-- View Card -->
     <string name="view_card_label">View Card</string>
+
+    <!-- Buttons -->
+    <string name="st_btn_new_collection">New Collection</string>
+    <string name="st_btn_create_new_collection">Create Collection</string>
 
     <!-- Error -->
     <string name="image_error_content_description">Error Image</string>

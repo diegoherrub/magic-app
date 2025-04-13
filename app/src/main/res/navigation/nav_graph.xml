@@ -30,8 +30,22 @@
     <!-- Collections Section -->
     <fragment
         android:id="@+id/collectionsFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.CollectionsFragment"
-        android:label="@string/collections_title" />
+        android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsFragment"
+        android:label="@string/collections_title" >
+    <action
+        android:id="@+id/action_collectionsFragment_to_newCollectionFragment"
+        app:destination="@+id/newCollectionFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/newCollectionFragment"
+        android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionFragment"
+        android:label="@string/str_new_collection_label">
+        <!-- Force destination back to -->
+        <action
+            android:id="@+id/action_newCollectionFragment_to_collectionsFragment"
+            app:destination="@+id/collectionsFragment"/>
+    </fragment>
 
     <!-- DECKS-->
     <fragment
@@ -57,10 +71,10 @@
         android:id="@+id/newDeckFragment"
         android:name="pol.rubiano.magicapp.features.decks.newdeck.NewDeckFragment"
         android:label="@string/str_new_deck">
-        <!--        <argument-->
-        <!--            android:name="deck"-->
-        <!--            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
-        <!--            app:nullable="false" />-->
+<!--        <argument-->
+<!--            android:name="deck"-->
+<!--            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+<!--            app:nullable="false" />-->
 
         <action
             android:id="@+id/act_new_deck_to_deck_details"

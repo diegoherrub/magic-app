@@ -27,15 +27,16 @@ class ToolbarController(
 
     private val topLevelDestinations = setOf(
         R.id.magicFragment,
+        R.id.collectionsFragment,
     )
     private val secondaryDestinations = setOf(
         R.id.legalities_fragment,
         R.id.keywords_fragment,
-        R.id.collectionsFragment,
         R.id.decksFragment,
         R.id.deckDetails,
         R.id.randomCardFragment,
         R.id.searchFragment,
+        R.id.newCollectionFragment,
     )
 
     init {
@@ -207,8 +208,15 @@ class ToolbarController(
                             true
                         }
 
+
                         else -> false
                     }
+                }
+            }
+
+            R.id.newCollectionFragment -> {
+                setCustomNavigationAction {
+                    navController.navigate(R.id.action_newCollectionFragment_to_collectionsFragment)
                 }
             }
 

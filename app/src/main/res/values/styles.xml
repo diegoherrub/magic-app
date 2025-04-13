@@ -90,6 +90,17 @@
         <item name="android:textColor">@color/md_theme_primary</item>
     </style>
 
+    <!-- BUTTONS -->
+    <style name="stButton" parent="st_wrap_wrap_content">
+        <item name="android:layout_marginTop">@dimen/dimen_xl</item>
+        <item name="android:paddingTop">@dimen/dimen_m</item>
+        <item name="android:paddingBottom">@dimen/dimen_m</item>
+        <item name="android:paddingStart">@dimen/dimen_l</item>
+        <item name="android:paddingEnd">@dimen/dimen_l</item>
+        <item name="android:textAppearance">@style/stFontButton</item>
+        <item name="android:colorBackground">@color/md_theme_primary</item>
+    </style>
+
     <!-- ITEMS -->
     <style name="st_item_title" parent="st_zero_wrap">
         <item name="android:layout_marginStart">@dimen/dimen_m</item>
@@ -105,6 +116,11 @@
         <item name="android:layout_marginStart">@dimen/dimen_m</item>
         <item name="android:textAppearance">@style/ft_item_description</item>
     </style>
+
+    <style name="st_collection_item" parent="st_zero_wrap">
+        <item name="android:textAppearance">@style/ft_item_title</item>
+    </style>
+
 
 
     <!-- Top App Bar -->
@@ -376,8 +392,6 @@
         <item name="android:textSize">@dimen/size_sm</item>
     </style>
 
-
-
     <style name="app_font_random_card_content">
         <item name="android:fontFamily">@font/card_regular</item>
         <item name="android:textSize">@dimen/size_m</item>
@@ -388,5 +402,10 @@
         <item name="android:fontFamily">@font/app_light</item>
         <item name="android:textSize">@dimen/size_m</item>
         <item name="android:lineHeight">@dimen/size_l</item>
+    </style>
+
+    <style name="stFontButton">
+        <item name="android:fontFamily">@font/app_regular</item>
+        <item name="android:textSize">@dimen/size_ml</item>
     </style>
 </resources>
