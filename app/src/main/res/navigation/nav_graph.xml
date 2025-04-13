@@ -27,24 +27,24 @@
         android:name="pol.rubiano.magicapp.features.presentation.ui.magic.LegalitiesFragment"
         android:label="@string/legality_title" />
 
-    <!-- Collections Section -->
+    <!-- Collections List -->
     <fragment
-        android:id="@+id/collectionsFragment"
-        android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsFragment"
-        android:label="@string/collections_title" >
-    <action
-        android:id="@+id/action_collectionsFragment_to_newCollectionFragment"
-        app:destination="@+id/newCollectionFragment"/>
+        android:id="@+id/collectionsList"
+        android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsList"
+        android:label="@string/collections_list_title">
+        <action
+            android:id="@+id/action_collectionsList_to_newCollectionForm"
+            app:destination="@+id/newCollectionForm" />
     </fragment>
 
     <fragment
-        android:id="@+id/newCollectionFragment"
-        android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionFragment"
-        android:label="@string/str_new_collection_label">
+        android:id="@+id/newCollectionForm"
+        android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm"
+        android:label="@string/str_new_collection_title">
         <!-- Force destination back to -->
         <action
-            android:id="@+id/action_newCollectionFragment_to_collectionsFragment"
-            app:destination="@+id/collectionsFragment"/>
+            android:id="@+id/action_newCollectionForm_to_collectionsList"
+            app:destination="@+id/collectionsList" />
     </fragment>
 
     <!-- DECKS-->
@@ -71,10 +71,10 @@
         android:id="@+id/newDeckFragment"
         android:name="pol.rubiano.magicapp.features.decks.newdeck.NewDeckFragment"
         android:label="@string/str_new_deck">
-<!--        <argument-->
-<!--            android:name="deck"-->
-<!--            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
-<!--            app:nullable="false" />-->
+        <!--        <argument-->
+        <!--            android:name="deck"-->
+        <!--            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"-->
+        <!--            app:nullable="false" />-->
 
         <action
             android:id="@+id/act_new_deck_to_deck_details"

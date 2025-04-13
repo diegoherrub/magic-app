@@ -117,11 +117,10 @@
         <item name="android:textAppearance">@style/ft_item_description</item>
     </style>
 
-    <style name="st_collection_item" parent="st_zero_wrap">
+    <style name="st_collection_list_item" parent="st_match_wrap">
         <item name="android:textAppearance">@style/ft_item_title</item>
+        <item name="android:textColor">@color/md_theme_primary</item>
     </style>
-
-
 
     <!-- Top App Bar -->
     <style name="AppBarLayoutStyle" parent="Widget.Material3.Toolbar">
@@ -299,8 +298,12 @@
         <item name="android:breakStrategy">simple</item>
     </style>
 
-
     <!-- Error -->
+    <style name="st_app_error_view_container" parent="st_zero" />
+
+    <style name="st_guide_line" parent="st_wrap_wrap_content">
+        <item name="android:orientation">horizontal</item>
+    </style>
 
     <!-- DECKS -->
     <style name="st_deck_name" parent="st_wrap_wrap_content">

@@ -6,9 +6,9 @@
         android:icon="@drawable/magic"
         android:title="@string/magic_title" />
     <item
-        android:id="@+id/collectionsFragment"
+        android:id="@+id/collectionsList"
         android:icon="@drawable/collection"
-        android:title="@string/collections_title" />
+        android:title="@string/collections_list_title" />
     <item
         android:id="@+id/decksFragment"
         android:icon="@drawable/deck"

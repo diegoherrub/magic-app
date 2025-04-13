@@ -9,6 +9,7 @@
     <dimen name="dimen_ml">18dp</dimen>
     <dimen name="dimen_l">32dp</dimen>
     <dimen name="dimen_xl">64dp</dimen>
+    <dimen name="dimen_xxl">92dp</dimen>
 
     <dimen name="zero_sp">0sp</dimen>
     <dimen name="size_xxs">10sp</dimen>

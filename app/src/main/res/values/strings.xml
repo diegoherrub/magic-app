@@ -7,6 +7,7 @@
     <!-- MENU -->
     <string name="strAddCard">Add card</string>
     <string name="strAddDeck">Add deck</string>
+    <string name="strAddNewCollection">Add New Collection</string>
     <string name="strEditDeck">Edit deck</string>
     <string name="strAdd">Add</string>
     <string name="strSave">Save</string>
@@ -25,8 +26,8 @@
     <!-- App Bar -->
     <string name="magic_title" translatable="false">Magic</string>
     <string name="random_card_title">Random Card</string>
-    <string name="collections_title">Collections</string>
-    <string name="str_new_collection_label">New Collection</string>
+    <string name="collections_list_title">Collections List</string>
+    <string name="str_new_collection_title">New Collection</string>
 
     <!-- Random Card Fragment -->
     <string name="cd_save_card">Save the card\'s image into app storage</string>
@@ -220,7 +221,6 @@
     <string name="view_card_label">View Card</string>
 
     <!-- Buttons -->
-    <string name="st_btn_new_collection">New Collection</string>
     <string name="st_btn_create_new_collection">Create Collection</string>
 
     <!-- Error -->

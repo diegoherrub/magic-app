@@ -6,7 +6,7 @@
     <string name="random_card_title">Aleatoria</string>
     <string name="filters_content_description">Filtros de búsqueda</string>
     <string name="search_title">Búsqueda</string>
-    <string name="collections_title">Colecciones</string>
+    <string name="collections_list_title">Colecciones</string>
     <string name="image_card_content_description">Imagen de la carta</string>
     <string name="legality_title">Formatos legales</string>
     <string name="name_title">Nombre</string>

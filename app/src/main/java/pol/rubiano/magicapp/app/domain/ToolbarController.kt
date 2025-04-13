@@ -11,9 +11,10 @@ import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import pol.rubiano.magicapp.features.collections.presentation.CollectionsListDirections
+import pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm
 import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
 import pol.rubiano.magicapp.features.search.SearchFragment
-//import pol.rubiano.magicapp.features.presentation.ui.decks.EditDeckFragment
 import pol.rubiano.magicapp.features.decks.newdeck.NewDeckFragment
 import pol.rubiano.magicapp.features.domain.models.Deck
 
@@ -27,7 +28,6 @@ class ToolbarController(
 
     private val topLevelDestinations = setOf(
         R.id.magicFragment,
-        R.id.collectionsFragment,
     )
     private val secondaryDestinations = setOf(
         R.id.legalities_fragment,
@@ -36,7 +36,11 @@ class ToolbarController(
         R.id.deckDetails,
         R.id.randomCardFragment,
         R.id.searchFragment,
-        R.id.newCollectionFragment,
+        R.id.newCollectionForm,
+    )
+
+    private val specialDestinations = setOf(
+        R.id.collectionsList,
     )
 
     init {
@@ -62,6 +66,11 @@ class ToolbarController(
             bottomNav.visibility = View.VISIBLE
         } else if (destination.id in secondaryDestinations) {
             activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            toolbar.isTitleCentered = false
+            bottomNav.visibility = View.VISIBLE
+        } else if (destination.id in specialDestinations) {
+            activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            toolbar.setNavigationOnClickListener(null)
             toolbar.isTitleCentered = false
             bottomNav.visibility = View.VISIBLE
         } else {
@@ -193,30 +202,25 @@ class ToolbarController(
 //                }
 //            }
 
-            R.id.newDeckFragment -> {
-                prepareToolbar(R.menu.new_deck_menu)
+            R.id.collectionsList -> {
+                prepareToolbar(R.menu.collections_list_menu)
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
-                        R.id.btnSaveNewDeck -> {
-                            val navHostFragment =
-                                activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-                            val currentFragment =
-                                navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
-                            if (currentFragment is NewDeckFragment) {
-                                currentFragment.newDeck()
-                            }
+                        R.id.item_menu_add_new_collection -> {
+                            val direction =
+                                CollectionsListDirections.actionCollectionsListToNewCollectionForm()
+                            navController.navigate(direction)
                             true
                         }
-
-
                         else -> false
                     }
                 }
             }
 
-            R.id.newCollectionFragment -> {
+            R.id.newCollectionForm -> {
+                prepareToolbar()
                 setCustomNavigationAction {
-                    navController.navigate(R.id.action_newCollectionFragment_to_collectionsFragment)
+                    navController.navigate(R.id.action_newCollectionForm_to_collectionsList)
                 }
             }
 
@@ -225,6 +229,10 @@ class ToolbarController(
                 toolbar.setOnMenuItemClickListener(null)
             }
         }
+    }
+
+    private fun prepareToolbar() {
+        toolbar.menu.clear()
     }
 
     private fun prepareToolbar(menuId: Int) {

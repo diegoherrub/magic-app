@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.app.domain.UiState
-import pol.rubiano.magicapp.databinding.NewCollectionFragmentBinding
+import pol.rubiano.magicapp.databinding.NewCollectionFormBinding
 import pol.rubiano.magicapp.features.collections.domain.Collection
 
-class NewCollectionFragment : Fragment() {
+class NewCollectionForm : Fragment() {
 
-    private var _binding: NewCollectionFragmentBinding? = null
+    private var _binding: NewCollectionFormBinding? = null
     private val binding get() = _binding!!
     private val viewModel: CollectionsViewModel by viewModel()
 
@@ -23,7 +23,7 @@ class NewCollectionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = NewCollectionFragmentBinding.inflate(inflater, container, false)
+        _binding = NewCollectionFormBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,11 +36,11 @@ class NewCollectionFragment : Fragment() {
         viewModel.currentCollection.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
-                    val actionWhenSaved = NewCollectionFragmentDirections.actionNewCollectionFragmentToCollectionsFragment()
+                    val actionWhenSaved = NewCollectionFormDirections.actionNewCollectionFormToCollectionsList()
                     findNavController().navigate(actionWhenSaved)
                 }
                 else -> {
-                    Log.d("@pol", "fail -> NewCollectionFragment.setupObserver().no ha devuelto la colección actual al guardar")
+                    Log.d("@pol", "fail -> NewCollectionForm.setupObserver().no ha devuelto la colección actual al guardar")
                 }
             }
         }
@@ -48,6 +48,7 @@ class NewCollectionFragment : Fragment() {
             viewModel.saveCollection(createCollection())
         }
     }
+
 
     private fun createCollection(): Collection{
         val name = binding.newCollectionName.text.toString().trim()
