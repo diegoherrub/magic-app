@@ -5,6 +5,7 @@ import pol.rubiano.magicapp.features.collections.domain.Collection
 fun CollectionEntity.toCollection(): Collection {
     return Collection(
         this.name,
+        this.order,
         this.cards
     )
 }
@@ -12,6 +13,7 @@ fun CollectionEntity.toCollection(): Collection {
 fun Collection.toEntity(): CollectionEntity {
     return CollectionEntity(
         this.name,
+        this.order,
         this.cards
     )
 }

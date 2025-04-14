@@ -1,6 +1,7 @@
 package pol.rubiano.magicapp.features.collections.domain
 
 data class Collection(
-    val name: String,
+    var name: String,
+    val order: Int,
     val cards: List<CardInCollection>
 )

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.NewCollectionFormBinding
 import pol.rubiano.magicapp.features.collections.domain.Collection
@@ -49,16 +50,17 @@ class NewCollectionForm : Fragment() {
         }
     }
 
-
     private fun createCollection(): Collection{
         val name = binding.newCollectionName.text.toString().trim()
         if (name.isNotEmpty()) {
             return Collection(
                 name = name,
+                order = 1,
                 cards = emptyList()
             )
         }
-        return Collection("New Collection", emptyList())
+        val collectionName = getString(R.string.str_new_collection_title)
+        return Collection(collectionName, 1,  emptyList())
     }
 
     override fun onDestroyView() {

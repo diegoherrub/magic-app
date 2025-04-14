@@ -14,7 +14,8 @@ const val COLLECTION_TABLE = "collections"
 @Entity(tableName = COLLECTION_TABLE)
 @TypeConverters(CollectionEntity.CardInCollectionConverter::class)
 class CollectionEntity(
-    @PrimaryKey @ColumnInfo(name = "name") val name: String,
+    @PrimaryKey @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "order") val order: Int,
     @ColumnInfo(name = "cards") val cards: List<CardInCollection>
 ) {
     class CardInCollectionConverter {
