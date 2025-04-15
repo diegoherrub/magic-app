@@ -8,7 +8,9 @@ import pol.rubiano.magicapp.features.collections.domain.Collection
 
 import pol.rubiano.magicapp.R
 
-class CollectionsAdapter : ListAdapter<Collection, CollectionsViewHolder>(
+class CollectionsAdapter(
+    private val onCollectionNameClick: (String) -> Unit
+) : ListAdapter<Collection, CollectionsViewHolder>(
     AppDiffUtil<Collection>(
         itemSame = { old, new -> old.name == new.name },
         contentSame = { old, new -> old == new }
@@ -21,6 +23,6 @@ class CollectionsAdapter : ListAdapter<Collection, CollectionsViewHolder>(
     }
 
     override fun onBindViewHolder(holder: CollectionsViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        holder.bindCollectionsList(currentList[position], onCollectionNameClick)
     }
 }

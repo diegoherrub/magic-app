@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,7 +19,10 @@ class CollectionsList : Fragment() {
     private var _binding: CollectionsListBinding? = null
     private val binding get() = _binding!!
     private val viewModel: CollectionsViewModel by viewModel()
-    private val collectionsAdapter = CollectionsAdapter()
+    private val collectionsAdapter = CollectionsAdapter { collectionName ->
+        val passCollectionClicked = CollectionsListDirections.actionCollectionsListToCollectionPanel(collectionName)
+        findNavController().navigate(passCollectionClicked)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +56,6 @@ class CollectionsList : Fragment() {
         Log.d("@pol", "Se supone que viewModel ya va cargado con los succes")
         // TODO comprobar que el viewModel está relleno con pasta fresca
 
-        Log.d("@pol", "start -> Asignamos navegación al botón new collection")
 
     }
 

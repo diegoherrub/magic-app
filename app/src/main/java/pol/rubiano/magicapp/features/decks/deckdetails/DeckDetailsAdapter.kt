@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
-import pol.rubiano.magicapp.app.domain.models.CardCategory
 import pol.rubiano.magicapp.app.presentation.AppDiffUtil
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
 
@@ -42,7 +40,7 @@ class DeckDetailsAdapter(
         return when (viewType) {
             VIEW_TYPE_HEADER -> {
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.deck_item_header, parent, false)
+                    .inflate(R.layout.separator_header, parent, false)
                 HeaderViewHolder(view)
             }
 
@@ -70,7 +68,7 @@ class DeckDetailsAdapter(
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(item: DeckConfigItem.Header) {
-            itemView.findViewById<TextView>(R.id.deckHeader).text = item.title
+            itemView.findViewById<TextView>(R.id.separator_header).text = item.title
         }
     }
 

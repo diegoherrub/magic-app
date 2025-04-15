@@ -11,6 +11,7 @@ import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import pol.rubiano.magicapp.features.collections.presentation.CollectionPanelDirections
 import pol.rubiano.magicapp.features.collections.presentation.CollectionsListDirections
 import pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm
 import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
@@ -37,6 +38,7 @@ class ToolbarController(
         R.id.randomCardFragment,
         R.id.searchFragment,
         R.id.newCollectionForm,
+        R.id.collectionPanel,
     )
 
     private val specialDestinations = setOf(
@@ -214,6 +216,15 @@ class ToolbarController(
                         }
                         else -> false
                     }
+                }
+            }
+
+            R.id.collectionPanel -> {
+                prepareToolbar()
+                setCustomNavigationAction {
+                    val direction =
+                        CollectionPanelDirections.actionCollectionPanelToCollectionsList()
+                    navController.navigate(direction)
                 }
             }
 

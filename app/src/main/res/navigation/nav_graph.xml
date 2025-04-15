@@ -32,20 +32,39 @@
         android:id="@+id/collectionsList"
         android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsList"
         android:label="@string/collections_list_title">
+        <!-- add new collection -->
         <action
             android:id="@+id/action_collectionsList_to_newCollectionForm"
             app:destination="@+id/newCollectionForm" />
+        <!-- add card to collection -->
+        <action
+            android:id="@+id/action_collectionsList_to_collectionPanel"
+            app:destination="@+id/collectionPanel" />
     </fragment>
 
     <fragment
         android:id="@+id/newCollectionForm"
         android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm"
         android:label="@string/str_new_collection_title">
-        <!-- Force destination back to -->
         <action
             android:id="@+id/action_newCollectionForm_to_collectionsList"
             app:destination="@+id/collectionsList" />
     </fragment>
+
+    <fragment
+        android:id="@+id/collectionPanel"
+        android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionPanel"
+        android:label="@string/strCollectionPanel">
+        <!-- pasa el nombre de la colección desde la lista al panel-->
+        <argument
+            android:name="collectionName"
+            app:argType="string" />
+        <!-- navega de collection panel a lista de colections -->
+        <action
+            android:id="@+id/action_collectionPanel_to_collectionsList"
+            app:destination="@+id/collectionsList" />
+    </fragment>
+
 
     <!-- DECKS-->
     <fragment

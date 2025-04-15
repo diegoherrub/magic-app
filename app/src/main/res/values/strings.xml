@@ -4,10 +4,11 @@
 
     <string name="str_deck_details">Deck Details</string>
 
-    <!-- MENU -->
+    <!-- MENUS -->
     <string name="strAddCard">Add card</string>
     <string name="strAddDeck">Add deck</string>
     <string name="strAddNewCollection">Add New Collection</string>
+    <string name="strAddCardToCollection">Add Card to Collection</string>
     <string name="strEditDeck">Edit deck</string>
     <string name="strAdd">Add</string>
     <string name="strSave">Save</string>
@@ -19,6 +20,7 @@
     <string name="str_edit_deck_save">Save deck</string>
 
     <string name="strCollectionName">Collection\'s name</string>
+    <string name="strCollectionPanel">Collection Panel</string>
 
     <string name="image_card_content_description">Card Image</string>
     <string name="image_section_content_description">Section Image</string>

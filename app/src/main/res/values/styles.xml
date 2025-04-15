@@ -119,7 +119,7 @@
 
     <style name="st_collection_list_item" parent="st_match_wrap">
         <item name="android:textAppearance">@style/ft_item_title</item>
-        <item name="android:textColor">@color/md_theme_primary</item>
+        <item name="android:textColor">@color/md_theme_secondary</item>
     </style>
 
     <!-- Top App Bar -->
@@ -333,10 +333,10 @@
         <item name="android:textSize">@dimen/size_ml</item>
     </style>
 
-    <style name="st_deck_details_recycler" parent="st_match_zero">
-        <!--    <item name="android:clipToPadding">false</item>-->
-        <!--    <item name="android:scrollbars">vertical</item>-->
-    </style>
+    <style name="st_deck_details_recycler" parent="st_match_zero" />
+
+    <!-- COLLECTIONS -->
+    <style name="stCollectionPanelCardsRecycler" parent="st_match_zero" />
 
     <!-- FONTS -->
     <style name="app_tool_bar_title">

@@ -39,7 +39,23 @@ class CollectionsViewModel(
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    UiState.Error(AppError.AppDataError)
+                    _userCollections.value = UiState.Error(AppError.AppDataError)
+                }
+            }
+        }
+    }
+
+    fun loadCollection(collectionName: String) {
+        _currentCollection.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val collection = collectionsRepository.getCollection(collectionName)
+                withContext(Dispatchers.Main) {
+                    _currentCollection.value = UiState.Success(collection)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _currentCollection.value = UiState.Error(AppError.AppDataError)
                 }
             }
         }
@@ -49,17 +65,17 @@ class CollectionsViewModel(
         _currentCollection.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                Log.d("@pol", "start -> CollectionsViewModel.saveCollection()")
+//                Log.d("@pol", "start -> CollectionsViewModel.saveCollection()")
                 collectionsRepository.insertCollection(collection)
-                Log.d("@pol", "end -> CollectionsViewModel.saveCollection()")
+//                Log.d("@pol", "end -> CollectionsViewModel.saveCollection()")
                 withContext(Dispatchers.Main) {
-                    Log.d("@pol", "start -> CollectionsViewModel.UiState.Success(collection)")
+//                    Log.d("@pol", "start -> CollectionsViewModel.UiState.Success(collection)")
                     _currentCollection.value = UiState.Success(collection)
-                    Log.d("@pol", "end -> CollectionsViewModel.UiState.Success(collection)")
+//                    Log.d("@pol", "end -> CollectionsViewModel.UiState.Success(collection)")
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    UiState.Error(AppError.AppDataError)
+                    _currentCollection.value = UiState.Error(AppError.AppDataError)
                 }
             }
         }

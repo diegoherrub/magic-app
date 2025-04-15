@@ -53,8 +53,8 @@ class DeckDetailsFragment : Fragment() {
 
     private fun setupRecyclerViewCardsOfDeck() {
         adapter = DeckDetailsAdapter()
-        binding.recyclerViewCardsOfDeck.adapter = adapter
         binding.recyclerViewCardsOfDeck.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewCardsOfDeck.adapter = adapter
     }
 
     private fun setupObservers() {

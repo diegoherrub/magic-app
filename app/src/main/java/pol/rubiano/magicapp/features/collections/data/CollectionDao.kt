@@ -13,6 +13,9 @@ interface CollectionDao {
     @Query("SELECT * FROM collections ORDER BY `order` ASC")
     suspend fun getCollections(): List<CollectionEntity>
 
+    @Query("SELECT * FROM collections WHERE `name` = :collectionName")
+    suspend fun getCollection(collectionName: String) : CollectionEntity
+
 //    @Update
 //    suspend fun updateCollection(collectionEntity: CollectionEntity)
 
