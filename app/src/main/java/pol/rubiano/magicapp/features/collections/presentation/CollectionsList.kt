@@ -34,29 +34,14 @@ class CollectionsList : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("@pol", "Entra en CollectionsList.onViewCreated()")
         super.onViewCreated(view, savedInstanceState)
         binding.collectionsList.layoutManager = LinearLayoutManager(requireContext())
         binding.collectionsList.addItemDecoration(
             DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         )
         binding.collectionsList.adapter = collectionsAdapter
-
-        Log.d(
-            "@pol",
-            "start -> CollectionsList.setupObservers().viewModel.loadUserCollections()"
-        )
         viewModel.loadCollections()
-        Log.d("@pol", "end -> CollectionsList.setupObservers().viewModel.loadUserCollections()")
-
-        Log.d("@pol", "start -> CollectionsList.onViewCreated().setupObservers")
         setupObservers()
-        Log.d("@pol", "end -> CollectionsList.onViewCreated().setupObservers")
-
-        Log.d("@pol", "Se supone que viewModel ya va cargado con los succes")
-        // TODO comprobar que el viewModel está relleno con pasta fresca
-
-
     }
 
     private fun setupObservers() {

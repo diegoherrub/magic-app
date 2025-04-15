@@ -63,6 +63,10 @@
         <action
             android:id="@+id/action_collectionPanel_to_collectionsList"
             app:destination="@+id/collectionsList" />
+        <!-- navega al buscador de cartas para añadir una carta a la colección -->
+        <action
+            android:id="@+id/action_collectionPanel_to_searchFragment"
+            app:destination="@+id/searchFragment" />
     </fragment>
 
 
@@ -156,22 +160,39 @@
         android:id="@+id/searchFragment"
         android:name="pol.rubiano.magicapp.features.search.SearchFragment"
         android:label="@string/search_title">
+        <!-- recibe el nombre de la colection -->
+        <argument
+            android:name="collectionName"
+            app:argType="string"
+            app:nullable="true" />
+        <!-- recibe el deck actual TODO - CAMBIAR A STRING Y MANEJAR EL RELLENO CON LÓGICA¿? -->
         <argument
             android:name="deck"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
             app:nullable="true" />
+        <!-- devuelve el nombre de la colección cuando vuelve de la búsqueda al panel de la colección -->
+        <action
+            android:id="@+id/action_searchFragment_to_collectionPanel"
+            app:destination="@+id/collectionPanel">
+            <argument
+                android:name="collectionName"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
 
+        <!-- devuelve el deck cuando vuelve de la búsqueda al deck details-->
         <action
-            android:id="@+id/action_search_fragment_to_results_fragment"
-            app:destination="@+id/search_results_fragment" />
-        <action
-            android:id="@+id/act_search_to_deck_details"
+            android:id="@+id/action_SearchFragment_to_deckDetails"
             app:destination="@+id/deckDetails">
             <argument
                 android:name="deck"
                 app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
                 app:nullable="true" />
         </action>
+
+        <action
+            android:id="@+id/action_search_fragment_to_results_fragment"
+            app:destination="@+id/search_results_fragment" />
     </fragment>
 
     <!-- RESULTS -->

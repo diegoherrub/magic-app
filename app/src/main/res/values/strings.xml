@@ -21,6 +21,7 @@
 
     <string name="strCollectionName">Collection\'s name</string>
     <string name="strCollectionPanel">Collection Panel</string>
+    <string name="strCollectionPanelCards">Collection\'s Cards</string>
 
     <string name="image_card_content_description">Card Image</string>
     <string name="image_section_content_description">Section Image</string>

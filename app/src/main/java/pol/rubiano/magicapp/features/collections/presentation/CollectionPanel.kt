@@ -34,7 +34,6 @@ class CollectionPanel : Fragment() {
         adapterCardsInCollectionAdapter = CardsInCollectionAdapter()
 
         val collectionName = CollectionPanelArgs.fromBundle((requireArguments())).collectionName
-        Log.d("@pol", "end -> CollectionPanel.onViewCreated -> Collection name recibido: $collectionName")
 
         bindinCollectionPanel.collectionPanelCards.layoutManager = LinearLayoutManager(requireContext())
         bindinCollectionPanel.collectionPanelCards.adapter = adapterCardsInCollectionAdapter
@@ -47,7 +46,6 @@ class CollectionPanel : Fragment() {
             when (state) {
                 is UiState.Success -> {
                     val collection = state.data
-                    bindinCollectionPanel.collectionName.text = collection.name
                     adapterCardsInCollectionAdapter.submitList(collection.cards)
                 }
                 else -> {}

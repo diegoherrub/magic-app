@@ -13,11 +13,10 @@ import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pol.rubiano.magicapp.features.collections.presentation.CollectionPanelDirections
 import pol.rubiano.magicapp.features.collections.presentation.CollectionsListDirections
-import pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm
 import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
 import pol.rubiano.magicapp.features.search.SearchFragment
-import pol.rubiano.magicapp.features.decks.newdeck.NewDeckFragment
 import pol.rubiano.magicapp.features.domain.models.Deck
+import pol.rubiano.magicapp.features.search.SearchFragmentDirections
 
 
 class ToolbarController(
@@ -30,6 +29,7 @@ class ToolbarController(
     private val topLevelDestinations = setOf(
         R.id.magicFragment,
     )
+
     private val secondaryDestinations = setOf(
         R.id.legalities_fragment,
         R.id.keywords_fragment,
@@ -61,22 +61,30 @@ class ToolbarController(
 
         toolbar.title = destination.label
 
-        if (destination.id in topLevelDestinations) {
-            activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-            toolbar.setNavigationOnClickListener(null)
-            toolbar.isTitleCentered = true
-            bottomNav.visibility = View.VISIBLE
-        } else if (destination.id in secondaryDestinations) {
-            activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            toolbar.isTitleCentered = false
-            bottomNav.visibility = View.VISIBLE
-        } else if (destination.id in specialDestinations) {
-            activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-            toolbar.setNavigationOnClickListener(null)
-            toolbar.isTitleCentered = false
-            bottomNav.visibility = View.VISIBLE
-        } else {
-            bottomNav.visibility = View.GONE
+        when (destination.id) {
+            in topLevelDestinations -> {
+                activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                toolbar.setNavigationOnClickListener(null)
+                toolbar.isTitleCentered = true
+                bottomNav.visibility = View.VISIBLE
+            }
+
+            in secondaryDestinations -> {
+                activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                toolbar.isTitleCentered = false
+                bottomNav.visibility = View.VISIBLE
+            }
+
+            in specialDestinations -> {
+                activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                toolbar.setNavigationOnClickListener(null)
+                toolbar.isTitleCentered = false
+                bottomNav.visibility = View.VISIBLE
+            }
+
+            else -> {
+                bottomNav.visibility = View.GONE
+            }
         }
 
         toolbar.navigationIcon?.setTint(
@@ -133,6 +141,24 @@ class ToolbarController(
                         else -> false
                     }
                 }
+                setCustomNavigationAction {
+                    val deck = navController.currentBackStackEntry?.arguments?.getParcelable<Deck>("deck")
+                    val collectionName = navController.currentBackStackEntry?.arguments?.getString("collectionName")
+
+                    when {
+                        deck != null -> {
+                            val direction = SearchFragmentDirections.actionSearchFragmentToDeckDetails(deck)
+                            navController.navigate(direction)
+                        }
+                        collectionName != null -> {
+                            val direction = SearchFragmentDirections.actionSearchFragmentToCollectionPanel(collectionName)
+                            navController.navigate(direction)
+                        }
+                        else -> {
+                            navController.popBackStack() // Acción por defecto si ambos son null
+                        }
+                    }
+                }
             }
 
             R.id.deckDetails -> {
@@ -157,7 +183,10 @@ class ToolbarController(
                                 )
                             if (deck != null) {
                                 val direction =
-                                    DeckDetailsFragmentDirections.actDeckDetailsToSearch(deck)
+                                    DeckDetailsFragmentDirections.actDeckDetailsToSearch(
+                                        collectionName = null,
+                                        deck = deck
+                                    )
                                 navController.navigate(direction)
                             }
                             true
@@ -214,13 +243,33 @@ class ToolbarController(
                             navController.navigate(direction)
                             true
                         }
+
                         else -> false
                     }
                 }
             }
 
             R.id.collectionPanel -> {
-                prepareToolbar()
+                val collectionName =
+                    navController.currentBackStackEntry?.arguments?.getString("collectionName")
+                if (collectionName != null) toolbar.title = collectionName
+                prepareToolbar(R.menu.collection_panel_menu)
+                toolbar.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.itemMenuAddCardToCollection -> {
+                            val direction =
+                                CollectionPanelDirections.actionCollectionPanelToSearchFragment(
+                                    collectionName = collectionName,
+                                    deck = null
+                                )
+                            navController.navigate(direction)
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+                // Custom behaviour for the navigation back arrow
                 setCustomNavigationAction {
                     val direction =
                         CollectionPanelDirections.actionCollectionPanelToCollectionsList()

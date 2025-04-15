@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.app.data.local.extensions
+package pol.rubiano.magicapp.app.data.local
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

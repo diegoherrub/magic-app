@@ -24,7 +24,8 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
     private val args: SearchFragmentArgs by navArgs()
 
-    private lateinit var deck: Deck
+    private var deck: Deck? = null
+    private var collectionName: String? = null
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -38,7 +39,8 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        deck = args.deck!!
+        deck = args.deck
+        collectionName = args.collectionName
 
         editCardName = view.findViewById(R.id.edit_card_name)
         chipGroupFilters = view.findViewById(R.id.app_chip_group_filters)

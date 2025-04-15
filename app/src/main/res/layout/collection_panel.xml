@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     style="@style/st_cointainer">
 
     <androidx.constraintlayout.widget.Guideline
@@ -11,18 +10,12 @@
         style="@style/st_guide_line"
         app:layout_constraintGuide_end="@dimen/dimen_xl"/>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/collectionName"
-        style="@style/st_deck_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Collection name" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collectionPanelCards"
         style="@style/stCollectionPanelCardsRecycler"
+        android:contentDescription="@string/strCollectionPanelCards"
         app:layout_constraintBottom_toTopOf="@id/gl_collection_panel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/collectionName" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

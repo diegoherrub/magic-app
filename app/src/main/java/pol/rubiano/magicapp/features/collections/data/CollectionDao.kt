@@ -5,8 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import androidx.room.Update
-import pol.rubiano.magicapp.features.collections.domain.Collection
 
 @Dao
 interface CollectionDao {
@@ -15,9 +13,6 @@ interface CollectionDao {
 
     @Query("SELECT * FROM collections WHERE `name` = :collectionName")
     suspend fun getCollection(collectionName: String) : CollectionEntity
-
-//    @Update
-//    suspend fun updateCollection(collectionEntity: CollectionEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCollection(collection: CollectionEntity)

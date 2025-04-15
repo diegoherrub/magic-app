@@ -29,9 +29,9 @@ class CollectionsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         cardInCollection: CardInCollection
     ) {
         collectionPanelBinding = CollectionPanelBinding.bind(view)
-        collectionPanelBinding.apply {
-            collectionName.text = cardInCollection.cardId
-            collectionName.text = cardInCollection.copies.toString()
-        }
+//        collectionPanelBinding.apply {
+//            collectionName.text = cardInCollection.cardId
+//            collectionName.text = cardInCollection.copies.toString()
+//        }
     }
 }
