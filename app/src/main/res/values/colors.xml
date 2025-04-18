@@ -27,6 +27,8 @@
     <color name="md_theme_error">#900708</color>
     <color name="md_theme_onError">#FFFFFF</color>
     <color name="md_theme_errorContainer">#B3261E</color>
+    <color name="md_theme_del">#B3261E</color>
+    <color name="md_theme_add">#0E7012</color>
     <color name="md_theme_onErrorContainer">#FFCBC4</color>
     <color name="md_theme_background">#FFF8F2</color>
     <color name="md_theme_onBackground">#1E1B17</color>

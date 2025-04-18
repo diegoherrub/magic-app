@@ -13,6 +13,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.CollectionsListBinding
+import pol.rubiano.magicapp.features.collections.presentation.adapters.CollectionsAdapter
+import pol.rubiano.magicapp.features.collections.presentation.adapters.CollectionsViewModel
 
 class CollectionsList : Fragment() {
 
@@ -46,7 +48,7 @@ class CollectionsList : Fragment() {
 
     private fun setupObservers() {
         Log.d("@pol", "CollectionsList.setupObservers()")
-        viewModel.userCollections.observe(viewLifecycleOwner) { state ->
+        viewModel.fetchedCollections.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
                     binding.collectionsList.visibility = View.VISIBLE

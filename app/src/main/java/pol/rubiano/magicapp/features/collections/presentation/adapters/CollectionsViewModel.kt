@@ -1,0 +1,114 @@
+package pol.rubiano.magicapp.features.collections.presentation.adapters
+
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.koin.android.annotation.KoinViewModel
+import pol.rubiano.magicapp.app.domain.AppError
+import pol.rubiano.magicapp.app.domain.UiState
+import pol.rubiano.magicapp.features.collections.domain.CardInCollection
+import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.domain.usescase.AddCardToCollectionUseCase
+import pol.rubiano.magicapp.features.collections.domain.usescase.GetCardsOfCollectionUseCase
+import pol.rubiano.magicapp.features.collections.domain.usescase.GetCollectionUseCase
+import pol.rubiano.magicapp.features.collections.domain.usescase.GetCollectionsUseCase
+import pol.rubiano.magicapp.features.collections.domain.usescase.SaveCollectionUseCase
+
+@KoinViewModel
+class CollectionsViewModel(
+    private val getCollectionsUseCase: GetCollectionsUseCase,
+    private val getCollectionUseCase: GetCollectionUseCase,
+    private val saveCollectionUseCase: SaveCollectionUseCase,
+    private val addCardToCollectionUseCase: AddCardToCollectionUseCase,
+    private val getCardsOfCollectionUseCase: GetCardsOfCollectionUseCase,
+) : ViewModel() {
+
+    private val _fetchedCollections = MutableLiveData<UiState<List<Collection>>>()
+    val fetchedCollections: LiveData<UiState<List<Collection>>> = _fetchedCollections
+
+    private val _currentCollection = MutableLiveData<UiState<Collection>>()
+    val currentCollection: LiveData<UiState<Collection>> = _currentCollection
+
+    private val _cardsInCurrentCollection = MutableLiveData<UiState<List<CardInCollection>>>()
+    val cardsInCurrentCollection: LiveData<UiState<List<CardInCollection>>> =
+        _cardsInCurrentCollection
+
+    fun loadCollections() {
+        _fetchedCollections.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                Log.d(
+                    "@pol",
+                    "start -> CollectionsViewModel.loadCollections.getCollectionsUseCase()"
+                )
+                val userCollections = getCollectionsUseCase.invoke()
+                Log.d("@pol", "end -> CollectionsViewModel.loadCollections.getCollectionsUseCase()")
+                Log.d("@pol", "userCollections -> $userCollections")
+                withContext(Dispatchers.Main) {
+                    if (userCollections.isNotEmpty()) {
+                        _fetchedCollections.postValue(UiState.Success(userCollections))
+                    } else {
+                        _fetchedCollections.postValue(UiState.Empty)
+                    }
+
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _fetchedCollections.postValue(UiState.Error(AppError.AppDataError))
+                }
+            }
+        }
+    }
+
+    fun loadCardsOfCollection(collectionName: String) {
+        _cardsInCurrentCollection.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val cardsOfCollection = getCardsOfCollectionUseCase.invoke(collectionName)
+                Log.d("@pol", "cards of collection $cardsOfCollection")
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _currentCollection.postValue(UiState.Error(AppError.AppDataError))
+                }
+            }
+        }
+    }
+
+    fun saveCollection(collection: Collection) {
+        _currentCollection.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                saveCollectionUseCase.invoke(collection)
+                withContext(Dispatchers.Main) {
+                    _currentCollection.postValue(UiState.Success(collection))
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _currentCollection.postValue(UiState.Error(AppError.AppDataError))
+                }
+            }
+        }
+    }
+
+    fun addCardToCollection(collectionName: String, cardId: String) {
+        _currentCollection.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                addCardToCollectionUseCase.invoke(collectionName, cardId)
+                withContext(Dispatchers.Main) {
+                    val actualCollection = getCollectionUseCase.invoke(collectionName)
+                    _currentCollection.value = UiState.Success(actualCollection)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _currentCollection.value = UiState.Error(AppError.AppDataError)
+                }
+            }
+        }
+    }
+}

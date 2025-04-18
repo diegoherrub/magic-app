@@ -191,7 +191,7 @@
         </action>
 
         <action
-            android:id="@+id/action_search_fragment_to_results_fragment"
+            android:id="@+id/action_searchFragment_to_resultsFragment"
             app:destination="@+id/search_results_fragment" />
     </fragment>
 
@@ -200,6 +200,7 @@
         android:id="@+id/search_results_fragment"
         android:name="pol.rubiano.magicapp.features.search.results.ResultsFragment"
         android:label="@string/search_results_title">
+        <!-- recibe la query, el deck y el nombre de la colection cuando muestra los resultados -->
         <argument
             android:name="query"
             app:argType="string" />
@@ -207,20 +208,37 @@
             android:name="deck"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
             app:nullable="true" />
+        <argument
+            android:name="collectionName"
+            app:argType="string"
+            app:nullable="true" />
+        <!-- vuelve a collection panel después de insertar una carta -->
         <action
-            android:id="@+id/action_results_fragment_self"
-            app:destination="@+id/search_results_fragment" />
+            android:id="@+id/action_resultsFragment_to_collectionPanel"
+            app:destination="@+id/collectionPanel">
+            <argument
+                android:name="collectionName"
+                app:argType="string"
+                app:nullable="true"/>
+        </action>
+        <!-- añade la carta seleccionada en la lista de resultados al deck actual -->
         <action
-            android:id="@+id/action_search_results_fragment_to_view_card_fragment"
-            app:destination="@+id/view_card_fragment" />
-        <action
-            android:id="@+id/act_search_results_to_deck_details"
+            android:id="@+id/action_searchResults_to_deckDetails"
             app:destination="@+id/deckDetails">
             <argument
                 android:name="deck"
                 app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
                 app:nullable="true" />
         </action>
+
+
+
+        <action
+            android:id="@+id/action_results_fragment_self"
+            app:destination="@+id/search_results_fragment" />
+        <action
+            android:id="@+id/action_search_results_fragment_to_view_card_fragment"
+            app:destination="@+id/view_card_fragment" />
 
     </fragment>
 

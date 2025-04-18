@@ -12,6 +12,7 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.NewCollectionFormBinding
 import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.presentation.adapters.CollectionsViewModel
 
 class NewCollectionForm : Fragment() {
 
@@ -52,6 +53,7 @@ class NewCollectionForm : Fragment() {
 
     private fun createCollection(): Collection{
         val name = binding.newCollectionName.text.toString().trim()
+        Log.d("@pol", "createCollection() - Name: '$name'") // ADD THIS LINE
         if (name.isNotEmpty()) {
             return Collection(
                 name = name,

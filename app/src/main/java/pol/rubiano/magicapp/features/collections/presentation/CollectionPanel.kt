@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.CollectionPanelBinding
+import pol.rubiano.magicapp.features.collections.presentation.adapters.CardsInCollectionAdapter
+import pol.rubiano.magicapp.features.collections.presentation.adapters.CollectionsViewModel
 
 class CollectionPanel : Fragment() {
 
@@ -46,7 +48,9 @@ class CollectionPanel : Fragment() {
             when (state) {
                 is UiState.Success -> {
                     val collection = state.data
+                    Log.d("@pol", "CollectionPanel -> collection $collection")
                     adapterCardsInCollectionAdapter.submitList(collection.cards)
+
                 }
                 else -> {}
             }

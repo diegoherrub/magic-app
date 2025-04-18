@@ -25,7 +25,6 @@ class CardDataRepository(
 ) : CardRepository {
 
     override suspend fun getRandomCard(): Result<Card> {
-
         val remoteCard = remote.getRandomCard()
         val card = remoteCard.getOrNull()
         if (card != null) {
@@ -99,8 +98,9 @@ class CardDataRepository(
         return local.getCardById(cardId)
     }
 
-    override suspend fun saveCardToLocal(card: Card) {
+    override suspend fun saveCard(card: Card): Card {
         local.saveCardToLocal(card)
+        return card
     }
 }
 

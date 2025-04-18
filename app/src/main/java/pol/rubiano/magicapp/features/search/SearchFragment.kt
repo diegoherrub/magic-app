@@ -14,8 +14,6 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.SearchFragmentBinding
 import pol.rubiano.magicapp.features.domain.models.Filter
 import pol.rubiano.magicapp.features.search.filter.FilterCardView
-import pol.rubiano.magicapp.features.decks.DecksViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.features.domain.models.Deck
 
 class SearchFragment : Fragment() {
@@ -26,6 +24,7 @@ class SearchFragment : Fragment() {
 
     private var deck: Deck? = null
     private var collectionName: String? = null
+
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
@@ -137,30 +136,25 @@ class SearchFragment : Fragment() {
     }
 
     fun performSearch() {
-        val queryParts = mutableListOf<String>()
 
+        val queryParts = mutableListOf<String>()
         val nameInput = editCardName.text.toString().trim()
         val selectedRarities = getSelectedRarities()
         val selectedColors = getSelectedColors()
         val selectedTypes = getSelectedTypes()
-
         if (nameInput.isNotEmpty()) queryParts.add("name:\"$nameInput\"")
         if (selectedRarities.isNotEmpty()) queryParts.add(selectedRarities)
         if (selectedColors.isNotEmpty()) queryParts.add(selectedColors)
         if (selectedTypes.isNotEmpty()) queryParts.add(selectedTypes)
 
         val query = queryParts.joinToString(" ")
-//        val action = SearchFragmentDirections.actSearchToDeckDetails(deck!!)
-//        findNavController().navigate(action)
+
         val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
             query,
-            deck
+            deck,
+            collectionName
         )
         findNavController().navigate(action)
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     override fun onDestroyView() {

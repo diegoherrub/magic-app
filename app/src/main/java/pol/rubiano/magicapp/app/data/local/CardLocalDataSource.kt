@@ -7,9 +7,10 @@ import pol.rubiano.magicapp.app.domain.models.Card
 class CardLocalDataSource(
     private val dao: CardDao
 ) {
-    suspend fun saveCardToLocal(card: Card) {
+    suspend fun saveCardToLocal(card: Card): Card {
         val cardEntity = card.toEntity()
         dao.saveCardToLocal(cardEntity)
+        return card
     }
 
     suspend fun getCardById(cardId: String): Card? {

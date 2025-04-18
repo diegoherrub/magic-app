@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.collections.presentation
+package pol.rubiano.magicapp.features.collections.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

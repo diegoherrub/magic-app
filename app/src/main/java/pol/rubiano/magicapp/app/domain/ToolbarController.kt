@@ -155,7 +155,7 @@ class ToolbarController(
                             navController.navigate(direction)
                         }
                         else -> {
-                            navController.popBackStack() // Acción por defecto si ambos son null
+                            navController.popBackStack()
                         }
                     }
                 }

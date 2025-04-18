@@ -11,6 +11,7 @@
     <string name="strAddCardToCollection">Add Card to Collection</string>
     <string name="strEditDeck">Edit deck</string>
     <string name="strAdd">Add</string>
+    <string name="strDel">Delete</string>
     <string name="strSave">Save</string>
     <string name="strClose">Close</string>
     <string name="str_decks">Decks</string>

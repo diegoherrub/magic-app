@@ -7,11 +7,13 @@
     <dimen name="dimen_sm">10dp</dimen>
     <dimen name="dimen_m">16dp</dimen>
     <dimen name="dimen_ml">18dp</dimen>
+    <dimen name="dimen_btn">24dp</dimen>
     <dimen name="dimen_l">32dp</dimen>
     <dimen name="dimen_xl">64dp</dimen>
     <dimen name="dimen_xxl">92dp</dimen>
 
     <dimen name="zero_sp">0sp</dimen>
+    <dimen name="size_xxxs">5sp</dimen>
     <dimen name="size_xxs">10sp</dimen>
     <dimen name="size_xs">12sp</dimen>
     <dimen name="size_s">14sp</dimen>
