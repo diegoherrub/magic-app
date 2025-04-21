@@ -2,6 +2,7 @@ package pol.rubiano.magicapp.features.collections.data
 
 import android.content.Context
 import android.util.Log
+import androidx.core.content.ContextCompat.getString
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
@@ -14,9 +15,9 @@ class CollectionsDataSource(
 ) : CollectionsRepository {
 
     override suspend fun getCollections(): List<Collection> {
-        Log.d("@pol", "start -> CollectionsDataSourcegetCollectionsUseCase()")
+        Log.d("@pol", "start -> CollectionsDataSource.getCollectionsUseCase()")
         val collectionsEntity = collectionDao.getCollectionsDao()
-        Log.d("@pol", "end -> CollectionsDataSourcegetCollectionsUseCase()")
+        Log.d("@pol", "end -> CollectionsDataSource.getCollectionsUseCase()")
         Log.d("@pol", "collectionsEntity -> $collectionsEntity")
 
         return collectionsEntity.map { it.toCollection() }
@@ -34,12 +35,13 @@ class CollectionsDataSource(
     }
 
     override suspend fun saveCollection(collection: Collection) {
+
         val defaultName = context.getString(R.string.str_new_collection_title)
         var collectionNameToSave = collection.name
         val collectionsCount = collectionDao.getCollectionsCount()
 
         if (collection.name == defaultName) {
-            collection.name += " - ${collectionsCount + 1}"
+            collectionNameToSave = "$defaultName - ${collectionsCount + 1}"
         } else {
             val existingCollection = collectionDao.getCollectionByName(collectionNameToSave)
             if (existingCollection != null) {

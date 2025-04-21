@@ -10,8 +10,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.common.extensions.loadUrl
-import pol.rubiano.magicapp.app.data.mapManaSymbols
+import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.DeckStatsAnalyzer
 import pol.rubiano.magicapp.app.domain.UiState
@@ -21,7 +20,6 @@ import pol.rubiano.magicapp.databinding.DeckDetailsBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
 import pol.rubiano.magicapp.features.decks.DecksViewModel
-import pol.rubiano.magicapp.features.search.results.ResultsFragmentArgs
 
 class DeckDetailsFragment : Fragment() {
 
@@ -120,26 +118,26 @@ class DeckDetailsFragment : Fragment() {
         }
     }
 
-    private fun groupCardsByCategory(cards: List<Card>): List<DeckConfigItem> {
+    private fun groupCardsByCategory(cards: List<Card?>): List<DeckConfigItem> {
         val groupedItems = mutableListOf<DeckConfigItem>()
 
         // Creatures
-        val creatures = cards.filter { it.typeLine?.contains("creature", ignoreCase = true) ?: false }
+        val creatures = cards.filter { it?.typeLine?.contains("creature", ignoreCase = true) ?: false }
         if (creatures.isNotEmpty()) {
             val creaturesString = getString(R.string.type_creature)
             groupedItems += DeckConfigItem.Header("$creaturesString (${creatures.size})")
-            val distinctCreatures = creatures.groupBy { it.id }
+            val distinctCreatures = creatures.groupBy { it?.id ?: "" }
             distinctCreatures.forEach { (_, cardList) ->
                 groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Creatures)
             }
         }
 
         // Lands
-        val lands = cards.filter { it.typeLine?.contains("land", ignoreCase = true) ?: false }
+        val lands = cards.filter { it?.typeLine?.contains("land", ignoreCase = true) ?: false }
         if (lands.isNotEmpty()) {
             val landsString = getString(R.string.type_land)
             groupedItems += DeckConfigItem.Header("$landsString (${lands.size})")
-            val distinctLands = lands.groupBy { it.id }
+            val distinctLands = lands.groupBy { it?.id ?: "" }
             distinctLands.forEach { (_, cardList) ->
                 groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Lands)
             }
@@ -150,7 +148,7 @@ class DeckDetailsFragment : Fragment() {
         if (spells.isNotEmpty()) {
             val spellsString = getString(R.string.type_spell)
             groupedItems += DeckConfigItem.Header("$spellsString (${spells.size})")
-            val distinctSpells = spells.groupBy { it.id }
+            val distinctSpells = spells.groupBy { it?.id ?: "" }
             distinctSpells.forEach { (_, cardList) ->
                 groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Spells)
             }

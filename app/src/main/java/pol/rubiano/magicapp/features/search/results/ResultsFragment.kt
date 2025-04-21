@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.features.search.results
 
+import android.util.Log
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
@@ -21,9 +22,10 @@ import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
-import pol.rubiano.magicapp.app.presentation.viewmodels.CardsViewModel
+import pol.rubiano.magicapp.app.cards.presentation.CardsViewModel
+import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
-import pol.rubiano.magicapp.features.collections.presentation.adapters.CollectionsViewModel
+import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
 import pol.rubiano.magicapp.features.decks.DecksViewModel
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.search.SearchViewModel
@@ -56,21 +58,30 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         deck = args.deck
+        Log.d("@pol", "ResultsFragment recibe el deck: $deck")
+
         collectionName = args.collectionName
+        Log.d("@pol", "ResultsFragment recibe el nombre la colección: $collectionName")
+
         query = args.query
+        Log.d("@pol", "ResultsFragment recibe la query: $query")
+
 
         adapter = SearchResultsAdapter { card ->
             cardsViewModel.saveCardToLocal(card)
+
             when {
                 deck != null -> {
                     decksViewModel.addCardToDeck(deck!!, card)
-                    val action = ResultsFragmentDirections.actionSearchResultsToDeckDetails(deck)
+                    val action = ResultsFragmentDirections.actFromSearchResultsToDeckDetails(deck)
                     findNavController().navigate(action)
                 }
                 collectionName != null -> {
                     // Si hay un nombre de colección, realiza una acción específica
                     collectionsViewModel.addCardToCollection(collectionName!!, card.id)
-                    val action = ResultsFragmentDirections.actionResultsFragmentToCollectionPanel(collectionName)
+                    Log.d("@pol", "ha guardado la carta ${card.name} en la colección $collectionName")
+                    val action = ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(collectionName)
+                    Log.d("@pol", "pasa el nombre de la colección: $collectionName de nuevo al panel de la colección")
                     findNavController().navigate(action)
                 }
                 else -> {
@@ -92,8 +103,12 @@ class ResultsFragment : Fragment() {
         binding.resultsRecyclerView.layoutManager = layoutManager
         binding.resultsRecyclerView.adapter = adapter
 
-        searchViewModel.cards.observe(viewLifecycleOwner, Observer { cards ->
-            adapter.submitList(cards)
+        searchViewModel.cards.observe(viewLifecycleOwner, Observer { uiState ->
+            if (uiState is UiState.Success) {
+                adapter.submitList(uiState.data)
+            } else {
+                adapter.submitList(emptyList())
+            }
         })
         binding.resultsRecyclerView.addItemDecoration(
             DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
@@ -118,20 +133,32 @@ class ResultsFragment : Fragment() {
             }
         }
 
-        if (searchViewModel.cards.value.isNullOrEmpty()) {
+        val currentState = searchViewModel.cards.value
+        if (currentState is UiState.Success && currentState.data.isEmpty()) {
             if (query!!.startsWith("http")) {
-                searchViewModel.fetchSearchPage(args.query)
+                args.query?.let { searchViewModel.fetchSearchPage(it) }
             } else {
-                searchViewModel.fetchSearchCard(args.query)
+                args.query?.let { searchViewModel.fetchSearchCard(it) }
             }
         }
+        Log.d("@pol", "ResultsFragment() -> query: $query")
 
         setupObserver()
     }
 
     private fun setupObserver() {
-        searchViewModel.uiState.observe(viewLifecycleOwner) { uiState ->
-            bindError(uiState.appError)
+        cardsViewModel.savedCardToLocal.observe(viewLifecycleOwner) { uiState ->
+            when (uiState) {
+                is UiState.Error -> bindError(uiState.error)
+                else -> {}
+            }
+        }
+
+        searchViewModel.cards.observe(viewLifecycleOwner) { uiState ->
+            when (uiState) {
+                is UiState.Error -> bindError(uiState.error)
+                else -> {}
+            }
         }
     }
 

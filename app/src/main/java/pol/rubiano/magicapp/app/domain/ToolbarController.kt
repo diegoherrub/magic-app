@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.app.domain
 
+import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -11,11 +12,11 @@ import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import pol.rubiano.magicapp.features.collections.presentation.CollectionPanelDirections
 import pol.rubiano.magicapp.features.collections.presentation.CollectionsListDirections
 import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
 import pol.rubiano.magicapp.features.search.SearchFragment
 import pol.rubiano.magicapp.features.domain.models.Deck
+import pol.rubiano.magicapp.features.search.SearchFragmentArgs
 import pol.rubiano.magicapp.features.search.SearchFragmentDirections
 
 
@@ -31,10 +32,10 @@ class ToolbarController(
     )
 
     private val secondaryDestinations = setOf(
-        R.id.legalities_fragment,
-        R.id.keywords_fragment,
+        R.id.legalitiesFragment,
+        R.id.keywordsFragment,
         R.id.decksFragment,
-        R.id.deckDetails,
+        R.id.deckDetailsFragment,
         R.id.randomCardFragment,
         R.id.searchFragment,
         R.id.newCollectionForm,
@@ -97,7 +98,7 @@ class ToolbarController(
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.add_deck -> {
-                            navController.navigate(R.id.act_decks_to_new_deck)
+                            navController.navigate(R.id.act_fromDecksFragment_toNewDeckFragment)
                             true
                         }
 
@@ -142,18 +143,23 @@ class ToolbarController(
                     }
                 }
                 setCustomNavigationAction {
-                    val deck = navController.currentBackStackEntry?.arguments?.getParcelable<Deck>("deck")
-                    val collectionName = navController.currentBackStackEntry?.arguments?.getString("collectionName")
+                    val args = SearchFragmentArgs.fromBundle(navController.currentBackStackEntry?.arguments ?: Bundle())
 
                     when {
-                        deck != null -> {
-                            val direction = SearchFragmentDirections.actionSearchFragmentToDeckDetails(deck)
+                        args.deck != null -> {
+                            val direction =
+                                SearchFragmentDirections.actFromSearchFragmentToDeckDetails(args.deck)
                             navController.navigate(direction)
                         }
-                        collectionName != null -> {
-                            val direction = SearchFragmentDirections.actionSearchFragmentToCollectionPanel(collectionName)
+
+                        args.collectionName != null -> {
+                            val direction =
+                                SearchFragmentDirections.actFromSearchFragmentToCollectionPanel(
+                                    args.collectionName
+                                )
                             navController.navigate(direction)
                         }
+
                         else -> {
                             navController.popBackStack()
                         }
@@ -161,7 +167,7 @@ class ToolbarController(
                 }
             }
 
-            R.id.deckDetails -> {
+            R.id.deckDetailsFragment -> {
                 prepareToolbar(R.menu.deck_details)
                 val customBack = R.id.decksFragment
                 setCustomNavigationAction {
@@ -169,8 +175,9 @@ class ToolbarController(
                 }
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
-                        R.id.act_details_to_decks -> {
-                            val direction = DeckDetailsFragmentDirections.actDetailsToDecks()
+                        R.id.act_fromDeckDetails_toDecksFragment -> {
+                            val direction =
+                                DeckDetailsFragmentDirections.actFromDeckDetailsToDecksFragment()
                             navController.navigate(direction)
                             true
                         }
@@ -183,7 +190,7 @@ class ToolbarController(
                                 )
                             if (deck != null) {
                                 val direction =
-                                    DeckDetailsFragmentDirections.actDeckDetailsToSearch(
+                                    DeckDetailsFragmentDirections.actFromDeckDetailsToSearchFragment(
                                         collectionName = null,
                                         deck = deck
                                     )
@@ -235,64 +242,20 @@ class ToolbarController(
 
             R.id.collectionsList -> {
                 prepareToolbar(R.menu.collections_list_menu)
-                toolbar.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.item_menu_add_new_collection -> {
-                            val direction =
-                                CollectionsListDirections.actionCollectionsListToNewCollectionForm()
-                            navController.navigate(direction)
-                            true
-                        }
-
-                        else -> false
-                    }
-                }
             }
 
-            R.id.collectionPanel -> {
-                val collectionName =
-                    navController.currentBackStackEntry?.arguments?.getString("collectionName")
-                if (collectionName != null) toolbar.title = collectionName
-                prepareToolbar(R.menu.collection_panel_menu)
-                toolbar.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.itemMenuAddCardToCollection -> {
-                            val direction =
-                                CollectionPanelDirections.actionCollectionPanelToSearchFragment(
-                                    collectionName = collectionName,
-                                    deck = null
-                                )
-                            navController.navigate(direction)
-                            true
-                        }
-
-                        else -> false
-                    }
-                }
-                // Custom behaviour for the navigation back arrow
-                setCustomNavigationAction {
-                    val direction =
-                        CollectionPanelDirections.actionCollectionPanelToCollectionsList()
-                    navController.navigate(direction)
-                }
-            }
-
-            R.id.newCollectionForm -> {
-                prepareToolbar()
-                setCustomNavigationAction {
-                    navController.navigate(R.id.action_newCollectionForm_to_collectionsList)
-                }
-            }
+//            R.id.newCollectionForm -> {
+//                prepareToolbar()
+//                setCustomNavigationAction {
+//                    navController.navigate(R.id.act_fromNewCollectionForm_toCollectionsList)
+//                }
+//            }
 
             else -> {
                 toolbar.menu.clear()
                 toolbar.setOnMenuItemClickListener(null)
             }
         }
-    }
-
-    private fun prepareToolbar() {
-        toolbar.menu.clear()
     }
 
     private fun prepareToolbar(menuId: Int) {

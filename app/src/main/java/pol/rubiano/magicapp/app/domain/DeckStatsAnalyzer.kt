@@ -5,19 +5,28 @@ import pol.rubiano.magicapp.app.domain.models.Card
 
 object DeckStatsAnalyzer {
 
-    fun getUniqueColors(cards: List<Card>): List<String> {
+    fun getUniqueColors(cards: List<Card?>): List<String> {
         val colorSymbols = mutableSetOf<String>()
 
         cards.forEach { card ->
-            extractColorsFromManaCost(card.manaCost)?.let { colorSymbols += it }
-
-            card.frontFace?.faceManaCost?.let {
-                extractColorsFromManaCost(it)?.let { colorSymbols += it }
+            if (card != null) {
+                extractColorsFromManaCost(card.manaCost)?.let { colorSymbols += it }
             }
 
-            card.backFace?.faceManaCost?.let {
-                extractColorsFromManaCost(it)?.let { colorSymbols += it }
+            if (card != null) {
+                card.frontFace?.faceManaCost?.let {
+                    extractColorsFromManaCost(it)?.let { colorSymbols += it }
+                }
             }
+
+            if (card != null) {
+                card.backFace?.faceManaCost?.let {
+                    extractColorsFromManaCost(it)?.let { colorSymbols += it }
+                }
+            }
+//            card.backFace?.faceManaCost?.let {
+//                extractColorsFromManaCost(it)?.let { colorSymbols += it }
+//            }
         }
 
         return colorSymbols.sorted()

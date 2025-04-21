@@ -11,21 +11,21 @@ import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.app.domain.models.Card
-import pol.rubiano.magicapp.app.domain.repositories.CardRepository
+import pol.rubiano.magicapp.app.cards.domain.repositories.CardsRepository
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.repositories.DeckRepository
 
 @KoinViewModel
 class DecksViewModel(
     private val deckRepository: DeckRepository,
-    private val cardRepository: CardRepository
+    private val cardsRepository: CardsRepository
 ) : ViewModel() {
 
     private val _addedDeck = MutableLiveData<UiState<Deck>>()
     val addedDeck: LiveData<UiState<Deck>> = _addedDeck
 
-    private val _fetchedCardsFromDeck = MutableLiveData<UiState<List<Card>>>()
-    val fetchedCardsFromDeck: LiveData<UiState<List<Card>>> = _fetchedCardsFromDeck
+    private val _fetchedCardsFromDeck = MutableLiveData<UiState<List<Card?>>>()
+    val fetchedCardsFromDeck: LiveData<UiState<List<Card?>>> = _fetchedCardsFromDeck
 
     private val _userDecks = MutableLiveData<UiState<List<Deck>>>()
     val userDecks: LiveData<UiState<List<Deck>>> = _userDecks
@@ -78,12 +78,10 @@ class DecksViewModel(
         _fetchedCardsFromDeck.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val cardsFromDeck = deck.cardIds.mapNotNull { cardId ->
-                    cardRepository.getCardById(cardId)
+                val cardsFromDeck = deck.cardIds.map { cardId ->
+                    cardsRepository.getCardById(cardId)
                 }
-                withContext(Dispatchers.Main) {
-                    _fetchedCardsFromDeck.value = UiState.Success(cardsFromDeck)
-                }
+                    _fetchedCardsFromDeck.postValue(UiState.Success(cardsFromDeck))
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     UiState.Error(AppError.AppDataError)

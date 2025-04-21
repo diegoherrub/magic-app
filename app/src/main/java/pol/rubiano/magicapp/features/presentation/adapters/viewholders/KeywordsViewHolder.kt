@@ -2,7 +2,7 @@ package pol.rubiano.magicapp.features.presentation.adapters.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import pol.rubiano.magicapp.app.data.mapManaSymbols
+import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
 import pol.rubiano.magicapp.databinding.ViewCommonSectionListTypeItemBinding
 import pol.rubiano.magicapp.features.domain.models.Keyword
 

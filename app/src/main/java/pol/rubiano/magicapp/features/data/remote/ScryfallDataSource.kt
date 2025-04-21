@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.features.data.remote
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.data.remote.extensions.apiCall
+import pol.rubiano.magicapp.app.common.extensions.apiCall
 import pol.rubiano.magicapp.features.domain.models.Scryfall
 
 @Single

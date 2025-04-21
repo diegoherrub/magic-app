@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
+import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.app.domain.models.Card
 import pol.rubiano.magicapp.features.domain.usecases.GetSearchUseCase
 
@@ -16,34 +17,27 @@ class SearchViewModel(
     private val getSearchUseCase: GetSearchUseCase
 ) : ViewModel() {
 
-    private val _uiState = MutableLiveData<UiState>()
-    val uiState: LiveData<UiState> = _uiState
+    private val _cards = MutableLiveData<UiState<List<Card>>>()
+    val cards: MutableLiveData<UiState<List<Card>>> = _cards
 
-    private val _cards = MutableLiveData<List<Card>>()
-    val cards: LiveData<List<Card>> = _cards
-
-    // Store URL for the next page and last query attempted
     private var nextPageUrl: String? = null
     var lastQueryAttempt: String? = null
         private set
 
-    // Flag to prevent multiple simultaneous pagination requests
     private var isLoadingMore: Boolean = false
 
     fun fetchSearchCard(query: String) {
         lastQueryAttempt = query
-        _uiState.value = UiState(isLoading = true)
+        _cards.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             val result = getSearchUseCase.invoke(query)
             result.onSuccess { scryfall ->
-                _cards.postValue(scryfall.data.orEmpty())
+                _cards.postValue(UiState.Success(scryfall.data.orEmpty()))
                 nextPageUrl = scryfall.nextPage
-                _uiState.postValue(UiState(isLoading = false))
             }.onFailure { throwable ->
-                _uiState.postValue(
-                    UiState(
-                        isLoading = false,
-                        appError = if (throwable is AppError.NoResultsError) {
+                _cards.postValue(
+                    UiState.Error(
+                        if (throwable is AppError.NoResultsError) {
                             AppError.NoResultsError
                         } else {
                             AppError.AppDataError
@@ -56,18 +50,16 @@ class SearchViewModel(
 
     fun fetchSearchPage(url: String) {
         lastQueryAttempt = url
-        _uiState.value = UiState(isLoading = true)
+        _cards.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             val result = getSearchUseCase.loadNextPage(url)
             result.onSuccess { scryfall ->
-                _cards.postValue(scryfall.data.orEmpty())
+                _cards.postValue(UiState.Success(scryfall.data.orEmpty()))
                 nextPageUrl = scryfall.nextPage
-                _uiState.postValue(UiState(isLoading = false))
             }.onFailure { throwable ->
-                _uiState.postValue(
-                    UiState(
-                        isLoading = false,
-                        appError = if (throwable is AppError.NoResultsError) {
+                _cards.postValue(
+                    UiState.Error(
+                        if (throwable is AppError.NoResultsError) {
                             AppError.NoResultsError
                         } else {
                             AppError.AppDataError
@@ -86,15 +78,14 @@ class SearchViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             val result = getSearchUseCase.loadNextPage(nextPageUrl!!)
             result.onSuccess { scryfall ->
-                val currentList = _cards.value.orEmpty()
-                _cards.postValue(currentList + scryfall.data.orEmpty())
+                val currentList = (_cards.value as? UiState.Success)?.data.orEmpty()
+                _cards.postValue(UiState.Success(currentList + scryfall.data.orEmpty()))
                 nextPageUrl = scryfall.nextPage
                 isLoadingMore = false
             }.onFailure { throwable ->
-                _uiState.postValue(
-                    UiState(
-                        isLoading = false,
-                        appError = if (throwable is AppError.NoResultsError) {
+                _cards.postValue(
+                    UiState.Error(
+                        if (throwable is AppError.NoResultsError) {
                             AppError.NoResultsError
                         } else {
                             AppError.AppDataError
@@ -105,11 +96,4 @@ class SearchViewModel(
             }
         }
     }
-
-    data class UiState(
-        val isLoading: Boolean = false,
-        val appError: AppError? = null,
-        val cards: LiveData<List<Card>>? = null
-    )
 }
-

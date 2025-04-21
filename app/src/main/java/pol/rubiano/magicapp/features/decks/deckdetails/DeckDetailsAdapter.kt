@@ -98,7 +98,7 @@ class DeckDetailsAdapter(
 //                }
 //                container.addView(addButton)
 //            } else {
-                val groupedCards = item.cards.groupBy { it.id }
+                val groupedCards = item.cards.groupBy { it?.id ?: "" }
                 for ((_, cardList) in groupedCards) {
                     val copiesCount = cardList.size
 

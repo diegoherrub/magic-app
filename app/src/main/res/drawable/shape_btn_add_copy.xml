@@ -4,10 +4,7 @@
     <solid android:color="@color/md_theme_onPrimary"/>
     <corners
         android:bottomLeftRadius="@dimen/zero_dp"
-        android:bottomRightRadius="@dimen/zero_dp"
-        android:topLeftRadius="@dimen/dimen_xs"
-        android:topRightRadius="@dimen/zero_dp" />
-    <stroke
-        android:width="1dp"
-        android:color="@color/md_theme_secondary" />
+        android:bottomRightRadius="@dimen/dimen_m"
+        android:topLeftRadius="@dimen/zero_dp"
+        android:topRightRadius="@dimen/dimen_m" />
 </shape>

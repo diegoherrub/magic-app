@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import pol.rubiano.magicapp.app.data.local.Converters
+import pol.rubiano.magicapp.app.cards.data.local.Converters
 
 const val DECKS_TABLE = "decks"
 const val DECK_ID = "id"

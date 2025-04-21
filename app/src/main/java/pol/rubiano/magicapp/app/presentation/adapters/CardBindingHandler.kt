@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
-import pol.rubiano.magicapp.app.data.mapManaSymbols
+import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.models.Card
 import pol.rubiano.magicapp.app.domain.toLegalityItemList
 import pol.rubiano.magicapp.app.presentation.legalities.LegalitiesAdapter

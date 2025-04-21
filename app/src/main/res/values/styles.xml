@@ -103,19 +103,24 @@
     </style>
 
     <style name="st_textCardCopies">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingTop">@dimen/dimen_xs</item>
-        <item name="android:paddingBottom">@dimen/dimen_xs</item>
-        <item name="android:paddingLeft">@dimen/dimen_s</item>
-        <item name="android:paddingRight">@dimen/dimen_s</item>
+        <item name="android:layout_width">@dimen/zero_dp</item>
+        <item name="android:layout_height">@dimen/zero_dp</item>
+
+        <item name="android:gravity">center_vertical</item>
+<!--        <item name="android:paddingTop">@dimen/dimen_xs</item>-->
+<!--        <item name="android:paddingBottom">@dimen/dimen_xs</item>-->
+<!--        <item name="android:paddingLeft">@dimen/dimen_s</item>-->
+<!--        <item name="android:paddingRight">@dimen/dimen_s</item>-->
+        <item name="android:textAlignment">center</item>
         <item name="android:elevation">@dimen/dimen_m</item>
         <item name="android:fontFamily">@font/app_semibold</item>
-        <item name="android:textSize">@dimen/size_sm</item>
+        <item name="android:textSize">@dimen/size_xs</item>
         <item name="android:background">@drawable/shape_n_copies</item>
     </style>
 
     <style name="st_btnDelCardCopy">
+        <item name="android:layout_marginStart">@dimen/dimen_xs</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_xs</item>
         <item name="android:layout_width">@dimen/dimen_btn</item>
         <item name="android:layout_height">@dimen/dimen_btn</item>
         <item name="android:padding">@dimen/dimen_xs</item>
@@ -125,6 +130,7 @@
     </style>
 
     <style name="st_btnAddCardCopy">
+        <item name="android:layout_marginEnd">@dimen/dimen_xs</item>
         <item name="android:layout_width">@dimen/dimen_btn</item>
         <item name="android:layout_height">@dimen/dimen_btn</item>
         <item name="android:padding">@dimen/dimen_xs</item>

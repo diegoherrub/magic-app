@@ -12,7 +12,7 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.NewCollectionFormBinding
 import pol.rubiano.magicapp.features.collections.domain.Collection
-import pol.rubiano.magicapp.features.collections.presentation.adapters.CollectionsViewModel
+import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
 
 class NewCollectionForm : Fragment() {
 
@@ -38,7 +38,7 @@ class NewCollectionForm : Fragment() {
         viewModel.currentCollection.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
-                    val actionWhenSaved = NewCollectionFormDirections.actionNewCollectionFormToCollectionsList()
+                    val actionWhenSaved = NewCollectionFormDirections.actFromNewCollectionFormToCollectionsList()
                     findNavController().navigate(actionWhenSaved)
                 }
                 else -> {
@@ -53,16 +53,17 @@ class NewCollectionForm : Fragment() {
 
     private fun createCollection(): Collection{
         val name = binding.newCollectionName.text.toString().trim()
-        Log.d("@pol", "createCollection() - Name: '$name'") // ADD THIS LINE
-        if (name.isNotEmpty()) {
-            return Collection(
-                name = name,
-                order = 1,
-                cards = emptyList()
-            )
+        Log.d("@pol", "createCollection() - Name: '$name'")
+        val collectionName = if (name.isNotEmpty()) {
+            name
+        } else {
+            getString(R.string.str_new_collection_title)
         }
-        val collectionName = getString(R.string.str_new_collection_title)
-        return Collection(collectionName, 1,  emptyList())
+        return Collection(
+            name = collectionName,
+            order = 1,
+            cards = emptyList()
+        )
     }
 
     override fun onDestroyView() {

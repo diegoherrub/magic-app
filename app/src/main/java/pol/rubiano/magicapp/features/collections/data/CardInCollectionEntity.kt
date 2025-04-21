@@ -3,7 +3,8 @@ package pol.rubiano.magicapp.features.collections.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import pol.rubiano.magicapp.app.data.local.CardEntity
+import androidx.room.Index
+import pol.rubiano.magicapp.app.cards.data.local.CardEntity
 
 const val CARDS_IN_COLLECTION_TABLE = "cards_in_collection"
 
@@ -21,7 +22,8 @@ const val CARDS_IN_COLLECTION_TABLE = "cards_in_collection"
             parentColumns = ["name"],
             childColumns = ["collection_name"]
         )
-    ]
+    ],
+    indices = [Index(value = ["collection_name"])]
 )
 class CardInCollectionEntity(
     @ColumnInfo(name = "card_id") var cardId: String,

@@ -16,9 +16,10 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textCardCopies"
         style="@style/st_textCardCopies"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddCardCopy"
+        app:layout_constraintStart_toEndOf="@+id/btnDelCardCopy"
+        app:layout_constraintBottom_toBottomOf="@id/btnDelCardCopy"
+        app:layout_constraintTop_toTopOf="@+id/btnDelCardCopy"
         tool:text="4" />
 
     <ImageView
@@ -32,7 +33,7 @@
         android:id="@+id/btnAddCardCopy"
         style="@style/st_btnAddCardCopy"
         android:contentDescription="@string/strAdd"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/btnDelCardCopy"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

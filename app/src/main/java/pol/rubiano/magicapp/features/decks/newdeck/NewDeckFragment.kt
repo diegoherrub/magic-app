@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
@@ -19,7 +20,7 @@ class NewDeckFragment : Fragment() {
     private var _binding: NewDeckFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
-//    private val args: NewDeckFragmentDirections by navArgs()
+    private val args: NewDeckFragmentDirections by navArgs()
 
 //    private lateinit var newDeck: Deck
 
@@ -43,7 +44,7 @@ class NewDeckFragment : Fragment() {
                 is UiState.Loading -> { }
                 is UiState.Success -> {
                     val deck = state.data
-                    val action = NewDeckFragmentDirections.actNewDeckToDeckDetails(deck)
+                    val action = NewDeckFragmentDirections.actFromNewDeckFragmentToDeckDetailsFragment(deck)
                     findNavController().navigate(action)
                 }
                 is UiState.Error -> { AppError.AppDataError }

@@ -38,11 +38,11 @@ class MagicFragment : Fragment() {
 
     private fun setupViews() {
         setupSection(keywords, R.drawable.glossary, R.string.keyword_title, R.string.keyword_content) {
-            findNavController().navigate(MagicFragmentDirections.actionFromMagicToKeywords())
+            findNavController().navigate(MagicFragmentDirections.actFromMagicToKeywordsFragment())
         }
 
         setupSection(legalities, R.drawable.legalities, R.string.legality_title, R.string.legality_content) {
-            findNavController().navigate(MagicFragmentDirections.actionFromMagicToLegalities())
+            findNavController().navigate(MagicFragmentDirections.actionFromMagicToLegalitiesFragment())
         }
     }
 

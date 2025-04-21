@@ -15,6 +15,7 @@ import pol.rubiano.magicapp.databinding.SearchFragmentBinding
 import pol.rubiano.magicapp.features.domain.models.Filter
 import pol.rubiano.magicapp.features.search.filter.FilterCardView
 import pol.rubiano.magicapp.features.domain.models.Deck
+import java.util.Locale
 
 class SearchFragment : Fragment() {
 
@@ -22,12 +23,12 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
     private val args: SearchFragmentArgs by navArgs()
 
-    private var deck: Deck? = null
-    private var collectionName: String? = null
-
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
+
+    private lateinit var collectionName: String
+    private lateinit var deck: Deck
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -38,9 +39,22 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        deck = args.deck
-        collectionName = args.collectionName
 
+//        collectionName = searchFragmentArgs.collectionName!!
+//        deck = searchFragmentArgs.deck!!
+
+//        if (deck != null) {
+//            deck = searchFragmentArgs.deck!!
+//            Log.d("@pol", "ResultsFragment recibe el deck: $deck")
+//        } else if (collectionName != null) {
+//            collectionName = searchFragmentArgs.collectionName!!
+//            Log.d("@pol", "ResultsFragment recibe el nombre la colección: $collectionName")
+//        }
+        setupView(view)
+
+    }
+
+    private fun setupView(view: View) {
         editCardName = view.findViewById(R.id.edit_card_name)
         chipGroupFilters = view.findViewById(R.id.app_chip_group_filters)
         filtersContainer = view.findViewById(R.id.search_filter_cardviews_container)
@@ -141,7 +155,8 @@ class SearchFragment : Fragment() {
         val nameInput = editCardName.text.toString().trim()
         val selectedRarities = getSelectedRarities()
         val selectedColors = getSelectedColors()
-        val selectedTypes = getSelectedTypes()
+        val selectedTypes = getSelectedTypes().lowercase(Locale.ROOT)
+
         if (nameInput.isNotEmpty()) queryParts.add("name:\"$nameInput\"")
         if (selectedRarities.isNotEmpty()) queryParts.add(selectedRarities)
         if (selectedColors.isNotEmpty()) queryParts.add(selectedColors)
@@ -149,10 +164,10 @@ class SearchFragment : Fragment() {
 
         val query = queryParts.joinToString(" ")
 
-        val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
+        val action = SearchFragmentDirections.actionFromSearchFragmentToResultsFragment(
             query,
-            deck,
-            collectionName
+            deck = null,
+            collectionName = null
         )
         findNavController().navigate(action)
     }

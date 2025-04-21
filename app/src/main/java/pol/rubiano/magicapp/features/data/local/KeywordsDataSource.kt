@@ -3,7 +3,7 @@ package pol.rubiano.magicapp.features.data.local
 import android.content.Context
 import org.xmlpull.v1.XmlPullParser
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.data.mapManaSymbols
+import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
 import pol.rubiano.magicapp.features.domain.models.Keyword
 
 fun loadKeywordsFromXml(
