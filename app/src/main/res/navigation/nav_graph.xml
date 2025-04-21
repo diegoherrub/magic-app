@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/magicFragment">
 
-    <!-- Magic Section -->
     <fragment
         android:id="@+id/magicFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.MagicFragment"
@@ -12,6 +11,7 @@
         <action
             android:id="@+id/act_fromMagic_toKeywordsFragment"
             app:destination="@+id/keywordsFragment" />
+
         <action
             android:id="@+id/action_fromMagic_toLegalitiesFragment"
             app:destination="@+id/legalitiesFragment" />
@@ -27,7 +27,6 @@
         android:name="pol.rubiano.magicapp.features.presentation.ui.magic.LegalitiesFragment"
         android:label="@string/legality_title" />
 
-    <!-- Collections List -->
     <fragment
         android:id="@+id/collectionsList"
         android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsList"
@@ -39,11 +38,9 @@
 
         <action
             android:id="@+id/act_fromCollectionsList_toCollectionPanel"
-            app:destination="@+id/collectionPanel">
-        </action>
+            app:destination="@+id/collectionPanel" />
     </fragment>
 
-    <!-- newCollectionForm -->
     <fragment
         android:id="@+id/newCollectionForm"
         android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm"
@@ -61,8 +58,9 @@
 
         <argument
             android:name="collectionName"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"/>
+            app:nullable="true" />
 
         <action
             android:id="@+id/act_fromCollectionPanel_toCollectionsList"
@@ -70,17 +68,9 @@
 
         <action
             android:id="@+id/act_fromCollectionPanel_toSearchFragment"
-            app:destination="@+id/searchFragment">
-
-            <argument
-                android:name="collectionName"
-                app:argType="string"
-                app:nullable="true"/>
-        </action>
+            app:destination="@+id/searchFragment" />
     </fragment>
 
-
-    <!-- DECKS-->
     <fragment
         android:id="@+id/decksFragment"
         android:name="pol.rubiano.magicapp.features.decks.DecksFragment"
@@ -91,17 +81,10 @@
             app:destination="@+id/newDeckFragment" />
 
         <action
-            android:id="@+id/act_fromDecksFragment_toDeckDetails"
-            app:destination="@+id/deckDetailsFragment">
-
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="false" />
-        </action>
+            android:id="@+id/act_fromDecksFragment_toDeckDetailsFragment"
+            app:destination="@+id/deckDetailsFragment" />
     </fragment>
 
-    <!-- DECK NEW -->
     <fragment
         android:id="@+id/newDeckFragment"
         android:name="pol.rubiano.magicapp.features.decks.newdeck.NewDeckFragment"
@@ -109,16 +92,9 @@
 
         <action
             android:id="@+id/act_fromNewDeckFragment_toDeckDetailsFragment"
-            app:destination="@+id/deckDetailsFragment">
-
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="false" />
-        </action>
+            app:destination="@+id/deckDetailsFragment" />
     </fragment>
 
-    <!-- DECK DETAILS -->
     <fragment
         android:id="@+id/deckDetailsFragment"
         android:name="pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragment"
@@ -126,8 +102,9 @@
 
         <argument
             android:name="deck"
+            android:defaultValue="@null"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-            app:nullable="false" />
+            app:nullable="true" />
 
         <action
             android:id="@+id/act_fromDeckDetails_toDecksFragment"
@@ -135,136 +112,93 @@
 
         <action
             android:id="@+id/act_fromDeckDetails_toSearchFragment"
-            app:destination="@id/searchFragment">
-
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="false" />
-        </action>
+            app:destination="@id/searchFragment" />
     </fragment>
 
-    <!-- RANDOM CARD -->
     <fragment
         android:id="@+id/randomCardFragment"
         android:name="pol.rubiano.magicapp.features.presentation.ui.RandomCardFragment"
         android:label="@string/random_card_title" />
 
-    <!-- SEARCH -->
     <fragment
         android:id="@+id/searchFragment"
-        android:name="pol.rubiano.magicapp.features.search.SearchFragment"
+        android:name="pol.rubiano.magicapp.features.search.presentation.SearchFragment"
         android:label="@string/search_title">
 
         <argument
             android:name="collectionName"
             app:argType="string"
             app:nullable="true"
-            android:defaultValue="@null"/>
+            android:defaultValue="@null" />
 
         <argument
             android:name="deck"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
             app:nullable="true"
-            android:defaultValue="@null"/>
+            android:defaultValue="@null" />
 
         <action
             android:id="@+id/act_fromSearchFragment_toCollectionPanel"
-            app:destination="@+id/collectionPanel">
-
-            <argument
-                android:name="collectionName"
-                app:argType="string"
-                app:nullable="true" />
-        </action>
-
+            app:destination="@+id/collectionPanel" />
 
         <action
-            android:id="@+id/act_fromSearchFragment_toDeckDetails"
-            app:destination="@+id/deckDetailsFragment">
-
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="true" />
-        </action>
+            android:id="@+id/act_fromSearchFragment_toDeckDetailsFragment"
+            app:destination="@+id/deckDetailsFragment" />
 
         <action
-            android:id="@+id/action_fromSearchFragment_toResultsFragment"
-            app:destination="@+id/searchResultsFragment">
-
-            <argument
-                android:name="query"
-                app:argType="string"
-                app:nullable="false"/>
-
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="true" />
-
-            <argument
-                android:name="collectionName"
-                app:argType="string"
-                app:nullable="true" />
-        </action>
+            android:id="@+id/act_fromSearchFragment_toResultsFragment"
+            app:destination="@+id/resultsFragment" />
     </fragment>
 
-    <!-- RESULTS -->
     <fragment
-        android:id="@+id/searchResultsFragment"
-        android:name="pol.rubiano.magicapp.features.search.results.ResultsFragment"
+        android:id="@+id/resultsFragment"
+        android:name="pol.rubiano.magicapp.features.search.presentation.ResultsFragment"
         android:label="@string/search_results_title">
 
         <argument
             android:name="query"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"/>
+            app:nullable="true" />
 
         <argument
             android:name="deck"
+            android:defaultValue="@null"
             app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
             app:nullable="true" />
 
         <argument
             android:name="collectionName"
+            android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
 
         <action
             android:id="@+id/act_fromResultsFragment_toCollectionPanel"
-            app:destination="@+id/collectionPanel">
-
-            <argument
-                android:name="collectionName"
-                app:argType="string"
-                app:nullable="true" />
-        </action>
+            app:destination="@+id/collectionPanel" />
 
         <action
             android:id="@+id/act_fromSearchResults_toDeckDetails"
-            app:destination="@+id/deckDetailsFragment">
-
-            <argument
-                android:name="deck"
-                app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-                app:nullable="true" />
-        </action>
+            app:destination="@+id/deckDetailsFragment" />
 
         <action
             android:id="@+id/action_fromResultsFragment_toSelf"
-            app:destination="@+id/searchResultsFragment" />
+            app:destination="@+id/resultsFragment" />
 
         <action
             android:id="@+id/action_search_results_fragment_to_view_card_fragment"
             app:destination="@+id/view_card_fragment" />
+
+        <action
+            android:id="@+id/act_fromSearchResultsFragment_toSearchFragment"
+            app:destination="@+id/searchFragment" />
     </fragment>
 
-    <!-- View Card -->
     <fragment
         android:id="@+id/view_card_fragment"
         android:name="pol.rubiano.magicapp.app.presentation.ui.ViewCardFragment"
         android:label="@string/view_card_label">
+
         <argument
             android:name="cardJson"
             app:argType="string" />

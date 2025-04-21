@@ -1,6 +1,5 @@
 package pol.rubiano.magicapp.app.domain
 
-import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,13 +11,8 @@ import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import pol.rubiano.magicapp.features.collections.presentation.CollectionsListDirections
 import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
-import pol.rubiano.magicapp.features.search.SearchFragment
 import pol.rubiano.magicapp.features.domain.models.Deck
-import pol.rubiano.magicapp.features.search.SearchFragmentArgs
-import pol.rubiano.magicapp.features.search.SearchFragmentDirections
-
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -124,48 +118,9 @@ class ToolbarController(
                 }
             }
 
-            R.id.searchFragment -> {
-                prepareToolbar(R.menu.search_menu)
-                toolbar.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.action_search -> {
-                            val navHostFragment =
-                                activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-                            val currentFragment =
-                                navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
-                            if (currentFragment is SearchFragment) {
-                                currentFragment.performSearch()
-                            }
-                            true
-                        }
+            R.id.searchFragment -> prepareToolbar(R.menu.search_menu)
 
-                        else -> false
-                    }
-                }
-                setCustomNavigationAction {
-                    val args = SearchFragmentArgs.fromBundle(navController.currentBackStackEntry?.arguments ?: Bundle())
-
-                    when {
-                        args.deck != null -> {
-                            val direction =
-                                SearchFragmentDirections.actFromSearchFragmentToDeckDetails(args.deck)
-                            navController.navigate(direction)
-                        }
-
-                        args.collectionName != null -> {
-                            val direction =
-                                SearchFragmentDirections.actFromSearchFragmentToCollectionPanel(
-                                    args.collectionName
-                                )
-                            navController.navigate(direction)
-                        }
-
-                        else -> {
-                            navController.popBackStack()
-                        }
-                    }
-                }
-            }
+            R.id.resultsFragment -> toolbar.menu.clear()
 
             R.id.deckDetailsFragment -> {
                 prepareToolbar(R.menu.deck_details)
@@ -191,8 +146,8 @@ class ToolbarController(
                             if (deck != null) {
                                 val direction =
                                     DeckDetailsFragmentDirections.actFromDeckDetailsToSearchFragment(
-                                        collectionName = null,
-                                        deck = deck
+//                                        collectionName = null,
+//                                        deck = deck
                                     )
                                 navController.navigate(direction)
                             }
@@ -246,6 +201,7 @@ class ToolbarController(
                     navController.navigate(R.id.act_fromCollectionPanel_toCollectionsList)
                 }
             }
+
             R.id.collectionsList -> {
                 prepareToolbar(R.menu.collections_list_menu)
             }

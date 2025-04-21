@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.search.results
+package pol.rubiano.magicapp.features.search.presentation
 
 import android.util.Log
 import android.os.Bundle
@@ -15,9 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.domain.AppError
@@ -28,24 +30,28 @@ import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
 import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
 import pol.rubiano.magicapp.features.decks.DecksViewModel
 import pol.rubiano.magicapp.features.domain.models.Deck
-import pol.rubiano.magicapp.features.search.SearchViewModel
+import pol.rubiano.magicapp.features.search.presentation.assets.SearchViewModel
+import pol.rubiano.magicapp.features.search.results.SearchResultsAdapter
 
 class ResultsFragment : Fragment() {
 
     private var _binding: SearchResultsFragmentBinding? = null
     private val binding get() = _binding!!
+    private val resultsFragmentArgs: ResultsFragmentArgs by navArgs()
+
     private val searchViewModel: SearchViewModel by viewModel()
     private val decksViewModel: DecksViewModel by viewModel()
     private val cardsViewModel: CardsViewModel by viewModel()
     private val collectionsViewModel: CollectionsViewModel by viewModel()
-    private val args: ResultsFragmentArgs by navArgs()
-    private val errorFactory: AppErrorUIFactory by inject()
-    private var layoutManagerState: Parcelable? = null
-    private lateinit var adapter: SearchResultsAdapter
 
+    private var layoutManagerState: Parcelable? = null
     private var deck: Deck? = null
     private var collectionName: String? = null
     private var query: String? = null
+
+    private val errorFactory: AppErrorUIFactory by inject()
+
+    private lateinit var adapter: SearchResultsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,49 +63,40 @@ class ResultsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        deck = args.deck
-        Log.d("@pol", "ResultsFragment recibe el deck: $deck")
-
-        collectionName = args.collectionName
-        Log.d("@pol", "ResultsFragment recibe el nombre la colección: $collectionName")
-
-        query = args.query
-        Log.d("@pol", "ResultsFragment recibe la query: $query")
-
+        setupToolbar()
+        setupView()
 
         adapter = SearchResultsAdapter { card ->
             cardsViewModel.saveCardToLocal(card)
-
             when {
                 deck != null -> {
                     decksViewModel.addCardToDeck(deck!!, card)
                     val action = ResultsFragmentDirections.actFromSearchResultsToDeckDetails(deck)
                     findNavController().navigate(action)
                 }
+
                 collectionName != null -> {
-                    // Si hay un nombre de colección, realiza una acción específica
                     collectionsViewModel.addCardToCollection(collectionName!!, card.id)
-                    Log.d("@pol", "ha guardado la carta ${card.name} en la colección $collectionName")
-                    val action = ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(collectionName)
-                    Log.d("@pol", "pasa el nombre de la colección: $collectionName de nuevo al panel de la colección")
+                    Log.d(
+                        "@pol",
+                        "ha guardado la carta ${card.name} en la colección $collectionName"
+                    )
+                    val action = ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(
+                        collectionName
+                    )
+                    Log.d(
+                        "@pol",
+                        "pasa el nombre de la colección: $collectionName de nuevo al panel de la colección"
+                    )
                     findNavController().navigate(action)
                 }
-                else -> {
-                    // Acción por defecto, como mostrar detalles de la carta
-                    //val action = ResultsFragmentDirections.actionSearchResultsFragmentToViewCardFragment(card.toJson())
-                    //findNavController().navigate(action)
-                }
+
+                else -> { }
             }
-//            cardsViewModel.saveCardToLocal(card)
-//            if (deck != null) {
-//                decksViewModel.addCardToDeck(deck, card)
-//            }
-//            val action = ResultsFragmentDirections
-//                .actSearchResultsToDeckDetails(deck)
-//            findNavController().navigate(action)
         }
 
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        val layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.resultsRecyclerView.layoutManager = layoutManager
         binding.resultsRecyclerView.adapter = adapter
 
@@ -136,14 +133,29 @@ class ResultsFragment : Fragment() {
         val currentState = searchViewModel.cards.value
         if (currentState is UiState.Success && currentState.data.isEmpty()) {
             if (query!!.startsWith("http")) {
-                args.query?.let { searchViewModel.fetchSearchPage(it) }
+                resultsFragmentArgs.query?.let { searchViewModel.fetchSearchPage(it) }
             } else {
-                args.query?.let { searchViewModel.fetchSearchCard(it) }
+                resultsFragmentArgs.query?.let { searchViewModel.fetchSearchCard(it) }
             }
         }
         Log.d("@pol", "ResultsFragment() -> query: $query")
 
         setupObserver()
+    }
+
+    private fun setupToolbar() {
+        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
+        resultsFragmentArgs.collectionName?.let { collectionName = it }
+        resultsFragmentArgs.deck?.let { deck = it }
+
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigate(
+                ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
+                    collectionName = collectionName,
+                    deck = deck
+                )
+            )
+        }
     }
 
     private fun setupObserver() {

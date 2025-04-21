@@ -32,7 +32,6 @@
     <string name="next_page">Página siguiente</string>
     <string name="pagination_bar">Barra de paginación</string>
     <string name="search_results_add">Agregar...</string>
-    <string name="edit_card_name">Nombre de la carta</string>
 
     <string name="search_name_label">Buscar nombre</string>
     <string name="type">Tipo</string>

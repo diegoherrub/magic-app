@@ -42,7 +42,7 @@ class DeckDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        currentDeck = deckDetailsFragmentArgs.deck
+//        currentDeck = deckDetailsFragmentArgs.deck
 //        currentDeck = resultsFragmentArgs.deck
         decksViewModel.loadCurrentDeck(currentDeck)
         setupRecyclerViewCardsOfDeck()
@@ -160,7 +160,7 @@ class DeckDetailsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        decksViewModel.loadCurrentDeck(deckDetailsFragmentArgs.deck)
+//        decksViewModel.loadCurrentDeck(deckDetailsFragmentArgs.deck)
     }
 
     override fun onDestroyView() {

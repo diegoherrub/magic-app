@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.search
+package pol.rubiano.magicapp.features.search.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.ChipGroup
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.SearchFragmentBinding
@@ -26,9 +27,10 @@ class SearchFragment : Fragment() {
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
+    private lateinit var query: String
 
-    private lateinit var collectionName: String
-    private lateinit var deck: Deck
+    private var collectionName: String? = null
+    private var deck: Deck? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -39,19 +41,54 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        collectionName = searchFragmentArgs.collectionName!!
-//        deck = searchFragmentArgs.deck!!
-
-//        if (deck != null) {
-//            deck = searchFragmentArgs.deck!!
-//            Log.d("@pol", "ResultsFragment recibe el deck: $deck")
-//        } else if (collectionName != null) {
-//            collectionName = searchFragmentArgs.collectionName!!
-//            Log.d("@pol", "ResultsFragment recibe el nombre la colección: $collectionName")
-//        }
+        setupToolbar()
         setupView(view)
+    }
 
+    private fun setupToolbar() {
+        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
+        args.collectionName?.let { collectionName = it }
+        args.deck?.let { deck = it }
+
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.itemMenuActionSearch -> {
+                    performSearch()
+                    findNavController().navigate(
+                        SearchFragmentDirections.actFromSearchFragmentToResultsFragment(
+                            query,
+                            deck = null,
+                            collectionName = null
+                        )
+                    )
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+        if (deck != null || collectionName != null) {
+            toolbar.setNavigationOnClickListener {
+                when {
+                    deck != null -> {
+                        findNavController().navigate(
+                            SearchFragmentDirections.actFromSearchFragmentToDeckDetailsFragment(deck)
+                        )
+                    }
+
+                    collectionName != null -> {
+                        findNavController().navigate(
+                            SearchFragmentDirections.actFromSearchFragmentToCollectionPanel(
+                                collectionName
+                            )
+                        )
+                    }
+
+                    else -> {}
+                }
+            }
+        }
     }
 
     private fun setupView(view: View) {
@@ -149,8 +186,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    fun performSearch() {
-
+    private fun performSearch() {
         val queryParts = mutableListOf<String>()
         val nameInput = editCardName.text.toString().trim()
         val selectedRarities = getSelectedRarities()
@@ -162,14 +198,7 @@ class SearchFragment : Fragment() {
         if (selectedColors.isNotEmpty()) queryParts.add(selectedColors)
         if (selectedTypes.isNotEmpty()) queryParts.add(selectedTypes)
 
-        val query = queryParts.joinToString(" ")
-
-        val action = SearchFragmentDirections.actionFromSearchFragmentToResultsFragment(
-            query,
-            deck = null,
-            collectionName = null
-        )
-        findNavController().navigate(action)
+        query = queryParts.joinToString(" ")
     }
 
     override fun onDestroyView() {

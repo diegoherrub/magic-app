@@ -32,7 +32,7 @@ class DecksFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = DecksAdapter { deck ->
-            val action = DecksFragmentDirections.actFromDecksFragmentToDeckDetails(deck)
+            val action = DecksFragmentDirections.actFromDecksFragmentToDeckDetailsFragment(deck)
             findNavController().navigate(action)
         }
         binding.decksRecyclerView.layoutManager = LinearLayoutManager(requireContext())

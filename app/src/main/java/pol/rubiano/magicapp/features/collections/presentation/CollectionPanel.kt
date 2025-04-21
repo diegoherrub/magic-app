@@ -29,7 +29,7 @@ class CollectionPanel : Fragment() {
     private var _binding: CollectionPanelBinding? = null
     private val binding get() = _binding!!
     private val viewModel: CollectionsViewModel by viewModel()
-    private val args: CollectionPanelArgs by navArgs()
+    private val collectionPanelArgs: CollectionPanelArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
 
     private lateinit var adapter: CardsInCollectionAdapter
@@ -53,14 +53,15 @@ class CollectionPanel : Fragment() {
 
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-        collectionName = args.collectionName.toString()
+        collectionPanelArgs.collectionName?.let { collectionName = it }
         toolbar.title = collectionName
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.itemMenuAddCardToCollection -> {
                     findNavController().navigate(
                         CollectionPanelDirections.actFromCollectionPanelToSearchFragment(
-                            collectionName
+                            collectionName,
+                            deck = null
                         )
                     )
                     true

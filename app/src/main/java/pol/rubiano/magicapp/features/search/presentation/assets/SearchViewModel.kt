@@ -1,6 +1,5 @@
-package pol.rubiano.magicapp.features.search
+package pol.rubiano.magicapp.features.search.presentation.assets
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
