@@ -31,7 +31,7 @@
     <string name="magic_title" translatable="false">Magic</string>
     <string name="random_card_title">Random Card</string>
     <string name="collections_list_title">Collections List</string>
-    <string name="str_new_collection_title">New Collection</string>
+    <string name="str_newCollectionTitle">New Collection</string>
 
     <!-- Random Card Fragment -->
     <string name="cd_save_card">Save the card\'s image into app storage</string>

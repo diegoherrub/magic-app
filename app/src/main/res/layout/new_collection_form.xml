@@ -2,34 +2,48 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/st_cointainer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    style="@style/st_cointainer">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/newCollectionNameLabel"
-        style="@style/st_edit_label"
-        android:text="@string/strCollectionName"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newCollectionForm"
+        style="@style/st_cointainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/newCollectionNameLabel"
+            style="@style/st_edit_label"
+            android:text="@string/strCollectionName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/newCollectionName"
+            style="@style/st_edit_input"
+            android:autofillHints="no"
+            android:hint="@string/str_newCollectionTitle"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@id/newCollectionNameLabel"
+            app:layout_constraintStart_toStartOf="@id/newCollectionNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/newCollectionNameLabel"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCreateNewCollection"
+            style="@style/stButton"
+            android:text="@string/st_btn_create_new_collection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newCollectionName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <pol.rubiano.magicapp.app.presentation.error.AppErrorView
+        android:id="@+id/app_error_view_container"
+        style="@style/st_app_error_view_container"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/newCollectionName"
-        style="@style/st_edit_input"
-        android:autofillHints="no"
-        android:hint="@string/strCollectionName"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@id/newCollectionNameLabel"
-        app:layout_constraintStart_toStartOf="@id/newCollectionNameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/newCollectionNameLabel"
-        tools:text="@string/strCollectionName" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnCreateNewCollection"
-        style="@style/stButton"
-        android:text="@string/st_btn_create_new_collection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newCollectionName"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

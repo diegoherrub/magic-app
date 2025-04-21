@@ -240,16 +240,22 @@ class ToolbarController(
 //                }
 //            }
 
+            R.id.collectionPanel -> {
+                prepareToolbar(R.menu.collection_panel_menu)
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromCollectionPanel_toCollectionsList)
+                }
+            }
             R.id.collectionsList -> {
                 prepareToolbar(R.menu.collections_list_menu)
             }
 
-//            R.id.newCollectionForm -> {
-//                prepareToolbar()
-//                setCustomNavigationAction {
-//                    navController.navigate(R.id.act_fromNewCollectionForm_toCollectionsList)
-//                }
-//            }
+            R.id.newCollectionForm -> {
+                toolbar.menu.clear()
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromNewCollectionForm_toCollectionsList)
+                }
+            }
 
             else -> {
                 toolbar.menu.clear()

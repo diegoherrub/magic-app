@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/newCollectionForm"
         android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm"
-        android:label="@string/str_new_collection_title">
+        android:label="@string/str_newCollectionTitle">
 
         <action
             android:id="@+id/act_fromNewCollectionForm_toCollectionsList"

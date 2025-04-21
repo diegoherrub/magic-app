@@ -82,7 +82,17 @@ class CollectionsViewModel(
         }
     }
 
-    fun saveCollection(collection: Collection) {
+    fun createCollection(newCollectionName: String) {
+        saveCollection(
+            Collection(
+                name = newCollectionName,
+                order = 1,
+                cards = emptyList()
+            )
+        )
+    }
+
+    private fun saveCollection(collection: Collection) {
         _currentCollection.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {

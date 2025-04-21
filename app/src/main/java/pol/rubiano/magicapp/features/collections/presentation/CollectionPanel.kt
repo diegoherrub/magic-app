@@ -1,21 +1,25 @@
 package pol.rubiano.magicapp.features.collections.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import pol.rubiano.magicapp.MainActivity
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.domain.ToolbarController
+import pol.rubiano.magicapp.app.common.extensions.gone
+import pol.rubiano.magicapp.app.common.extensions.visible
+import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
+import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.databinding.CollectionPanelBinding
 import pol.rubiano.magicapp.features.collections.presentation.assets.CardsInCollectionAdapter
 import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
@@ -26,8 +30,9 @@ class CollectionPanel : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: CollectionsViewModel by viewModel()
     private val args: CollectionPanelArgs by navArgs()
-    private lateinit var adapter: CardsInCollectionAdapter
+    private val errorFactory: AppErrorUIFactory by inject()
 
+    private lateinit var adapter: CardsInCollectionAdapter
     private lateinit var collectionName: String
 
     override fun onCreateView(
@@ -43,20 +48,6 @@ class CollectionPanel : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
         setupView()
-
-//        if (resultsFragmentArgs.collectionName != null) {
-//            collectionName = resultsFragmentArgs.collectionName!!
-//            Log.d("@pol", "CollectionPanel.onViewCreated() recibe el nombre la colección desde results: $collectionName")
-//        } else if (collectionPanelArgs.collectionName != null) {
-//            collectionName = collectionPanelArgs.collectionName!!
-//            Log.d("@pol", "CollectionPanel.onViewCreated() recibe el nombre la colección desde colection: $collectionName")
-//        }
-
-        Log.d("@pol", "start -> CollectionPanel.onViewCreated() -> loadCards")
-        viewModel.loadCardsOfCollection(collectionName)
-        Log.d("@pol", "end -> CollectionPanel.onViewCreated() -> loadCards")
-
-
         setupObservers()
     }
 
@@ -64,8 +55,6 @@ class CollectionPanel : Fragment() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
         collectionName = args.collectionName.toString()
         toolbar.title = collectionName
-        toolbar.menu.clear()
-        toolbar.inflateMenu(R.menu.collection_panel_menu)
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.itemMenuAddCardToCollection -> {
@@ -80,11 +69,6 @@ class CollectionPanel : Fragment() {
                 else -> false
             }
         }
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigate(
-                CollectionPanelDirections.actFromCollectionPanelToCollectionsList()
-            )
-        }
     }
 
     private fun setupView() {
@@ -93,6 +77,7 @@ class CollectionPanel : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@CollectionPanel.adapter
         }
+        viewModel.loadCardsOfCollection(collectionName)
     }
 
     private fun setupObservers() {
@@ -100,16 +85,39 @@ class CollectionPanel : Fragment() {
             when (state) {
                 is UiState.Success -> {
                     val collection = state.data
-                    Log.d("@pol", "CollectionPanel -> collection $collection")
                     adapter.submitList(collection.cards)
                 }
 
                 is UiState.Error -> {
-                    Log.e("@pol", "Error al cargar las cartas de la colección")
+                    bindError(state.error)
                 }
 
                 else -> {}
             }
         }
+    }
+
+    private fun bindError(appError: AppError?) {
+        if (appError != null) {
+            binding.collectionPanelCards.gone()
+            binding.appErrorViewContainer.visible()
+            binding.appErrorViewContainer.render(errorFactory.build(appError))
+            binding.appErrorViewContainer.setOnRetryClickListener {
+                binding.appErrorViewContainer.gone()
+                binding.collectionPanelCards.visible()
+                viewLifecycleOwner.lifecycleScope.launch {
+                    delay(2000)
+                    viewModel.loadCardsOfCollection(collectionName)
+                }
+            }
+        } else {
+            binding.collectionPanelCards.visible()
+            binding.appErrorViewContainer.gone()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -2,7 +2,6 @@ package pol.rubiano.magicapp.features.collections.data
 
 import android.content.Context
 import android.util.Log
-import androidx.core.content.ContextCompat.getString
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
@@ -35,8 +34,7 @@ class CollectionsDataSource(
     }
 
     override suspend fun saveCollection(collection: Collection) {
-
-        val defaultName = context.getString(R.string.str_new_collection_title)
+        val defaultName = context.getString(R.string.str_newCollectionTitle)
         var collectionNameToSave = collection.name
         val collectionsCount = collectionDao.getCollectionsCount()
 
@@ -48,6 +46,8 @@ class CollectionsDataSource(
                 collectionNameToSave += " - ${collectionsCount + 1}"
             }
         }
+        Log.d("@pol", "collectiondatasource $collectionNameToSave")
+
         val collectionEntity = CollectionEntity(
             name = collectionNameToSave,
             order = collection.order,

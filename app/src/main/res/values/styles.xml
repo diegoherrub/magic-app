@@ -80,8 +80,8 @@
     </style>
 
     <style name="st_edit_input" parent="st_match_wrap">
-        <item name="android:paddingTop">@dimen/dimen_m</item>
-        <item name="android:paddingBottom">@dimen/dimen_m</item>
+        <item name="android:paddingTop">@dimen/dimen_ml</item>
+        <item name="android:paddingBottom">@dimen/dimen_ml</item>
         <item name="android:textAppearance">@style/txt_edit_deck_name</item>
     </style>
 
@@ -94,10 +94,10 @@
     <!-- BUTTONS -->
     <style name="stButton" parent="st_wrap_wrap_content">
         <item name="android:layout_marginTop">@dimen/dimen_xl</item>
-        <item name="android:paddingTop">@dimen/dimen_m</item>
-        <item name="android:paddingBottom">@dimen/dimen_m</item>
-        <item name="android:paddingStart">@dimen/dimen_l</item>
-        <item name="android:paddingEnd">@dimen/dimen_l</item>
+        <item name="android:paddingTop">@dimen/dimen_s</item>
+        <item name="android:paddingBottom">@dimen/dimen_s</item>
+        <item name="android:paddingStart">@dimen/dimen_m</item>
+        <item name="android:paddingEnd">@dimen/dimen_m</item>
         <item name="android:textAppearance">@style/stFontButton</item>
         <item name="android:colorBackground">@color/md_theme_primary</item>
     </style>
@@ -450,6 +450,6 @@
 
     <style name="stFontButton">
         <item name="android:fontFamily">@font/app_regular</item>
-        <item name="android:textSize">@dimen/size_ml</item>
+        <item name="android:textSize">@dimen/size_m</item>
     </style>
 </resources>
