@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.app.domain
 
-import pol.rubiano.magicapp.app.domain.models.Card
-import pol.rubiano.magicapp.app.domain.models.LegalityItem
+import pol.rubiano.magicapp.features.cards.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.models.LegalityItem
 
 fun Card.Legalities.toLegalityItemList(): List<LegalityItem?> {
     return listOf(

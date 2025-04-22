@@ -3,6 +3,7 @@ package pol.rubiano.magicapp.app.cards.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import pol.rubiano.magicapp.features.cards.data.local.CardDao
 import pol.rubiano.magicapp.features.collections.data.CardInCollectionEntity
 import pol.rubiano.magicapp.features.collections.data.CollectionDao
 import pol.rubiano.magicapp.features.collections.data.CollectionEntity

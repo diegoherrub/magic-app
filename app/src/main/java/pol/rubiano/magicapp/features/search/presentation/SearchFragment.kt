@@ -13,8 +13,8 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.ChipGroup
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.SearchFragmentBinding
-import pol.rubiano.magicapp.features.domain.models.Filter
-import pol.rubiano.magicapp.features.search.filter.FilterCardView
+import pol.rubiano.magicapp.features.search.domain.models.Filter
+import pol.rubiano.magicapp.features.search.presentation.filter.FilterCardView
 import pol.rubiano.magicapp.features.domain.models.Deck
 import java.util.Locale
 
@@ -68,27 +68,27 @@ class SearchFragment : Fragment() {
             }
         }
 
-        if (deck != null || collectionName != null) {
+//        if (deck != null || collectionName != null) {
+//            toolbar.setNavigationIcon(R.drawable.back)
             toolbar.setNavigationOnClickListener {
                 when {
                     deck != null -> {
                         findNavController().navigate(
-                            SearchFragmentDirections.actFromSearchFragmentToDeckDetailsFragment(deck)
+                            ResultsFragmentDirections.actFromSearchResultsToDeckDetails(deck)
                         )
                     }
-
                     collectionName != null -> {
                         findNavController().navigate(
-                            SearchFragmentDirections.actFromSearchFragmentToCollectionPanel(
+                            ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(
                                 collectionName
                             )
                         )
                     }
-
-                    else -> {}
                 }
             }
-        }
+//        } else {
+//            toolbar.navigationIcon = null
+//        }
     }
 
     private fun setupView(view: View) {

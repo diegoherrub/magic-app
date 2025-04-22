@@ -11,16 +11,16 @@ import kotlinx.coroutines.launch
 import pol.rubiano.magicapp.features.presentation.viewmodels.RandomCardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.android.ext.android.inject
-import pol.rubiano.magicapp.app.presentation.adapters.CardBindingHandler
+import pol.rubiano.magicapp.features.cards.presentation.CardBindingHandler
 import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
-import pol.rubiano.magicapp.databinding.ViewCardFragmentBinding
+import pol.rubiano.magicapp.databinding.CardFragmentViewBinding
 
 class RandomCardFragment : Fragment() {
 
-    private var _binding: ViewCardFragmentBinding? = null
+    private var _binding: CardFragmentViewBinding? = null
     private val binding get() = _binding!!
     private val cardBinder = CardBindingHandler()
     private val viewModel: RandomCardViewModel by viewModel()
@@ -29,7 +29,7 @@ class RandomCardFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = ViewCardFragmentBinding.inflate(inflater, container, false)
+        _binding = CardFragmentViewBinding.inflate(inflater, container, false)
         return binding.root
     }
 

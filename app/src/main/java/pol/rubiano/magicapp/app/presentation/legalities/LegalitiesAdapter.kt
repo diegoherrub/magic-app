@@ -4,9 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.domain.models.LegalityItem
+import pol.rubiano.magicapp.features.cards.domain.models.LegalityItem
+import pol.rubiano.magicapp.app.presentation.AppDiffUtil
 
-class LegalitiesAdapter : ListAdapter<LegalityItem, LegalitiesViewHolder>(LegalitiesDiffUtil()) {
+class LegalitiesAdapter : ListAdapter<LegalityItem, LegalitiesViewHolder>(
+    AppDiffUtil<LegalityItem>(
+        itemSame = { old, new -> old.format == new.format },
+        contentSame = {old, new -> old == new}
+    )
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LegalitiesViewHolder {
         val view = LayoutInflater.from(parent.context)

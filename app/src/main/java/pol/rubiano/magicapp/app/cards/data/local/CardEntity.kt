@@ -5,7 +5,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.models.Card
 import java.util.Date
 
 const val CARDS_TABLE = "cards"

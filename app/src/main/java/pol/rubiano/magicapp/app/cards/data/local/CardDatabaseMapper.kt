@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.app.cards.data.local
 
-import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.models.Card
 
 fun Card.toEntity() : CardEntity {
     return CardEntity(

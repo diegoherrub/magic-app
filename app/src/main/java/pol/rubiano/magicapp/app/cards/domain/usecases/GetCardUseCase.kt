@@ -1,14 +1,14 @@
 package pol.rubiano.magicapp.app.cards.domain.usecases
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.cards.domain.repositories.CardsRepository
-import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.repositories.CardRepository
+import pol.rubiano.magicapp.features.cards.domain.models.Card
 
 @Single
 class GetCardUseCase(
-    private val repository: CardsRepository
+    private val repository: CardRepository
 ) {
     suspend operator fun invoke(cardId: String): Card? {
-        return repository.getCardById(cardId)
+        return repository.getLocalCardById(cardId)
     }
 }

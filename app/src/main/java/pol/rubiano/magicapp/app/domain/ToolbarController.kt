@@ -31,13 +31,14 @@ class ToolbarController(
         R.id.decksFragment,
         R.id.deckDetailsFragment,
         R.id.randomCardFragment,
-        R.id.searchFragment,
         R.id.newCollectionForm,
         R.id.collectionPanel,
+        R.id.cardFragmentView,
     )
 
     private val specialDestinations = setOf(
         R.id.collectionsList,
+        R.id.searchFragment,
     )
 
     init {
@@ -120,8 +121,6 @@ class ToolbarController(
 
             R.id.searchFragment -> prepareToolbar(R.menu.search_menu)
 
-            R.id.resultsFragment -> toolbar.menu.clear()
-
             R.id.deckDetailsFragment -> {
                 prepareToolbar(R.menu.deck_details)
                 val customBack = R.id.decksFragment
@@ -175,26 +174,6 @@ class ToolbarController(
                 }
             }
 
-//            R.id.editDeckFragment -> {
-//                prepareToolbar(R.menu.deck_edit_menu)
-//                toolbar.setOnMenuItemClickListener { item ->
-//                    when (item.itemId) {
-//                        R.id.edit_deck_save -> {
-//                            val navHostFragment =
-//                                activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-//                            val currentFragment =
-//                                navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
-//                            if (currentFragment is EditDeckFragment) {
-//                                currentFragment.saveDeckChanges()
-//                            }
-//                            true
-//                        }
-//
-//                        else -> false
-//                    }
-//                }
-//            }
-
             R.id.collectionPanel -> {
                 prepareToolbar(R.menu.collection_panel_menu)
                 setCustomNavigationAction {
@@ -211,6 +190,10 @@ class ToolbarController(
                 setCustomNavigationAction {
                     navController.navigate(R.id.act_fromNewCollectionForm_toCollectionsList)
                 }
+            }
+
+            R.id.cardFragmentView -> {
+                toolbar.menu.clear()
             }
 
             else -> {

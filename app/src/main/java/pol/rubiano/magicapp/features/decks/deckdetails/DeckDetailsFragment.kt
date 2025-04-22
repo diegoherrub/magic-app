@@ -14,8 +14,8 @@ import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.DeckStatsAnalyzer
 import pol.rubiano.magicapp.app.domain.UiState
-import pol.rubiano.magicapp.app.domain.models.Card
-import pol.rubiano.magicapp.app.domain.models.CardCategory
+import pol.rubiano.magicapp.features.cards.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.models.CardCategory
 import pol.rubiano.magicapp.databinding.DeckDetailsBinding
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.models.DeckConfigItem

@@ -10,15 +10,15 @@ import kotlinx.coroutines.withContext
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
-import pol.rubiano.magicapp.app.domain.models.Card
-import pol.rubiano.magicapp.app.cards.domain.repositories.CardsRepository
+import pol.rubiano.magicapp.features.cards.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.repositories.CardRepository
 import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.domain.repositories.DeckRepository
 
 @KoinViewModel
 class DecksViewModel(
     private val deckRepository: DeckRepository,
-    private val cardsRepository: CardsRepository
+    private val cardRepository: CardRepository
 ) : ViewModel() {
 
     private val _addedDeck = MutableLiveData<UiState<Deck>>()
@@ -79,7 +79,7 @@ class DecksViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val cardsFromDeck = deck.cardIds.map { cardId ->
-                    cardsRepository.getCardById(cardId)
+                    cardRepository.getLocalCardById(cardId)
                 }
                     _fetchedCardsFromDeck.postValue(UiState.Success(cardsFromDeck))
             } catch (e: Exception) {

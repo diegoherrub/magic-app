@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.features.search.presentation.assets
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,16 +9,18 @@ import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
-import pol.rubiano.magicapp.app.domain.models.Card
-import pol.rubiano.magicapp.features.domain.usecases.GetSearchUseCase
+import pol.rubiano.magicapp.features.cards.domain.models.Card
+import pol.rubiano.magicapp.features.search.domain.usecases.GetNextPageUseCase
+import pol.rubiano.magicapp.features.search.domain.usecases.GetSearchUseCase
 
 @KoinViewModel
 class SearchViewModel(
-    private val getSearchUseCase: GetSearchUseCase
+    private val getSearchUseCase: GetSearchUseCase,
+    private val getNextPageUseCase: GetNextPageUseCase
 ) : ViewModel() {
 
     private val _cards = MutableLiveData<UiState<List<Card>>>()
-    val cards: MutableLiveData<UiState<List<Card>>> = _cards
+    val cards: LiveData<UiState<List<Card>>> = _cards
 
     private var nextPageUrl: String? = null
     var lastQueryAttempt: String? = null
@@ -51,7 +54,7 @@ class SearchViewModel(
         lastQueryAttempt = url
         _cards.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
-            val result = getSearchUseCase.loadNextPage(url)
+            val result = getNextPageUseCase.invoke(url)
             result.onSuccess { scryfall ->
                 _cards.postValue(UiState.Success(scryfall.data.orEmpty()))
                 nextPageUrl = scryfall.nextPage
@@ -75,7 +78,7 @@ class SearchViewModel(
         isLoadingMore = true
         lastQueryAttempt = nextPageUrl
         viewModelScope.launch(Dispatchers.IO) {
-            val result = getSearchUseCase.loadNextPage(nextPageUrl!!)
+            val result = getSearchUseCase.invoke(nextPageUrl!!)
             result.onSuccess { scryfall ->
                 val currentList = (_cards.value as? UiState.Success)?.data.orEmpty()
                 _cards.postValue(UiState.Success(currentList + scryfall.data.orEmpty()))

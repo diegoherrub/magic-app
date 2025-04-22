@@ -1,6 +1,6 @@
 package pol.rubiano.magicapp.app.cards.data.remote
 
-import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.models.Card
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

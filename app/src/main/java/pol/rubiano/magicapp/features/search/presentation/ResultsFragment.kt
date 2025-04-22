@@ -1,13 +1,11 @@
 package pol.rubiano.magicapp.features.search.presentation
 
-import android.util.Log
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,14 +22,13 @@ import pol.rubiano.magicapp.app.common.extensions.gone
 import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
-import pol.rubiano.magicapp.app.cards.presentation.CardsViewModel
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
-import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
-import pol.rubiano.magicapp.features.decks.DecksViewModel
+import pol.rubiano.magicapp.features.cards.presentation.CardViewModel
 import pol.rubiano.magicapp.features.domain.models.Deck
+import pol.rubiano.magicapp.features.search.presentation.assets.SearchResultsAdapter
 import pol.rubiano.magicapp.features.search.presentation.assets.SearchViewModel
-import pol.rubiano.magicapp.features.search.results.SearchResultsAdapter
+
 
 class ResultsFragment : Fragment() {
 
@@ -40,13 +37,14 @@ class ResultsFragment : Fragment() {
     private val resultsFragmentArgs: ResultsFragmentArgs by navArgs()
 
     private val searchViewModel: SearchViewModel by viewModel()
-    private val decksViewModel: DecksViewModel by viewModel()
-    private val cardsViewModel: CardsViewModel by viewModel()
-    private val collectionsViewModel: CollectionsViewModel by viewModel()
+
+    //    private val decksViewModel: DecksViewModel by viewModel()
+    private val cardViewModel: CardViewModel by viewModel()
+//    private val collectionsViewModel: CollectionsViewModel by viewModel()
 
     private var layoutManagerState: Parcelable? = null
-    private var deck: Deck? = null
     private var collectionName: String? = null
+    private var deck: Deck? = null
     private var query: String? = null
 
     private val errorFactory: AppErrorUIFactory by inject()
@@ -54,8 +52,7 @@ class ResultsFragment : Fragment() {
     private lateinit var adapter: SearchResultsAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = SearchResultsFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -64,52 +61,83 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
-        setupView()
+        setupView(savedInstanceState)
+        setupObserver()
+    }
 
+    private fun setupToolbar() {
+        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
+        resultsFragmentArgs.collectionName?.let { collectionName = it }
+        resultsFragmentArgs.deck?.let { deck = it }
+        resultsFragmentArgs.query?.let { query = it }
+
+        toolbar.setNavigationOnClickListener {
+            toolbar.setNavigationIcon(R.drawable.back)
+            findNavController().navigate(
+                ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
+                    collectionName = collectionName,
+                    deck = deck
+                )
+            )
+        }
+//        if (deck != null || collectionName != null) {
+//            toolbar.setNavigationOnClickListener {
+//                when {
+//                    deck != null -> {
+//                        findNavController().navigate(
+//                            ResultsFragmentDirections.actFromSearchResultsToDeckDetails(deck)
+//                        )
+//                    }
+//
+//                    collectionName != null -> {
+//                        findNavController().navigate(
+//                            ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(
+//                                collectionName
+//                            )
+//                        )
+//                    }
+//
+//                    else -> {
+//                        toolbar.setNavigationIcon(R.drawable.back)
+//                        findNavController().navigate(
+//                            ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
+////                                collectionName = collectionName,
+////                                deck = deck
+//                            )
+//                        )
+//                    }
+//                }
+//            }
+//        } else {
+//            toolbar.navigationIcon = null
+//        }
+    }
+
+    private fun setupView(savedInstanceState: Bundle?) {
         adapter = SearchResultsAdapter { card ->
-            cardsViewModel.saveCardToLocal(card)
             when {
-                deck != null -> {
-                    decksViewModel.addCardToDeck(deck!!, card)
-                    val action = ResultsFragmentDirections.actFromSearchResultsToDeckDetails(deck)
-                    findNavController().navigate(action)
-                }
+                deck != null -> {}
 
-                collectionName != null -> {
-                    collectionsViewModel.addCardToCollection(collectionName!!, card.id)
-                    Log.d(
-                        "@pol",
-                        "ha guardado la carta ${card.name} en la colección $collectionName"
-                    )
-                    val action = ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(
-                        collectionName
-                    )
-                    Log.d(
-                        "@pol",
-                        "pasa el nombre de la colección: $collectionName de nuevo al panel de la colección"
-                    )
-                    findNavController().navigate(action)
-                }
+                collectionName != null -> {}
 
-                else -> { }
+                else -> {
+                    findNavController().navigate(
+                        ResultsFragmentDirections.actFromResultsFragmentToCardFragmentView(
+                            card,
+                            deckId = null,
+                            collectionName = null
+                        )
+                    )
+                }
             }
         }
 
-        val layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.resultsRecyclerView.layoutManager = layoutManager
-        binding.resultsRecyclerView.adapter = adapter
+        binding.resultsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+            adapter = this@ResultsFragment.adapter
+        }
 
-        searchViewModel.cards.observe(viewLifecycleOwner, Observer { uiState ->
-            if (uiState is UiState.Success) {
-                adapter.submitList(uiState.data)
-            } else {
-                adapter.submitList(emptyList())
-            }
-        })
-        binding.resultsRecyclerView.addItemDecoration(
-            DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
-        )
         binding.resultsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -124,42 +152,22 @@ class ResultsFragment : Fragment() {
         })
 
         if (savedInstanceState != null) {
-            layoutManagerState = savedInstanceState.getParcelable("layoutManagerState")
+            val layoutManager = LinearLayoutManager(requireContext())
+            layoutManagerState =
+                savedInstanceState.getParcelable("layoutManagerState", Parcelable::class.java)
             layoutManagerState?.let { state ->
                 layoutManager.onRestoreInstanceState(state)
             }
         }
 
-        val currentState = searchViewModel.cards.value
-        if (currentState is UiState.Success && currentState.data.isEmpty()) {
-            if (query!!.startsWith("http")) {
-                resultsFragmentArgs.query?.let { searchViewModel.fetchSearchPage(it) }
-            } else {
-                resultsFragmentArgs.query?.let { searchViewModel.fetchSearchCard(it) }
-            }
-        }
-        Log.d("@pol", "ResultsFragment() -> query: $query")
-
-        setupObserver()
-    }
-
-    private fun setupToolbar() {
-        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-        resultsFragmentArgs.collectionName?.let { collectionName = it }
-        resultsFragmentArgs.deck?.let { deck = it }
-
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigate(
-                ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
-                    collectionName = collectionName,
-                    deck = deck
-                )
-            )
+        query?.let {
+            if (it.startsWith("http")) searchViewModel.fetchSearchPage(it)
+            else searchViewModel.fetchSearchCard(it)
         }
     }
 
     private fun setupObserver() {
-        cardsViewModel.savedCardToLocal.observe(viewLifecycleOwner) { uiState ->
+        cardViewModel.card.observe(viewLifecycleOwner) { uiState ->
             when (uiState) {
                 is UiState.Error -> bindError(uiState.error)
                 else -> {}
@@ -168,8 +176,15 @@ class ResultsFragment : Fragment() {
 
         searchViewModel.cards.observe(viewLifecycleOwner) { uiState ->
             when (uiState) {
+
+                is UiState.Success -> {
+                    adapter.submitList(uiState.data)
+                }
+
                 is UiState.Error -> bindError(uiState.error)
-                else -> {}
+                else -> {
+                    adapter.submitList(emptyList())
+                }
             }
         }
     }
@@ -201,8 +216,10 @@ class ResultsFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        layoutManagerState = binding.resultsRecyclerView.layoutManager?.onSaveInstanceState()
-        outState.putParcelable("layoutManagerState", layoutManagerState)
+        _binding?.let { binding ->
+            layoutManagerState = binding.resultsRecyclerView.layoutManager?.onSaveInstanceState()
+            outState.putParcelable("layoutManagerState", layoutManagerState)
+        }
     }
 
     override fun onDestroyView() {

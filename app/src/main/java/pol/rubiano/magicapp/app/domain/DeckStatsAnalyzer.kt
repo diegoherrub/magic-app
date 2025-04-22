@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.app.domain
 
 import android.util.Log
-import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.models.Card
 
 object DeckStatsAnalyzer {
 

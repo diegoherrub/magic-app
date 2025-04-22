@@ -9,7 +9,7 @@ import pol.rubiano.magicapp.app.di.CardModule
 import pol.rubiano.magicapp.app.di.LocalModule
 import pol.rubiano.magicapp.app.di.RemoteModule
 import pol.rubiano.magicapp.features.di.DeckModule
-import pol.rubiano.magicapp.features.di.ScryfallModule
+import pol.rubiano.magicapp.features.search.di.ScryfallModule
 import pol.rubiano.magicapp.features.collections.di.CollectionModule
 
 class MagicApp : Application() {

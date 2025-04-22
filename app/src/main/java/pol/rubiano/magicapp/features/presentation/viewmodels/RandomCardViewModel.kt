@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
-import pol.rubiano.magicapp.app.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.domain.usecases.GetRandomCardUseCase
 
 @KoinViewModel
