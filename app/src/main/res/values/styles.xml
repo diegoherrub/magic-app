@@ -41,6 +41,7 @@
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
 
+
     <style name="st_cointainer_item" parent="st_match_wrap">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>

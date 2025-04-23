@@ -11,8 +11,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.NewDeckFragmentBinding
-import pol.rubiano.magicapp.features.domain.models.Deck
-import pol.rubiano.magicapp.features.decks.DecksViewModel
+import pol.rubiano.magicapp.features.decks.domain.models.Deck
+import pol.rubiano.magicapp.features.decks.presentation.DecksViewModel
 import java.util.UUID
 
 class NewDeckFragment : Fragment() {
@@ -44,7 +44,7 @@ class NewDeckFragment : Fragment() {
                 is UiState.Loading -> { }
                 is UiState.Success -> {
                     val deck = state.data
-                    val action = NewDeckFragmentDirections.actFromNewDeckFragmentToDeckDetailsFragment(deck)
+                    val action = NewDeckFragmentDirections.actFromNewDeckFragmentToDeckDetailsFragment(deck.id)
                     findNavController().navigate(action)
                 }
                 is UiState.Error -> { AppError.AppDataError }

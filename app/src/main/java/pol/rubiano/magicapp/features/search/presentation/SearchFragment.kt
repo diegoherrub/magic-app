@@ -15,7 +15,6 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.databinding.SearchFragmentBinding
 import pol.rubiano.magicapp.features.search.domain.models.Filter
 import pol.rubiano.magicapp.features.search.presentation.filter.FilterCardView
-import pol.rubiano.magicapp.features.domain.models.Deck
 import java.util.Locale
 
 class SearchFragment : Fragment() {
@@ -30,7 +29,7 @@ class SearchFragment : Fragment() {
     private lateinit var query: String
 
     private var collectionName: String? = null
-    private var deck: Deck? = null
+    private var deckId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -48,7 +47,7 @@ class SearchFragment : Fragment() {
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
         args.collectionName?.let { collectionName = it }
-        args.deck?.let { deck = it }
+        args.deckId?.let { deckId = it }
 
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -57,7 +56,7 @@ class SearchFragment : Fragment() {
                     findNavController().navigate(
                         SearchFragmentDirections.actFromSearchFragmentToResultsFragment(
                             query,
-                            deck = null,
+                            deckId = null,
                             collectionName = null
                         )
                     )
@@ -72,9 +71,11 @@ class SearchFragment : Fragment() {
 //            toolbar.setNavigationIcon(R.drawable.back)
             toolbar.setNavigationOnClickListener {
                 when {
-                    deck != null -> {
+                    deckId != null -> {
                         findNavController().navigate(
-                            ResultsFragmentDirections.actFromSearchResultsToDeckDetails(deck)
+                            ResultsFragmentDirections.actFromSearchResultsToDeckDetails(
+                                deckId = deckId
+                            )
                         )
                     }
                     collectionName != null -> {

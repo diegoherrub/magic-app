@@ -5,7 +5,7 @@ import androidx.room.Room
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.cards.data.local.MagicAppDataBase
+import pol.rubiano.magicapp.app.data.local.MagicAppDataBase
 
 @Module
 @ComponentScan

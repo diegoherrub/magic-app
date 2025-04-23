@@ -3,6 +3,8 @@
     <string name="app_name" translatable="false">MagicApp</string>
 
     <string name="str_deck_details">Deck Details</string>
+    <!-- FRAGMENTOS -->
+    <string name="str_legalFormats">Legal Formats</string>
 
     <!-- MENUS -->
     <string name="strAddCard">Add card</string>
@@ -51,8 +53,8 @@
     <string name="set_name_title">Set</string>
 
     <!-- Legalities -->
-    <string name="legality_title">Legalities</string>
-    <string name="legality_content">Explore the different ways to play Magic, from Standard to Commander and beyond.</string>
+    <string name="legality_title">Legality</string>
+    <string name="legality_content">Explore the different ways to play Magic, from Standard to Commander and beyond.</string><!-- REVISED -->
     <string name="image_legality_content_description">Legality Image</string>
     <string name="standard" translatable="false">Standard</string>
     <string name="future" translatable="false">Future</string>
@@ -235,4 +237,9 @@
     <string name="loremt_title" translatable="false">Lorem ipsum dolor</string>
     <string name="lorem" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="lorem_small" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+
+
+<!-- REVISED -->
+    <!-- LEGAL FORMAT -->
+    <string name="str_legalFormatsContentDescription">List of legal formats</string>
 </resources>

@@ -5,7 +5,7 @@ import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
-import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
+import pol.rubiano.magicapp.app.common.utils.mapManaSymbols
 import pol.rubiano.magicapp.databinding.SearchResultsItemBinding
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 

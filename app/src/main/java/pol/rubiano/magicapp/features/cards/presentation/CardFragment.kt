@@ -11,7 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.common.CardEffects
+import pol.rubiano.magicapp.app.common.utils.CardEffects
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory

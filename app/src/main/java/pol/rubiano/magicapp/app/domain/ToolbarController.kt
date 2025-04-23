@@ -12,7 +12,7 @@ import androidx.core.view.size
 import androidx.core.view.get
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
-import pol.rubiano.magicapp.features.domain.models.Deck
+import pol.rubiano.magicapp.features.decks.domain.models.Deck
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -26,7 +26,10 @@ class ToolbarController(
     )
 
     private val secondaryDestinations = setOf(
-        R.id.legalitiesFragment,
+        R.id.legalFormats,
+
+
+
         R.id.keywordsFragment,
         R.id.decksFragment,
         R.id.deckDetailsFragment,
@@ -88,6 +91,21 @@ class ToolbarController(
         )
 
         when (destination.id) {
+
+            R.id.legalFormats -> {
+                toolbar.menu.clear()
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromLegalFormats_toMagic)
+                }
+            } // REVISADO
+
+
+
+
+
+
+
+
             R.id.decksFragment -> {
                 prepareToolbar(R.menu.decks_menu)
                 toolbar.setOnMenuItemClickListener { item ->

@@ -1,8 +1,6 @@
 package pol.rubiano.magicapp.features.cards.data.local
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.app.cards.data.local.toDomain
-import pol.rubiano.magicapp.app.cards.data.local.toEntity
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 
 @Single

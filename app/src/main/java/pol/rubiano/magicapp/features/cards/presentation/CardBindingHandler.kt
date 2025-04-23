@@ -4,10 +4,10 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
-import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
+import pol.rubiano.magicapp.app.common.utils.mapManaSymbols
 import pol.rubiano.magicapp.features.cards.domain.models.Card
-import pol.rubiano.magicapp.app.domain.toLegalityItemList
-import pol.rubiano.magicapp.app.presentation.legalities.LegalitiesAdapter
+import pol.rubiano.magicapp.features.magic.domain.extensions.toLegalityItemList
+import pol.rubiano.magicapp.features.cards.presentation.adapters.LegalitiesAdapter
 import pol.rubiano.magicapp.databinding.CardFragmentViewBinding
 
 class CardBindingHandler {

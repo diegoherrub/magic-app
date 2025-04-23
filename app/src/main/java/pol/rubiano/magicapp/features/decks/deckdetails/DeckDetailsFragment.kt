@@ -10,16 +10,16 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.app.cards.data.mapManaSymbols
+import pol.rubiano.magicapp.app.common.utils.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.AppError
-import pol.rubiano.magicapp.app.domain.DeckStatsAnalyzer
+import pol.rubiano.magicapp.features.decks.domain.assets.DeckStatsAnalyzer
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.cards.domain.models.CardCategory
 import pol.rubiano.magicapp.databinding.DeckDetailsBinding
-import pol.rubiano.magicapp.features.domain.models.Deck
-import pol.rubiano.magicapp.features.domain.models.DeckConfigItem
-import pol.rubiano.magicapp.features.decks.DecksViewModel
+import pol.rubiano.magicapp.features.decks.domain.models.Deck
+import pol.rubiano.magicapp.features.decks.domain.models.DeckConfigItem
+import pol.rubiano.magicapp.features.decks.presentation.DecksViewModel
 
 class DeckDetailsFragment : Fragment() {
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    style="@style/st_cointainer">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_collections_list"
+        android:id="@+id/guide_line"
         style="@style/st_guide_line"
         app:layout_constraintGuide_end="@dimen/dimen_xl"/>
 
@@ -16,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/gl_collections_list" />
+        app:layout_constraintBottom_toBottomOf="@+id/guide_line" />
 
     <pol.rubiano.magicapp.app.presentation.error.AppErrorView
         android:id="@+id/app_error_view_container"

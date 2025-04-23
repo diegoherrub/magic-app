@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/magicFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.MagicFragment"
+        android:name="pol.rubiano.magicapp.features.magic.presentation.Magic"
         android:label="@string/magic_title">
 
         <action
@@ -13,20 +13,26 @@
             app:destination="@+id/keywordsFragment" />
 
         <action
-            android:id="@+id/action_fromMagic_toLegalitiesFragment"
-            app:destination="@+id/legalitiesFragment" />
+            android:id="@+id/act_fromMagic_toLegalFormats"
+            app:destination="@+id/legalFormats" /><!-- REVISADO -->
     </fragment>
 
     <fragment
         android:id="@+id/keywordsFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.KeywordsFragment"
+        android:name="pol.rubiano.magicapp.features.magic.presentation.KeywordsFragment"
         android:label="@string/keyword_title" />
 
     <fragment
-        android:id="@+id/legalitiesFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.magic.LegalitiesFragment"
-        android:label="@string/legality_title" />
+        android:id="@+id/legalFormats"
+        android:name="pol.rubiano.magicapp.features.magic.presentation.LegalFormats"
+        android:label="@string/str_legalFormats">
 
+        <action
+            android:id="@+id/act_fromLegalFormats_toMagic"
+            app:destination="@+id/magicFragment" />
+    </fragment><!-- REVISADO -->
+
+    <!-- collections -->
     <fragment
         android:id="@+id/collectionsList"
         android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsList"
@@ -73,7 +79,7 @@
 
     <fragment
         android:id="@+id/decksFragment"
-        android:name="pol.rubiano.magicapp.features.decks.DecksFragment"
+        android:name="pol.rubiano.magicapp.features.decks.presentation.DecksFragment"
         android:label="@string/str_decks">
 
         <action
@@ -101,9 +107,9 @@
         android:label="@string/str_deck_details">
 
         <argument
-            android:name="deck"
+            android:name="deckId"
             android:defaultValue="@null"
-            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
+            app:argType="string"
             app:nullable="true" />
 
         <action
@@ -117,7 +123,7 @@
 
     <fragment
         android:id="@+id/randomCardFragment"
-        android:name="pol.rubiano.magicapp.features.presentation.ui.RandomCardFragment"
+        android:name="pol.rubiano.magicapp.features.randomcard.presentation.RandomCardFragment"
         android:label="@string/random_card_title" />
 
     <fragment
@@ -132,9 +138,9 @@
             app:nullable="true" />
 
         <argument
-            android:name="deck"
+            android:name="deckId"
             android:defaultValue="@null"
-            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
+            app:argType="string"
             app:nullable="true" />
 
         <action
@@ -161,13 +167,6 @@
             app:argType="string"
             app:nullable="true" />
 
-        <argument
-            android:name="deck"
-            android:defaultValue="@null"
-            app:argType="pol.rubiano.magicapp.features.domain.models.Deck"
-            app:nullable="true" />
-
-        <!-- Cuando se haga por deck Id, eliminar el argumento deck - TODO -->
         <argument
             android:name="deckId"
             android:defaultValue="@null"

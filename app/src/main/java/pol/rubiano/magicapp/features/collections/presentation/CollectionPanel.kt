@@ -60,8 +60,7 @@ class CollectionPanel : Fragment() {
                 R.id.itemMenuAddCardToCollection -> {
                     findNavController().navigate(
                         CollectionPanelDirections.actFromCollectionPanelToSearchFragment(
-                            collectionName,
-                            deck = null
+                            collectionName
                         )
                     )
                     true

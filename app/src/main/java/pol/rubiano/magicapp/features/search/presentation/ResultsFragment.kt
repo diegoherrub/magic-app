@@ -25,7 +25,6 @@ import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
 import pol.rubiano.magicapp.features.cards.presentation.CardViewModel
-import pol.rubiano.magicapp.features.domain.models.Deck
 import pol.rubiano.magicapp.features.search.presentation.assets.SearchResultsAdapter
 import pol.rubiano.magicapp.features.search.presentation.assets.SearchViewModel
 
@@ -43,8 +42,8 @@ class ResultsFragment : Fragment() {
 //    private val collectionsViewModel: CollectionsViewModel by viewModel()
 
     private var layoutManagerState: Parcelable? = null
+    private var deckId: String? = null
     private var collectionName: String? = null
-    private var deck: Deck? = null
     private var query: String? = null
 
     private val errorFactory: AppErrorUIFactory by inject()
@@ -68,7 +67,7 @@ class ResultsFragment : Fragment() {
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
         resultsFragmentArgs.collectionName?.let { collectionName = it }
-        resultsFragmentArgs.deck?.let { deck = it }
+        resultsFragmentArgs.deckId?.let { deckId = it }
         resultsFragmentArgs.query?.let { query = it }
 
         toolbar.setNavigationOnClickListener {
@@ -76,49 +75,34 @@ class ResultsFragment : Fragment() {
             findNavController().navigate(
                 ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
                     collectionName = collectionName,
-                    deck = deck
+                    deckId = deckId
                 )
             )
         }
-//        if (deck != null || collectionName != null) {
-//            toolbar.setNavigationOnClickListener {
-//                when {
-//                    deck != null -> {
-//                        findNavController().navigate(
-//                            ResultsFragmentDirections.actFromSearchResultsToDeckDetails(deck)
-//                        )
-//                    }
-//
-//                    collectionName != null -> {
-//                        findNavController().navigate(
-//                            ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(
-//                                collectionName
-//                            )
-//                        )
-//                    }
-//
-//                    else -> {
-//                        toolbar.setNavigationIcon(R.drawable.back)
-//                        findNavController().navigate(
-//                            ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
-////                                collectionName = collectionName,
-////                                deck = deck
-//                            )
-//                        )
-//                    }
-//                }
-//            }
-//        } else {
-//            toolbar.navigationIcon = null
-//        }
     }
 
     private fun setupView(savedInstanceState: Bundle?) {
         adapter = SearchResultsAdapter { card ->
             when {
-                deck != null -> {}
+                deckId != null -> {
+                    findNavController().navigate(
+                        ResultsFragmentDirections.actFromResultsFragmentToCardFragmentView(
+                            card = card,
+                            deckId = deckId,
+                            collectionName = null
+                        )
+                    )
+                }
 
-                collectionName != null -> {}
+                collectionName != null -> {
+                    findNavController().navigate(
+                        ResultsFragmentDirections.actFromResultsFragmentToCardFragmentView(
+                            card = card,
+                            deckId = null,
+                            collectionName = collectionName
+                        )
+                    )
+                }
 
                 else -> {
                     findNavController().navigate(
