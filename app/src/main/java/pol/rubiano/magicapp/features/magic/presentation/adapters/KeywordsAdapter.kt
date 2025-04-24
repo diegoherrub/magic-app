@@ -20,22 +20,6 @@ class KeywordsAdapter() : ListAdapter<Keyword, KeywordsViewHolder>(
     private var originalKeywords: List<Keyword> = emptyList()
     private var filteredKeywords: List<Keyword> = emptyList()
 
-//    override fun submitList(list: List<Keyword>?) {
-//        super.submitList(list)
-//        list?.let {
-//            originalKeywords = it
-//            filteredKeywords = it
-//        }
-//    }
-
-//    override fun submitList(list: List<Keyword>?) {
-//        super.submitList(list?.toList())
-//        list?.let {
-//            originalKeywords = it
-//            filteredKeywords = it
-//        }
-//    }
-
     fun setKeywords(keywords: List<Keyword>) {
         originalKeywords = keywords
         filteredKeywords = keywords
@@ -49,9 +33,6 @@ class KeywordsAdapter() : ListAdapter<Keyword, KeywordsViewHolder>(
         return KeywordsViewHolder(view)
     }
 
-    //    override fun onBindViewHolder(holder: KeywordsViewHolder, position: Int) {
-//        holder.bind(currentList[position])
-//    }
     override fun onBindViewHolder(holder: KeywordsViewHolder, position: Int) {
         holder.bind(getItem(position))
     }

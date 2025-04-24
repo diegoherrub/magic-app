@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.magic.domain.extensions
+package pol.rubiano.magicapp.features.cards.domain.extensions
 
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.cards.domain.models.LegalityItem

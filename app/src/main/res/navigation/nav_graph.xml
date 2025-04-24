@@ -10,7 +10,7 @@
 
         <action
             android:id="@+id/act_fromMagic_toKeywordsFragment"
-            app:destination="@+id/keywordsFragment" />
+            app:destination="@+id/keywords" />
 
         <action
             android:id="@+id/act_fromMagic_toLegalFormats"
@@ -18,9 +18,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/keywordsFragment"
-        android:name="pol.rubiano.magicapp.features.magic.presentation.KeywordsFragment"
-        android:label="@string/keyword_title" />
+        android:id="@+id/keywords"
+        android:name="pol.rubiano.magicapp.features.magic.presentation.Keywords"
+        android:label="@string/keyword_title">
+
+        <action
+            android:id="@+id/act_fromKeywords_toMagic"
+            app:destination="@+id/magicFragment" />
+    </fragment><!-- REVISADO -->
 
     <fragment
         android:id="@+id/legalFormats"

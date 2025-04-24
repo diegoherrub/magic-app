@@ -3,8 +3,8 @@
     <string name="app_name" translatable="false">MagicApp</string>
 
     <string name="str_deck_details">Deck Details</string>
-    <!-- FRAGMENTOS -->
-    <string name="str_legalFormats">Legal Formats</string>
+
+
 
     <!-- MENUS -->
     <string name="strAddCard">Add card</string>
@@ -241,5 +241,8 @@
 
 <!-- REVISED -->
     <!-- LEGAL FORMAT -->
+    <string name="str_legalFormats">Legal Formats</string>
     <string name="str_legalFormatsContentDescription">List of legal formats</string>
+    <!-- KEYWORDS -->
+    <string name="str_keywordsContentDescription">List of keywords in cards</string>
 </resources>

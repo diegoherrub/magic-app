@@ -27,10 +27,11 @@ class ToolbarController(
 
     private val secondaryDestinations = setOf(
         R.id.legalFormats,
+        R.id.keywords,
 
 
 
-        R.id.keywordsFragment,
+
         R.id.decksFragment,
         R.id.deckDetailsFragment,
         R.id.randomCardFragment,
@@ -96,6 +97,13 @@ class ToolbarController(
                 toolbar.menu.clear()
                 setCustomNavigationAction {
                     navController.navigate(R.id.act_fromLegalFormats_toMagic)
+                }
+            } // REVISADO
+
+            R.id.keywords -> {
+                toolbar.menu.clear()
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromKeywords_toMagic)
                 }
             } // REVISADO
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.common.utils.mapManaSymbols
 import pol.rubiano.magicapp.features.cards.domain.models.Card
-import pol.rubiano.magicapp.features.magic.domain.extensions.toLegalityItemList
+import pol.rubiano.magicapp.features.cards.domain.extensions.toLegalityItemList
 import pol.rubiano.magicapp.features.cards.presentation.adapters.LegalitiesAdapter
 import pol.rubiano.magicapp.databinding.CardFragmentViewBinding
 

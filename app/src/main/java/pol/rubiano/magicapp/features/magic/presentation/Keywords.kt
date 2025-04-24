@@ -4,29 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.xmlpull.v1.XmlPullParser
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.common.utils.mapManaSymbols
-import pol.rubiano.magicapp.databinding.LegalFormatsListBinding
-import pol.rubiano.magicapp.features.magic.domain.modules.LegalFormat
-import pol.rubiano.magicapp.features.magic.presentation.adapters.LegalFormatsAdapter
+import pol.rubiano.magicapp.databinding.KeywordsListBinding
+import pol.rubiano.magicapp.features.magic.domain.modules.Keyword
+import pol.rubiano.magicapp.features.magic.presentation.adapters.KeywordsAdapter
 
-class LegalFormats : Fragment() {
+class Keywords : Fragment() {
 
-    private var _binding: LegalFormatsListBinding? = null
+    private var _binding: KeywordsListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapter: LegalFormatsAdapter
+    private lateinit var adapter: KeywordsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = LegalFormatsListBinding.inflate(inflater, container, false)
+        _binding = KeywordsListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,19 +37,39 @@ class LegalFormats : Fragment() {
     }
 
     private fun setupView() {
-        adapter = LegalFormatsAdapter()
-        binding.legalFormatsList.apply {
+        adapter = KeywordsAdapter()
+
+        binding.keywordList.apply {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-            adapter = this@LegalFormats.adapter
+            adapter = this@Keywords.adapter
         }
-        val legalFormats = loadLegalFormatsFromXml()
-        adapter.submitList(legalFormats)
+
+        val keywords = loadKeywordsFromXml()
+            .sortedBy { it.term.lowercase() }
+        adapter.setKeywords(keywords)
+
+        binding.keywordList.adapter = adapter
+
+        binding.appKeywordsSearchBar.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapter.filter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
+
+        binding.keywordList.adapter = adapter
     }
 
-    private fun loadLegalFormatsFromXml(): List<LegalFormat> {
-        val legalFormats = mutableListOf<LegalFormat>()
-        val parser = requireContext().resources.getXml(R.xml.legal_formats)
+    private fun loadKeywordsFromXml(): List<Keyword> {
+        val keywordsList = mutableListOf<Keyword>()
+        val parser = requireContext().resources.getXml(R.xml.keywords)
         var eventType = parser.eventType
 
         while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -64,8 +85,8 @@ class LegalFormats : Fragment() {
                         requireContext().getString(informationResId)
                     ).toString()
 
-                legalFormats.add(
-                    LegalFormat(
+                keywordsList.add(
+                    Keyword(
                         icon = imageResId,
                         term = term,
                         information = information
@@ -74,7 +95,7 @@ class LegalFormats : Fragment() {
             }
             eventType = parser.next()
         }
-        return legalFormats
+        return keywordsList
     }
 
     override fun onDestroyView() {

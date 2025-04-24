@@ -171,9 +171,7 @@
     </style>
 
     <!-- Keywords -->
-    <style name="app_section_keywords_search">
-        <item name="android:paddingTop">@dimen/dimen_sm</item>
-        <item name="android:paddingBottom">@dimen/dimen_m</item>
+    <style name="app_section_keywords_search" parent="st_edit_input">
         <item name="iconTint">@color/md_theme_onPrimary</item>
         <item name="android:clickable">true</item>
         <item name="android:iconifiedByDefault">false</item>
@@ -308,7 +306,7 @@
 
 
     <!-- common section -->
-    <style name="style_view_common_section_list_type_container">
+    <style name="st_viewCommonSectionListContainer">
         <item name="android:layout_marginTop">@dimen/dimen_m</item>
         <item name="android:layout_marginRight">@dimen/dimen_m</item>
         <item name="android:layout_marginLeft">@dimen/dimen_m</item>

@@ -18,7 +18,8 @@ class KeywordsViewHolder(
         binding.apply {
             keyword.icon?.let { viewCommonSectionListTypeIcon.setImageResource(it) }
             viewCommonSectionListTypeTitle.text = keyword.term
-            viewCommonSectionListTypeContent.text = mapManaSymbols(viewCommonSectionListTypeContent.context, keyword.information)
+            viewCommonSectionListTypeContent.text =
+                mapManaSymbols(viewCommonSectionListTypeContent.context, keyword.information)
         }
     }
 }
