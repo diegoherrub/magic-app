@@ -2,7 +2,6 @@
     <!-- COMMON -->
     <string name="app_name" translatable="false">MagicApp</string>
 
-    <string name="str_deck_details">Deck Details</string>
 
 
 
@@ -16,10 +15,8 @@
     <string name="strDel">Delete</string>
     <string name="strSave">Save</string>
     <string name="strClose">Close</string>
-    <string name="str_decks">Decks</string>
     <string name="str_deck_name">Deck name</string>
     <string name="str_deck_description">Deck description</string>
-    <string name="str_new_deck">New Deck</string>
     <string name="str_edit_deck_save">Save deck</string>
 
     <string name="strCollectionName">Collection\'s name</string>
@@ -32,8 +29,6 @@
     <!-- App Bar -->
     <string name="magic_title" translatable="false">Magic</string>
     <string name="random_card_title">Random Card</string>
-    <string name="collections_list_title">Collections List</string>
-    <string name="str_newCollectionTitle">New Collection</string>
 
     <!-- Random Card Fragment -->
     <string name="cd_save_card">Save the card\'s image into app storage</string>
@@ -44,7 +39,6 @@
     <!-- navigation bar -->
     <string name="magic" translatable="false">Magic</string>
     <string name="random_card">Random</string>
-    <string name="collections">Collections</string>
 
     <!-- Titles -->
     <string name="name_title">Name</string>
@@ -226,8 +220,6 @@
     <!-- View Card -->
     <string name="view_card_label">View Card</string>
 
-    <!-- Buttons -->
-    <string name="st_btn_create_new_collection">Create Collection</string>
 
     <!-- Error -->
     <string name="image_error_content_description">Error Image</string>
@@ -240,9 +232,25 @@
 
 
 <!-- REVISED -->
-    <!-- LEGAL FORMAT -->
     <string name="str_legalFormats">Legal Formats</string>
+    <string name="str_decks">Decks</string>
+    <string name="str_collections">Collections</string>
+
     <string name="str_legalFormatsContentDescription">List of legal formats</string>
-    <!-- KEYWORDS -->
     <string name="str_keywordsContentDescription">List of keywords in cards</string>
+    <string name="str_decksListContentDescription">List of user\'s decks</string>
+    <string name="str_collectionsListContentDescription">List of user\'s collections</string>
+    <string name="str_deckPanelContentDescription">List of deck\'s cards</string>
+
+    <string name="str_newCollection">New Collection</string>
+    <string name="str_noCollectionWithThatName">There is not a collection with that name</string>
+    <string name="str_noCollectionsYet">There are no collections created yet</string>
+    <string name="str_deckPanel">Deck Panel</string>
+    <string name="str_newDeck">New Deck</string>
+    <string name="str_noDeckWithThatName">There is not a deck with that name</string>
+    <string name="str_noDecksYet">There are no decks created yet</string>
+
+
+    <string name="str_btnCreateNewCollection">Create Collection</string>
+    <string name="str_btnCreateNewDeck">Create Deck</string>
 </resources>

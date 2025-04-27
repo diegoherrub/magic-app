@@ -10,9 +10,10 @@ import com.google.android.material.appbar.MaterialToolbar
 import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragmentDirections
 import pol.rubiano.magicapp.features.decks.domain.models.Deck
+import pol.rubiano.magicapp.features.decks.presentation.DeckPanelDirections
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -23,26 +24,23 @@ class ToolbarController(
 
     private val topLevelDestinations = setOf(
         R.id.magicFragment,
+        R.id.collectionsList,
+        R.id.randomCardFragment,
+        R.id.decksList,
+        R.id.searchFragment,
     )
 
     private val secondaryDestinations = setOf(
         R.id.legalFormats,
         R.id.keywords,
-
-
-
-
-        R.id.decksFragment,
-        R.id.deckDetailsFragment,
-        R.id.randomCardFragment,
-        R.id.newCollectionForm,
         R.id.collectionPanel,
-        R.id.cardFragmentView,
-    )
+        R.id.newCollectionForm,
+        R.id.newDeck,
+        R.id.deckPanel,
 
-    private val specialDestinations = setOf(
-        R.id.collectionsList,
-        R.id.searchFragment,
+
+
+        R.id.cardFragmentView,
     )
 
     init {
@@ -59,32 +57,20 @@ class ToolbarController(
 
     private fun updateToolbar(destination: NavDestination) {
 
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        toolbar.setNavigationOnClickListener(null)
         toolbar.title = destination.label
+        bottomNav.visibility = View.VISIBLE
 
         when (destination.id) {
-            in topLevelDestinations -> {
-                activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                toolbar.setNavigationOnClickListener(null)
-                toolbar.isTitleCentered = true
-                bottomNav.visibility = View.VISIBLE
-            }
+            in topLevelDestinations -> toolbar.isTitleCentered = true
 
             in secondaryDestinations -> {
                 activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 toolbar.isTitleCentered = false
-                bottomNav.visibility = View.VISIBLE
             }
 
-            in specialDestinations -> {
-                activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                toolbar.setNavigationOnClickListener(null)
-                toolbar.isTitleCentered = false
-                bottomNav.visibility = View.VISIBLE
-            }
-
-            else -> {
-                bottomNav.visibility = View.GONE
-            }
+            else -> { }
         }
 
         toolbar.navigationIcon?.setTint(
@@ -93,13 +79,6 @@ class ToolbarController(
 
         when (destination.id) {
 
-            R.id.legalFormats -> {
-                toolbar.menu.clear()
-                setCustomNavigationAction {
-                    navController.navigate(R.id.act_fromLegalFormats_toMagic)
-                }
-            } // REVISADO
-
             R.id.keywords -> {
                 toolbar.menu.clear()
                 setCustomNavigationAction {
@@ -107,26 +86,78 @@ class ToolbarController(
                 }
             } // REVISADO
 
+            R.id.legalFormats -> {
+                toolbar.menu.clear()
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromLegalFormats_toMagic)
+                }
+            } // REVISADO
 
+            R.id.collectionsList -> {
+                prepareToolbar(R.menu.collections_list_menu)
+            } // REVISADO
 
+            R.id.collectionPanel -> {
+                prepareToolbar(R.menu.collection_panel_menu)
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromCollectionPanel_toCollectionsList)
+                }
+            } // REVISADO
 
+            R.id.newCollectionForm -> {
+                toolbar.menu.clear()
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromNewCollectionForm_toCollectionsList)
+                }
+            } // REVISADO
 
-
-
-
-            R.id.decksFragment -> {
+            R.id.decksList -> {
                 prepareToolbar(R.menu.decks_menu)
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.add_deck -> {
-                            navController.navigate(R.id.act_fromDecksFragment_toNewDeckFragment)
+                            navController.navigate(R.id.act_fromDecksList_toNewDeckFragment)
                             true
                         }
 
                         else -> false
                     }
                 }
+            } // REVISADO
+
+            R.id.newDeck -> {
+                toolbar.menu.clear()
+                setCustomNavigationAction {
+                    navController.navigate(R.id.act_fromNewDeck_toDecksList)
+                }
+            } // REVISADO
+
+            R.id.deckPanel -> {
+                prepareToolbar(R.menu.mn_deck_panel)
+                toolbar.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.itm_add_card_to_deck -> {
+                            TODO()
+                            true
+                        }
+                        R.id.itm_edit_deck -> {
+                            TODO()
+                            true
+                        }
+                        else -> false
+                    }
+                }
+                setCustomNavigationAction {
+                    navController.navigate(DeckPanelDirections.actFromDeckPanelToDecksList())
+                }
             }
+
+
+
+
+
+            
+
 
             R.id.randomCardFragment -> {
                 prepareToolbar(R.menu.random_card_menu)
@@ -146,77 +177,6 @@ class ToolbarController(
             }
 
             R.id.searchFragment -> prepareToolbar(R.menu.search_menu)
-
-            R.id.deckDetailsFragment -> {
-                prepareToolbar(R.menu.deck_details)
-                val customBack = R.id.decksFragment
-                setCustomNavigationAction {
-                    navController.navigate(customBack)
-                }
-                toolbar.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.act_fromDeckDetails_toDecksFragment -> {
-                            val direction =
-                                DeckDetailsFragmentDirections.actFromDeckDetailsToDecksFragment()
-                            navController.navigate(direction)
-                            true
-                        }
-
-                        R.id.icon_add_card -> {
-                            val deck =
-                                navController.currentBackStackEntry?.arguments?.getParcelable(
-                                    "deck",
-                                    Deck::class.java
-                                )
-                            if (deck != null) {
-                                val direction =
-                                    DeckDetailsFragmentDirections.actFromDeckDetailsToSearchFragment(
-//                                        collectionName = null,
-//                                        deck = deck
-                                    )
-                                navController.navigate(direction)
-                            }
-                            true
-                        }
-
-//                        R.id.cfg_deck_edit -> {
-//                            val deck =
-//                                navController.currentBackStackEntry?.arguments?.getParcelable(
-//                                        "deck",
-//                                        Deck::class.java
-//                                    )
-//                            if (deck != null) {
-//                                val direction =
-//                                    DeckDetailsFragmentDirections.actionDeckDetailsFragmentToDeckEditFragment(
-//                                            deck
-//                                        )
-//                                navController.navigate(R.id.actionDeckDetailsFragmentToDeckEditFragment)
-//                            }
-//                            true
-//                        }
-
-                        else -> false
-                    }
-                }
-            }
-
-            R.id.collectionPanel -> {
-                prepareToolbar(R.menu.collection_panel_menu)
-                setCustomNavigationAction {
-                    navController.navigate(R.id.act_fromCollectionPanel_toCollectionsList)
-                }
-            }
-
-            R.id.collectionsList -> {
-                prepareToolbar(R.menu.collections_list_menu)
-            }
-
-            R.id.newCollectionForm -> {
-                toolbar.menu.clear()
-                setCustomNavigationAction {
-                    navController.navigate(R.id.act_fromNewCollectionForm_toCollectionsList)
-                }
-            }
 
             R.id.cardFragmentView -> {
                 toolbar.menu.clear()

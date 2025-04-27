@@ -4,7 +4,7 @@ import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.app.data.local.MagicAppDataBase
-import pol.rubiano.magicapp.features.collections.data.CollectionDao
+import pol.rubiano.magicapp.features.collections.data.local.CollectionDao
 
 @Module
 @ComponentScan("pol.rubiano.magicapp.features.collections.data")

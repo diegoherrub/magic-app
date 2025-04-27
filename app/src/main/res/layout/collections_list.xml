@@ -4,7 +4,7 @@
     style="@style/st_cointainer">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_line"
+        android:id="@+id/guide_line_collections"
         style="@style/st_guide_line"
         app:layout_constraintGuide_end="@dimen/dimen_xl"/>
 
@@ -12,10 +12,11 @@
         android:id="@+id/collections_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/str_collectionsListContentDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/guide_line" />
+        app:layout_constraintBottom_toBottomOf="@+id/guide_line_collections" />
 
     <pol.rubiano.magicapp.app.presentation.error.AppErrorView
         android:id="@+id/app_error_view_container"

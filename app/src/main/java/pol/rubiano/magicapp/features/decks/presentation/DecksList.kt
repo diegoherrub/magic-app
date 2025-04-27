@@ -4,41 +4,48 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
-import pol.rubiano.magicapp.databinding.DecksFragmentBinding
+import pol.rubiano.magicapp.databinding.DecksListBinding
+import pol.rubiano.magicapp.features.decks.presentation.assets.DecksAdapter
+import pol.rubiano.magicapp.features.decks.presentation.assets.DecksViewModel
 
-class DecksFragment : Fragment() {
+class DecksList : Fragment() {
 
-    private var _binding: DecksFragmentBinding? = null
+    private var _binding: DecksListBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DecksViewModel by viewModel()
-
-    private lateinit var adapter: DecksAdapter
+    private val adapter = DecksAdapter { deck ->
+        val action = DecksListDirections.actFromDecksListToDeckPanel(deck.id)
+        findNavController().navigate(action)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = DecksFragmentBinding.inflate(inflater, container, false)
+        _binding = DecksListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        adapter = DecksAdapter { deck ->
-            val action = DecksFragmentDirections.actFromDecksFragmentToDeckDetailsFragment(deck.id)
-            findNavController().navigate(action)
-        }
-        binding.decksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.decksRecyclerView.adapter = adapter
-
+        setupToolbar()
         setupObserver()
+    }
+
+    private fun setupToolbar() {
+        binding.decksList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = this@DecksList.adapter
+        }
+        viewModel.loadUserDecks()
     }
 
     private fun setupObserver() {
@@ -51,8 +58,11 @@ class DecksFragment : Fragment() {
                 }
 
                 is UiState.Empty -> {
-                    val action = DecksFragmentDirections.actFromDecksFragmentToNewDeckFragment()
-                    findNavController().navigate(action)
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.str_noDecksYet,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
                 is UiState.Error -> {
@@ -60,11 +70,6 @@ class DecksFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadUserDecks()
     }
 
     override fun onDestroyView() {

@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.decks.presentation
+package pol.rubiano.magicapp.features.decks.presentation.assets
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

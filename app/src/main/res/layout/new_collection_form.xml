@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/st_cointainer">
+    style="@style/st_cointainer"
+    android:padding="@dimen/zero_dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/newCollectionForm"
@@ -23,7 +24,7 @@
             android:id="@+id/newCollectionName"
             style="@style/st_edit_input"
             android:autofillHints="no"
-            android:hint="@string/str_newCollectionTitle"
+            android:hint="@string/str_newCollection"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="@id/newCollectionNameLabel"
             app:layout_constraintStart_toStartOf="@id/newCollectionNameLabel"
@@ -32,7 +33,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCreateNewCollection"
             style="@style/stButton"
-            android:text="@string/st_btn_create_new_collection"
+            android:text="@string/str_btnCreateNewCollection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newCollectionName" />

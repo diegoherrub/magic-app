@@ -5,10 +5,11 @@ import pol.rubiano.magicapp.features.decks.domain.models.Deck
 import pol.rubiano.magicapp.features.decks.domain.repositories.DecksRepository
 
 @Single
-class GetDecksUseCase(
+class GetDeckUseCase(
     private val decksRepository: DecksRepository
 ) {
-    suspend operator fun invoke(): List<Deck> {
-        return decksRepository.getUserDecks()
+    suspend operator fun invoke(deckId: String): Deck? {
+        return decksRepository.getDeckById(deckId)
     }
 }
+

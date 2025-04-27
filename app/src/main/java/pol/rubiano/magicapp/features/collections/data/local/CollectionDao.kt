@@ -1,10 +1,11 @@
-package pol.rubiano.magicapp.features.collections.data
+package pol.rubiano.magicapp.features.collections.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import pol.rubiano.magicapp.features.collections.data.CardInCollectionEntity
 
 @Dao
 interface CollectionDao {

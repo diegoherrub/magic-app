@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -32,6 +33,7 @@ class CollectionPanel : Fragment() {
     private val collectionPanelArgs: CollectionPanelArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
 
+    private lateinit var toolbar: MaterialToolbar
     private lateinit var adapter: CardsInCollectionAdapter
     private lateinit var collectionName: String
 
@@ -52,7 +54,7 @@ class CollectionPanel : Fragment() {
     }
 
     private fun setupToolbar() {
-        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
+        toolbar = requireActivity().findViewById(R.id.toolbar)
         collectionPanelArgs.collectionName?.let { collectionName = it }
         toolbar.title = collectionName
         toolbar.setOnMenuItemClickListener { item ->
@@ -88,9 +90,7 @@ class CollectionPanel : Fragment() {
                     adapter.submitList(collection.cards)
                 }
 
-                is UiState.Error -> {
-                    bindError(state.error)
-                }
+                is UiState.Error -> bindError(state.error)
 
                 else -> {}
             }

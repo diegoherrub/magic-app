@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- COMMON -->
-    <style name="st_match_match_parent">
+    <style name="style_matchMatch">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
 
-    <style name="st_match_wrap">
+    <style name="style_matchWrap">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="st_wrap_wrap_content">
+    <style name="style_wrapWrap">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="st_zero">
+    <style name="style_zeroZero">
         <item name="android:layout_width">@dimen/zero_dp</item>
         <item name="android:layout_height">@dimen/zero_dp</item>
     </style>
 
-    <style name="st_wrap_zero">
+    <style name="style_wrapZero">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/zero_dp</item>
     </style>
 
-    <style name="st_zero_wrap">
+    <style name="style_zeroWrap">
         <item name="android:layout_width">@dimen/zero_dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="st_match_zero">
+    <style name="style_matchZero">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/zero_dp</item>
     </style>
 
     <!-- CONTAINERS -->
-    <style name="st_cointainer" parent="st_match_match_parent">
+    <style name="st_cointainer" parent="style_matchMatch">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
 
 
-    <style name="st_cointainer_item" parent="st_match_wrap">
+    <style name="st_cointainer_item" parent="style_matchWrap">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
 
@@ -50,7 +50,7 @@
         <item name="android:padding">@dimen/zero_dp</item>
     </style>
 
-    <style name="st_cointainer_item_fit" parent="st_wrap_wrap_content">
+    <style name="st_cointainer_item_fit" parent="style_wrapWrap">
         <item name="android:padding">@dimen/zero_dp</item>
     </style>
 
@@ -69,7 +69,7 @@
     </style>
 
     <!-- FORMS -->
-    <style name="st_edit_label" parent="st_match_wrap">
+    <style name="st_edit_label" parent="style_matchWrap">
         <item name="android:textAppearance">@style/txt_edit_label</item>
         <item name="android:layout_marginVertical">@dimen/dimen_ml</item>
     </style>
@@ -80,7 +80,7 @@
         <item name="android:layout_marginVertical">@dimen/dimen_m</item>
     </style>
 
-    <style name="st_edit_input" parent="st_match_wrap">
+    <style name="st_edit_input" parent="style_matchWrap">
         <item name="android:paddingTop">@dimen/dimen_ml</item>
         <item name="android:paddingBottom">@dimen/dimen_ml</item>
         <item name="android:textAppearance">@style/txt_edit_deck_name</item>
@@ -93,7 +93,7 @@
     </style>
 
     <!-- BUTTONS -->
-    <style name="stButton" parent="st_wrap_wrap_content">
+    <style name="stButton" parent="style_wrapWrap">
         <item name="android:layout_marginTop">@dimen/dimen_xl</item>
         <item name="android:paddingTop">@dimen/dimen_s</item>
         <item name="android:paddingBottom">@dimen/dimen_s</item>
@@ -143,22 +143,22 @@
 
 
     <!-- ITEMS -->
-    <style name="st_item_title" parent="st_zero_wrap">
+    <style name="st_item_title" parent="style_zeroWrap">
         <item name="android:layout_marginStart">@dimen/dimen_m</item>
         <item name="android:textAppearance">@style/ft_item_title</item>
     </style>
 
-    <style name="st_item_colors" parent="st_zero_wrap">
+    <style name="st_item_colors" parent="style_zeroWrap">
         <item name="android:layout_marginStart">@dimen/dimen_m</item>
         <item name="android:textAppearance">@style/ft_item_colors</item>
     </style>
 
-    <style name="st_item_description" parent="st_zero_wrap">
+    <style name="st_item_description" parent="style_zeroWrap">
         <item name="android:layout_marginStart">@dimen/dimen_m</item>
         <item name="android:textAppearance">@style/ft_item_description</item>
     </style>
 
-    <style name="st_collection_list_item" parent="st_match_wrap">
+    <style name="st_collection_list_item" parent="style_matchWrap">
         <item name="android:textAppearance">@style/ft_item_title</item>
         <item name="android:textColor">@color/md_theme_secondary</item>
     </style>
@@ -230,7 +230,7 @@
         <item name="android:paddingBottom">@dimen/dimen_l</item>
     </style>
 
-    <style name="st_separator_header" parent="st_match_wrap">
+    <style name="st_separator_header" parent="style_matchWrap">
         <item name="android:paddingStart">@dimen/dimen_m</item>
         <item name="android:paddingEnd">@dimen/dimen_m</item>
         <item name="android:paddingTop">@dimen/dimen_sm</item>
@@ -339,44 +339,44 @@
     </style>
 
     <!-- Error -->
-    <style name="st_app_error_view_container" parent="st_zero" />
+    <style name="st_app_error_view_container" parent="style_zeroZero" />
 
-    <style name="st_guide_line" parent="st_wrap_wrap_content">
+    <style name="st_guide_line" parent="style_wrapWrap">
         <item name="android:orientation">horizontal</item>
     </style>
 
     <!-- DECKS -->
-    <style name="st_deck_name" parent="st_wrap_wrap_content">
-        <item name="android:textAppearance">@style/ft_deck_name</item>
+    <style name="style_deckPanelName" parent="style_wrapWrap">
+        <item name="android:textAppearance">@style/font_deckPanelName</item>
     </style>
 
-    <style name="ft_deck_name">
+    <style name="font_deckPanelName">
         <item name="android:fontFamily">@font/app_bold</item>
         <item name="android:textSize">@dimen/size_l</item>
         <item name="android:textColor">@color/md_theme_primary</item>
     </style>
 
-    <style name="st_deck_colors" parent="st_wrap_wrap_content">
-        <item name="android:textAppearance">@style/ft_deck_colors</item>
+    <style name="style_deckPanelColors" parent="style_wrapWrap">
+        <item name="android:textAppearance">@style/font_deckPanelColors</item>
     </style>
 
-    <style name="ft_deck_colors" parent="ft_deck_name" />
+    <style name="font_deckPanelColors" parent="font_deckPanelName" />
 
-    <style name="st_deck_description" parent="st_match_wrap">
+    <style name="style_deckPanelDescription" parent="style_matchWrap">
         <item name="android:layout_marginTop">@dimen/dimen_m</item>
         <item name="android:paddingBottom">@dimen/size_m</item>
-        <item name="android:textAppearance">@style/ft_deck_description</item>
+        <item name="android:textAppearance">@style/font_deckPanelDescription</item>
     </style>
 
-    <style name="ft_deck_description">
+    <style name="font_deckPanelDescription">
         <item name="android:fontFamily">@font/app_regular</item>
         <item name="android:textSize">@dimen/size_ml</item>
     </style>
 
-    <style name="st_deck_details_recycler" parent="st_match_zero" />
+    <style name="style_deckCardsList" parent="style_zeroZero" />
 
     <!-- COLLECTIONS -->
-    <style name="stCollectionPanelCardsRecycler" parent="st_match_zero" />
+    <style name="stCollectionPanelCardsRecycler" parent="style_matchZero" />
 
     <!-- FONTS -->
     <style name="app_tool_bar_title">

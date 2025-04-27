@@ -1,96 +1,140 @@
-package pol.rubiano.magicapp.features.decks.deckdetails
+package pol.rubiano.magicapp.features.decks.presentation
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.app.common.extensions.gone
+import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.common.utils.mapManaSymbols
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.features.decks.domain.assets.DeckStatsAnalyzer
 import pol.rubiano.magicapp.app.domain.UiState
+import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
+import pol.rubiano.magicapp.databinding.DeckPanelBinding
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.cards.domain.models.CardCategory
-import pol.rubiano.magicapp.databinding.DeckDetailsBinding
-import pol.rubiano.magicapp.features.decks.domain.models.Deck
+import pol.rubiano.magicapp.features.decks.presentation.assets.DeckPanelAdapter
 import pol.rubiano.magicapp.features.decks.domain.models.DeckConfigItem
-import pol.rubiano.magicapp.features.decks.presentation.DecksViewModel
+import pol.rubiano.magicapp.features.decks.presentation.assets.DecksViewModel
 
-class DeckDetailsFragment : Fragment() {
+class DeckPanel : Fragment() {
 
-    private var _binding: DeckDetailsBinding? = null
+    private var _binding: DeckPanelBinding? = null
     private val binding get() = _binding!!
     private val decksViewModel: DecksViewModel by viewModel()
-    private val deckDetailsFragmentArgs: DeckDetailsFragmentArgs by navArgs()
-//    private val resultsFragmentArgs: ResultsFragmentArgs by navArgs()
-    private lateinit var currentDeck: Deck
-    private lateinit var adapter: DeckDetailsAdapter
+    private val deckPanelArgs: DeckPanelArgs by navArgs()
+    private val errorFactory: AppErrorUIFactory by inject()
+
+    private lateinit var toolbar: MaterialToolbar
+    private lateinit var deckId: String
+    private lateinit var adapter: DeckPanelAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DeckDetailsBinding.inflate(inflater, container, false)
+        _binding = DeckPanelBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        currentDeck = deckDetailsFragmentArgs.deck
-//        currentDeck = resultsFragmentArgs.deck
-        decksViewModel.loadCurrentDeck(currentDeck)
-        setupRecyclerViewCardsOfDeck()
+        setupToolbar()
+        setupView()
         setupObservers()
     }
 
-    private fun setupRecyclerViewCardsOfDeck() {
-        adapter = DeckDetailsAdapter()
-        binding.recyclerViewCardsOfDeck.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewCardsOfDeck.adapter = adapter
+    private fun setupToolbar() {
+        toolbar = requireActivity().findViewById(R.id.toolbar)
+        deckPanelArgs.deckId?.let { deckId = it }
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.add_deck -> {
+                    findNavController().navigate(
+                        DeckPanelDirections.actFromDeckPanelToSearchFragment(deckId)
+                    )
+                    true
+                }
+
+                else -> false
+            }
+        }
+    }
+
+    private fun setupView() {
+        adapter = DeckPanelAdapter()
+        binding.deckCardsList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = this@DeckPanel.adapter
+        }
+        decksViewModel.getDeckById(deckId)
     }
 
     private fun setupObservers() {
+        decksViewModel.fetchedDeck.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    val deck = state.data
+                    toolbar.title = deck.name + " Panel"
+                    binding.deckPanelName.text = deck.name
+                    binding.deckPanelDescription.text = deck.description
+                }
+
+                is UiState.Empty -> {
+                    findNavController().navigate(
+                        DeckPanelDirections.actFromDeckPanelToDecksList()
+                    )
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.str_noDeckWithThatName,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                is UiState.Error -> bindError(state.error)
+                else -> {}
+            }
+        }
+
+
+
+
+
         decksViewModel.addedCardToDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
                     // Get the updated deck and update UI elements accordingly
                     val updatedDeck = state.data
-                    binding.cfgDeckName.text = updatedDeck.name
-                    binding.cfgDeckDescription.text = updatedDeck.description
+                    binding.deckPanelName.text = updatedDeck.name
+                    binding.deckPanelDescription.text = updatedDeck.description
                     // If you need to update other parts (e.g., refresh your adapter),
                     // you might trigger another call to load the cards
                 }
+
                 is UiState.Loading -> {
                     // Optionally show a loading indicator
                 }
+
                 is UiState.Error -> {
                     // Optionally show an error message
                 }
+
                 is UiState.Empty -> {
                     // Handle empty state if needed
-                }
-            }
-        }
-
-
-        decksViewModel.currentDeck.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is UiState.Success -> {
-                    val deck = state.data
-                    binding.cfgDeckName.text = deck.name
-                    binding.cfgDeckDescription.text = deck.description
-                }
-
-                is UiState.Loading -> {}
-                is UiState.Empty -> {}
-                is UiState.Error -> {
-                    AppError.AppDataError
                 }
             }
         }
@@ -104,8 +148,8 @@ class DeckDetailsFragment : Fragment() {
                     adapter.submitList(grouped)
                     val uniqueColors = DeckStatsAnalyzer.getUniqueColors(cards)
                         .joinToString(" ") { "{$it}" }
-                    binding.cfgDeckColors.text = mapManaSymbols(requireContext(), uniqueColors)
-                    Log.d("@pol", "cards: ${cards}" )
+                    binding.deckPanelColors.text = mapManaSymbols(requireContext(), uniqueColors)
+                    Log.d("@pol", "cards: ${cards}")
 
                 }
 
@@ -122,7 +166,8 @@ class DeckDetailsFragment : Fragment() {
         val groupedItems = mutableListOf<DeckConfigItem>()
 
         // Creatures
-        val creatures = cards.filter { it?.typeLine?.contains("creature", ignoreCase = true) ?: false }
+        val creatures =
+            cards.filter { it?.typeLine?.contains("creature", ignoreCase = true) ?: false }
         if (creatures.isNotEmpty()) {
             val creaturesString = getString(R.string.type_creature)
             groupedItems += DeckConfigItem.Header("$creaturesString (${creatures.size})")
@@ -158,9 +203,23 @@ class DeckDetailsFragment : Fragment() {
         return groupedItems
     }
 
-    override fun onResume() {
-        super.onResume()
-//        decksViewModel.loadCurrentDeck(deckDetailsFragmentArgs.deck)
+    private fun bindError(appError: AppError?) {
+        if (appError != null) {
+            binding.deckPanelContainer.gone()
+            binding.appErrorViewContainer.visible()
+            binding.appErrorViewContainer.render(errorFactory.build(appError))
+            binding.appErrorViewContainer.setOnRetryClickListener {
+                binding.appErrorViewContainer.gone()
+                binding.deckPanelContainer.visible()
+                viewLifecycleOwner.lifecycleScope.launch {
+                    delay(2000)
+                    decksViewModel.getDeckById(deckId)
+                }
+            }
+        } else {
+            binding.deckPanelContainer.visible()
+            binding.appErrorViewContainer.gone()
+        }
     }
 
     override fun onDestroyView() {

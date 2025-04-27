@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.decks.presentation
+package pol.rubiano.magicapp.features.decks.presentation.assets
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter

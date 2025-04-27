@@ -1,6 +1,5 @@
-package pol.rubiano.magicapp.features.decks.deckdetails
+package pol.rubiano.magicapp.features.decks.presentation.assets
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.presentation.AppDiffUtil
 import pol.rubiano.magicapp.features.decks.domain.models.DeckConfigItem
 
-class DeckDetailsAdapter(
+class DeckPanelAdapter(
 //    private val onAddCardClick: (CardCategory) -> Unit = {}
 ) : ListAdapter<DeckConfigItem, RecyclerView.ViewHolder>(
     AppDiffUtil<DeckConfigItem>(
@@ -139,5 +138,3 @@ class DeckDetailsAdapter(
         }
     }
 }
-private fun Int.dp(context: Context): Int =
-    (this * context.resources.displayMetrics.density).toInt()

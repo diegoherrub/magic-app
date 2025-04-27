@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.collections.presentation
+package pol.rubiano.magicapp.features.decks.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,24 +17,25 @@ import pol.rubiano.magicapp.app.common.extensions.visible
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
-import pol.rubiano.magicapp.databinding.NewCollectionFormBinding
-import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
+import pol.rubiano.magicapp.databinding.NewDeckFormBinding
+import pol.rubiano.magicapp.features.decks.presentation.assets.DecksViewModel
 
-class NewCollectionForm : Fragment() {
+class NewDeckForm : Fragment() {
 
-    private var _binding: NewCollectionFormBinding? = null
+    private var _binding: NewDeckFormBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: CollectionsViewModel by viewModel()
+    private val decksViewModel: DecksViewModel by viewModel()
     private val errorFactory: AppErrorUIFactory by inject()
 
-    private var newCollectionName: String = ""
+    private var newDeckName: String = ""
+    private var newDeckDescription: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = NewCollectionFormBinding.inflate(inflater, container, false)
+        _binding = NewDeckFormBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,21 +46,25 @@ class NewCollectionForm : Fragment() {
     }
 
     private fun setupView() {
-        binding.btnCreateNewCollection.setOnClickListener {
-            newCollectionName = binding.newCollectionName.text.toString().trim()
-            if (newCollectionName.isEmpty()) newCollectionName =
-                getString(R.string.str_newCollection)
-            viewModel.createCollection(newCollectionName)
+        binding.btnCreateNewDeck.setOnClickListener {
+            newDeckName = binding.newDeckName.text.toString().trim()
+            newDeckDescription = binding.newDeckDescription.text.toString().trim()
+            if (newDeckName.isEmpty()) newDeckName = getString(R.string.str_newDeck)
+            decksViewModel.createNewDeck(newDeckName, newDeckDescription)
         }
     }
 
     private fun setupObserver() {
-        viewModel.currentCollection.observe(viewLifecycleOwner) { state ->
+        decksViewModel.newDeckCreated.observe(viewLifecycleOwner) { state ->
             when (state) {
+                is UiState.Loading -> {}
                 is UiState.Success -> {
-                    val actionWhenSaved =
-                        NewCollectionFormDirections.actFromNewCollectionFormToCollectionsList()
-                    findNavController().navigate(actionWhenSaved)
+                    val deck = state.data
+                    findNavController().navigate(
+                        NewDeckFormDirections.actFromNewDeckToDeckPanel(
+                            deck.id
+                        )
+                    )
                 }
 
                 is UiState.Error -> {
@@ -73,19 +78,19 @@ class NewCollectionForm : Fragment() {
 
     private fun bindError(appError: AppError?) {
         if (appError != null) {
-            binding.newCollectionForm.gone()
+            binding.newDeckForm.gone()
             binding.appErrorViewContainer.visible()
             binding.appErrorViewContainer.render(errorFactory.build(appError))
             binding.appErrorViewContainer.setOnRetryClickListener {
                 binding.appErrorViewContainer.gone()
-                binding.newCollectionForm.visible()
+                binding.newDeckForm.visible()
                 viewLifecycleOwner.lifecycleScope.launch {
                     delay(2000)
-                    viewModel.createCollection(newCollectionName)
+                    decksViewModel.createNewDeck(newDeckName, newDeckDescription)
                 }
             }
         } else {
-            binding.newCollectionForm.visible()
+            binding.newDeckForm.visible()
             binding.appErrorViewContainer.gone()
         }
     }

@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.features.search.presentation
 
+import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +48,9 @@ class SearchFragment : Fragment() {
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
         args.collectionName?.let { collectionName = it }
+        Log.d("@pol", "SearchFragment.setupToolbar(collectionName) -> $collectionName")
         args.deckId?.let { deckId = it }
+        Log.d("@pol", "SearchFragment.setupToolbar(deckId) -> $deckId")
 
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -56,8 +59,8 @@ class SearchFragment : Fragment() {
                     findNavController().navigate(
                         SearchFragmentDirections.actFromSearchFragmentToResultsFragment(
                             query,
-                            deckId = null,
-                            collectionName = null
+                            deckId = deckId,
+                            collectionName = collectionName
                         )
                     )
                     true

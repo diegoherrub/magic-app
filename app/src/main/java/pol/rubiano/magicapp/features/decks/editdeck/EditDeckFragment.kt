@@ -8,7 +8,7 @@
 //import androidx.navigation.fragment.navArgs
 //import org.koin.androidx.viewmodel.ext.android.viewModel
 //import pol.rubiano.magicapp.databinding.EditDeckFragmentBinding
-//import pol.rubiano.magicapp.features.decks.presentation.DecksViewModel
+//import pol.rubiano.magicapp.features.decks.presentation.assets.DecksViewModel
 //
 //class EditDeckFragment : Fragment() {
 //

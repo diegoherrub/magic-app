@@ -6,8 +6,8 @@ import androidx.room.TypeConverters
 import pol.rubiano.magicapp.features.cards.data.local.CardDao
 import pol.rubiano.magicapp.features.cards.data.local.CardEntity
 import pol.rubiano.magicapp.features.collections.data.CardInCollectionEntity
-import pol.rubiano.magicapp.features.collections.data.CollectionDao
-import pol.rubiano.magicapp.features.collections.data.CollectionEntity
+import pol.rubiano.magicapp.features.collections.data.local.CollectionDao
+import pol.rubiano.magicapp.features.collections.data.local.CollectionEntity
 import pol.rubiano.magicapp.features.decks.data.local.DeckDao
 import pol.rubiano.magicapp.features.decks.data.local.DeckEntity
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -84,6 +85,18 @@ class CollectionsList : Fragment() {
                     binding.collectionsList.visibility = View.VISIBLE
                     val collections = state.data
                     adapter.submitList(collections)
+                }
+
+                is UiState.Empty -> {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.str_noCollectionsYet,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+//                    val action =
+//                        CollectionsListDirections.actFromCollectionsListToNewCollectionForm()
+//                    findNavController().navigate(action)
                 }
 
                 is UiState.Error -> {

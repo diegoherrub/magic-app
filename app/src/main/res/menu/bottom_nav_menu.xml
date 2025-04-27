@@ -8,9 +8,9 @@
     <item
         android:id="@+id/collectionsList"
         android:icon="@drawable/collection"
-        android:title="@string/collections_list_title" />
+        android:title="@string/str_collections" />
     <item
-        android:id="@+id/decksFragment"
+        android:id="@+id/decksList"
         android:icon="@drawable/deck"
         android:title="@string/str_decks" />
     <item

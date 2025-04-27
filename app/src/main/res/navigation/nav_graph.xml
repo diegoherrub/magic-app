@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/magicFragment">
 
+    <!-- MAGIC -->
     <fragment
         android:id="@+id/magicFragment"
         android:name="pol.rubiano.magicapp.features.magic.presentation.Magic"
@@ -14,8 +15,8 @@
 
         <action
             android:id="@+id/act_fromMagic_toLegalFormats"
-            app:destination="@+id/legalFormats" /><!-- REVISADO -->
-    </fragment>
+            app:destination="@+id/legalFormats" />
+    </fragment><!-- REVISADO -->
 
     <fragment
         android:id="@+id/keywords"
@@ -37,11 +38,11 @@
             app:destination="@+id/magicFragment" />
     </fragment><!-- REVISADO -->
 
-    <!-- collections -->
+    <!-- COLLECTIONS -->
     <fragment
         android:id="@+id/collectionsList"
         android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsList"
-        android:label="@string/collections_list_title">
+        android:label="@string/str_collections">
 
         <action
             android:id="@+id/act_fromCollectionsList_toNewCollectionForm"
@@ -50,16 +51,6 @@
         <action
             android:id="@+id/act_fromCollectionsList_toCollectionPanel"
             app:destination="@+id/collectionPanel" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/newCollectionForm"
-        android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm"
-        android:label="@string/str_newCollectionTitle">
-
-        <action
-            android:id="@+id/act_fromNewCollectionForm_toCollectionsList"
-            app:destination="@+id/collectionsList" />
     </fragment>
 
     <fragment
@@ -83,33 +74,34 @@
     </fragment>
 
     <fragment
-        android:id="@+id/decksFragment"
-        android:name="pol.rubiano.magicapp.features.decks.presentation.DecksFragment"
+        android:id="@+id/newCollectionForm"
+        android:name="pol.rubiano.magicapp.features.collections.presentation.NewCollectionForm"
+        android:label="@string/str_newCollection">
+
+        <action
+            android:id="@+id/act_fromNewCollectionForm_toCollectionsList"
+            app:destination="@+id/collectionsList" />
+    </fragment>
+
+    <!-- DECKS -->
+    <fragment
+        android:id="@+id/decksList"
+        android:name="pol.rubiano.magicapp.features.decks.presentation.DecksList"
         android:label="@string/str_decks">
 
         <action
-            android:id="@+id/act_fromDecksFragment_toNewDeckFragment"
-            app:destination="@+id/newDeckFragment" />
+            android:id="@+id/act_fromDecksList_toDeckPanel"
+            app:destination="@+id/deckPanel" />
 
         <action
-            android:id="@+id/act_fromDecksFragment_toDeckDetailsFragment"
-            app:destination="@+id/deckDetailsFragment" />
+            android:id="@+id/act_fromDecksList_toNewDeckFragment"
+            app:destination="@+id/newDeck" />
     </fragment>
 
     <fragment
-        android:id="@+id/newDeckFragment"
-        android:name="pol.rubiano.magicapp.features.decks.newdeck.NewDeckFragment"
-        android:label="@string/str_new_deck">
-
-        <action
-            android:id="@+id/act_fromNewDeckFragment_toDeckDetailsFragment"
-            app:destination="@+id/deckDetailsFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/deckDetailsFragment"
-        android:name="pol.rubiano.magicapp.features.decks.deckdetails.DeckDetailsFragment"
-        android:label="@string/str_deck_details">
+        android:id="@+id/deckPanel"
+        android:name="pol.rubiano.magicapp.features.decks.presentation.DeckPanel"
+        android:label="@string/str_deckPanel">
 
         <argument
             android:name="deckId"
@@ -118,13 +110,44 @@
             app:nullable="true" />
 
         <action
-            android:id="@+id/act_fromDeckDetails_toDecksFragment"
-            app:destination="@+id/decksFragment" />
+            android:id="@+id/act_fromDeckPanel_toSearchFragment"
+            app:destination="@id/searchFragment" />
 
         <action
-            android:id="@+id/act_fromDeckDetails_toSearchFragment"
-            app:destination="@id/searchFragment" />
+            android:id="@+id/act_fromDeckPanel_toDecksList"
+            app:destination="@+id/decksList" />
+
+
     </fragment>
+
+    <fragment
+        android:id="@+id/newDeck"
+        android:name="pol.rubiano.magicapp.features.decks.presentation.NewDeckForm"
+        android:label="@string/str_newDeck">
+
+        <action
+            android:id="@+id/act_fromNewDeck_toDeckPanel"
+            app:destination="@+id/deckPanel" />
+
+        <action
+            android:id="@+id/act_fromNewDeck_toDecksList"
+            app:destination="@+id/decksList" />
+    </fragment>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <fragment
         android:id="@+id/randomCardFragment"
@@ -154,7 +177,7 @@
 
         <action
             android:id="@+id/act_fromSearchFragment_toDeckDetailsFragment"
-            app:destination="@+id/deckDetailsFragment" />
+            app:destination="@+id/deckPanel" />
 
         <action
             android:id="@+id/act_fromSearchFragment_toResultsFragment"
@@ -190,7 +213,7 @@
 
         <action
             android:id="@+id/act_fromSearchResults_toDeckDetails"
-            app:destination="@+id/deckDetailsFragment" />
+            app:destination="@+id/deckPanel" />
 
         <action
             android:id="@+id/act_fromSearchResultsFragment_toSearchFragment"

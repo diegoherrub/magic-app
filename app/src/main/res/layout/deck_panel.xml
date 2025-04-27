@@ -1,0 +1,54 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/style_matchMatch">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deckPanelContainer"
+        style="@style/st_cointainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line_deck_panel"
+            style="@style/st_guide_line"
+            app:layout_constraintGuide_end="@dimen/dimen_xl" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/deckPanelName"
+            style="@style/style_deckPanelName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/deckPanelColors"
+            style="@style/style_deckPanelColors"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/deckPanelDescription"
+            style="@style/style_deckPanelDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deckPanelName" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/deckCardsList"
+            style="@style/style_deckCardsList"
+            android:contentDescription="@string/str_deckPanelContentDescription"
+            app:layout_constraintBottom_toBottomOf="@+id/guide_line_deck_panel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deckPanelDescription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <pol.rubiano.magicapp.app.presentation.error.AppErrorView
+        android:id="@+id/app_error_view_container"
+        style="@style/st_app_error_view_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
