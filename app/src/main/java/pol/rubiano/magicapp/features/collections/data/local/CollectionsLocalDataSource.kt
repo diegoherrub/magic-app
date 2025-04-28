@@ -22,7 +22,11 @@ class CollectionsLocalDataSource(
         return collectionEntity.toCollection()
     }
 
-    suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
-        return collectionDao.getCardsOfCollection(collectionName).map { it.toCardInCollection() }
+    //suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
+    //    return collectionDao.getCardsOfCollection(collectionName).map { it.toCardInCollection() }
+    //}
+
+    suspend fun saveCollection(collectionEntity: CollectionEntity) {
+        collectionDao.saveCollection(collectionEntity)
     }
 }

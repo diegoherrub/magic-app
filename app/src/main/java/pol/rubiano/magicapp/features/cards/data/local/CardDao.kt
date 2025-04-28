@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import pol.rubiano.magicapp.features.collections.data.local.CardInCollectionEntity
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
@@ -17,13 +18,17 @@ interface CardDao {
     suspend fun getCardById(id: String): CardEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveCardInCollectionToLocal(cardInCollectionEntity: CardInCollectionEntity)
+    suspend fun saveCardInCollection(cardInCollectionEntity: CardInCollectionEntity)
+
+    @Update
+    suspend fun updateLocalCardInCollection(cardInCollectionEntity: CardInCollectionEntity)
+
+
 
     @Query("SELECT * FROM cards_in_collection WHERE card_id = :cardId and collection_name = :collectionName")
     suspend fun getCardInCollection(cardId: String, collectionName: String): CardInCollectionEntity
 
-    @Update
-    suspend fun updateLocalCardInCollection(cardInCollectionEntity: CardInCollectionEntity)
+
 
 
 //    @Insert(onConflict = OnConflictStrategy.REPLACE)

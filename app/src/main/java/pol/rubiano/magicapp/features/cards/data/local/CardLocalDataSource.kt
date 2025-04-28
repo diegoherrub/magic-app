@@ -25,7 +25,7 @@ class CardLocalDataSource(
     }
 
     suspend fun saveCardInCollectionToLocal(cardInCollection: CardInCollection) {
-        cardDao.saveCardInCollectionToLocal(cardInCollection.toEntity())
+        cardDao.saveCardInCollection(cardInCollection.toEntity())
     }
 
     suspend fun updateLocalCardInCollection(cardInCollection: CardInCollection) {

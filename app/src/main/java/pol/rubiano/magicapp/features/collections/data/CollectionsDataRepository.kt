@@ -28,9 +28,9 @@ class CollectionsDataRepository(
         return local.getCollectionByName(collectionName)
     }
 
-    override suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
-        return local.getCardsOfCollection(collectionName)
-    }
+    //override suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
+    //    return local.getCardsOfCollection(collectionName)
+    //}
 
     override suspend fun saveCollection(collection: Collection) {
         val defaultName = context.getString(R.string.str_newCollection)
@@ -40,7 +40,7 @@ class CollectionsDataRepository(
         if (collection.name == defaultName) {
             collectionNameToSave = "$defaultName - ${collectionsCount + 1}"
         } else {
-            val existingCollection = collectionDao.getCollectionByName(collectionNameToSave)
+            val existingCollection = local.getCollectionByName(collectionNameToSave)
             if (existingCollection != null) {
                 collectionNameToSave += " - ${collectionsCount + 1}"
             }
@@ -52,26 +52,6 @@ class CollectionsDataRepository(
             order = collection.order,
             cards = collection.cards
         )
-        collectionDao.saveCollection(collectionEntity)
-    }
-
-    override suspend fun addCardToCollection(collectionName: String, cardId: String) {
-        val collection = collectionDao.getCollectionByName(collectionName)
-        val cardInCollection = collection.cards.find { it.cardId == cardId }
-        if (cardInCollection != null) {
-            cardInCollection.copies += 1
-            collectionDao.updateCardInCollection(
-                cardId = cardInCollection.cardId,
-                collectionName = cardInCollection.collectionName,
-                copies = cardInCollection.copies
-            )
-        } else {
-            val newCardInCollection = CardInCollection(
-                cardId = cardId,
-                collectionName = collectionName,
-                copies = 1
-            )
-            collectionDao.insertCardInCollection(newCardInCollection.toEntity())
-        }
+        local.saveCollection(collectionEntity)
     }
 }

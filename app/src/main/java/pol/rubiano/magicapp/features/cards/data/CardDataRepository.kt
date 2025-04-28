@@ -43,8 +43,6 @@ class CardDataRepository(
             existingCardInCollection.copies += 1
             local.updateLocalCardInCollection(existingCardInCollection)
         }
-                // si es eliminarla y el contador de copias = 0
-                    // eliminar la cardInCollection
     }
 
     override suspend fun createCardInCollection(card: Card, collectionName: String): CardInCollection {

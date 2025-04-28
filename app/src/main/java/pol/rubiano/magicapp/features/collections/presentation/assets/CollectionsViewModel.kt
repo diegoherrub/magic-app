@@ -13,7 +13,6 @@ import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import pol.rubiano.magicapp.features.collections.domain.Collection
-import pol.rubiano.magicapp.features.collections.domain.usecases.AddCardToCollectionUseCase
 import pol.rubiano.magicapp.features.collections.domain.usecases.GetCardsOfCollectionUseCase
 import pol.rubiano.magicapp.features.collections.domain.usecases.GetCollectionUseCase
 import pol.rubiano.magicapp.features.collections.domain.usecases.GetCollectionsUseCase
@@ -24,7 +23,6 @@ class CollectionsViewModel(
     private val getCollectionsUseCase: GetCollectionsUseCase,
     private val getCollectionUseCase: GetCollectionUseCase,
     private val saveCollectionUseCase: SaveCollectionUseCase,
-    private val addCardToCollectionUseCase: AddCardToCollectionUseCase,
     private val getCardsOfCollectionUseCase: GetCardsOfCollectionUseCase,
 ) : ViewModel() {
 
@@ -39,10 +37,6 @@ class CollectionsViewModel(
         _cardsInCurrentCollection
 
     // TODO - poner que cuando se carge la colección, se añadan en su atributo cards la lista que debe devolver getcards de colección
-
-
-
-
 
 
     fun loadCollections() {
@@ -61,22 +55,6 @@ class CollectionsViewModel(
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     _fetchedCollections.postValue(UiState.Error(AppError.AppDataError))
-                }
-            }
-        }
-    }
-
-    fun loadCardsOfCollection(collectionName: String) {
-        _cardsInCurrentCollection.value = UiState.Loading
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val cardsOfCollection = getCardsOfCollectionUseCase.invoke(collectionName)
-                withContext(Dispatchers.Main) {
-                    _cardsInCurrentCollection.postValue(UiState.Success(cardsOfCollection))
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    _cardsInCurrentCollection.postValue(UiState.Error(AppError.AppDataError))
                 }
             }
         }
@@ -108,20 +86,5 @@ class CollectionsViewModel(
         }
     }
 
-    fun addCardToCollection(collectionName: String, cardId: String) {
-        _currentCollection.value = UiState.Loading
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                addCardToCollectionUseCase.invoke(collectionName, cardId)
-                withContext(Dispatchers.Main) {
-                    val actualCollection = getCollectionUseCase.invoke(collectionName)
-                    _currentCollection.value = UiState.Success(actualCollection)
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    _currentCollection.value = UiState.Error(AppError.AppDataError)
-                }
-            }
-        }
-    }
+
 }

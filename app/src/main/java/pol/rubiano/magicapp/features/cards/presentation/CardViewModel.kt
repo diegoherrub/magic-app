@@ -13,8 +13,6 @@ import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.cards.domain.usecases.AddCardToCollectionUseCase
-import pol.rubiano.magicapp.features.cards.domain.usecases.SaveCardInCollectionUseCase
-import pol.rubiano.magicapp.features.cards.domain.usecases.SaveCardUseCase
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 
 @KoinViewModel
@@ -29,8 +27,6 @@ class CardViewModel(
 
     private val _addedCardToCollection = MutableLiveData<UiState<Boolean>>()
 //    var addedCardToCollection: LiveData<UiState<CardInCollection>> = _addedCardToCollection
-
-
 
     fun addCardToCollection(card: Card, collectionName: String) {
         _addedCardToCollection.value = UiState.Loading
@@ -47,7 +43,22 @@ class CardViewModel(
             }
         }
     }
-
+//    fun addCardToCollection(collectionName: String, cardId: String) {
+//        _currentCollection.value = UiState.Loading
+//        viewModelScope.launch(Dispatchers.IO) {
+//            try {
+//                addCardToCollectionUseCase.invoke(collectionName, cardId)
+//                withContext(Dispatchers.Main) {
+//                    val actualCollection = getCollectionUseCase.invoke(collectionName)
+//                    _currentCollection.value = UiState.Success(actualCollection)
+//                }
+//            } catch (e: Exception) {
+//                withContext(Dispatchers.Main) {
+//                    _currentCollection.value = UiState.Error(AppError.AppDataError)
+//                }
+//            }
+//        }
+//    }
 
 
     private fun saveCardToLocal(card: Card) {
