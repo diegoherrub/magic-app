@@ -218,7 +218,7 @@
     </string-array>
 
     <!-- View Card -->
-    <string name="view_card_label">View Card</string>
+    <string name="str_CardLabel">Card</string>
 
 
     <!-- Error -->
@@ -245,6 +245,7 @@
     <string name="str_newCollection">New Collection</string>
     <string name="str_noCollectionWithThatName">There is not a collection with that name</string>
     <string name="str_noCollectionsYet">There are no collections created yet</string>
+    <string name="str_addedCardToCollection">Card added to collection!</string>
     <string name="str_deckPanel">Deck Panel</string>
     <string name="str_newDeck">New Deck</string>
     <string name="str_noDeckWithThatName">There is not a deck with that name</string>

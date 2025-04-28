@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import pol.rubiano.magicapp.features.collections.data.CardInCollectionEntity
+import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 
 @Dao
 interface CollectionDao {
@@ -38,5 +38,5 @@ interface CollectionDao {
     suspend fun insertCardInCollection(card: CardInCollectionEntity)
 
     @Query("SELECT * FROM cards_in_collection WHERE collection_name = :collectionName")
-    suspend fun getCardsOfCollections(collectionName: String): List<CardInCollectionEntity>
+    suspend fun getCardsOfCollection(collectionName: String): List<CardInCollectionEntity>
 }

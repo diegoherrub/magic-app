@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.collections.data
+package pol.rubiano.magicapp.features.collections.domain.repositories
 
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import pol.rubiano.magicapp.features.collections.domain.Collection

@@ -1,9 +1,11 @@
 package pol.rubiano.magicapp.features.cards.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -47,32 +49,40 @@ class CardFragment : Fragment() {
 
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-        toolbar.navigationIcon.apply { R.drawable.back }
-        toolbar.setNavigationOnClickListener {
-            if (deckId != null) {
-                cardFragmentArgs.deckId?.let { deckId = it }
-                findNavController().navigate(
-                    CardFragmentDirections.actFromCardFragmentViewToResultsFragment(
-                        deckId = deckId,
-                        collectionName = null
-                    )
-                )
-            } else if (collectionName != null) {
-                cardFragmentArgs.collectionName?.let { collectionName = it }
-                findNavController().navigate(
-                    CardFragmentDirections.actFromCardFragmentViewToResultsFragment(
-                        deckId = null,
-                        collectionName = collectionName
-                    )
-                )
-            } else {
-                findNavController().popBackStack()
-            }
-        }
-
+//        cardFragmentArgs.deckId?.let { deckId = it }
+//        Log.d("@pol", "CardFragment.setupToolbar(deckId) -> $deckId")
+        cardFragmentArgs.collectionName?.let { collectionName = it }
+        Log.d("@pol", "CardFragment.setupToolbar(collectionName) -> $collectionName")
         cardFragmentArgs.card.let { card = it }
         card = cardFragmentArgs.card
+        Log.d("@pol", "CardFragment.setupToolbar(card) -> $card")
         toolbar.title = card.name
+
+        toolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.itm_add_card -> {
+                    if (deckId != null) {
+                        TODO()
+                    } else if (collectionName != null) {
+                        Log.d("@pol", "CardFragment.toolbar.setOnMenuItemClickListener(collectionName) -> add $collectionName")
+                        cardViewModel.addCardToCollection(card, collectionName!!)
+                        Log.d("@pol", "CardFragment.toolbar.setOnMenuItemClickListener(collectionName) -> added")
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.str_addedCardToCollection,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
     private fun setupView() {
@@ -91,7 +101,6 @@ class CardFragment : Fragment() {
                 cardBinder.flipCard(binding)
             }
         }
-
     }
 
     private fun setupObservers() {

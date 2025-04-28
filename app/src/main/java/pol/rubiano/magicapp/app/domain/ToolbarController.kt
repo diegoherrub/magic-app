@@ -10,9 +10,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import pol.rubiano.magicapp.features.decks.domain.models.Deck
 import pol.rubiano.magicapp.features.decks.presentation.DeckPanelDirections
 
 class ToolbarController(
@@ -27,7 +25,6 @@ class ToolbarController(
         R.id.collectionsList,
         R.id.randomCardFragment,
         R.id.decksList,
-        R.id.searchFragment,
     )
 
     private val secondaryDestinations = setOf(
@@ -37,10 +34,13 @@ class ToolbarController(
         R.id.newCollectionForm,
         R.id.newDeck,
         R.id.deckPanel,
+        R.id.cardFragment,
+    )
 
-
-
-        R.id.cardFragmentView,
+    private val specialDestinations = setOf(
+        R.id.searchFragment,
+        R.id.resultsFragment,
+        R.id.cardFragment,
     )
 
     init {
@@ -56,7 +56,6 @@ class ToolbarController(
     }
 
     private fun updateToolbar(destination: NavDestination) {
-
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         toolbar.setNavigationOnClickListener(null)
         toolbar.title = destination.label
@@ -67,7 +66,15 @@ class ToolbarController(
 
             in secondaryDestinations -> {
                 activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                toolbar.navigationIcon.apply { R.drawable.back }
                 toolbar.isTitleCentered = false
+            }
+
+            in specialDestinations -> {
+                activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                toolbar.navigationIcon.apply { R.drawable.back }
+                toolbar.isTitleCentered = true
+                bottomNav.visibility = View.GONE
             }
 
             else -> { }
@@ -154,11 +161,6 @@ class ToolbarController(
 
 
 
-
-
-            
-
-
             R.id.randomCardFragment -> {
                 prepareToolbar(R.menu.random_card_menu)
                 toolbar.setOnMenuItemClickListener { item ->
@@ -178,9 +180,7 @@ class ToolbarController(
 
             R.id.searchFragment -> prepareToolbar(R.menu.search_menu)
 
-            R.id.cardFragmentView -> {
-                toolbar.menu.clear()
-            }
+            R.id.cardFragment -> prepareToolbar(R.menu.mn_card)
 
             else -> {
                 toolbar.menu.clear()

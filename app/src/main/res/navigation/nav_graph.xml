@@ -135,20 +135,6 @@
     </fragment>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <fragment
         android:id="@+id/randomCardFragment"
         android:name="pol.rubiano.magicapp.features.randomcard.presentation.RandomCardFragment"
@@ -224,31 +210,31 @@
             app:destination="@+id/resultsFragment" />
 
         <action
-            android:id="@+id/act_fromResultsFragment_toCardFragmentView"
-            app:destination="@+id/cardFragmentView" />
+            android:id="@+id/act_fromResultsFragment_toCardFragment"
+            app:destination="@+id/cardFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/cardFragmentView"
+        android:id="@+id/cardFragment"
         android:name="pol.rubiano.magicapp.features.cards.presentation.CardFragment"
-        android:label="@string/view_card_label">
+        android:label="@string/str_CardLabel">
 
         <argument
             android:name="card"
-            app:argType="pol.rubiano.magicapp.features.cards.domain.models.Card" />
+            app:argType="pol.rubiano.magicapp.features.cards.domain.models.Card"/>
 
-        <argument
-            android:name="deckId"
-            app:argType="string"
-            app:nullable="true" />
+<!--        <argument-->
+<!--            android:name="deckId"-->
+<!--            app:argType="string"-->
+<!--            app:nullable="true" />-->
 
         <argument
             android:name="collectionName"
             app:argType="string"
             app:nullable="true" />
 
-        <action
-            android:id="@+id/act_fromCardFragmentView_toResultsFragment"
-            app:destination="@+id/resultsFragment" />
+<!--        <action-->
+<!--            android:id="@+id/act_fromCardFragment_toResultsFragment"-->
+<!--            app:destination="@+id/resultsFragment" />-->
     </fragment>
 </navigation>

@@ -1,11 +1,10 @@
-package pol.rubiano.magicapp.features.collections.data
+package pol.rubiano.magicapp.features.collections.data.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import pol.rubiano.magicapp.features.cards.data.local.CardEntity
-import pol.rubiano.magicapp.features.collections.data.local.CollectionEntity
 
 const val CARDS_IN_COLLECTION_TABLE = "cards_in_collection"
 

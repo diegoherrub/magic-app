@@ -1,43 +1,41 @@
-package pol.rubiano.magicapp.features.collections.data.local
+package pol.rubiano.magicapp.features.collections.data
 
 import android.content.Context
 import android.util.Log
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.R
-import pol.rubiano.magicapp.features.collections.data.CollectionsRepository
+import pol.rubiano.magicapp.features.collections.data.local.CollectionDao
+import pol.rubiano.magicapp.features.collections.data.local.CollectionEntity
+import pol.rubiano.magicapp.features.collections.data.local.CollectionsLocalDataSource
+import pol.rubiano.magicapp.features.collections.data.local.toCardInCollection
+import pol.rubiano.magicapp.features.collections.data.local.toCollection
+import pol.rubiano.magicapp.features.collections.data.local.toEntity
+import pol.rubiano.magicapp.features.collections.domain.repositories.CollectionsRepository
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import pol.rubiano.magicapp.features.collections.domain.Collection
 
 @Single
-class CollectionsDataSource(
-    private val collectionDao: CollectionDao,
+class CollectionsDataRepository(
+    private val local: CollectionsLocalDataSource,
     private val context: Context
 ) : CollectionsRepository {
 
     override suspend fun getCollections(): List<Collection> {
-        Log.d("@pol", "start -> CollectionsDataSource.getCollectionsUseCase()")
-        val collectionsEntity = collectionDao.getCollectionsDao()
-        Log.d("@pol", "end -> CollectionsDataSource.getCollectionsUseCase()")
-        Log.d("@pol", "collectionsEntity -> $collectionsEntity")
-
-        return collectionsEntity.map { it.toCollection() }
+        return local.getLocalCollections()
     }
 
     override suspend fun getCollectionByName(collectionName: String): Collection {
-        val collectionEntity = collectionDao.getCollectionByName(collectionName)
-        return collectionEntity.toCollection()
+        return local.getCollectionByName(collectionName)
     }
 
     override suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
-        val cardsOfCollectionEntity = collectionDao.getCardsOfCollections(collectionName)
-        return cardsOfCollectionEntity.map { it.toCardInCollection() }
-
+        return local.getCardsOfCollection(collectionName)
     }
 
     override suspend fun saveCollection(collection: Collection) {
         val defaultName = context.getString(R.string.str_newCollection)
         var collectionNameToSave = collection.name
-        val collectionsCount = collectionDao.getCollectionsCount()
+        val collectionsCount = local.getLocalCollectionsCount()
 
         if (collection.name == defaultName) {
             collectionNameToSave = "$defaultName - ${collectionsCount + 1}"

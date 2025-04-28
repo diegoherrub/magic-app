@@ -47,6 +47,7 @@ class SearchFragment : Fragment() {
 
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
+
         args.collectionName?.let { collectionName = it }
         Log.d("@pol", "SearchFragment.setupToolbar(collectionName) -> $collectionName")
         args.deckId?.let { deckId = it }
@@ -70,29 +71,25 @@ class SearchFragment : Fragment() {
             }
         }
 
-//        if (deck != null || collectionName != null) {
-//            toolbar.setNavigationIcon(R.drawable.back)
-            toolbar.setNavigationOnClickListener {
-                when {
-                    deckId != null -> {
-                        findNavController().navigate(
-                            ResultsFragmentDirections.actFromSearchResultsToDeckDetails(
-                                deckId = deckId
-                            )
+        toolbar.setNavigationOnClickListener {
+            when {
+                deckId != null -> {
+                    findNavController().navigate(
+                        ResultsFragmentDirections.actFromSearchResultsToDeckDetails(
+                            deckId = deckId
                         )
-                    }
-                    collectionName != null -> {
-                        findNavController().navigate(
-                            ResultsFragmentDirections.actFromResultsFragmentToCollectionPanel(
-                                collectionName
-                            )
+                    )
+                }
+
+                collectionName != null -> {
+                    findNavController().navigate(
+                        SearchFragmentDirections.actFromSearchFragmentToCollectionPanel(
+                            collectionName
                         )
-                    }
+                    )
                 }
             }
-//        } else {
-//            toolbar.navigationIcon = null
-//        }
+        }
     }
 
     private fun setupView(view: View) {

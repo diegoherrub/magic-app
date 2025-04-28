@@ -1,6 +1,5 @@
 package pol.rubiano.magicapp.features.collections.data.local
 
-import pol.rubiano.magicapp.features.collections.data.CardInCollectionEntity
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import pol.rubiano.magicapp.features.collections.domain.Collection
 

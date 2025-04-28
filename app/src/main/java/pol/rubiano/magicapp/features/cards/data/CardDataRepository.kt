@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.features.cards.data
 
+import android.util.Log
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -11,6 +12,7 @@ import pol.rubiano.magicapp.features.cards.data.remote.CardRemoteDataSource
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.cards.domain.repositories.CardRepository
 import pol.rubiano.magicapp.app.domain.AppError
+import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
@@ -27,9 +29,50 @@ class CardDataRepository(
         local.saveCardToLocal(card)
     }
 
+    override suspend fun addCardToCollection(card: Card, collectionName: String) {
+        val existingCardInCollection = local.getCardInCollection(card.id, collectionName)
+        Log.d("@pol","existingCardInCollection -> $existingCardInCollection")
+        if (existingCardInCollection == null) {
+            val cardInCollection = CardInCollection(
+                cardId = card.id,
+                collectionName = collectionName,
+                copies = 0
+            )
+            local.saveCardInCollectionToLocal(cardInCollection)
+        } else {
+            existingCardInCollection.copies += 1
+            local.updateLocalCardInCollection(existingCardInCollection)
+        }
+                // si es eliminarla y el contador de copias = 0
+                    // eliminar la cardInCollection
+    }
+
+    override suspend fun createCardInCollection(card: Card, collectionName: String): CardInCollection {
+        return CardInCollection(
+            cardId = card.id,
+            collectionName = collectionName,
+            copies = 0
+        )
+    }
+
     override suspend fun getLocalCardById(cardId: String): Card? {
         return local.getLocalCardById(cardId)
     }
+
+
+
+    //override suspend fun saveCardInCollection(cardInCollection: CardInCollection) {
+    //    local.saveCardInCollection(cardInCollection)
+    //}
+
+
+
+
+
+
+
+
+
 
     override suspend fun getRandomCard(): Result<Card> {
         val remoteCard = remote.getRandomCard()

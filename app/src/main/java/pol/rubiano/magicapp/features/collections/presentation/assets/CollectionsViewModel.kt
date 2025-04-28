@@ -38,17 +38,18 @@ class CollectionsViewModel(
     val cardsInCurrentCollection: LiveData<UiState<List<CardInCollection>>> =
         _cardsInCurrentCollection
 
+    // TODO - poner que cuando se carge la colección, se añadan en su atributo cards la lista que debe devolver getcards de colección
+
+
+
+
+
+
     fun loadCollections() {
         _fetchedCollections.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                Log.d(
-                    "@pol",
-                    "start -> CollectionsViewModel.loadCollections.getCollectionsUseCase()"
-                )
                 val userCollections = getCollectionsUseCase.invoke()
-                Log.d("@pol", "end -> CollectionsViewModel.loadCollections.getCollectionsUseCase()")
-                Log.d("@pol", "userCollections -> $userCollections")
                 withContext(Dispatchers.Main) {
                     if (userCollections.isNotEmpty()) {
                         _fetchedCollections.postValue(UiState.Success(userCollections))
@@ -73,7 +74,6 @@ class CollectionsViewModel(
                 withContext(Dispatchers.Main) {
                     _cardsInCurrentCollection.postValue(UiState.Success(cardsOfCollection))
                 }
-                Log.d("@pol", "cards of collection $cardsOfCollection")
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     _cardsInCurrentCollection.postValue(UiState.Error(AppError.AppDataError))

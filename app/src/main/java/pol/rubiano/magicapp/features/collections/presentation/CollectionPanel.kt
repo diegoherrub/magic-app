@@ -1,6 +1,7 @@
 package pol.rubiano.magicapp.features.collections.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,6 +56,7 @@ class CollectionPanel : Fragment() {
 
     private fun setupToolbar() {
         toolbar = requireActivity().findViewById(R.id.toolbar)
+
         collectionPanelArgs.collectionName?.let { collectionName = it }
         toolbar.title = collectionName
         toolbar.setOnMenuItemClickListener { item ->
@@ -80,6 +82,7 @@ class CollectionPanel : Fragment() {
             adapter = this@CollectionPanel.adapter
         }
         viewModel.loadCardsOfCollection(collectionName)
+        //currentCollection
     }
 
     private fun setupObservers() {
@@ -87,6 +90,7 @@ class CollectionPanel : Fragment() {
             when (state) {
                 is UiState.Success -> {
                     val collection = state.data
+                    Log.d("@pol", "CollectionPanel.setupObservers -> list cardsInCollection -> ")
                     adapter.submitList(collection.cards)
                 }
 
@@ -114,6 +118,11 @@ class CollectionPanel : Fragment() {
             binding.collectionPanelCards.visible()
             binding.appErrorViewContainer.gone()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadCardsOfCollection(collectionName)
     }
 
     override fun onDestroyView() {
