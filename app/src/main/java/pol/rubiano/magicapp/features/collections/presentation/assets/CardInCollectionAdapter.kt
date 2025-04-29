@@ -13,13 +13,12 @@ class CardsInCollectionAdapter : ListAdapter<CardInCollection, CollectionsViewHo
         contentSame = { old, new -> old == new }
     )
 ) {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.small_card_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.small_card_in_collection_layout, parent, false)
         return CollectionsViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CollectionsViewHolder, position: Int) {
-        holder.bindCollectionPanel(currentList[position])
+        holder.bindCollectionPanelCards(currentList[position])
     }
 }

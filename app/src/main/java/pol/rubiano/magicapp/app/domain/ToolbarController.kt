@@ -34,7 +34,6 @@ class ToolbarController(
         R.id.newCollectionForm,
         R.id.newDeck,
         R.id.deckPanel,
-        R.id.cardFragment,
     )
 
     private val specialDestinations = setOf(

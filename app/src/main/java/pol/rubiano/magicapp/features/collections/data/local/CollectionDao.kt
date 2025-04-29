@@ -17,7 +17,7 @@ interface CollectionDao {
     suspend fun getCollectionsCount(): Int
 
     @Query("SELECT * FROM collections WHERE `name` = :collectionName LIMIT 1")
-    suspend fun getCollectionByName(collectionName: String) : CollectionEntity
+    suspend fun getCollectionByName(collectionName: String): CollectionEntity
 
     @Transaction
     suspend fun saveCollection(collectionEntity: CollectionEntity) {
@@ -31,16 +31,16 @@ interface CollectionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCollection(collection: CollectionEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCardInCollection(card: CardInCollectionEntity)
+
+    @Query("UPDATE cards_in_collection SET copies = :copies WHERE card_id = :cardId AND collection_name = :collectionName")
+    suspend fun updateCardInCollection(cardId: String, collectionName: String, copies: Int)
 
 
+    @Query("SELECT * FROM cards_in_collection WHERE card_id = :cardId and collection_name = :collectionName")
+    suspend fun getCardInCollection(cardId: String, collectionName: String): CardInCollectionEntity
 
-
-   @Query("UPDATE cards_in_collection SET copies = :copies WHERE card_id = :cardId AND collection_name = :collectionName")
-   suspend fun updateCardInCollection(cardId: String, collectionName: String, copies: Int)
-
-   // @Insert(onConflict = OnConflictStrategy.REPLACE)
-   // suspend fun insertCardInCollection(card: CardInCollectionEntity)
-
-   // @Query("SELECT * FROM cards_in_collection WHERE collection_name = :collectionName")
-   // suspend fun getCardsOfCollection(collectionName: String): List<CardInCollectionEntity>
+    @Query("SELECT * FROM cards_in_collection WHERE collection_name = :collectionName")
+    suspend fun getCardsOfCollection(collectionName: String): List<CardInCollectionEntity>
 }

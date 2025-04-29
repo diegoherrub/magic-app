@@ -1,6 +1,5 @@
 package pol.rubiano.magicapp.features.cards.data
 
-import android.util.Log
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -12,7 +11,6 @@ import pol.rubiano.magicapp.features.cards.data.remote.CardRemoteDataSource
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.cards.domain.repositories.CardRepository
 import pol.rubiano.magicapp.app.domain.AppError
-import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
@@ -20,94 +18,58 @@ import java.net.URL
 
 @Single
 class CardDataRepository(
-    private val remote: CardRemoteDataSource,
     private val local: CardLocalDataSource,
+    private val remote: CardRemoteDataSource,
     private val context: Context
 ) : CardRepository {
 
-    override suspend fun saveCardToLocal(card: Card) {
+    override suspend fun saveCard(card: Card) {
         local.saveCardToLocal(card)
+        getUrlsForCardImages(card)
     }
 
-    override suspend fun addCardToCollection(card: Card, collectionName: String) {
-        val existingCardInCollection = local.getCardInCollection(card.id, collectionName)
-        Log.d("@pol","existingCardInCollection -> $existingCardInCollection")
-        if (existingCardInCollection == null) {
-            val cardInCollection = CardInCollection(
-                cardId = card.id,
-                collectionName = collectionName,
-                copies = 0
-            )
-            local.saveCardInCollectionToLocal(cardInCollection)
-        } else {
-            existingCardInCollection.copies += 1
-            local.updateLocalCardInCollection(existingCardInCollection)
-        }
-    }
-
-    override suspend fun createCardInCollection(card: Card, collectionName: String): CardInCollection {
-        return CardInCollection(
-            cardId = card.id,
-            collectionName = collectionName,
-            copies = 0
-        )
-    }
-
-    override suspend fun getLocalCardById(cardId: String): Card? {
+    override suspend fun getCard(cardId: String): Card? {
         return local.getLocalCardById(cardId)
     }
-
-
-
-    //override suspend fun saveCardInCollection(cardInCollection: CardInCollection) {
-    //    local.saveCardInCollection(cardInCollection)
-    //}
-
-
-
-
-
-
-
-
-
 
     override suspend fun getRandomCard(): Result<Card> {
         val remoteCard = remote.getRandomCard()
         val card = remoteCard.getOrNull()
         if (card != null) {
             local.saveCardToLocal(card)
-
-            card.imageCrop?.let { mainImageUrl ->
-                val fileName = "${card.id}.png"
-                downloadAndSaveImage(context, mainImageUrl, fileName)
-            }
-            card.imageSmall?.let { smallImageUrl ->
-                val fileName = "${card.id}_small.png"
-                downloadAndSaveImage(context, smallImageUrl, fileName)
-            }
-
-            card.frontFace?.faceImageNormal?.let { frontImageUrl ->
-                val fileName = "${card.id}_front.png"
-                downloadAndSaveImage(context, frontImageUrl, fileName)
-            }
-            card.frontFace?.faceImageSmall?.let { frontSmallImageUrl ->
-                val fileName = "${card.id}_small_front.png"
-                downloadAndSaveImage(context, frontSmallImageUrl, fileName)
-            }
-
-            card.backFace?.faceImageNormal?.let { backImageUrl ->
-                val fileName = "${card.id}_back.png"
-                downloadAndSaveImage(context, backImageUrl, fileName)
-            }
-            card.backFace?.faceImageSmall?.let { backSmallImageUrl ->
-                val fileName = "${card.id}_small_back.png"
-                downloadAndSaveImage(context, backSmallImageUrl, fileName)
-            }
-
+            getUrlsForCardImages(card)
             return Result.success(remoteCard.getOrThrow())
         }
         return Result.failure(AppError.AppServerError)
+    }
+
+    private suspend fun getUrlsForCardImages(card: Card){
+        card.imageCrop?.let { mainImageUrl ->
+            val fileName = "${card.id}.png"
+            downloadAndSaveImage(context, mainImageUrl, fileName)
+        }
+        card.imageSmall?.let { smallImageUrl ->
+            val fileName = "${card.id}_small.png"
+            downloadAndSaveImage(context, smallImageUrl, fileName)
+        }
+
+        card.frontFace?.faceImageNormal?.let { frontImageUrl ->
+            val fileName = "${card.id}_front.png"
+            downloadAndSaveImage(context, frontImageUrl, fileName)
+        }
+        card.frontFace?.faceImageSmall?.let { frontSmallImageUrl ->
+            val fileName = "${card.id}_small_front.png"
+            downloadAndSaveImage(context, frontSmallImageUrl, fileName)
+        }
+
+        card.backFace?.faceImageNormal?.let { backImageUrl ->
+            val fileName = "${card.id}_back.png"
+            downloadAndSaveImage(context, backImageUrl, fileName)
+        }
+        card.backFace?.faceImageSmall?.let { backSmallImageUrl ->
+            val fileName = "${card.id}_small_back.png"
+            downloadAndSaveImage(context, backSmallImageUrl, fileName)
+        }
     }
 
     private suspend fun downloadAndSaveImage(

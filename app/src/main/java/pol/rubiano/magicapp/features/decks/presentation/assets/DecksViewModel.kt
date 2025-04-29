@@ -140,7 +140,7 @@ class DecksViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val cardsFromDeck = deck.cardIds.map { cardId ->
-                    cardRepository.getLocalCardById(cardId)
+                    cardRepository.getCard(cardId)
                 }
                 _fetchedCardsFromDeck.postValue(UiState.Success(cardsFromDeck))
             } catch (e: Exception) {

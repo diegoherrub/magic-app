@@ -19,6 +19,7 @@ import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.databinding.CardFragmentViewBinding
 import pol.rubiano.magicapp.features.cards.domain.models.Card
+import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
 
 class CardFragment : Fragment() {
 
@@ -26,6 +27,7 @@ class CardFragment : Fragment() {
     private val binding get() = _binding!!
     private val cardBinder = CardBindingHandler()
     private val cardViewModel: CardViewModel by viewModel()
+    private val collectionsViewModel: CollectionsViewModel by viewModel()
     private val cardFragmentArgs: CardFragmentArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
 
@@ -65,21 +67,15 @@ class CardFragment : Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.itm_add_card -> {
-                    if (deckId != null) {
-                        TODO()
-                    } else if (collectionName != null) {
-                        Log.d("@pol", "CardFragment.toolbar.setOnMenuItemClickListener(collectionName) -> add $collectionName")
-                        cardViewModel.addCardToCollection(card, collectionName!!)
-                        Log.d("@pol", "CardFragment.toolbar.setOnMenuItemClickListener(collectionName) -> added")
-                        Toast.makeText(
-                            requireContext(),
-                            R.string.str_addedCardToCollection,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    Log.d("@pol", "ejecuta CardFragment.saveCard(card)")
+                    cardViewModel.saveCard(card)
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.str_addedCardToCollection,
+                        Toast.LENGTH_SHORT
+                    ).show()
                     true
                 }
-
                 else -> false
             }
         }

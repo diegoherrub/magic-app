@@ -9,6 +9,6 @@ class GetCardUseCase(
     private val repository: CardRepository
 ) {
     suspend operator fun invoke(cardId: String): Card? {
-        return repository.getLocalCardById(cardId)
+        return repository.getCard(cardId)
     }
 }

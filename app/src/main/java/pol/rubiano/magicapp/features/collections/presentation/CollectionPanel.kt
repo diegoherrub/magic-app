@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -81,7 +80,7 @@ class CollectionPanel : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@CollectionPanel.adapter
         }
-        viewModel.loadCardsOfCollection(collectionName)
+        viewModel.loadCollection(collectionName)
         //currentCollection
     }
 
@@ -111,7 +110,7 @@ class CollectionPanel : Fragment() {
                 binding.collectionPanelCards.visible()
                 viewLifecycleOwner.lifecycleScope.launch {
                     delay(2000)
-                    viewModel.loadCardsOfCollection(collectionName)
+                    viewModel.loadCollection(collectionName)
                 }
             }
         } else {
@@ -122,7 +121,7 @@ class CollectionPanel : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.loadCardsOfCollection(collectionName)
+        viewModel.loadCollection(collectionName)
     }
 
     override fun onDestroyView() {

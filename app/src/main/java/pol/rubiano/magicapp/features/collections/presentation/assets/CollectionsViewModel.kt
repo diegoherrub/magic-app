@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
+import pol.rubiano.magicapp.features.collections.data.local.CollectionEntity
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import pol.rubiano.magicapp.features.collections.domain.Collection
 import pol.rubiano.magicapp.features.collections.domain.usecases.GetCardsOfCollectionUseCase
@@ -50,11 +51,26 @@ class CollectionsViewModel(
                     } else {
                         _fetchedCollections.postValue(UiState.Empty)
                     }
-
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     _fetchedCollections.postValue(UiState.Error(AppError.AppDataError))
+                }
+            }
+        }
+    }
+
+    fun loadCollection(collectionName: String) {
+        _currentCollection.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val fetchedCollection = getCollectionUseCase.invoke(collectionName)
+                withContext(Dispatchers.Main) {
+                    _currentCollection.postValue(UiState.Success(fetchedCollection))
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _currentCollection.postValue(UiState.Error(AppError.AppDataError))
                 }
             }
         }
@@ -85,6 +101,4 @@ class CollectionsViewModel(
             }
         }
     }
-
-
 }

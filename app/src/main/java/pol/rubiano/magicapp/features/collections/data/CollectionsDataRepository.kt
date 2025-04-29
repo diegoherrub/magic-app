@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.collections.data.local.CollectionDao
 import pol.rubiano.magicapp.features.collections.data.local.CollectionEntity
 import pol.rubiano.magicapp.features.collections.data.local.CollectionsLocalDataSource
@@ -20,18 +21,6 @@ class CollectionsDataRepository(
     private val context: Context
 ) : CollectionsRepository {
 
-    override suspend fun getCollections(): List<Collection> {
-        return local.getLocalCollections()
-    }
-
-    override suspend fun getCollectionByName(collectionName: String): Collection {
-        return local.getCollectionByName(collectionName)
-    }
-
-    //override suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
-    //    return local.getCardsOfCollection(collectionName)
-    //}
-
     override suspend fun saveCollection(collection: Collection) {
         val defaultName = context.getString(R.string.str_newCollection)
         var collectionNameToSave = collection.name
@@ -45,13 +34,34 @@ class CollectionsDataRepository(
                 collectionNameToSave += " - ${collectionsCount + 1}"
             }
         }
-        Log.d("@pol", "collectiondatasource $collectionNameToSave")
-
         val collectionEntity = CollectionEntity(
             name = collectionNameToSave,
             order = collection.order,
             cards = collection.cards
         )
         local.saveCollection(collectionEntity)
+    }
+
+    override suspend fun getCollections(): List<Collection> {
+        return local.getLocalCollections()
+    }
+
+    override suspend fun getCollectionByName(collectionName: String): Collection {
+        return local.getCollectionByName(collectionName)
+    }
+
+    override suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
+        return local.getCardsOfCollection(collectionName)
+    }
+
+    override suspend fun addCardToCollection(card: Card, collectionName: String) {
+        local.addCardToCollection(card, collectionName)
+    }
+    override suspend fun createCardInCollection(card: Card, collectionName: String): CardInCollection {
+        return CardInCollection(
+            cardId = card.id,
+            collectionName = collectionName,
+            copies = 0
+        )
     }
 }

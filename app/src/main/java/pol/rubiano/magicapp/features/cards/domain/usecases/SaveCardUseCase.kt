@@ -9,6 +9,6 @@ class SaveCardUseCase(
     private val cardRepository: CardRepository
 ) {
     suspend operator fun invoke(card: Card) {
-        cardRepository.saveCardToLocal(card)
+        cardRepository.saveCard(card)
     }
 }
