@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.delay
@@ -76,13 +77,22 @@ class CollectionPanel : Fragment() {
 
     private fun setupView() {
         adapter = CardsInCollectionAdapter()
+        val layoutManager = GridLayoutManager(requireContext(), 4)
         binding.collectionPanelCards.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            this.layoutManager = layoutManager
             adapter = this@CollectionPanel.adapter
         }
         viewModel.loadCollection(collectionName)
-        //currentCollection
     }
+
+    //private fun calculateSpanCount(): Int {
+    //    // Calcula el número de columnas basado en el ancho de pantalla
+    //    val displayMetrics = DisplayMetrics()
+    //    requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
+    //    val widthPixels = displayMetrics.widthPixels
+    //    val cardWidth = resources.getDimension(R.dimen.card_item_width) // Define este valor en dimens.xml
+    //    return (widthPixels / cardWidth).coerceAtLeast(1)
+    //}
 
     private fun setupObservers() {
         viewModel.currentCollection.observe(viewLifecycleOwner) { state ->

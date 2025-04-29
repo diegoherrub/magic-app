@@ -54,6 +54,13 @@
         <item name="android:padding">@dimen/zero_dp</item>
     </style>
 
+    <style name="st_cointainer_collection_cards" parent="style_wrapWrap">
+        <item name="android:paddingStart">@dimen/dimen_xs</item>
+        <item name="android:paddingEnd">@dimen/dimen_xs</item>
+        <item name="android:paddingTop">@dimen/dimen_s</item>
+        <item name="android:paddingBottom">@dimen/zero_dp</item>
+    </style>
+
     <!-- IMAGES -->
     <style name="st_image_small">
         <item name="android:layout_width">@dimen/image_small_w</item>

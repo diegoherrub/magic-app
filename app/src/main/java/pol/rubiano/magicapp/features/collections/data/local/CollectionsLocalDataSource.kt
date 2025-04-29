@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.features.collections.data.local
 
+import android.util.Log
 import org.koin.core.annotation.Single
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import pol.rubiano.magicapp.features.collections.domain.Collection
@@ -39,7 +40,9 @@ class CollectionsLocalDataSource(
             )
             collectionDao.saveCardInCollection(cardInCollection)
         } else {
-            existingCardInCollection.copies += 1
+            //existingCardInCollection.copies += 1
+            //refreshCollection(collectionName)
+            //Log.d("@pol", "${existingCardInCollection.copies}")
         }
         return refreshCollection(collectionName)
     }

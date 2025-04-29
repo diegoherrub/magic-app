@@ -114,6 +114,7 @@ class CardFragment : Fragment() {
                 else -> {}
             }
         }
+        // TODO() - PONER UN OBSERVER A LAS COPIAS AÑADIDAS A COLECCIÓN¿?
     }
 
     private fun bindError(appError: AppError?) {
