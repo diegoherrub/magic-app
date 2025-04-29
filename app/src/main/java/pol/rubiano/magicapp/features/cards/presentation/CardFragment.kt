@@ -67,8 +67,9 @@ class CardFragment : Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.itm_add_card -> {
-                    Log.d("@pol", "ejecuta CardFragment.saveCard(card)")
                     cardViewModel.saveCard(card)
+                    collectionsViewModel.saveCardToCollection(card.id, collectionName!!)
+
                     Toast.makeText(
                         requireContext(),
                         R.string.str_addedCardToCollection,

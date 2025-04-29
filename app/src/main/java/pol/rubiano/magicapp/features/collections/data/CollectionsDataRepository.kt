@@ -54,14 +54,7 @@ class CollectionsDataRepository(
         return local.getCardsOfCollection(collectionName)
     }
 
-    override suspend fun addCardToCollection(card: Card, collectionName: String) {
-        local.addCardToCollection(card, collectionName)
-    }
-    override suspend fun createCardInCollection(card: Card, collectionName: String): CardInCollection {
-        return CardInCollection(
-            cardId = card.id,
-            collectionName = collectionName,
-            copies = 0
-        )
+    override suspend fun saveCardInCollection(cardId: String, collectionName: String): Collection {
+        return local.saveCardInCollection(cardId, collectionName)
     }
 }

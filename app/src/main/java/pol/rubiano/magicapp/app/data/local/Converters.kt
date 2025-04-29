@@ -3,6 +3,7 @@ package pol.rubiano.magicapp.app.data.local
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import pol.rubiano.magicapp.features.collections.data.local.CardInCollectionEntity
 import java.util.Date
 
 class Converters {
@@ -27,5 +28,17 @@ class Converters {
     @TypeConverter
     fun toStringList(list: List<String>?): String? {
         return Gson().toJson(list)
+    }
+
+    @TypeConverter
+    fun fromCardInCollectionList(value: List<CardInCollectionEntity>?): String? {
+        return Gson().toJson(value)
+    }
+
+    @TypeConverter
+    fun toCardInCollectionList(value: String?): List<CardInCollectionEntity>? {
+        if (value.isNullOrEmpty()) return emptyList()
+        val listType = object : TypeToken<List<CardInCollectionEntity>>() {}.type
+        return Gson().fromJson(value, listType)
     }
 }

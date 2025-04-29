@@ -1,17 +1,12 @@
 package pol.rubiano.magicapp.features.collections.data.local
 
-import android.util.Log
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.features.cards.data.local.CardDao
-import pol.rubiano.magicapp.features.cards.data.local.toEntity
-import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.collections.domain.CardInCollection
 import pol.rubiano.magicapp.features.collections.domain.Collection
 
 @Single
 class CollectionsLocalDataSource(
-    private val collectionDao: CollectionDao,
-    private val cardDao: CardDao
+    private val collectionDao: CollectionDao
 ) {
     suspend fun saveCollection(collectionEntity: CollectionEntity) {
         collectionDao.saveCollection(collectionEntity)
@@ -34,23 +29,26 @@ class CollectionsLocalDataSource(
         return collectionDao.getCardsOfCollection(collectionName).map { it.toCardInCollection() }
     }
 
-    suspend fun addCardToCollection(card: Card, collectionName: String) {
-        val existingCardInCollection = collectionDao.getCardInCollection(card.id, collectionName)
+    suspend fun saveCardInCollection(cardId: String, collectionName: String): Collection {
+        val existingCardInCollection = collectionDao.getCardInCollection(cardId, collectionName)
         if (existingCardInCollection == null) {
             val cardInCollection = CardInCollectionEntity(
-                cardId = card.id,
+                cardId = cardId,
                 collectionName = collectionName,
-                copies = 0
+                copies = 1
             )
-            collectionDao.insertCardInCollection(cardInCollection)
-            cardDao.saveCardToLocal(card.toEntity())
+            collectionDao.saveCardInCollection(cardInCollection)
         } else {
             existingCardInCollection.copies += 1
-            val cardId = existingCardInCollection.cardId
-            val collectionName = existingCardInCollection.collectionName
-            val copies = existingCardInCollection.copies
-            collectionDao.updateCardInCollection(cardId, collectionName, copies)
         }
+        return refreshCollection(collectionName)
+    }
+
+    private suspend fun refreshCollection(collectionName: String): Collection {
+        val cardsInCollection = getCardsOfCollection(collectionName)
+        val cardsInCollectionEntities = cardsInCollection.map { it.toEntity() }
+        collectionDao.updateCollection(cardsInCollectionEntities, collectionName)
+        return getCollectionByName(collectionName)
     }
 }
 
