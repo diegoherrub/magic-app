@@ -88,6 +88,10 @@ class SearchFragment : Fragment() {
                         )
                     )
                 }
+
+                else -> {
+                    findNavController().popBackStack()
+                }
             }
         }
     }

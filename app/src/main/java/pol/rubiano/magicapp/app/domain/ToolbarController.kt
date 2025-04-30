@@ -158,28 +158,20 @@ class ToolbarController(
                 }
             }
 
-
-
-            R.id.randomCardFragment -> {
-                prepareToolbar(R.menu.random_card_menu)
-                toolbar.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.action_refresh -> {
-                            val options = navOptions {
-                                popUpTo(R.id.randomCardFragment) { inclusive = true }
-                            }
-                            navController.navigate(R.id.randomCardFragment, null, options)
-                            true
-                        }
-
-                        else -> false
-                    }
-                }
-            }
+            R.id.randomCardFragment -> prepareToolbar(R.menu.random_card_menu)
 
             R.id.searchFragment -> prepareToolbar(R.menu.search_menu)
 
-            R.id.cardFragment -> prepareToolbar(R.menu.mn_card)
+            R.id.cardFragment -> {
+                val args = navController.currentBackStackEntry?.arguments
+                val collectionName = args?.getString("collectionname")
+
+                if (collectionName != null) {
+                    prepareToolbar(R.menu.mn_card)
+                } else {
+                    toolbar.menu.clear()
+                }
+            }
 
             else -> {
                 toolbar.menu.clear()

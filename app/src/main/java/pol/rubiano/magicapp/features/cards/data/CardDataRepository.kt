@@ -72,6 +72,7 @@ class CardDataRepository(
         }
     }
 
+    // todo() - okhttp
     private suspend fun downloadAndSaveImage(
         context: Context,
         imageUrl: String,

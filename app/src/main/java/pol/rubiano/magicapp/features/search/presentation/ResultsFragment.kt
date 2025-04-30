@@ -77,12 +77,17 @@ class ResultsFragment : Fragment() {
 
 
         toolbar.setNavigationOnClickListener {
-            findNavController().navigate(
-                ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
-                    collectionName = collectionName,
-                    deckId = deckId
+            val currentDestination = findNavController().currentDestination?.id
+            if (currentDestination == R.id.resultsFragment) {
+                findNavController().navigateUp()
+            } else {
+                findNavController().navigate(
+                    ResultsFragmentDirections.actFromSearchResultsFragmentToSearchFragment(
+                        collectionName = collectionName,
+                        deckId = deckId
+                    )
                 )
-            )
+            }
         }
     }
 

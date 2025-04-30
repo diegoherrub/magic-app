@@ -25,18 +25,19 @@ class CollectionsDataRepository(
         val defaultName = context.getString(R.string.str_newCollection)
         var collectionNameToSave = collection.name
         val collectionsCount = local.getLocalCollectionsCount()
+        val collectionOrder = collectionsCount + 1
 
         if (collection.name == defaultName) {
-            collectionNameToSave = "$defaultName - ${collectionsCount + 1}"
+            collectionNameToSave = "$defaultName - $collectionOrder"
         } else {
             val existingCollection = local.getCollectionByName(collectionNameToSave)
             if (existingCollection != null) {
-                collectionNameToSave += " - ${collectionsCount + 1}"
+                collectionNameToSave += " - $collectionOrder"
             }
         }
         val collectionEntity = CollectionEntity(
             name = collectionNameToSave,
-            order = collection.order,
+            order = collectionOrder,
             cards = collection.cards
         )
         local.saveCollection(collectionEntity)
@@ -47,7 +48,7 @@ class CollectionsDataRepository(
     }
 
     override suspend fun getCollectionByName(collectionName: String): Collection {
-        return local.getCollectionByName(collectionName)
+        return local.getCollectionByName(collectionName)!!
     }
 
     override suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
@@ -55,6 +56,6 @@ class CollectionsDataRepository(
     }
 
     override suspend fun saveCardInCollection(cardId: String, collectionName: String): Collection {
-        return local.saveCardInCollection(cardId, collectionName)
+        return local.saveCardInCollection(cardId, collectionName)!!
     }
 }

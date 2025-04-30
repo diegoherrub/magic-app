@@ -51,33 +51,33 @@ class CardFragment : Fragment() {
 
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-//        cardFragmentArgs.deckId?.let { deckId = it }
-//        Log.d("@pol", "CardFragment.setupToolbar(deckId) -> $deckId")
         cardFragmentArgs.collectionName?.let { collectionName = it }
-        Log.d("@pol", "CardFragment.setupToolbar(collectionName) -> $collectionName")
         cardFragmentArgs.card.let { card = it }
         card = cardFragmentArgs.card
-        Log.d("@pol", "CardFragment.setupToolbar(card) -> $card")
         toolbar.title = card.name
-
         toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
 
-        toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.itm_add_card -> {
-                    cardViewModel.saveCard(card)
-                    collectionsViewModel.saveCardToCollection(card.id, collectionName!!)
+        if (!collectionName.isNullOrEmpty()) {
+            toolbar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.itm_add_card -> {
+                        if (collectionName != null) {
+                            cardViewModel.saveCard(card)
+                            collectionsViewModel.saveCardToCollection(card.id, collectionName!!)
 
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.str_addedCardToCollection,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    true
+                            Toast.makeText(
+                                requireContext(),
+                                R.string.str_addedCardToCollection,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        true
+                    }
+
+                    else -> false
                 }
-                else -> false
             }
         }
     }
@@ -114,7 +114,6 @@ class CardFragment : Fragment() {
                 else -> {}
             }
         }
-        // TODO() - PONER UN OBSERVER A LAS COPIAS AÑADIDAS A COLECCIÓN¿?
     }
 
     private fun bindError(appError: AppError?) {

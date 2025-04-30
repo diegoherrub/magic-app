@@ -10,7 +10,7 @@ class CollectionsLocalDataSource(
     private val collectionDao: CollectionDao
 ) {
     suspend fun saveCollection(collectionEntity: CollectionEntity) {
-        collectionDao.saveCollection(collectionEntity)
+        collectionDao.insertCollection(collectionEntity) // <---
     }
     suspend fun getLocalCollectionsCount(): Int {
         return collectionDao.getCollectionsCount()
@@ -21,16 +21,16 @@ class CollectionsLocalDataSource(
         return collectionsEntity.map { it.toCollection() }
     }
 
-    suspend fun getCollectionByName(collectionName: String): Collection {
+    suspend fun getCollectionByName(collectionName: String): Collection? {
         val collectionEntity = collectionDao.getCollectionByName(collectionName)
-        return collectionEntity.toCollection()
+        return collectionEntity?.toCollection()
     }
 
     suspend fun getCardsOfCollection(collectionName: String): List<CardInCollection> {
         return collectionDao.getCardsOfCollection(collectionName).map { it.toCardInCollection() }
     }
 
-    suspend fun saveCardInCollection(cardId: String, collectionName: String): Collection {
+    suspend fun saveCardInCollection(cardId: String, collectionName: String): Collection? {
         val existingCardInCollection = collectionDao.getCardInCollection(cardId, collectionName)
         if (existingCardInCollection == null) {
             val cardInCollection = CardInCollectionEntity(
@@ -47,7 +47,7 @@ class CollectionsLocalDataSource(
         return refreshCollection(collectionName)
     }
 
-    private suspend fun refreshCollection(collectionName: String): Collection {
+    private suspend fun refreshCollection(collectionName: String): Collection? {
         val cardsInCollection = getCardsOfCollection(collectionName)
         val cardsInCollectionEntities = cardsInCollection.map { it.toEntity() }
         collectionDao.updateCollection(cardsInCollectionEntities, collectionName)

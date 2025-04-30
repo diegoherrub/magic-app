@@ -93,10 +93,6 @@ class CollectionsList : Fragment() {
                         R.string.str_noCollectionsYet,
                         Toast.LENGTH_SHORT
                     ).show()
-
-//                    val action =
-//                        CollectionsListDirections.actFromCollectionsListToNewCollectionForm()
-//                    findNavController().navigate(action)
                 }
 
                 is UiState.Error -> {

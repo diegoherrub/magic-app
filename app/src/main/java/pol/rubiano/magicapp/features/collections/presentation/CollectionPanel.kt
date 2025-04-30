@@ -77,7 +77,7 @@ class CollectionPanel : Fragment() {
 
     private fun setupView() {
         adapter = CardsInCollectionAdapter()
-        val layoutManager = GridLayoutManager(requireContext(), 4)
+        val layoutManager = GridLayoutManager(requireContext(), 3)
         binding.collectionPanelCards.apply {
             this.layoutManager = layoutManager
             adapter = this@CollectionPanel.adapter
@@ -85,21 +85,11 @@ class CollectionPanel : Fragment() {
         viewModel.loadCollection(collectionName)
     }
 
-    //private fun calculateSpanCount(): Int {
-    //    // Calcula el número de columnas basado en el ancho de pantalla
-    //    val displayMetrics = DisplayMetrics()
-    //    requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
-    //    val widthPixels = displayMetrics.widthPixels
-    //    val cardWidth = resources.getDimension(R.dimen.card_item_width) // Define este valor en dimens.xml
-    //    return (widthPixels / cardWidth).coerceAtLeast(1)
-    //}
-
     private fun setupObservers() {
         viewModel.currentCollection.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
                     val collection = state.data
-                    Log.d("@pol", "CollectionPanel.setupObservers -> list cardsInCollection -> ")
                     adapter.submitList(collection.cards)
                 }
 

@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.features.collections.presentation.assets
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,15 +34,8 @@ class CollectionsViewModel(
     private val _currentCollection = MutableLiveData<UiState<Collection>>()
     val currentCollection: LiveData<UiState<Collection>> = _currentCollection
 
-    private val _cardsInCurrentCollection = MutableLiveData<UiState<List<CardInCollection>>>()
-    val cardsInCurrentCollection: LiveData<UiState<List<CardInCollection>>> =
-        _cardsInCurrentCollection
-
     private val _savedCardInCollection = MutableLiveData<UiState<Collection>>()
     val savedCardInCollection: LiveData<UiState<Collection>> = _savedCardInCollection
-
-    // TODO - poner que cuando se carge la colección, se añadan en su atributo cards la lista que debe devolver getcards de colección
-
 
     fun loadCollections() {
         _fetchedCollections.value = UiState.Loading
@@ -89,22 +83,6 @@ class CollectionsViewModel(
         )
     }
 
-    fun saveCardToCollection(cardId: String, collectionName: String) {
-        _savedCardInCollection.value = UiState.Loading
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val updatedCollection = saveCardInCollectionUseCase.invoke(cardId, collectionName)
-                withContext(Dispatchers.Main) {
-                    _savedCardInCollection.postValue(UiState.Success(updatedCollection))
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    _savedCardInCollection.postValue(UiState.Error(AppError.AppDataError))
-                }
-            }
-        }
-    }
-
     private fun saveCollection(collection: Collection) {
         _currentCollection.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
@@ -121,5 +99,19 @@ class CollectionsViewModel(
         }
     }
 
-
+    fun saveCardToCollection(cardId: String, collectionName: String) {
+        _savedCardInCollection.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val updatedCollection = saveCardInCollectionUseCase.invoke(cardId, collectionName)
+                withContext(Dispatchers.Main) {
+                    _savedCardInCollection.postValue(UiState.Success(updatedCollection))
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _savedCardInCollection.postValue(UiState.Error(AppError.AppDataError))
+                }
+            }
+        }
+    }
 }

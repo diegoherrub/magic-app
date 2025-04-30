@@ -58,7 +58,7 @@
         <item name="android:paddingStart">@dimen/dimen_xs</item>
         <item name="android:paddingEnd">@dimen/dimen_xs</item>
         <item name="android:paddingTop">@dimen/dimen_s</item>
-        <item name="android:paddingBottom">@dimen/zero_dp</item>
+        <item name="android:paddingBottom">@dimen/dimen_s</item>
     </style>
 
     <!-- IMAGES -->
@@ -72,6 +72,13 @@
         <item name="android:padding">@dimen/dimen_xs</item>
         <item name="android:layout_width">@dimen/image_small_w</item>
         <item name="android:layout_height">@dimen/image_small_h</item>
+        <item name="android:src">@drawable/card_back</item>
+    </style>
+
+    <style name="st_image_small_collection">
+        <item name="android:padding">@dimen/dimen_xs</item>
+        <item name="android:layout_width">@dimen/zero_dp</item>
+        <item name="android:layout_height">@dimen/zero_dp</item>
         <item name="android:src">@drawable/card_back</item>
     </style>
 
@@ -383,7 +390,9 @@
     <style name="style_deckCardsList" parent="style_zeroZero" />
 
     <!-- COLLECTIONS -->
-    <style name="stCollectionPanelCardsRecycler" parent="style_matchZero" />
+    <style name="stCollectionPanelCardsRecycler" parent="style_matchZero">
+        <item name="android:padding">@dimen/dimen_m</item>
+    </style>
 
     <!-- FONTS -->
     <style name="app_tool_bar_title">
