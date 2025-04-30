@@ -9,6 +9,6 @@ class GetDecksUseCase(
     private val decksRepository: DecksRepository
 ) {
     suspend operator fun invoke(): List<Deck> {
-        return decksRepository.getUserDecks()
+        return decksRepository.getDecks()
     }
 }

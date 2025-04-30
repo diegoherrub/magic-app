@@ -63,7 +63,7 @@ class DeckPanel : Fragment() {
         deckPanelArgs.deckId?.let { deckId = it }
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.add_deck -> {
+                R.id.itm_addDeck -> {
                     findNavController().navigate(
                         DeckPanelDirections.actFromDeckPanelToSearchFragment(deckId)
                     )
@@ -110,14 +110,9 @@ class DeckPanel : Fragment() {
             }
         }
 
-
-
-
-
         decksViewModel.addedCardToDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
-                    // Get the updated deck and update UI elements accordingly
                     val updatedDeck = state.data
                     binding.deckPanelName.text = updatedDeck.name
                     binding.deckPanelDescription.text = updatedDeck.description

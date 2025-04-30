@@ -47,8 +47,7 @@ class NewCollectionForm : Fragment() {
     private fun setupView() {
         binding.btnCreateNewCollection.setOnClickListener {
             newCollectionName = binding.newCollectionName.text.toString().trim()
-            if (newCollectionName.isEmpty()) newCollectionName =
-                getString(R.string.str_newCollection)
+            if (newCollectionName.isEmpty()) newCollectionName = getString(R.string.str_newCollection)
             viewModel.createCollection(newCollectionName)
         }
     }

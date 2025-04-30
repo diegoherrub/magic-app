@@ -56,7 +56,6 @@ class CollectionPanel : Fragment() {
 
     private fun setupToolbar() {
         toolbar = requireActivity().findViewById(R.id.toolbar)
-
         collectionPanelArgs.collectionName?.let { collectionName = it }
         toolbar.title = collectionName
         toolbar.setOnMenuItemClickListener { item ->

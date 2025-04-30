@@ -10,7 +10,6 @@ class SaveCollectionUseCase(
     private val repository: CollectionsRepository
 ) {
     suspend operator fun invoke(collection: Collection) {
-        Log.d("@pol", "collection de usecase -> $collection")
         repository.saveCollection(collection)
     }
 }

@@ -1,46 +1,59 @@
 package pol.rubiano.magicapp.features.decks.data
 
+import android.content.Context
 import org.koin.core.annotation.Single
+import pol.rubiano.magicapp.R
+import pol.rubiano.magicapp.features.decks.data.local.DeckEntity
 import pol.rubiano.magicapp.features.decks.data.local.DeckLocalDataSource
+import pol.rubiano.magicapp.features.decks.data.local.toDeck
 import pol.rubiano.magicapp.features.decks.domain.models.Deck
 import pol.rubiano.magicapp.features.decks.domain.repositories.DecksRepository
+import java.util.UUID
 
 @Single
 class DecksDataRepository(
-    private val local: DeckLocalDataSource
+    private val local: DeckLocalDataSource,
+    private val context: Context
 ) : DecksRepository {
 
-    override suspend fun createNewDeck(newDeckName: String, newDescriptionName: String): Deck {
-        return local.createNewDeck(newDeckName, newDescriptionName)
+    override suspend fun saveDeck(deck: Deck): Deck {
+        val defaultName = context.getString(R.string.str_newDeck)
+        var deckNameToSave = deck.name
+        val deckDescriptionToSave = deck.description
+        val decksCount = local.getDecksCount()
+        val nDecks = decksCount + 1
+
+        if (deck.name == defaultName) {
+            deckNameToSave = "$defaultName - $nDecks"
+        } else {
+            val existingDeck = local.getDeckByName(deckNameToSave)
+            if (existingDeck != null) {
+                deckNameToSave += " - $nDecks"
+            }
+        }
+
+        val deckEntity = DeckEntity(
+            id = UUID.randomUUID().toString(),
+            name = deckNameToSave,
+            description = deckDescriptionToSave,
+            colors = deck.colors,
+            cardIds = deck.cardIds,
+            sideBoard = deck.sideBoard,
+            maybeBoard = deck.maybeBoard,
+        )
+
+        local.saveDeck(deckEntity)
+        return deckEntity.toDeck()
     }
+
+    // TODO - REVISAR LOS DATA REPOSITORY, ES EN ELLOS DONDE SE DEBEN CONVERTIR LAS ENTIDADES
+    override suspend fun getDecks(): List<Deck> {
+        val deckEntities = local.getDecks()
+        return deckEntities.map { it.toDeck() }
+    }
+
     override suspend fun getDeckById(deckId: String): Deck? {
-        return local.getDeckById(deckId)
-    }
-
-
-
-
-
-
-
-    override suspend fun saveDeck(deck: Deck) {
-
-        local.saveDeck(deck)
-        // return deck
-    }
-
-
-
-
-    override suspend fun getUserDecks(): List<Deck> {
-        return local.getUserDecks()
-    }
-
-
-
-
-    override suspend fun addCardToDeck(deckId: String, cardId: String) {
-    //    local.addCardToDeck(deckId, cardId)
-        TODO()
+        val deckEntity = local.getDeckById(deckId)
+        return deckEntity?.toDeck()
     }
 }

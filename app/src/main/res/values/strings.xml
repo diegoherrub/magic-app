@@ -7,7 +7,7 @@
 
     <!-- MENUS -->
     <string name="strAddCard">Add card</string>
-    <string name="strAddDeck">Add deck</string>
+    <string name="str_addDeck">Add deck</string>
     <string name="strAddNewCollection">Add New Collection</string>
     <string name="strAddCardToCollection">Add Card to Collection</string>
     <string name="strEditDeck">Edit deck</string>

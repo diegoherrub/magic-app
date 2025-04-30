@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.navOptions
 import com.google.android.material.appbar.MaterialToolbar
 import pol.rubiano.magicapp.R
 import androidx.core.view.size
@@ -118,10 +117,10 @@ class ToolbarController(
             } // REVISADO
 
             R.id.decksList -> {
-                prepareToolbar(R.menu.decks_menu)
+                prepareToolbar(R.menu.md_decks_list)
                 toolbar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
-                        R.id.add_deck -> {
+                        R.id.itm_addDeck -> {
                             navController.navigate(R.id.act_fromDecksList_toNewDeckFragment)
                             true
                         }

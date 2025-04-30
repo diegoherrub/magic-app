@@ -116,8 +116,6 @@
         <action
             android:id="@+id/act_fromDeckPanel_toDecksList"
             app:destination="@+id/decksList" />
-
-
     </fragment>
 
     <fragment

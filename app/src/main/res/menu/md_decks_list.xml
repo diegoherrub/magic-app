@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/add_deck"
+        android:id="@+id/itm_addDeck"
         android:icon="@drawable/add"
-        android:title="@string/strAddDeck"
-        android:contentDescription="@string/strAddDeck"
+        android:title="@string/str_addDeck"
+        android:contentDescription="@string/str_addDeck"
         app:showAsAction="always"/>
 </menu>

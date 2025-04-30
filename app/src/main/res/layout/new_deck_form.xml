@@ -52,7 +52,7 @@
             tools:text="@string/str_deck_description" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCreateNewDeck"
+            android:id="@+id/btn_createNewDeck"
             style="@style/stButton"
             android:text="@string/str_btnCreateNewDeck"
             app:layout_constraintEnd_toEndOf="parent"

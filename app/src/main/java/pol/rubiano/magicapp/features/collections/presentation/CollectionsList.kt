@@ -31,9 +31,9 @@ class CollectionsList : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: CollectionsViewModel by viewModel()
     private var adapter = CollectionsAdapter { collectionName ->
-        val passCollectionClicked =
+        val passCollectionClickedAction =
             CollectionsListDirections.actFromCollectionsListToCollectionPanel(collectionName)
-        findNavController().navigate(passCollectionClicked)
+        findNavController().navigate(passCollectionClickedAction)
     }
     private val errorFactory: AppErrorUIFactory by inject()
 

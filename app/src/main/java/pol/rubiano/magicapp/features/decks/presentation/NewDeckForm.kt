@@ -55,15 +55,12 @@ class NewDeckForm : Fragment() {
     }
 
     private fun setupObserver() {
-        decksViewModel.newDeckCreated.observe(viewLifecycleOwner) { state ->
+        decksViewModel.currentDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is UiState.Loading -> {}
                 is UiState.Success -> {
                     val deck = state.data
                     findNavController().navigate(
-                        NewDeckFormDirections.actFromNewDeckToDeckPanel(
-                            deck.id
-                        )
+                        NewDeckFormDirections.actFromNewDeckToDecksList()
                     )
                 }
 
