@@ -22,13 +22,14 @@ class SearchFragment : Fragment() {
 
     private var _binding: SearchFragmentBinding? = null
     private val binding get() = _binding!!
-    private val args: SearchFragmentArgs by navArgs()
 
     private lateinit var editCardName: EditText
     private lateinit var chipGroupFilters: ChipGroup
     private lateinit var filtersContainer: LinearLayout
     private lateinit var query: String
 
+    private lateinit var toolbar: MaterialToolbar
+    private val searchFragmentArgs: SearchFragmentArgs by navArgs()
     private var collectionName: String? = null
     private var deckId: String? = null
 
@@ -46,9 +47,14 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-        args.collectionName?.let { collectionName = it }
-        args.deckId?.let { deckId = it }
+        toolbar = requireActivity().findViewById(R.id.toolbar)
+        if (searchFragmentArgs.deckId != null) {
+            deckId = searchFragmentArgs.deckId
+        } else {
+            collectionName = searchFragmentArgs.collectionName
+        }
+        Log.d("@pol", "searchFragment.collectionName -> $collectionName")
+        Log.d("@pol", "searchFragment.deckId -> $deckId")
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.itemMenuActionSearch -> {
@@ -64,30 +70,6 @@ class SearchFragment : Fragment() {
                 }
 
                 else -> false
-            }
-        }
-
-        toolbar.setNavigationOnClickListener {
-            when {
-                deckId != null -> {
-                    findNavController().navigate(
-                        ResultsFragmentDirections.actFromSearchResultsToDeckPanel(
-                            deckId = deckId
-                        )
-                    )
-                }
-
-                collectionName != null -> {
-                    findNavController().navigate(
-                        SearchFragmentDirections.actFromSearchFragmentToCollectionPanel(
-                            collectionName
-                        )
-                    )
-                }
-
-                else -> {
-                    findNavController().popBackStack()
-                }
             }
         }
     }

@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import pol.rubiano.magicapp.features.decks.presentation.DeckPanelDirections
 import pol.rubiano.magicapp.features.decks.presentation.DecksListDirections
 import pol.rubiano.magicapp.features.decks.presentation.NewDeckFormDirections
+import pol.rubiano.magicapp.features.search.presentation.SearchFragmentDirections
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -131,16 +132,32 @@ class ToolbarController(
 
             R.id.randomCardFragment -> prepareToolbar(R.menu.random_card_menu)
 
-            R.id.searchFragment -> prepareToolbar(R.menu.search_menu)
-
-            R.id.cardFragment -> {
+            R.id.searchFragment -> {
+                prepareToolbar(R.menu.search_menu)
                 val collectionName = args?.getString("collectionname")
                 val deckId = args?.getString("deckId")
 
-                if (collectionName != null || deckId != null) {
-                    prepareToolbar(R.menu.mn_card)
-                } else {
-                    toolbar.menu.clear()
+                if (collectionName != null) {
+                    setCustomNavigationAction {
+                        val action = SearchFragmentDirections.actFromSearchFragmentToCollectionPanel(collectionName)
+                        navController.navigate(action)
+                    }
+                } else if(deckId != null) {
+                    setCustomNavigationAction {
+                        val action = SearchFragmentDirections.actFromSearchFragmentToDeckDetailsFragment(deckId)
+                        navController.navigate(action)
+                    }
+                }  else {
+                    setCustomNavigationAction {
+                        navController.popBackStack()
+                    }
+                }
+            }
+
+            R.id.cardFragment -> {
+                prepareToolbar(R.menu.mn_card)
+                setCustomNavigationAction {
+                    navController.popBackStack()
                 }
             }
 

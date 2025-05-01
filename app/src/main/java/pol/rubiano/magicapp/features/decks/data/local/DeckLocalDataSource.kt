@@ -30,7 +30,7 @@ class DeckLocalDataSource(
         return deckEntity?.toDeck()
     }
 
-    suspend fun getCardsOfDeck(deckId: String): List<CardInDeck> {
+    suspend fun getCardsInDeck(deckId: String): List<CardInDeck> {
         return deckDao.getCardsOfDeck(deckId).map { it.toCardInDeck() }
     }
 
@@ -52,7 +52,7 @@ class DeckLocalDataSource(
     }
 
     private suspend fun refreshDeck(deckId: String): Deck? {
-        val cardsInDeck = getCardsOfDeck(deckId)
+        val cardsInDeck = getCardsInDeck(deckId)
         val cardsInDeckEntities = cardsInDeck.map { it.toEntity() }
         deckDao.updateDeck(cardsInDeckEntities, deckId)
         return getDeckById(deckId)

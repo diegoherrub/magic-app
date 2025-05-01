@@ -61,12 +61,14 @@ class DeckPanel : Fragment() {
     private fun setupToolbar() {
         toolbar = requireActivity().findViewById(R.id.toolbar)
         deckPanelArgs.deckId?.let { deckId = it }
-        Log.d("@pol", "deckPanel.deckId -> $deckId")
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.itm_addCardToDeck -> {
                     findNavController().navigate(
-                        DeckPanelDirections.actFromDeckPanelToSearchFragment(deckId)
+                        DeckPanelDirections.actFromDeckPanelToSearchFragment(
+                            collectionName = null,
+                            deckId = deckId,
+                        )
                     )
                     true
                 }

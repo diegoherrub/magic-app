@@ -31,9 +31,8 @@ class CollectionPanel : Fragment() {
     private var _binding: CollectionPanelBinding? = null
     private val binding get() = _binding!!
     private val viewModel: CollectionsViewModel by viewModel()
-    private val collectionPanelArgs: CollectionPanelArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
-
+    private val collectionPanelArgs: CollectionPanelArgs by navArgs()
     private lateinit var toolbar: MaterialToolbar
     private lateinit var adapter: CardsInCollectionAdapter
     private lateinit var collectionName: String

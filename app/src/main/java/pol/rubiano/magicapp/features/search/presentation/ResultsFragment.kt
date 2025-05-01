@@ -41,8 +41,9 @@ class ResultsFragment : Fragment() {
     private val cardViewModel: CardViewModel by viewModel()
 
     private var layoutManagerState: Parcelable? = null
-    private var deckId: String? = null
+    private lateinit var toolbar: MaterialToolbar
     private var collectionName: String? = null
+    private var deckId: String? = null
     private var query: String? = null
 
     private val errorFactory: AppErrorUIFactory by inject()
@@ -64,10 +65,17 @@ class ResultsFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-        resultsFragmentArgs.collectionName?.let { collectionName = it }
-        resultsFragmentArgs.deckId?.let { deckId = it }
+        toolbar = requireActivity().findViewById(R.id.toolbar)
+        if (resultsFragmentArgs.deckId != null) {
+            deckId = resultsFragmentArgs.deckId
+            collectionName = null
+        } else {
+            collectionName = resultsFragmentArgs.collectionName
+            deckId = null
+        }
         resultsFragmentArgs.query?.let { query = it }
+        Log.d("@pol", "resultsFragment.collectionName -> $collectionName")
+        Log.d("@pol", "resultsFragment.deckId -> $deckId")
         toolbar.setNavigationOnClickListener {
             val currentDestination = findNavController().currentDestination?.id
             if (currentDestination == R.id.resultsFragment) {

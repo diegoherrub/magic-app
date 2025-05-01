@@ -12,6 +12,7 @@ import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.decks.domain.models.Deck
+import pol.rubiano.magicapp.features.decks.domain.usecases.GetCardsInDeckUseCase
 import pol.rubiano.magicapp.features.decks.domain.usecases.GetDeckUseCase
 import pol.rubiano.magicapp.features.decks.domain.usecases.GetDecksUseCase
 import pol.rubiano.magicapp.features.decks.domain.usecases.SaveCardInDeckUseCase
@@ -23,9 +24,8 @@ class DecksViewModel(
     private val saveDeckUseCase: SaveDeckUseCase,
     private val getDecksUseCase: GetDecksUseCase,
     private val saveCardInDeckUseCase: SaveCardInDeckUseCase,
-
-
     private val getDeckUseCase: GetDeckUseCase,
+    private val getCardsInDeckUseCase: GetCardsInDeckUseCase,
 ) : ViewModel() {
 
     private val _currentDeck = MutableLiveData<UiState<Deck>>()
@@ -37,7 +37,6 @@ class DecksViewModel(
     val fetchedDecks: LiveData<UiState<List<Deck>>> = _fetchedDecks
     val fetchedDeck: LiveData<UiState<Deck>> = _fetchedDeck
     val savedCardInDeck: LiveData<UiState<Deck>> = _savedCardInDeck
-
 
 
     private val _fetchedCardsFromDeck = MutableLiveData<UiState<List<Card?>>>()
@@ -126,17 +125,6 @@ class DecksViewModel(
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     //private fun loadDeckCards(deck: Deck) {

@@ -33,9 +33,10 @@ class CardFragment : Fragment() {
     private val cardFragmentArgs: CardFragmentArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
 
+    private lateinit var toolbar: MaterialToolbar
     private lateinit var card: Card
-    private var deckId: String? = null
     private var collectionName: String? = null
+    private var deckId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -52,32 +53,36 @@ class CardFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-        cardFragmentArgs.collectionName?.let { collectionName = it }
+        toolbar = requireActivity().findViewById(R.id.toolbar)
+        if (cardFragmentArgs.deckId != null) {
+            deckId = cardFragmentArgs.deckId
+            collectionName = null
+        } else {
+            collectionName = cardFragmentArgs.collectionName
+            deckId = null
+        }
+        Log.d("@pol", "cardFragment.collectionName -> $collectionName")
+        Log.d("@pol", "cardFragment.deckId -> $deckId")
         cardFragmentArgs.card.let { card = it }
         card = cardFragmentArgs.card
         toolbar.title = card.name
-        toolbar.setNavigationOnClickListener {
-            findNavController().popBackStack()
-        }
-
-        if (!collectionName.isNullOrEmpty()) {
+        if (collectionName != null || deckId != null) {
             toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.itm_add_card -> {
                         if (collectionName != null) {
                             cardViewModel.saveCard(card)
                             collectionsViewModel.saveCardToCollection(card.id, collectionName!!)
-
+                            Log.d("@pol", "searchFragment.saved card -> $collectionName")
                             Toast.makeText(
                                 requireContext(),
                                 R.string.str_addedCardToCollection,
                                 Toast.LENGTH_SHORT
                             ).show()
-                        }
-                        if (deckId != null) {
+                        } else if (deckId != null) {
                             cardViewModel.saveCard(card)
                             decksViewModel.saveCardToDeck(card.id, deckId!!)
+                            Log.d("@pol", "searchFragment.saved to deck -> $deckId")
                             Toast.makeText(
                                 requireContext(),
                                 R.string.str_addedCardToDeck,
@@ -90,6 +95,8 @@ class CardFragment : Fragment() {
                     else -> false
                 }
             }
+        } else {
+            toolbar.menu.clear()
         }
     }
 
