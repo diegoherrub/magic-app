@@ -1,23 +1,24 @@
 package pol.rubiano.magicapp.features.collections.data.local
 
-import android.util.Log
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.features.collections.domain.CardInCollection
-import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.domain.models.Collection
+import pol.rubiano.magicapp.features.collections.domain.models.CardInCollection
 
 @Single
 class CollectionsLocalDataSource(
     private val collectionDao: CollectionDao
 ) {
+
     suspend fun saveCollection(collectionEntity: CollectionEntity) {
-        collectionDao.insertCollection(collectionEntity) // <---
+        collectionDao.insertCollection(collectionEntity)
     }
-    suspend fun getLocalCollectionsCount(): Int {
+
+    suspend fun getCollectionsCount(): Int {
         return collectionDao.getCollectionsCount()
     }
 
-    suspend fun getLocalCollections(): List<Collection> {
-        val collectionsEntity = collectionDao.getCollectionsDao()
+    suspend fun getCollections(): List<Collection> {
+        val collectionsEntity = collectionDao.getCollections()
         return collectionsEntity.map { it.toCollection() }
     }
 

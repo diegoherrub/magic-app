@@ -61,9 +61,10 @@ class DeckPanel : Fragment() {
     private fun setupToolbar() {
         toolbar = requireActivity().findViewById(R.id.toolbar)
         deckPanelArgs.deckId?.let { deckId = it }
+        Log.d("@pol", "deckPanel.deckId -> $deckId")
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.itm_addDeck -> {
+                R.id.itm_addCardToDeck -> {
                     findNavController().navigate(
                         DeckPanelDirections.actFromDeckPanelToSearchFragment(deckId)
                     )
@@ -72,6 +73,11 @@ class DeckPanel : Fragment() {
 
                 else -> false
             }
+        }
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigate(
+                DeckPanelDirections.actFromDeckPanelToDecksList()
+            )
         }
     }
 
@@ -110,27 +116,15 @@ class DeckPanel : Fragment() {
             }
         }
 
-        decksViewModel.addedCardToDeck.observe(viewLifecycleOwner) { state ->
+        decksViewModel.savedCardInDeck.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
                     val updatedDeck = state.data
                     binding.deckPanelName.text = updatedDeck.name
                     binding.deckPanelDescription.text = updatedDeck.description
-                    // If you need to update other parts (e.g., refresh your adapter),
-                    // you might trigger another call to load the cards
                 }
 
-                is UiState.Loading -> {
-                    // Optionally show a loading indicator
-                }
-
-                is UiState.Error -> {
-                    // Optionally show an error message
-                }
-
-                is UiState.Empty -> {
-                    // Handle empty state if needed
-                }
+                else -> {}
             }
         }
 

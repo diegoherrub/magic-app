@@ -3,7 +3,7 @@ package pol.rubiano.magicapp.features.collections.presentation.assets
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.databinding.CollectionsListItemBinding
-import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.domain.models.Collection
 
 class CollectionsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 

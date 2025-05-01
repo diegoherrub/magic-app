@@ -57,7 +57,7 @@ class DecksList : Fragment() {
             when (item.itemId) {
                 R.id.itm_addDeck -> {
                     findNavController().navigate(
-                        DecksListDirections.actFromDecksListToNewDeckFragment()
+                        DecksListDirections.actFromDecksListToNewDeck()
                     )
                     true
                 }

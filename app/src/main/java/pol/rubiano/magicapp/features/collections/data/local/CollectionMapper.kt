@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.features.collections.data.local
 
-import pol.rubiano.magicapp.features.collections.domain.CardInCollection
-import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.domain.models.CardInCollection
+import pol.rubiano.magicapp.features.collections.domain.models.Collection
 
 fun CollectionEntity.toCollection(): Collection {
     return Collection(

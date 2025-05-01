@@ -1,6 +1,5 @@
 package pol.rubiano.magicapp.features.collections.presentation.assets
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +10,7 @@ import kotlinx.coroutines.withContext
 import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
-import pol.rubiano.magicapp.features.collections.domain.Collection
-import pol.rubiano.magicapp.features.collections.domain.CardInCollection
+import pol.rubiano.magicapp.features.collections.domain.models.Collection
 import pol.rubiano.magicapp.features.collections.domain.usecases.GetCardsOfCollectionUseCase
 import pol.rubiano.magicapp.features.collections.domain.usecases.GetCollectionUseCase
 import pol.rubiano.magicapp.features.collections.domain.usecases.GetCollectionsUseCase

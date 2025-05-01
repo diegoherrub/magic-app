@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -54,24 +55,23 @@ class NewDeckForm : Fragment() {
         }
     }
 
-    private fun setupObserver() {
-        decksViewModel.currentDeck.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is UiState.Success -> {
-                    val deck = state.data
-                    findNavController().navigate(
-                        NewDeckFormDirections.actFromNewDeckToDecksList()
-                    )
-                }
+ private fun setupObserver() {
+     decksViewModel.currentDeck.observe(viewLifecycleOwner) { state ->
+         when (state) {
+             is UiState.Success -> {
+                 val actionWhenSaved =
+                     NewDeckFormDirections.actFromNewDeckToDecksList()
+                 findNavController().navigate(actionWhenSaved)
+             }
 
-                is UiState.Error -> {
-                    bindError(state.error)
-                }
+             is UiState.Error -> {
+                 bindError(state.error)
+             }
 
-                else -> {}
-            }
-        }
-    }
+             else -> {}
+         }
+     }
+ }
 
     private fun bindError(appError: AppError?) {
         if (appError != null) {

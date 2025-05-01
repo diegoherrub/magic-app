@@ -47,12 +47,8 @@ class SearchFragment : Fragment() {
 
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
-
         args.collectionName?.let { collectionName = it }
-        Log.d("@pol", "SearchFragment.setupToolbar(collectionName) -> $collectionName")
         args.deckId?.let { deckId = it }
-        Log.d("@pol", "SearchFragment.setupToolbar(deckId) -> $deckId")
-
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.itemMenuActionSearch -> {
@@ -75,7 +71,7 @@ class SearchFragment : Fragment() {
             when {
                 deckId != null -> {
                     findNavController().navigate(
-                        ResultsFragmentDirections.actFromSearchResultsToDeckDetails(
+                        ResultsFragmentDirections.actFromSearchResultsToDeckPanel(
                             deckId = deckId
                         )
                     )

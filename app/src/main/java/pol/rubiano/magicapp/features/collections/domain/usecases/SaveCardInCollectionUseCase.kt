@@ -1,7 +1,7 @@
 package pol.rubiano.magicapp.features.collections.domain.usecases
 
 import org.koin.core.annotation.Single
-import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.domain.models.Collection
 import pol.rubiano.magicapp.features.collections.domain.repositories.CollectionsRepository
 
 @Single

@@ -6,7 +6,7 @@ import pol.rubiano.magicapp.features.collections.data.local.CollectionDao
 //import pol.rubiano.magicapp.features.collections.data.local.CardInCollectionEntity
 //import pol.rubiano.magicapp.features.collections.data.local.toCardInCollection
 //import pol.rubiano.magicapp.features.collections.data.local.toEntity
-//import pol.rubiano.magicapp.features.collections.domain.CardInCollection
+//import pol.rubiano.magicapp.features.collections.domain.models.CardInCollection
 
 @Single
 class CardLocalDataSource(

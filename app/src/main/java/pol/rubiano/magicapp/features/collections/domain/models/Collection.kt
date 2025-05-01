@@ -1,4 +1,4 @@
-package pol.rubiano.magicapp.features.collections.domain
+package pol.rubiano.magicapp.features.collections.domain.models
 
 data class Collection(
     var name: String,

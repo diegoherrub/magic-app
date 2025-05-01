@@ -6,6 +6,7 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.features.decks.data.local.DeckEntity
 import pol.rubiano.magicapp.features.decks.data.local.DeckLocalDataSource
 import pol.rubiano.magicapp.features.decks.data.local.toDeck
+import pol.rubiano.magicapp.features.decks.data.local.toDeckEntity
 import pol.rubiano.magicapp.features.decks.domain.models.Deck
 import pol.rubiano.magicapp.features.decks.domain.repositories.DecksRepository
 import java.util.UUID
@@ -37,9 +38,7 @@ class DecksDataRepository(
             name = deckNameToSave,
             description = deckDescriptionToSave,
             colors = deck.colors,
-            cardIds = deck.cardIds,
-            sideBoard = deck.sideBoard,
-            maybeBoard = deck.maybeBoard,
+            cards = deck.cards
         )
 
         local.saveDeck(deckEntity)
@@ -52,8 +51,11 @@ class DecksDataRepository(
         return deckEntities.map { it.toDeck() }
     }
 
-    override suspend fun getDeckById(deckId: String): Deck? {
-        val deckEntity = local.getDeckById(deckId)
-        return deckEntity?.toDeck()
+    override suspend fun getDeckById(deckId: String): Deck {
+        return local.getDeckById(deckId)!!
+    }
+
+    override suspend fun saveCardInDeck(cardId: String, deckId: String): Deck {
+        return local.saveCardInDeck(cardId, deckId)!!
     }
 }

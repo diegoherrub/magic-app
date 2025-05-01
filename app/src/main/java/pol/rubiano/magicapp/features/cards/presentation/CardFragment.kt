@@ -20,6 +20,7 @@ import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.databinding.CardFragmentViewBinding
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.collections.presentation.assets.CollectionsViewModel
+import pol.rubiano.magicapp.features.decks.presentation.assets.DecksViewModel
 
 class CardFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class CardFragment : Fragment() {
     private val cardBinder = CardBindingHandler()
     private val cardViewModel: CardViewModel by viewModel()
     private val collectionsViewModel: CollectionsViewModel by viewModel()
+    private val decksViewModel: DecksViewModel by viewModel()
     private val cardFragmentArgs: CardFragmentArgs by navArgs()
     private val errorFactory: AppErrorUIFactory by inject()
 
@@ -70,6 +72,15 @@ class CardFragment : Fragment() {
                             Toast.makeText(
                                 requireContext(),
                                 R.string.str_addedCardToCollection,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        if (deckId != null) {
+                            cardViewModel.saveCard(card)
+                            decksViewModel.saveCardToDeck(card.id, deckId!!)
+                            Toast.makeText(
+                                requireContext(),
+                                R.string.str_addedCardToDeck,
                                 Toast.LENGTH_SHORT
                             ).show()
                         }

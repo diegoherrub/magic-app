@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.common.extensions.loadImage
 import pol.rubiano.magicapp.databinding.SmallCardInCollectionLayoutBinding
-import pol.rubiano.magicapp.features.collections.domain.CardInCollection
+import pol.rubiano.magicapp.features.collections.domain.models.CardInCollection
 
 class CardInCollectionViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 

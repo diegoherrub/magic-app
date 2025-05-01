@@ -6,8 +6,8 @@ import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.features.collections.data.local.CollectionEntity
 import pol.rubiano.magicapp.features.collections.data.local.CollectionsLocalDataSource
 import pol.rubiano.magicapp.features.collections.domain.repositories.CollectionsRepository
-import pol.rubiano.magicapp.features.collections.domain.CardInCollection
-import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.domain.models.CardInCollection
+import pol.rubiano.magicapp.features.collections.domain.models.Collection
 
 @Single
 class CollectionsDataRepository(
@@ -18,7 +18,7 @@ class CollectionsDataRepository(
     override suspend fun saveCollection(collection: Collection) {
         val defaultName = context.getString(R.string.str_newCollection)
         var collectionNameToSave = collection.name
-        val collectionsCount = local.getLocalCollectionsCount()
+        val collectionsCount = local.getCollectionsCount()
         val collectionOrder = collectionsCount + 1
 
         if (collection.name == defaultName) {
@@ -38,7 +38,7 @@ class CollectionsDataRepository(
     }
 
     override suspend fun getCollections(): List<Collection> {
-        return local.getLocalCollections()
+        return local.getCollections()
     }
 
     override suspend fun getCollectionByName(collectionName: String): Collection {

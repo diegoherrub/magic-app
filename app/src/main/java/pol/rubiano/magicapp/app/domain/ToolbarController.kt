@@ -9,8 +9,11 @@ import com.google.android.material.appbar.MaterialToolbar
 import pol.rubiano.magicapp.R
 import androidx.core.view.size
 import androidx.core.view.get
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pol.rubiano.magicapp.features.decks.presentation.DeckPanelDirections
+import pol.rubiano.magicapp.features.decks.presentation.DecksListDirections
+import pol.rubiano.magicapp.features.decks.presentation.NewDeckFormDirections
 
 class ToolbarController(
     private val activity: AppCompatActivity,
@@ -58,6 +61,7 @@ class ToolbarController(
         toolbar.setNavigationOnClickListener(null)
         toolbar.title = destination.label
         bottomNav.visibility = View.VISIBLE
+        val args = navController.currentBackStackEntry?.arguments
 
         when (destination.id) {
             in topLevelDestinations -> toolbar.isTitleCentered = true
@@ -75,7 +79,7 @@ class ToolbarController(
                 bottomNav.visibility = View.GONE
             }
 
-            else -> { }
+            else -> {}
         }
 
         toolbar.navigationIcon?.setTint(
@@ -89,83 +93,51 @@ class ToolbarController(
                 setCustomNavigationAction {
                     navController.navigate(R.id.act_fromKeywords_toMagic)
                 }
-            } // REVISADO
+            }
 
             R.id.legalFormats -> {
                 toolbar.menu.clear()
                 setCustomNavigationAction {
                     navController.navigate(R.id.act_fromLegalFormats_toMagic)
                 }
-            } // REVISADO
+            }
 
-            R.id.collectionsList -> {
-                prepareToolbar(R.menu.collections_list_menu)
-            } // REVISADO
+            R.id.collectionsList -> prepareToolbar(R.menu.collections_list_menu)
 
             R.id.collectionPanel -> {
                 prepareToolbar(R.menu.collection_panel_menu)
                 setCustomNavigationAction {
                     navController.navigate(R.id.act_fromCollectionPanel_toCollectionsList)
                 }
-            } // REVISADO
+            }
 
             R.id.newCollectionForm -> {
                 toolbar.menu.clear()
                 setCustomNavigationAction {
                     navController.navigate(R.id.act_fromNewCollectionForm_toCollectionsList)
                 }
-            } // REVISADO
+            }
 
-            R.id.decksList -> {
-                prepareToolbar(R.menu.md_decks_list)
-                toolbar.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.itm_addDeck -> {
-                            navController.navigate(R.id.act_fromDecksList_toNewDeckFragment)
-                            true
-                        }
-
-                        else -> false
-                    }
-                }
-            } // REVISADO
+            R.id.decksList -> prepareToolbar(R.menu.md_decks_list)
 
             R.id.newDeck -> {
                 toolbar.menu.clear()
                 setCustomNavigationAction {
                     navController.navigate(R.id.act_fromNewDeck_toDecksList)
                 }
-            } // REVISADO
-
-            R.id.deckPanel -> {
-                prepareToolbar(R.menu.mn_deck_panel)
-                toolbar.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.itm_add_card_to_deck -> {
-                            TODO()
-                            true
-                        }
-                        R.id.itm_edit_deck -> {
-                            TODO()
-                            true
-                        }
-                        else -> false
-                    }
-                }
-                setCustomNavigationAction {
-                    navController.navigate(DeckPanelDirections.actFromDeckPanelToDecksList())
-                }
             }
+
+            R.id.deckPanel -> prepareToolbar(R.menu.mn_deck_panel)
 
             R.id.randomCardFragment -> prepareToolbar(R.menu.random_card_menu)
 
             R.id.searchFragment -> prepareToolbar(R.menu.search_menu)
 
             R.id.cardFragment -> {
-                val args = navController.currentBackStackEntry?.arguments
                 val collectionName = args?.getString("collectionname")
+                val deckId = args?.getString("deckId")
 
-                if (collectionName != null) {
+                if (collectionName != null || deckId != null) {
                     prepareToolbar(R.menu.mn_card)
                 } else {
                     toolbar.menu.clear()

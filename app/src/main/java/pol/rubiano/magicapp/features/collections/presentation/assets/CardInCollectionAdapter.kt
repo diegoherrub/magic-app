@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.R
 import pol.rubiano.magicapp.app.presentation.AppDiffUtil
-import pol.rubiano.magicapp.features.collections.domain.CardInCollection
+import pol.rubiano.magicapp.features.collections.domain.models.CardInCollection
 
 class CardsInCollectionAdapter : ListAdapter<CardInCollection, CardInCollectionViewHolder>(
     AppDiffUtil<CardInCollection>(

@@ -14,6 +14,7 @@ import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.decks.domain.models.Deck
 import pol.rubiano.magicapp.features.decks.domain.usecases.GetDeckUseCase
 import pol.rubiano.magicapp.features.decks.domain.usecases.GetDecksUseCase
+import pol.rubiano.magicapp.features.decks.domain.usecases.SaveCardInDeckUseCase
 import pol.rubiano.magicapp.features.decks.domain.usecases.SaveDeckUseCase
 import java.util.UUID
 
@@ -21,6 +22,7 @@ import java.util.UUID
 class DecksViewModel(
     private val saveDeckUseCase: SaveDeckUseCase,
     private val getDecksUseCase: GetDecksUseCase,
+    private val saveCardInDeckUseCase: SaveCardInDeckUseCase,
 
 
     private val getDeckUseCase: GetDeckUseCase,
@@ -29,22 +31,17 @@ class DecksViewModel(
     private val _currentDeck = MutableLiveData<UiState<Deck>>()
     private val _fetchedDecks = MutableLiveData<UiState<List<Deck>>>()
     private val _fetchedDeck = MutableLiveData<UiState<Deck>>()
+    private val _savedCardInDeck = MutableLiveData<UiState<Deck>>()
 
     val currentDeck: LiveData<UiState<Deck>> = _currentDeck
     val fetchedDecks: LiveData<UiState<List<Deck>>> = _fetchedDecks
     val fetchedDeck: LiveData<UiState<Deck>> = _fetchedDeck
-
-
-
+    val savedCardInDeck: LiveData<UiState<Deck>> = _savedCardInDeck
 
 
 
     private val _fetchedCardsFromDeck = MutableLiveData<UiState<List<Card?>>>()
     val fetchedCardsFromDeck: LiveData<UiState<List<Card?>>> = _fetchedCardsFromDeck
-
-    private val _addedCardToDeck = MutableLiveData<UiState<Deck>>()
-    val addedCardToDeck: LiveData<UiState<Deck>> = _addedCardToDeck
-
 
     fun createNewDeck(newDeckName: String, newDeckDescription: String) {
         saveDeck(
@@ -53,9 +50,7 @@ class DecksViewModel(
                 name = newDeckName,
                 description = newDeckDescription,
                 colors = emptyList(),
-                cardIds = emptyList(),
-                sideBoard = emptyList(),
-                maybeBoard = emptyList(),
+                cards = emptyList()
             )
         )
     }
@@ -116,6 +111,22 @@ class DecksViewModel(
         }
     }
 
+    fun saveCardToDeck(cardId: String, deckId: String) {
+        _savedCardInDeck.value = UiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val updatedDeck = saveCardInDeckUseCase.invoke(cardId, deckId)
+                withContext(Dispatchers.Main) {
+                    _savedCardInDeck.postValue(UiState.Success(updatedDeck))
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _savedCardInDeck.postValue(UiState.Error(AppError.AppDataError))
+                }
+            }
+        }
+    }
+
 
 
 
@@ -150,25 +161,5 @@ class DecksViewModel(
     //    _fetchedDeck.value = UiState.Success(deck)
     //}
 
-//    fun addCardToDeck(deck: Deck, card: Card) {
-//        _addedCardToDeck.value = UiState.Loading
-//        viewModelScope.launch(Dispatchers.IO) {
-//            try {
-//                decksRepository.addCardToDeck(deck.id, card.id)
-//                val actualizedDeck = decksRepository.getDeckById(deck.id)
-//                withContext(Dispatchers.Main) {
-//                    if (actualizedDeck != null) {
-//                        _addedCardToDeck.value = UiState.Success(actualizedDeck)
-//                    } else {
-//                        _addedCardToDeck.value = UiState.Error(AppError.AppDataError)
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                withContext(Dispatchers.Main) {
-//                    _addedCardToDeck.value = UiState.Error(AppError.AppDataError)
-//                }
-//            }
-//        }
-//    }
 }
 

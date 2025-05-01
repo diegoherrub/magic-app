@@ -6,4 +6,5 @@ interface DecksRepository {
     suspend fun saveDeck(deck: Deck): Deck
     suspend fun getDecks(): List<Deck>
     suspend fun getDeckById(deckId: String): Deck?
+    suspend fun saveCardInDeck(cardId: String, deckId: String): Deck
 }

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import pol.rubiano.magicapp.app.presentation.AppDiffUtil
-import pol.rubiano.magicapp.features.collections.domain.Collection
+import pol.rubiano.magicapp.features.collections.domain.models.Collection
 
 import pol.rubiano.magicapp.R
 

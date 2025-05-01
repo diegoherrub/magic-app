@@ -8,6 +8,7 @@ import pol.rubiano.magicapp.features.cards.data.local.CardEntity
 import pol.rubiano.magicapp.features.collections.data.local.CardInCollectionEntity
 import pol.rubiano.magicapp.features.collections.data.local.CollectionDao
 import pol.rubiano.magicapp.features.collections.data.local.CollectionEntity
+import pol.rubiano.magicapp.features.decks.data.local.CardInDeckEntity
 import pol.rubiano.magicapp.features.decks.data.local.DeckDao
 import pol.rubiano.magicapp.features.decks.data.local.DeckEntity
 
@@ -17,11 +18,14 @@ import pol.rubiano.magicapp.features.decks.data.local.DeckEntity
         DeckEntity::class,
         CollectionEntity::class,
         CardInCollectionEntity::class,
+        CardInDeckEntity::class,
     ],
-    version = 11,
+    version = 13,
     exportSchema = false
 )
-@TypeConverters(Converters::class)
+@TypeConverters(
+    Converters::class
+)
 abstract class MagicAppDataBase : RoomDatabase() {
     abstract fun cardDao(): CardDao
     abstract fun deckDao(): DeckDao

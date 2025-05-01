@@ -26,7 +26,7 @@ import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.databinding.SearchResultsFragmentBinding
 import pol.rubiano.magicapp.features.cards.presentation.CardViewModel
-import pol.rubiano.magicapp.features.collections.presentation.CollectionPanelDirections
+import pol.rubiano.magicapp.features.decks.presentation.assets.DecksViewModel
 import pol.rubiano.magicapp.features.search.presentation.assets.SearchResultsAdapter
 import pol.rubiano.magicapp.features.search.presentation.assets.SearchViewModel
 
@@ -38,10 +38,7 @@ class ResultsFragment : Fragment() {
     private val resultsFragmentArgs: ResultsFragmentArgs by navArgs()
 
     private val searchViewModel: SearchViewModel by viewModel()
-
-    //    private val decksViewModel: DecksViewModel by viewModel()
     private val cardViewModel: CardViewModel by viewModel()
-//    private val collectionsViewModel: CollectionsViewModel by viewModel()
 
     private var layoutManagerState: Parcelable? = null
     private var deckId: String? = null
@@ -69,13 +66,8 @@ class ResultsFragment : Fragment() {
     private fun setupToolbar() {
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
         resultsFragmentArgs.collectionName?.let { collectionName = it }
-        Log.d("@pol", "ResultsFragment.setupToolbar(collectionName) -> $collectionName")
         resultsFragmentArgs.deckId?.let { deckId = it }
-        Log.d("@pol", "ResultsFragment.setupToolbar(deckId) -> $deckId")
         resultsFragmentArgs.query?.let { query = it }
-        Log.d("@pol", "ResultsFragment.setupToolbar(query) -> $query")
-
-
         toolbar.setNavigationOnClickListener {
             val currentDestination = findNavController().currentDestination?.id
             if (currentDestination == R.id.resultsFragment) {
@@ -98,7 +90,7 @@ class ResultsFragment : Fragment() {
                     findNavController().navigate(
                         ResultsFragmentDirections.actFromResultsFragmentToCardFragment(
                             card = card,
-//                            deckId = deckId,
+                            deckId = deckId,
                             collectionName = null
                         )
                     )
@@ -108,7 +100,7 @@ class ResultsFragment : Fragment() {
                     findNavController().navigate(
                         ResultsFragmentDirections.actFromResultsFragmentToCardFragment(
                             card = card,
-//                            deckId = null,
+                            deckId = null,
                             collectionName = collectionName
                         )
                     )
@@ -118,7 +110,7 @@ class ResultsFragment : Fragment() {
                     findNavController().navigate(
                         ResultsFragmentDirections.actFromResultsFragmentToCardFragment(
                             card,
-//                            deckId = null,
+                            deckId = null,
                             collectionName = null
                         )
                     )
