@@ -11,6 +11,8 @@ import org.koin.android.annotation.KoinViewModel
 import pol.rubiano.magicapp.app.domain.AppError
 import pol.rubiano.magicapp.app.domain.UiState
 import pol.rubiano.magicapp.features.cards.domain.models.Card
+import pol.rubiano.magicapp.features.cards.domain.usecases.GetCardUseCase
+import pol.rubiano.magicapp.features.decks.domain.models.CardInDeck
 import pol.rubiano.magicapp.features.decks.domain.models.Deck
 import pol.rubiano.magicapp.features.decks.domain.usecases.GetCardsInDeckUseCase
 import pol.rubiano.magicapp.features.decks.domain.usecases.GetDeckUseCase
@@ -25,6 +27,7 @@ class DecksViewModel(
     private val getDecksUseCase: GetDecksUseCase,
     private val saveCardInDeckUseCase: SaveCardInDeckUseCase,
     private val getDeckUseCase: GetDeckUseCase,
+    private val getCardUseCase: GetCardUseCase,
     private val getCardsInDeckUseCase: GetCardsInDeckUseCase,
 ) : ViewModel() {
 
@@ -41,6 +44,9 @@ class DecksViewModel(
 
     private val _fetchedCardsFromDeck = MutableLiveData<UiState<List<Card?>>>()
     val fetchedCardsFromDeck: LiveData<UiState<List<Card?>>> = _fetchedCardsFromDeck
+
+    private val _cardsInDeck = MutableLiveData<UiState<List<Pair<Card, CardInDeck>>>>()
+    val cardsInDeck: LiveData<UiState<List<Pair<Card, CardInDeck>>>> = _cardsInDeck
 
     fun createNewDeck(newDeckName: String, newDeckDescription: String) {
         saveDeck(
@@ -99,6 +105,7 @@ class DecksViewModel(
                     withContext(Dispatchers.Main) {
                         _fetchedDeck.postValue(UiState.Success(deck))
                     }
+                    getCardsInDeck(deckId)
                 } else {
                     withContext(Dispatchers.Main) {
                         _fetchedDeck.postValue(UiState.Empty)
@@ -126,28 +133,20 @@ class DecksViewModel(
         }
     }
 
-
-    //private fun loadDeckCards(deck: Deck) {
-    //    _fetchedCardsFromDeck.value = UiState.Loading
-    //    viewModelScope.launch(Dispatchers.IO) {
-    //        try {
-    //            val cardsFromDeck = deck.cardIds.map { cardId ->
-    //                cardRepository.getCard(cardId)
-    //            }
-    //            _fetchedCardsFromDeck.postValue(UiState.Success(cardsFromDeck))
-    //        } catch (e: Exception) {
-    //            withContext(Dispatchers.Main) {
-    //                UiState.Error(AppError.AppDataError)
-    //            }
-    //        }
-    //    }
-    //}
-
-    //fun loadCurrentDeck(deck: Deck) {
-    //    _fetchedDeck.value = UiState.Loading
-    //    loadDeckCards(deck)
-    //    _fetchedDeck.value = UiState.Success(deck)
-    //}
+    fun getCardsInDeck(deckId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val cardsInDeck = getCardsInDeckUseCase.invoke(deckId)
+                val fullData = cardsInDeck.mapNotNull { cardInDeck ->
+                    val card = getCardUseCase.invoke(cardInDeck.cardId)
+                    card?.let { Pair(it, cardInDeck) }
+                }
+                _cardsInDeck.postValue(UiState.Success(fullData))
+            } catch (e: Exception) {
+                _cardsInDeck.postValue(UiState.Error(AppError.AppDataError))
+            }
+        }
+    }
 
 }
 

@@ -1,5 +1,6 @@
 package pol.rubiano.magicapp.features.decks.presentation.assets
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,15 +15,12 @@ import pol.rubiano.magicapp.app.common.extensions.loadUrl
 import pol.rubiano.magicapp.app.presentation.AppDiffUtil
 import pol.rubiano.magicapp.features.decks.domain.models.DeckConfigItem
 
-class DeckPanelAdapter(
-//    private val onAddCardClick: (CardCategory) -> Unit = {}
-) : ListAdapter<DeckConfigItem, RecyclerView.ViewHolder>(
+class DeckPanelAdapter : ListAdapter<DeckConfigItem, RecyclerView.ViewHolder>(
     AppDiffUtil<DeckConfigItem>(
         itemSame = { old, new -> old == new },
         contentSame = { old, new -> old == new }
     )
 ) {
-
     companion object {
         private const val VIEW_TYPE_HEADER = 0
         private const val VIEW_TYPE_GROUP = 1
@@ -42,25 +40,18 @@ class DeckPanelAdapter(
                     .inflate(R.layout.separator_header, parent, false)
                 HeaderViewHolder(view)
             }
-
             VIEW_TYPE_GROUP -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.deck_item_cards_row, parent, false)
-//                CardGroupViewHolder(view, onAddCardClick)
                 CardGroupViewHolder(view)
             }
-
             else -> throw IllegalArgumentException("Unknown view type")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = getItem(position)) {
-            is DeckConfigItem.Header -> {
-                Log.d("@pol", "Binding header: ${item.title}")
-                (holder as HeaderViewHolder).bind(item)
-            }
-
+            is DeckConfigItem.Header -> (holder as HeaderViewHolder).bind(item)
             is DeckConfigItem.CardGroup -> (holder as CardGroupViewHolder).bind(item)
         }
     }
@@ -71,69 +62,55 @@ class DeckPanelAdapter(
         }
     }
 
-    class CardGroupViewHolder(
-        view: View,
-//        private val onAddCardClick: (CardCategory) -> Unit
-    ) : RecyclerView.ViewHolder(view) {
+    class CardGroupViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val container = itemView.findViewById<ConstraintLayout>(R.id.cardRowContainer)
+        private val boardIndicator = itemView.findViewById<TextView>(R.id.boardIndicator)
 
         fun bind(item: DeckConfigItem.CardGroup) {
             container.removeAllViews()
-            val context = container.context
 
-//            if (item.cards.isEmpty()) {
-//                val addButton = ImageView(context).apply {
-////                    setImageResource(android.R.drawable.ic_input_add)
-////                    layoutParams = LinearLayout.LayoutParams(
-////                        LinearLayout.LayoutParams.MATCH_PARENT,
-////                        100.dp(context)
-////                    ).apply {
-////                        marginStart = 8.dp(context)
-////                        marginEnd = 8.dp(context)
-////                    }
-////                    setOnClickListener {
-////                        onAddCardClick(item.category)
-////                    }
-//                }
-//                container.addView(addButton)
-//            } else {
-                val groupedCards = item.cards.groupBy { it?.id ?: "" }
-                for ((_, cardList) in groupedCards) {
-                    val copiesCount = cardList.size
+            boardIndicator.text = buildString {
+                append("Main: ${item.mainBoardCopies}")
+                if (item.sideBoardCopies > 0) append(" | Side: ${item.sideBoardCopies}")
+                if (item.mayBeBoardCopies > 0) append(" | Maybe: ${item.mayBeBoardCopies}")
+            }
 
-                    val rowView = LayoutInflater.from(context)
-                        .inflate(R.layout.deck_item_cards_row, container, false)
+            item.cards.groupBy { it.first.id }.forEach { (_, cardPairs) ->
+                val (card, cardInDeck) = cardPairs.first()
+                val rowView = LayoutInflater.from(container.context)
+                    .inflate(R.layout.deck_item_cards_row, container, false)
 
-                    // val copy1 = rowView.findViewById<ImageView>(R.id.cardFirstCopy)
-                    val copy1 = rowView.findViewById<ImageView>(R.id.cardFirstCopy)
-                    val copy2 = rowView.findViewById<ImageView>(R.id.cardSecondCopy)
-                    val copy3 = rowView.findViewById<ImageView>(R.id.cardThirdCopy)
-                    val copy4 = rowView.findViewById<ImageView>(R.id.cardForthCopy)
+                // Configurar boards
+                setupBoard(rowView, R.id.mainCopy1, R.id.mainCopy2, R.id.mainCopy3, R.id.mainCopy4,
+                    cardInDeck.mainBoardCopies, card.imageSmall)
+                setupBoard(rowView, R.id.sideCopy1, R.id.sideCopy2, R.id.sideCopy3, R.id.sideCopy4,
+                    cardInDeck.sideBoardCopies, card.imageSmall)
+                setupBoard(rowView, R.id.maybeCopy1, R.id.maybeCopy2, R.id.maybeCopy3, R.id.maybeCopy4,
+                    cardInDeck.mayBeBoardCopies, card.imageSmall)
 
-                    val imageDrawable: Unit
-                    val card = cardList.firstOrNull()
-                    card?.imageSmall?.let { url ->
-                        // Cargar la imagen en copy1
-                        copy1.loadUrl(url)
+                container.addView(rowView)
+            }
+        }
 
+        private fun setupBoard(
+            rowView: View,
+            id1: Int, id2: Int, id3: Int, id4: Int,
+            copies: Int,
+            imageUrl: String?
+        ) {
+            val imageViews = listOf(
+                rowView.findViewById<ImageView>(id1),
+                rowView.findViewById<ImageView>(id2),
+                rowView.findViewById<ImageView>(id3),
+                rowView.findViewById<ImageView>(id4)
+            )
 
-                        // Usar el mismo Drawable para las demás copias
-                        copy1.post {
-                            val drawable = copy1.drawable
-                            copy2.setImageDrawable(copy1.drawable)
-                            copy3.setImageDrawable(copy1.drawable)
-                            copy4.setImageDrawable(copy1.drawable)
-                        }
-                    }
+            imageViews.forEachIndexed { index, imageView ->
+                imageView.visibility = if (index < copies) View.VISIBLE else View.INVISIBLE
+            }
 
-                    // Show or hide each copy based on copiesCount (1..4)
-                    copy1.visibility = if (copiesCount >= 1) View.VISIBLE else View.INVISIBLE
-                    copy2.visibility = if (copiesCount >= 2) View.VISIBLE else View.INVISIBLE
-                    copy3.visibility = if (copiesCount >= 3) View.VISIBLE else View.INVISIBLE
-                    copy4.visibility = if (copiesCount >= 4) View.VISIBLE else View.INVISIBLE
-
-                    container.addView(rowView)
-                //}
+            if (copies > 0 && imageUrl != null) {
+                imageViews.first().loadUrl(imageUrl)
             }
         }
     }

@@ -1,42 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardRowContainer"
-    style="@style/st_cointainer_item_cards">
+    style="@style/st_cointainer_item_cards"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/cardFirstCopy"
-        style="@style/st_image_small_spaced"
-        android:layout_width="@dimen/zero_dp"
-        android:contentDescription="@string/image_card_content_description"
+    <!-- TextView para mostrar el indicador de boards -->
+    <TextView
+        android:id="@+id/boardIndicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/md_theme_onPrimary"
+        android:paddingBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" 
-        app:layout_constraintEnd_toStartOf="@id/cardSecondCopy" />
-
-    <ImageView
-        android:id="@+id/cardSecondCopy"
-        style="@style/st_image_small_spaced"
-        android:layout_width="@dimen/zero_dp"
-        android:contentDescription="@string/image_card_content_description"
-        app:layout_constraintStart_toEndOf="@+id/cardFirstCopy"
-        app:layout_constraintEnd_toStartOf="@id/cardThirdCopy"
-        app:layout_constraintTop_toTopOf="@id/cardFirstCopy" />
-
-    <ImageView
-        android:id="@+id/cardThirdCopy"
-        style="@style/st_image_small_spaced"
-        android:layout_width="@dimen/zero_dp"
-        android:contentDescription="@string/image_card_content_description"
-        app:layout_constraintStart_toEndOf="@+id/cardSecondCopy"
-        app:layout_constraintEnd_toStartOf="@id/cardForthCopy"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/cardForthCopy"
-        style="@style/st_image_small_spaced"
-        android:layout_width="@dimen/zero_dp"
-        android:contentDescription="@string/image_card_content_description"
-        app:layout_constraintStart_toEndOf="@+id/cardThirdCopy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Main: 2 | Side: 1 | Maybe: 1" />
+
+    <!-- Contenedor para las imágenes de las cartas -->
+    <LinearLayout
+        android:id="@+id/copiesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/boardIndicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Main Board Copies -->
+        <ImageView
+            android:id="@+id/mainCopy1"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="main"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/mainCopy2"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="main"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/mainCopy3"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="main"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/mainCopy4"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="main"
+            tools:visibility="visible" />
+
+        <!-- Separador visual entre boards -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="4dp"
+            android:background="@color/md_theme_secondary" />
+
+        <!-- Side Board Copies -->
+        <ImageView
+            android:id="@+id/sideCopy1"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="side"
+            android:alpha="0.7"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/sideCopy2"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="side"
+            android:alpha="0.7"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/sideCopy3"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="side"
+            android:alpha="0.7"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/sideCopy4"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="side"
+            android:alpha="0.7"
+            tools:visibility="visible" />
+
+        <!-- Separador visual entre boards -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="4dp"
+            android:background="@color/md_theme_onPrimary" />
+
+        <!-- Maybe Board Copies -->
+        <ImageView
+            android:id="@+id/maybeCopy1"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="maybe"
+            android:alpha="0.5"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/maybeCopy2"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="maybe"
+            android:alpha="0.5"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/maybeCopy3"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="maybe"
+            android:alpha="0.5"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/maybeCopy4"
+            style="@style/st_image_small_spaced"
+            android:layout_width="@dimen/image_small_w"
+            android:contentDescription="@string/image_card_content_description"
+            android:tag="maybe"
+            android:alpha="0.5"
+            tools:visibility="visible" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

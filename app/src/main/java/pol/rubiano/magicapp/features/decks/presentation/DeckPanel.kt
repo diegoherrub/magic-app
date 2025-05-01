@@ -27,6 +27,8 @@ import pol.rubiano.magicapp.app.presentation.error.AppErrorUIFactory
 import pol.rubiano.magicapp.databinding.DeckPanelBinding
 import pol.rubiano.magicapp.features.cards.domain.models.Card
 import pol.rubiano.magicapp.features.cards.domain.models.CardCategory
+import pol.rubiano.magicapp.features.decks.data.local.CardInDeckEntity
+import pol.rubiano.magicapp.features.decks.data.local.toEntity
 import pol.rubiano.magicapp.features.decks.presentation.assets.DeckPanelAdapter
 import pol.rubiano.magicapp.features.decks.domain.models.DeckConfigItem
 import pol.rubiano.magicapp.features.decks.presentation.assets.DecksViewModel
@@ -134,14 +136,19 @@ class DeckPanel : Fragment() {
             when (state) {
                 is UiState.Success -> {
                     val cards = state.data
-                    val grouped = groupCardsByCategory(cards)
+                    val grouped = groupCardsByCategory(
+                        cards.filterNotNull().map { card ->
+                            Pair(card, CardInDeckEntity(
+                                card.id, deckId, 0, 0, 0
+                            )) // Replace with actual mapping logic
+                        }
+                    )
                     Log.d("@pol", "Submitting list with ${grouped.size} items")
                     adapter.submitList(grouped)
                     val uniqueColors = DeckStatsAnalyzer.getUniqueColors(cards)
                         .joinToString(" ") { "{$it}" }
                     binding.deckPanelColors.text = mapManaSymbols(requireContext(), uniqueColors)
                     Log.d("@pol", "cards: ${cards}")
-
                 }
 
                 is UiState.Loading -> {}
@@ -151,31 +158,68 @@ class DeckPanel : Fragment() {
                 }
             }
         }
+        decksViewModel.cardsInDeck.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    val cardsWithData = state.data
+                    val grouped = groupCardsByCategory(
+                        cardsWithData.map { Pair(it.first, it.second.toEntity()) }
+                    )
+                    adapter.submitList(grouped)
+
+                    // Actualizar estadísticas solo con mainboard
+                    val mainBoardCards = cardsWithData.filter { it.second.mainBoardCopies > 0 }.map { it.first }
+                    val uniqueColors = DeckStatsAnalyzer.getUniqueColors(mainBoardCards)
+                        .joinToString(" ") { "{$it}" }
+                    binding.deckPanelColors.text = mapManaSymbols(requireContext(), uniqueColors)
+                }
+                else -> {}
+            }
+        }
     }
 
-    private fun groupCardsByCategory(cards: List<Card?>): List<DeckConfigItem> {
+    private fun groupCardsByCategory(cards: List<Pair<Card, CardInDeckEntity>>): List<DeckConfigItem> {
         val groupedItems = mutableListOf<DeckConfigItem>()
 
         // Creatures
-        val creatures =
-            cards.filter { it?.typeLine?.contains("creature", ignoreCase = true) ?: false }
+        val creatures = cards.filter { it.first.typeLine?.contains("creature", ignoreCase = true) ?: false }
         if (creatures.isNotEmpty()) {
             val creaturesString = getString(R.string.type_creature)
             groupedItems += DeckConfigItem.Header("$creaturesString (${creatures.size})")
-            val distinctCreatures = creatures.groupBy { it?.id ?: "" }
+            val distinctCreatures = creatures.groupBy { it.first.id }
             distinctCreatures.forEach { (_, cardList) ->
-                groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Creatures)
+                val mainCopies = cardList.sumOf { it.second.mainBoardCopies }
+                val sideCopies = cardList.sumOf { it.second.sideBoardCopies }
+                val maybeCopies = cardList.sumOf { it.second.mayBeBoardCopies }
+
+                groupedItems += DeckConfigItem.CardGroup(
+                    cardList,
+                    CardCategory.Creatures,
+                    mainCopies,
+                    sideCopies,
+                    maybeCopies
+                )
             }
         }
 
         // Lands
-        val lands = cards.filter { it?.typeLine?.contains("land", ignoreCase = true) ?: false }
+        val lands = cards.filter { it.first.typeLine?.contains("land", ignoreCase = true) ?: false }
         if (lands.isNotEmpty()) {
             val landsString = getString(R.string.type_land)
             groupedItems += DeckConfigItem.Header("$landsString (${lands.size})")
-            val distinctLands = lands.groupBy { it?.id ?: "" }
+            val distinctLands = lands.groupBy { it.first.id }
             distinctLands.forEach { (_, cardList) ->
-                groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Lands)
+                val mainCopies = cardList.sumOf { it.second.mainBoardCopies }
+                val sideCopies = cardList.sumOf { it.second.sideBoardCopies }
+                val maybeCopies = cardList.sumOf { it.second.mayBeBoardCopies }
+
+                groupedItems += DeckConfigItem.CardGroup(
+                    cardList,
+                    CardCategory.Lands,
+                    mainCopies,
+                    sideCopies,
+                    maybeCopies
+                )
             }
         }
 
@@ -184,13 +228,22 @@ class DeckPanel : Fragment() {
         if (spells.isNotEmpty()) {
             val spellsString = getString(R.string.type_spell)
             groupedItems += DeckConfigItem.Header("$spellsString (${spells.size})")
-            val distinctSpells = spells.groupBy { it?.id ?: "" }
+            val distinctSpells = spells.groupBy { it.first.id }
             distinctSpells.forEach { (_, cardList) ->
-                groupedItems += DeckConfigItem.CardGroup(cardList, CardCategory.Spells)
+                val mainCopies = cardList.sumOf { it.second.mainBoardCopies }
+                val sideCopies = cardList.sumOf { it.second.sideBoardCopies }
+                val maybeCopies = cardList.sumOf { it.second.mayBeBoardCopies }
+
+                groupedItems += DeckConfigItem.CardGroup(
+                    cardList,
+                    CardCategory.Spells,
+                    mainCopies,
+                    sideCopies,
+                    maybeCopies
+                )
             }
         }
 
-        Log.d("@pol", "Grouped items: ${groupedItems.joinToString()}")
         return groupedItems
     }
 
