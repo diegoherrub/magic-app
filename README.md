@@ -30,13 +30,5 @@ Run the app on your device or emulator.
 ##📡 Scryfall API Integration
 The application retrieves card data from Scryfall. An initial query is performed to fetch the cards and store them in the local database.
 
-## 🛠 Project Status
-- [x] API connection and Room storage.
-- [ ] Implementation of collection management.
-- [ ] Deck creation with format validation.
-- [ ] Deck statistics visualisation.
-
-📖 Full Documentation → [View on GitHub Pages](https://diegoherrub.github.io/magic-app/)
-
 📜 Licence
 This project is licensed under the MIT Licence. See the [LICENSE](LICENSE) file for more details.
