@@ -80,7 +80,6 @@ class DeckPanelAdapter : ListAdapter<DeckConfigItem, RecyclerView.ViewHolder>(
                 val rowView = LayoutInflater.from(container.context)
                     .inflate(R.layout.deck_item_cards_row, container, false)
 
-                // Configurar boards
                 setupBoard(rowView, R.id.mainCopy1, R.id.mainCopy2, R.id.mainCopy3, R.id.mainCopy4,
                     cardInDeck.mainBoardCopies, card.imageSmall)
                 setupBoard(rowView, R.id.sideCopy1, R.id.sideCopy2, R.id.sideCopy3, R.id.sideCopy4,

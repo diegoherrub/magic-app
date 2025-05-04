@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/magicFragment">
 
-    <!-- MAGIC -->
     <fragment
         android:id="@+id/magicFragment"
         android:name="pol.rubiano.magicapp.features.magic.presentation.Magic"
@@ -16,7 +15,7 @@
         <action
             android:id="@+id/act_fromMagic_toLegalFormats"
             app:destination="@+id/legalFormats" />
-    </fragment><!-- REVISADO -->
+    </fragment>
 
     <fragment
         android:id="@+id/keywords"
@@ -26,7 +25,7 @@
         <action
             android:id="@+id/act_fromKeywords_toMagic"
             app:destination="@+id/magicFragment" />
-    </fragment><!-- REVISADO -->
+    </fragment>
 
     <fragment
         android:id="@+id/legalFormats"
@@ -36,9 +35,9 @@
         <action
             android:id="@+id/act_fromLegalFormats_toMagic"
             app:destination="@+id/magicFragment" />
-    </fragment><!-- REVISADO -->
+    </fragment>
 
-    <!-- COLLECTIONS -->
+
     <fragment
         android:id="@+id/collectionsList"
         android:name="pol.rubiano.magicapp.features.collections.presentation.CollectionsList"
@@ -83,7 +82,7 @@
             app:destination="@+id/collectionsList" />
     </fragment>
 
-    <!-- DECKS -->
+
     <fragment
         android:id="@+id/decksList"
         android:name="pol.rubiano.magicapp.features.decks.presentation.DecksList"
@@ -214,7 +213,7 @@
 
         <argument
             android:name="card"
-            app:argType="pol.rubiano.magicapp.features.cards.domain.models.Card"/>
+            app:argType="pol.rubiano.magicapp.features.cards.domain.models.Card" />
 
         <argument
             android:name="deckId"
@@ -225,9 +224,5 @@
             android:name="collectionName"
             app:argType="string"
             app:nullable="true" />
-
-<!--        <action-->
-<!--            android:id="@+id/act_fromCardFragment_toResultsFragment"-->
-<!--            app:destination="@+id/resultsFragment" />-->
     </fragment>
 </navigation>

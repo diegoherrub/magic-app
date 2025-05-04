@@ -45,8 +45,6 @@ class DeckLocalDataSource(
                 mayBeBoardCopies = 0
             )
             deckDao.saveCardInDeck(cardInDeck)
-        } else {
-            // TODO()
         }
         return refreshDeck(deckId)
     }

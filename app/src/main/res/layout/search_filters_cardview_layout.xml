@@ -27,7 +27,6 @@
         app:drawableEndCompat="@drawable/arrow_drop_down"
         tools:text="Filter" />
 
-    <!-- Contenido expandible con los Switch -->
     <LinearLayout
         android:id="@+id/app_search_filter_card_switch_container"
         android:layout_width="match_parent"

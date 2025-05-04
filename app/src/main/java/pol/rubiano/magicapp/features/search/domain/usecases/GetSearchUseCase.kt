@@ -10,7 +10,6 @@ class GetSearchUseCase(
     private val scryfallRepository: ScryfallRepository
 ) {
     suspend operator fun invoke(query: String): Result<Scryfall> {
-        Log.d("@pol", "GetSearchUseCase().invoke -> query: $query")
         return scryfallRepository.getScryfallSearch(query)
     }
 }

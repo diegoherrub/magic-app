@@ -9,7 +9,6 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <!-- TextView para mostrar el indicador de boards -->
     <TextView
         android:id="@+id/boardIndicator"
         android:layout_width="0dp"
@@ -19,10 +18,8 @@
         android:paddingBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Main: 2 | Side: 1 | Maybe: 1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Contenedor para las imágenes de las cartas -->
     <LinearLayout
         android:id="@+id/copiesContainer"
         android:layout_width="match_parent"
@@ -34,7 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Main Board Copies -->
         <ImageView
             android:id="@+id/mainCopy1"
             style="@style/st_image_small_spaced"
@@ -67,14 +63,12 @@
             android:tag="main"
             tools:visibility="visible" />
 
-        <!-- Separador visual entre boards -->
         <View
             android:layout_width="1dp"
             android:layout_height="20dp"
             android:layout_marginHorizontal="4dp"
             android:background="@color/md_theme_secondary" />
 
-        <!-- Side Board Copies -->
         <ImageView
             android:id="@+id/sideCopy1"
             style="@style/st_image_small_spaced"
@@ -111,14 +105,12 @@
             android:alpha="0.7"
             tools:visibility="visible" />
 
-        <!-- Separador visual entre boards -->
         <View
             android:layout_width="1dp"
             android:layout_height="20dp"
             android:layout_marginHorizontal="4dp"
             android:background="@color/md_theme_onPrimary" />
 
-        <!-- Maybe Board Copies -->
         <ImageView
             android:id="@+id/maybeCopy1"
             style="@style/st_image_small_spaced"

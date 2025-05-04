@@ -40,10 +40,6 @@ class CollectionsLocalDataSource(
                 copies = 1
             )
             collectionDao.saveCardInCollection(cardInCollection)
-        } else {
-            //existingCardInCollection.copies += 1
-            //refreshCollection(collectionName)
-            //Log.d("@pol", "${existingCardInCollection.copies}")
         }
         return refreshCollection(collectionName)
     }

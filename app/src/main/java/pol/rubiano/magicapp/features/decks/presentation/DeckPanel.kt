@@ -140,7 +140,7 @@ class DeckPanel : Fragment() {
                         cards.filterNotNull().map { card ->
                             Pair(card, CardInDeckEntity(
                                 card.id, deckId, 0, 0, 0
-                            )) // Replace with actual mapping logic
+                            ))
                         }
                     )
                     Log.d("@pol", "Submitting list with ${grouped.size} items")
@@ -167,7 +167,6 @@ class DeckPanel : Fragment() {
                     )
                     adapter.submitList(grouped)
 
-                    // Actualizar estadísticas solo con mainboard
                     val mainBoardCards = cardsWithData.filter { it.second.mainBoardCopies > 0 }.map { it.first }
                     val uniqueColors = DeckStatsAnalyzer.getUniqueColors(mainBoardCards)
                         .joinToString(" ") { "{$it}" }
@@ -181,7 +180,6 @@ class DeckPanel : Fragment() {
     private fun groupCardsByCategory(cards: List<Pair<Card, CardInDeckEntity>>): List<DeckConfigItem> {
         val groupedItems = mutableListOf<DeckConfigItem>()
 
-        // Creatures
         val creatures = cards.filter { it.first.typeLine?.contains("creature", ignoreCase = true) ?: false }
         if (creatures.isNotEmpty()) {
             val creaturesString = getString(R.string.type_creature)
@@ -202,7 +200,6 @@ class DeckPanel : Fragment() {
             }
         }
 
-        // Lands
         val lands = cards.filter { it.first.typeLine?.contains("land", ignoreCase = true) ?: false }
         if (lands.isNotEmpty()) {
             val landsString = getString(R.string.type_land)
@@ -223,7 +220,6 @@ class DeckPanel : Fragment() {
             }
         }
 
-        // Spells (everything else)
         val spells = cards - creatures.toSet() - lands.toSet()
         if (spells.isNotEmpty()) {
             val spellsString = getString(R.string.type_spell)

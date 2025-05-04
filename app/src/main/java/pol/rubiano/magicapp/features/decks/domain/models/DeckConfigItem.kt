@@ -7,7 +7,7 @@ import pol.rubiano.magicapp.features.decks.data.local.CardInDeckEntity
 sealed class DeckConfigItem {
     data class Header(val title: String) : DeckConfigItem()
     data class CardGroup(
-        val cards: List<Pair<Card, CardInDeckEntity>>,  // Cambiado a Pair<Card, CardInDeckEntity>
+        val cards: List<Pair<Card, CardInDeckEntity>>,
         val category: CardCategory,
         val mainBoardCopies: Int,
         val sideBoardCopies: Int,

@@ -17,7 +17,6 @@ fun ImageView.loadImage(context: Context, cardId: String) {
     this.load(imageFile) {
         placeholder(R.drawable.card_back)
         error(R.drawable.card_back)
-        // Opcional: desactiva caché para imágenes locales que pueden cambiar
         memoryCachePolicy(coil.request.CachePolicy.DISABLED)
         diskCachePolicy(coil.request.CachePolicy.DISABLED)
     }

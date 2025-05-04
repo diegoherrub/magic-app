@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- COMMON -->
     <style name="style_matchMatch">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -36,7 +35,6 @@
         <item name="android:layout_height">@dimen/zero_dp</item>
     </style>
 
-    <!-- CONTAINERS -->
     <style name="st_cointainer" parent="style_matchMatch">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
@@ -61,7 +59,6 @@
         <item name="android:paddingBottom">@dimen/dimen_s</item>
     </style>
 
-    <!-- IMAGES -->
     <style name="st_image_small">
         <item name="android:layout_width">@dimen/image_small_w</item>
         <item name="android:layout_height">@dimen/image_small_h</item>
@@ -82,7 +79,6 @@
         <item name="android:src">@drawable/card_back</item>
     </style>
 
-    <!-- FORMS -->
     <style name="st_edit_label" parent="style_matchWrap">
         <item name="android:textAppearance">@style/txt_edit_label</item>
         <item name="android:layout_marginVertical">@dimen/dimen_ml</item>
@@ -106,7 +102,6 @@
         <item name="android:textColor">@color/md_theme_primary</item>
     </style>
 
-    <!-- BUTTONS -->
     <style name="stButton" parent="style_wrapWrap">
         <item name="android:layout_marginTop">@dimen/dimen_xl</item>
         <item name="android:paddingTop">@dimen/dimen_s</item>
@@ -122,10 +117,6 @@
         <item name="android:layout_height">@dimen/zero_dp</item>
 
         <item name="android:gravity">center_vertical</item>
-<!--        <item name="android:paddingTop">@dimen/dimen_xs</item>-->
-<!--        <item name="android:paddingBottom">@dimen/dimen_xs</item>-->
-<!--        <item name="android:paddingLeft">@dimen/dimen_s</item>-->
-<!--        <item name="android:paddingRight">@dimen/dimen_s</item>-->
         <item name="android:textAlignment">center</item>
         <item name="android:elevation">@dimen/dimen_m</item>
         <item name="android:fontFamily">@font/app_semibold</item>
@@ -154,9 +145,6 @@
         <item name="android:background">@drawable/shape_btn_add_copy</item>
     </style>
 
-
-
-    <!-- ITEMS -->
     <style name="st_item_title" parent="style_zeroWrap">
         <item name="android:layout_marginStart">@dimen/dimen_m</item>
         <item name="android:textAppearance">@style/ft_item_title</item>
@@ -177,14 +165,12 @@
         <item name="android:textColor">@color/md_theme_secondary</item>
     </style>
 
-    <!-- Top App Bar -->
     <style name="AppBarLayoutStyle" parent="Widget.Material3.Toolbar">
         <item name="android:elevation">0dp</item>
         <item name="titleTextAppearance">@style/app_tool_bar_title</item>
         <item name="android:background">@color/md_theme_primary</item>
     </style>
 
-    <!-- Keywords -->
     <style name="app_section_keywords_search" parent="st_edit_input">
         <item name="iconTint">@color/md_theme_onPrimary</item>
         <item name="android:clickable">true</item>
@@ -193,7 +179,6 @@
         <item name="android:background">@color/md_theme_primaryContainer_50</item>
     </style>
 
-    <!-- Bottom Navigation -->
     <style name="AppBottomBar" parent="Widget.Material3.BottomNavigationView">
         <item name="itemActiveIndicatorStyle">@style/AppBottomShape</item>
         <item name="itemIconTint">@color/bottom_nav_item_color</item>
@@ -205,7 +190,6 @@
         <item name="android:height">0dp</item>
     </style>
 
-    <!-- AppSectionView -->
     <style name="app_section_sticky_header" parent="text_section_sticky_header_title">
         <item name="android:background">@color/md_theme_primaryContainer</item>
         <item name="android:textColor">@color/md_theme_onPrimaryContainer</item>
@@ -236,7 +220,6 @@
         <item name="android:layout_marginEnd">@dimen/dimen_m</item>
     </style>
 
-    <!-- Card -->
     <style name="style_app_card_image">
         <item name="android:paddingStart">@dimen/dimen_m</item>
         <item name="android:paddingEnd">@dimen/dimen_m</item>
@@ -280,7 +263,6 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <!-- Search Results -->
     <style name="style_app_search_main_container">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
@@ -288,12 +270,6 @@
     <style name="style_app_chip_group_filters">
         <item name="android:paddingStart">@dimen/dimen_m</item>
     </style>
-
-    <!--    <style name="style_search_label">-->
-    <!--        <item name="android:layout_marginTop">@dimen/dimen_ml</item>-->
-    <!--        <item name="android:layout_marginStart">@dimen/dimen_m</item>-->
-    <!--        <item name="android:textAppearance">@style/app_font_search_label</item>-->
-    <!--    </style>-->
 
     <style name="style_app_edit_card_name">
         <item name="android:layout_margin">@dimen/dimen_m</item>
@@ -315,11 +291,8 @@
 
     <style name="style_app_search_results_bottom_bar">
         <item name="android:background">@color/md_theme_primaryContainer_50</item>
-        <!--            <item name="android:padding">@dimen/zero_dp</item>-->
     </style>
 
-
-    <!-- common section -->
     <style name="st_viewCommonSectionListContainer">
         <item name="android:layout_marginTop">@dimen/dimen_m</item>
         <item name="android:layout_marginRight">@dimen/dimen_m</item>
@@ -352,14 +325,12 @@
         <item name="android:breakStrategy">simple</item>
     </style>
 
-    <!-- Error -->
     <style name="st_app_error_view_container" parent="style_zeroZero" />
 
     <style name="st_guide_line" parent="style_wrapWrap">
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <!-- DECKS -->
     <style name="style_deckPanelName" parent="style_wrapWrap">
         <item name="android:textAppearance">@style/font_deckPanelName</item>
     </style>
@@ -389,12 +360,10 @@
 
     <style name="style_deckCardsList" parent="style_zeroZero" />
 
-    <!-- COLLECTIONS -->
     <style name="stCollectionPanelCardsRecycler" parent="style_matchZero">
         <item name="android:padding">@dimen/dimen_m</item>
     </style>
 
-    <!-- FONTS -->
     <style name="app_tool_bar_title">
         <item name="android:fontFamily">@font/app_semibold</item>
         <item name="android:textSize">@dimen/size_l</item>

@@ -1,11 +1,5 @@
 <resources>
-    <!-- COMMON -->
     <string name="app_name" translatable="false">MagicApp</string>
-
-
-
-
-    <!-- MENUS -->
     <string name="strAddCard">Add card</string>
     <string name="str_addDeck">Add deck</string>
     <string name="strAddNewCollection">Add New Collection</string>
@@ -18,37 +12,25 @@
     <string name="str_deck_name">Deck name</string>
     <string name="str_deck_description">Deck description</string>
     <string name="str_edit_deck_save">Save deck</string>
-
     <string name="strCollectionName">Collection\'s name</string>
     <string name="strCollectionPanel">Collection Panel</string>
     <string name="strCollectionPanelCards">Collection\'s Cards</string>
-
     <string name="image_card_content_description">Card Image</string>
     <string name="image_section_content_description">Section Image</string>
-
-    <!-- App Bar -->
     <string name="magic_title" translatable="false">Magic</string>
     <string name="random_card_title">Random Card</string>
-
-    <!-- Random Card Fragment -->
     <string name="cd_save_card">Save the card\'s image into app storage</string>
     <string name="refresh">Refresh</string>
     <string name="cd_refresh">Refresh the content with a new random card</string>
     <string name="fab_flip">Flip card</string>
-
-    <!-- navigation bar -->
     <string name="magic" translatable="false">Magic</string>
     <string name="random_card">Random</string>
-
-    <!-- Titles -->
     <string name="name_title">Name</string>
     <string name="type_line_title">Type</string>
     <string name="oracle_text_title">Oracle text</string>
     <string name="set_name_title">Set</string>
-
-    <!-- Legalities -->
     <string name="legality_title">Legality</string>
-    <string name="legality_content">Explore the different ways to play Magic, from Standard to Commander and beyond.</string><!-- REVISED -->
+    <string name="legality_content">Explore the different ways to play Magic, from Standard to Commander and beyond.</string>
     <string name="image_legality_content_description">Legality Image</string>
     <string name="standard" translatable="false">Standard</string>
     <string name="future" translatable="false">Future</string>
@@ -72,13 +54,9 @@
     <string name="oldschool" translatable="false">Old School</string>
     <string name="premodern" translatable="false">Premodern</string>
     <string name="predh" translatable="false">PreDH</string>
-
-    <!-- Keywords -->
     <string name="keyword_title">Keywords</string>
     <string name="keyword_content">Learn the meaning of the keywords in the Magic: The Gathering universe.</string>
     <string name="image_keyword_content_description">Keyword Image</string>
-
-    <!-- Search -->
     <string name="filters_content_description">Search filters</string>
     <string name="search_title">Search</string>
     <string name="search_results_title">Search Results</string>
@@ -125,7 +103,6 @@
         <item>@string/type_sorcery</item>
         <item>@string/type_vanguard</item>
     </string-array>
-
     <string name="rarity">Rarity</string>
     <string name="rarities">Rarities</string>
     <string name="rarity_common">Common</string>
@@ -138,7 +115,6 @@
         <item>@string/rarity_rare</item>
         <item>@string/rarity_mythic</item>
     </string-array>
-
     <string name="color" translatable="false">Color</string>
     <string name="colors">Colors</string>
     <string name="color_white">White</string>
@@ -155,8 +131,6 @@
         <item>@string/color_green</item>
         <item>@string/color_colorless</item>
     </string-array>
-
-    <!-- Strings for Search Query -->
     <string name="q_rarity_common" translatable="false">common</string>
     <string name="q_rarity_uncommon" translatable="false">cncommon</string>
     <string name="q_rarity_rare" translatable="false">rare</string>
@@ -167,7 +141,6 @@
         <item>@string/q_rarity_rare</item>
         <item>@string/q_rarity_mythic</item>
     </string-array>
-
     <string name="q_color_white" translatable="false">white</string>
     <string name="q_color_blue" translatable="false">blue</string>
     <string name="q_color_black" translatable="false">black</string>
@@ -182,8 +155,6 @@
         <item>@string/q_color_green</item>
         <item>@string/q_color_colorless</item>
     </string-array>
-
-
     <string name="q_type_artifact" translatable="false">Artifact</string>
     <string name="q_type_battle" translatable="false">Battle</string>
     <string name="q_type_conspiracy" translatable="false">Conspiracy</string>
@@ -216,32 +187,20 @@
         <item>@string/q_type_sorcery</item>
         <item>@string/q_type_vanguard</item>
     </string-array>
-
-    <!-- View Card -->
     <string name="str_CardLabel">Card</string>
-
-
-    <!-- Error -->
     <string name="image_error_content_description">Error Image</string>
     <string name="error_button_retry">Retry</string>
-
-    <!-- Flavour -->
     <string name="loremt_title" translatable="false">Lorem ipsum dolor</string>
     <string name="lorem" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="lorem_small" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
-
-
-<!-- REVISED -->
     <string name="str_legalFormats">Legal Formats</string>
     <string name="str_decks">Decks</string>
     <string name="str_collections">Collections</string>
-
     <string name="str_legalFormatsContentDescription">List of legal formats</string>
     <string name="str_keywordsContentDescription">List of keywords in cards</string>
     <string name="str_decksListContentDescription">List of user\'s decks</string>
     <string name="str_collectionsListContentDescription">List of user\'s collections</string>
     <string name="str_deckPanelContentDescription">List of deck\'s cards</string>
-
     <string name="str_newCollection">New Collection</string>
     <string name="str_noCollectionWithThatName">There is not a collection with that name</string>
     <string name="str_noCollectionsYet">There are no collections created yet</string>
@@ -251,8 +210,6 @@
     <string name="str_newDeck">New Deck</string>
     <string name="str_noDeckWithThatName">There is not a deck with that name</string>
     <string name="str_noDecksYet">There are no decks created yet</string>
-
-
     <string name="str_btnCreateNewCollection">Create Collection</string>
     <string name="str_btnCreateNewDeck">Create Deck</string>
 </resources>

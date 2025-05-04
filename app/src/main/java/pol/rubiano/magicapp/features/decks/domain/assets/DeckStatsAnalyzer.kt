@@ -24,9 +24,6 @@ object DeckStatsAnalyzer {
                     extractColorsFromManaCost(it)?.let { colorSymbols += it }
                 }
             }
-//            card.backFace?.faceManaCost?.let {
-//                extractColorsFromManaCost(it)?.let { colorSymbols += it }
-//            }
         }
 
         return colorSymbols.sorted()
@@ -35,7 +32,6 @@ object DeckStatsAnalyzer {
     private fun extractColorsFromManaCost(manaCost: String?): Set<String>? {
         if (manaCost.isNullOrBlank()) return null
 
-        // Regex to capture mana symbols like {W}, {U}, {B}, {R}, {G}
         val regex = Regex("""\{(\w+)\}""")
         Log.d("RegexCheck", "Using safe regex for mana parsing.")
 
@@ -44,7 +40,7 @@ object DeckStatsAnalyzer {
                 val symbol = match.groupValues[1]
                 when (symbol.uppercase()) {
                     "W", "U", "B", "R", "G" -> symbol.uppercase()
-                    else -> null // Ignore {C}, {X}, {1}, etc.
+                    else -> null
                 }
             }.toSet()
     }

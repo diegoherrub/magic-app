@@ -30,8 +30,6 @@
 
     <dimen name="bottom_bar_height">56dp</dimen>
 
-<!--    <dimen name="image_small_w">100dp</dimen>-->
-<!--    <dimen name="image_small_h">139dp</dimen>-->
     <dimen name="image_small_w">120dp</dimen>
     <dimen name="image_small_h">166dp</dimen>
 </resources>

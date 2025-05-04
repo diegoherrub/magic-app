@@ -61,16 +61,20 @@ class ToolbarController(
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         toolbar.setNavigationOnClickListener(null)
         toolbar.title = destination.label
-        bottomNav.visibility = View.VISIBLE
         val args = navController.currentBackStackEntry?.arguments
 
         when (destination.id) {
-            in topLevelDestinations -> toolbar.isTitleCentered = true
+            in topLevelDestinations -> {
+                toolbar.isTitleCentered = true
+                bottomNav.visibility = View.VISIBLE
+
+            }
 
             in secondaryDestinations -> {
                 activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 toolbar.navigationIcon.apply { R.drawable.back }
                 toolbar.isTitleCentered = false
+                bottomNav.visibility = View.VISIBLE
             }
 
             in specialDestinations -> {

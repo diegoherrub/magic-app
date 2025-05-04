@@ -46,7 +46,6 @@ class DecksDataRepository(
         return deckEntity.toDeck()
     }
 
-    // TODO - REVISAR LOS DATA REPOSITORY, ES EN ELLOS DONDE SE DEBEN CONVERTIR LAS ENTIDADES
     override suspend fun getDecks(): List<Deck> {
         val deckEntities = local.getDecks()
         return deckEntities.map { it.toDeck() }

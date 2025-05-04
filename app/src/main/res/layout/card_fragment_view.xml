@@ -45,7 +45,6 @@
                 app:layout_constraintTop_toTopOf="@id/view_card_image"
                 app:layout_constraintVertical_bias="0.47" />
 
-            <!-- Name -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/name_title"
                 style="@style/st_separator_header"
@@ -65,7 +64,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_title"
                 tools:text="@string/name_title" />
 
-            <!-- Type Line -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/type_line_title"
                 style="@style/st_separator_header"
@@ -86,7 +84,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/type_line_title"
                 tools:text="@string/type_line_title" />
 
-            <!-- Rarity -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/rarity_title"
                 style="@style/st_separator_header"
@@ -107,7 +104,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/rarity_title"
                 tools:text="@string/rarity" />
 
-            <!-- Oracle Text -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/oracle_text_title"
                 style="@style/st_separator_header"
@@ -128,7 +124,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/oracle_text_title"
                 tools:text="oracle text" />
 
-            <!-- Set Name -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/set_name_title"
                 style="@style/st_separator_header"
@@ -149,7 +144,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/set_name_title"
                 tools:text="set name" />
 
-            <!-- Legalities -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/legalities_title"
                 style="@style/st_separator_header"

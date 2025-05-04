@@ -11,16 +11,13 @@ import pol.rubiano.magicapp.R
 fun setupDropDown(view: View, viewComponent: View, chipGroupFilters: ChipGroup)  {
     val header = view.findViewById<TextView>(R.id.app_search_filter_card_name_filter)
     header.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.arrow_drop_down, 0)
-    // header.descendantFocusability = ViewGroup.FOCUS_BLOCK_DESCENDANTS
     header.setOnClickListener {
         if (viewComponent.isGone) {
             viewComponent.visibility = View.VISIBLE
             header.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.arrow_drop_up, 0)
-//            imageToggle.setImageResource(R.drawable.arrow_drop_up)
         } else {
             viewComponent.visibility = View.GONE
             header.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.arrow_drop_down, 0)
-//            imageToggle.setImageResource(R.drawable.arrow_drop_down)
         }
     }
 
